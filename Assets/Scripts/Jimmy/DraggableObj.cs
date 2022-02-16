@@ -2,7 +2,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.AI;
 using UnityEngine.iOS;
 
 public class DraggableObj : MonoBehaviour
@@ -19,6 +18,7 @@ public class DraggableObj : MonoBehaviour
     
     private bool touched = false;
     private bool dragging = false;
+    private bool hasGravityChg = false;
 
     private Transform toDrag;
     private Rigidbody toDragRigidbody;
@@ -41,7 +41,9 @@ public class DraggableObj : MonoBehaviour
 
         GUI.Label(new Rect(20, 20, width, height * 0.25f),
             "x = " + position.x.ToString("f2") +
-            ", y = " + position.y.ToString("f2") + "item = " + itemDragging + "hasTouched = " + touched);
+            ", y = " + position.y.ToString("f2") + 
+            ", item = " + itemDragging + ", hasTouched = " + touched +
+            ", gravity changed = " + hasGravityChg);
     }
 
     private void FixedUpdate()
@@ -84,17 +86,25 @@ public class DraggableObj : MonoBehaviour
 
         if (touched && touch.phase == TouchPhase.Moved)
         {
-            dragging = true;
-            float posXNow = Input.GetTouch(0).position.x - dis.x;
-            float posYNow = Input.GetTouch(0).position.y - dis.y;
-            Vector3 curPos = new Vector3(posXNow, posYNow, dis.z);
+            // dragging = true;
+            // float posXNow = Input.GetTouch(0).position.x - dis.x;
+            // float posYNow = Input.GetTouch(0).position.y - dis.y;
+            // Vector3 curPos = new Vector3(posXNow, posYNow, dis.z);
+            //
+            // Vector3 worldPos = cam.ScreenToViewportPoint(curPos) - previousPosition;
+            // worldPos = new Vector3(worldPos.x, worldPos.y, 0.0f);
+            //
+            // toDragRigidbody.velocity = worldPos / (Time.deltaTime * 10);
+            //
+            // previousPosition = toDrag.position;
+            
+            pos = touch.position;
+            pos.x = (pos.x - width) / width;
+            pos.y = (pos.y - height) / height;
+            position = new Vector3(-pos.x, pos.y, 0.0f);
 
-            Vector3 worldPos = cam.ScreenToViewportPoint(curPos) - previousPosition;
-            worldPos = new Vector3(worldPos.x, worldPos.y, 0.0f);
-
-            toDragRigidbody.velocity = worldPos / (Time.deltaTime * 10);
-
-            previousPosition = toDrag.position;
+            // Position the cube.
+            transform.position = position;
         }
 
         if (dragging && (touch.phase == TouchPhase.Ended || touch.phase == TouchPhase.Canceled))
@@ -114,6 +124,7 @@ public class DraggableObj : MonoBehaviour
         rb.isKinematic = false;
         rb.useGravity = false;
         rb.drag = 20;
+        hasGravityChg = true;
     }
 
     /*
@@ -124,5 +135,6 @@ public class DraggableObj : MonoBehaviour
         rb.isKinematic = true;
         rb.useGravity = true;
         rb.drag = 5;
+        hasGravityChg = false;
     }
 }
