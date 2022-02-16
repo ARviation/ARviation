@@ -2,7 +2,8 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.PlayerLoop;
+using UnityEngine.AI;
+using UnityEngine.iOS;
 
 public class DraggableObj : MonoBehaviour
 {
@@ -12,6 +13,9 @@ public class DraggableObj : MonoBehaviour
     private Vector3 dis;
     private float posX;
     private float posY;
+    private Vector3 position;
+    private float width;
+    private float height;
     
     private bool touched = false;
     private bool dragging = false;
@@ -19,6 +23,26 @@ public class DraggableObj : MonoBehaviour
     private Transform toDrag;
     private Rigidbody toDragRigidbody;
     private Vector3 previousPosition;
+    private string itemDragging = "";
+    
+    void Awake()
+    {
+        width = (float)Screen.width / 2.0f;
+        height = (float)Screen.height / 2.0f;
+
+        // Position used for the cube.
+        // position = new Vector3(0.0f, 0.0f, 0.0f);
+    }
+
+    private void OnGUI()
+    {
+        // Compute a fontSize based on the size of the screen width.
+        GUI.skin.label.fontSize = (int)(Screen.width / 25.0f);
+
+        GUI.Label(new Rect(20, 20, width, height * 0.25f),
+            "x = " + position.x.ToString("f2") +
+            ", y = " + position.y.ToString("f2") + "item = " + itemDragging + "hasTouched = " + touched);
+    }
 
     private void FixedUpdate()
     {
@@ -26,7 +50,10 @@ public class DraggableObj : MonoBehaviour
         {
             dragging = false;
             touched = false;
-            SetFreeProperties(toDragRigidbody);
+            if (toDragRigidbody)
+            {
+                SetFreeProperties(toDragRigidbody);
+            }
             return;
         }
 
@@ -40,6 +67,7 @@ public class DraggableObj : MonoBehaviour
 
             if (Physics.Raycast(ray, out hit) && hit.collider.CompareTag(draggingTag))
             {
+                itemDragging = hit.transform.name;
                 toDrag = hit.transform;
                 previousPosition = toDrag.position;
                 toDragRigidbody = toDrag.GetComponent<Rigidbody>();
