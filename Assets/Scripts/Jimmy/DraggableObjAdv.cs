@@ -58,7 +58,7 @@ public class DraggableObjAdv : MonoBehaviour
                 pos.x = (pos.x - width) / width;
                 pos.y = (pos.y - height) / height;
                 position = new Vector3(-pos.x, pos.y, 0.0f);
-                // SetDraggingProperties(_rigidbody);
+                SetDraggingProperties(_rigidbody);
                 
                 // Position the cube.
                 transform.position = position;
@@ -85,8 +85,8 @@ public class DraggableObjAdv : MonoBehaviour
         {
             dragging = false;
             touched = false;
-            // SetFreeProperties(_rigidbody);
-            // return;
+            SetFreeProperties(_rigidbody);
+            return;
         }
         
         // if (Input.touchCount != 1)
@@ -141,8 +141,8 @@ public class DraggableObjAdv : MonoBehaviour
     private void SetDraggingProperties(Rigidbody rb)
     {
         rb.isKinematic = false;
-        rb.useGravity = false;
-        rb.drag = 20;
+        // rb.useGravity = false;
+        rb.drag = 2;
         hasGravityChg = true;
     }
 
@@ -152,8 +152,8 @@ public class DraggableObjAdv : MonoBehaviour
     private void SetFreeProperties(Rigidbody rb)
     {
         rb.isKinematic = true;
-        rb.useGravity = true;
-        rb.drag = 5;
+        // rb.useGravity = true;
+        rb.drag = 1;
         hasGravityChg = false;
     }
 }
