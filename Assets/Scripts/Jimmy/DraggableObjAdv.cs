@@ -21,7 +21,7 @@ public class DraggableObjAdv : MonoBehaviour
         height = (float)Screen.height / 2.0f;
 
         // Position used for the cube.
-        // position = new Vector3(0.0f, 0.0f, 0.0f);
+        position = new Vector3(0.0f, 0.0f, 0.0f);
     }
 
     void OnGUI()
@@ -42,7 +42,7 @@ public class DraggableObjAdv : MonoBehaviour
         _rigidbody = transform.GetComponent<Rigidbody>();
     }
 
-    void FixedUpdate()
+    void Update()
     {
         if (Input.touchCount != 1)
         {
@@ -53,6 +53,7 @@ public class DraggableObjAdv : MonoBehaviour
         }
 
         Touch touch = Input.touches[0];
+        touched = true;
         // Vector3 pos = touch.position;
         
         // Handle screen touches
@@ -60,6 +61,7 @@ public class DraggableObjAdv : MonoBehaviour
         // Move the cube if the screen has the finger moving.
         if (touch.phase == TouchPhase.Moved)
         {
+            dragging = true;
             Vector2 pos = touch.position;
             pos.x = (pos.x - width) / width;
             pos.y = (pos.y - height) / height;
