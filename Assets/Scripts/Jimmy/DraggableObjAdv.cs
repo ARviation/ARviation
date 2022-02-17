@@ -58,7 +58,7 @@ public class DraggableObjAdv : MonoBehaviour
                 pos.x = (pos.x - width) / width;
                 pos.y = (pos.y - height) / height;
                 position = new Vector3(-pos.x, pos.y, 0.0f);
-                SetDraggingProperties(_rigidbody);
+                // SetDraggingProperties(_rigidbody);
                 
                 // Position the cube.
                 transform.position = position;
@@ -85,7 +85,7 @@ public class DraggableObjAdv : MonoBehaviour
         {
             dragging = false;
             touched = false;
-            SetFreeProperties(_rigidbody);
+            // SetFreeProperties(_rigidbody);
             // return;
         }
         
