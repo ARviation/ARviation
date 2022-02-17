@@ -6,6 +6,12 @@ using UnityEngine.iOS;
 
 public class DraggableObjAdv : MonoBehaviour
 {
+    public string draggingTag;
+    public Camera cam;
+
+    private Vector3 dis;
+    private float posX;
+    private float posY;
     private Vector3 position;
     private float width;
     private float height;
@@ -13,7 +19,10 @@ public class DraggableObjAdv : MonoBehaviour
     private bool touched = false;
     private bool dragging = false;
     private bool hasGravityChg = false;
-    private Rigidbody _rigidbody;
+
+    private Transform toDrag;
+    private Rigidbody toDragRigidbody;
+    private Vector3 previousPosition;
 
     void Awake()
     {
@@ -37,102 +46,91 @@ public class DraggableObjAdv : MonoBehaviour
             ", gravity changed = " + hasGravityChg);
     }
 
-    private void Start()
-    {
-        _rigidbody = transform.GetComponent<Rigidbody>();
-    }
-
-    void Update()
+    void FixedUpdate()
     {
         if (Input.touchCount > 0)
         {
             Touch touch = Input.GetTouch(0);
+            Vector3 pos = touch.position;
             touched = true;
+            
+            if (touch.phase == TouchPhase.Began)
+            {
+                RaycastHit hit;
+                Ray ray = cam.ScreenPointToRay(pos);
+
+                if (Physics.Raycast(ray, out hit) && hit.collider.CompareTag(draggingTag))
+                {
+                    // itemDragging = hit.transform.name;
+                    toDrag = hit.transform;
+                    previousPosition = toDrag.position;
+                    toDragRigidbody = toDrag.GetComponent<Rigidbody>();
+
+                    dis = cam.WorldToScreenPoint(previousPosition);
+                    posX = Input.GetTouch(0).position.x - dis.x;
+                    posY = Input.GetTouch(0).position.y - dis.y;
+                
+                    SetDraggingProperties(toDragRigidbody);
+
+                    touched = true;
+                }
+            }
 
             // Move the cube if the screen has the finger moving.
-            if (touch.phase == TouchPhase.Moved)
+            if (touched && touch.phase == TouchPhase.Moved)
             {
                 dragging = true;
-
-                Vector2 pos = touch.position;
+                //
+                // // Vector2 pos = touch.position;
+                // pos.x = (pos.x - width) / width;
+                // pos.y = (pos.y - height) / height;
+                // position = new Vector3(pos.x, pos.y, 0.0f);
+                // SetDraggingProperties(toDragRigidbody);
+                //
+                // // Position the cube.
+                // transform.position = position;
+                
+                pos = touch.position;
                 pos.x = (pos.x - width) / width;
                 pos.y = (pos.y - height) / height;
-                position = new Vector3(pos.x, pos.y, 0.0f);
-                SetDraggingProperties(_rigidbody);
-                
+                position = new Vector3(-pos.x, pos.y, 0.0f);
+
                 // Position the cube.
                 transform.position = position;
             }
-
-            if (Input.touchCount == 2)
+            
+            if (dragging && (touch.phase == TouchPhase.Ended || touch.phase == TouchPhase.Canceled))
             {
-                touch = Input.GetTouch(1);
-
-                if (touch.phase == TouchPhase.Began)
-                {
-                    // Halve the size of the cube.
-                    transform.localScale = new Vector3(0.75f, 0.75f, 0.75f);
-                }
-
-                if (touch.phase == TouchPhase.Ended)
-                {
-                    // Restore the regular size of the cube.
-                    transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
-                }
+                dragging = false;
+                touched = false;
+                previousPosition = new Vector3(0.0f, 0.0f, 0.0f);
+                SetFreeProperties(toDragRigidbody);
             }
+
+            // if (Input.touchCount == 2)
+            // {
+            //     touch = Input.GetTouch(1);
+            //
+            //     if (touch.phase == TouchPhase.Began)
+            //     {
+            //         // Halve the size of the cube.
+            //         transform.localScale = new Vector3(0.75f, 0.75f, 0.75f);
+            //     }
+            //
+            //     if (touch.phase == TouchPhase.Ended)
+            //     {
+            //         // Restore the regular size of the cube.
+            //         transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
+            //     }
+            // }
         }
         else
         {
             dragging = false;
             touched = false;
-            SetFreeProperties(_rigidbody);
+            SetFreeProperties(toDragRigidbody);
             return;
         }
-        
-        // if (Input.touchCount != 1)
-        // {
-        //     dragging = false;
-        //     touched = false;
-        //     SetFreeProperties(_rigidbody);
-        //     return;
-        // }
-        //
-        // Touch touch = Input.touches[0];
-        // touched = true;
-        // // Vector3 pos = touch.position;
-        //
-        // // Handle screen touches
-        //
-        // // Move the cube if the screen has the finger moving.
-        // if (touch.phase == TouchPhase.Moved)
-        // {
-        //     dragging = true;
-        //     Vector2 pos = touch.position;
-        //     pos.x = (pos.x - width) / width;
-        //     pos.y = (pos.y - height) / height;
-        //     position = new Vector3(-pos.x, pos.y, 0.0f);
-        //     SetDraggingProperties(_rigidbody);
-        //
-        //     // Position the cube.
-        //     transform.position = position;
-        // }
-        //
-        // if (Input.touchCount == 2)
-        // {
-        //     touch = Input.GetTouch(1);
-        //
-        //     if (touch.phase == TouchPhase.Began)
-        //     {
-        //         // Halve the size of the cube.
-        //         transform.localScale = new Vector3(0.75f, 0.75f, 0.75f);
-        //     }
-        //
-        //     if (touch.phase == TouchPhase.Ended)
-        //     {
-        //         // Restore the regular size of the cube.
-        //         transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
-        //     }
-        // }
     }
     
     /*
