@@ -47,15 +47,19 @@ public class DraggableObjAdv : MonoBehaviour
         if (Input.touchCount > 0)
         {
             Touch touch = Input.GetTouch(0);
+            touched = true;
 
             // Move the cube if the screen has the finger moving.
             if (touch.phase == TouchPhase.Moved)
             {
+                dragging = true;
+
                 Vector2 pos = touch.position;
                 pos.x = (pos.x - width) / width;
                 pos.y = (pos.y - height) / height;
                 position = new Vector3(-pos.x, pos.y, 0.0f);
-
+                SetDraggingProperties(_rigidbody);
+                
                 // Position the cube.
                 transform.position = position;
             }
@@ -77,6 +81,14 @@ public class DraggableObjAdv : MonoBehaviour
                 }
             }
         }
+        else
+        {
+            dragging = false;
+            touched = false;
+            SetFreeProperties(_rigidbody);
+            // return;
+        }
+        
         // if (Input.touchCount != 1)
         // {
         //     dragging = false;
