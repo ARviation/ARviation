@@ -57,7 +57,7 @@ public class DraggableObjAdv : MonoBehaviour
                 Vector2 pos = touch.position;
                 pos.x = (pos.x - width) / width;
                 pos.y = (pos.y - height) / height;
-                position = new Vector3(-pos.x, pos.y, 0.0f);
+                position = new Vector3(pos.x, pos.y, 0.0f);
                 SetDraggingProperties(_rigidbody);
                 
                 // Position the cube.
@@ -142,7 +142,7 @@ public class DraggableObjAdv : MonoBehaviour
     {
         // rb.isKinematic = false;
         // rb.useGravity = false;
-        //rb.drag = 2;
+        rb.drag = 2;
         hasGravityChg = true;
     }
 
@@ -153,7 +153,7 @@ public class DraggableObjAdv : MonoBehaviour
     {
         // rb.isKinematic = false;
         // rb.useGravity = true;
-        // rb.drag = 1;
+        rb.drag = 1;
         hasGravityChg = false;
     }
 }
