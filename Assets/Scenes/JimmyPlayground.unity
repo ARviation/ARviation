@@ -413,13 +413,11 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1357080222}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4eb96aa4e1c55e148a8533e45951b594, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  draggingTag: 
-  cam: {fileID: 0}
 --- !u!65 &1357080225
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -556,13 +554,11 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1484318994}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4eb96aa4e1c55e148a8533e45951b594, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  draggingTag: 
-  cam: {fileID: 0}
 --- !u!65 &1484318998
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -817,7 +813,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1938969534
 MonoBehaviour:
   m_ObjectHideFlags: 0
