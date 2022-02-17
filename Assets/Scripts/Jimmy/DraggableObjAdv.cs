@@ -142,7 +142,7 @@ public class DraggableObjAdv : MonoBehaviour
     {
         // rb.isKinematic = false;
         // rb.useGravity = false;
-        rb.drag = 2;
+        //rb.drag = 2;
         hasGravityChg = true;
     }
 
@@ -153,7 +153,7 @@ public class DraggableObjAdv : MonoBehaviour
     {
         // rb.isKinematic = false;
         // rb.useGravity = true;
-        rb.drag = 1;
+        // rb.drag = 1;
         hasGravityChg = false;
     }
 }
