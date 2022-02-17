@@ -140,7 +140,7 @@ public class DraggableObjAdv : MonoBehaviour
      */
     private void SetDraggingProperties(Rigidbody rb)
     {
-        rb.isKinematic = false;
+        rb.isKinematic = true;
         // rb.useGravity = false;
         // rb.drag = 2;
         hasGravityChg = true;
