@@ -140,9 +140,9 @@ public class DraggableObjAdv : MonoBehaviour
      */
     private void SetDraggingProperties(Rigidbody rb)
     {
-        rb.isKinematic = false;
+        // rb.isKinematic = false;
         // rb.useGravity = false;
-        rb.drag = 2;
+        // rb.drag = 2;
         hasGravityChg = true;
     }
 
@@ -151,9 +151,9 @@ public class DraggableObjAdv : MonoBehaviour
      */
     private void SetFreeProperties(Rigidbody rb)
     {
-        rb.isKinematic = true;
+        // rb.isKinematic = true;
         // rb.useGravity = true;
-        rb.drag = 1;
+        // rb.drag = 1;
         hasGravityChg = false;
     }
 }
