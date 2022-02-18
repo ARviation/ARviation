@@ -9,6 +9,7 @@ public class DragManager : MonoBehaviour
 {
     [SerializeField] private float mouseDragPhysicsSpeed = 10.0f;
     [SerializeField] private float mouseDragSpeed = 1.0f;
+    [SerializeField] private Cinemachine.CinemachineFreeLook _cam_free; 
     public delegate void StartTouchEvent(Vector2 position, float time);
 
     public event StartTouchEvent OnStartTouch;
