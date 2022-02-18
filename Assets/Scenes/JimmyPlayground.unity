@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641275, b: 0.5748172, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -384,7 +384,6 @@ GameObject:
   - component: {fileID: 1357080226}
   - component: {fileID: 1357080225}
   - component: {fileID: 1357080228}
-  - component: {fileID: 1357080229}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Draggable
@@ -484,18 +483,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &1357080229
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1357080222}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 589d7718fb074e64abac65aa61f87ff2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1484318994
 GameObject:
   m_ObjectHideFlags: 0
@@ -508,7 +495,6 @@ GameObject:
   - component: {fileID: 1484319000}
   - component: {fileID: 1484318999}
   - component: {fileID: 1484318998}
-  - component: {fileID: 1484319001}
   m_Layer: 0
   m_Name: Cube (1)
   m_TagString: Draggable
@@ -592,18 +578,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1484318994}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &1484319001
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1484318994}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 589d7718fb074e64abac65aa61f87ff2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1491711780
 GameObject:
   m_ObjectHideFlags: 0
@@ -789,8 +763,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1938969535}
-  - component: {fileID: 1938969534}
-  - component: {fileID: 1938969536}
+  - component: {fileID: 1938969537}
   m_Layer: 0
   m_Name: DraggingManager
   m_TagString: Untagged
@@ -798,20 +771,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1938969534
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1938969533}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 46ae38578f096214a96a5f2dacca28e3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  draggingTag: Draggable
-  cam: {fileID: 1755172752}
 --- !u!4 &1938969535
 Transform:
   m_ObjectHideFlags: 0
@@ -826,7 +785,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1938969536
+--- !u!114 &1938969537
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -835,8 +794,24 @@ MonoBehaviour:
   m_GameObject: {fileID: 1938969533}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 797111e359ffcf445b9407cb1d25813a, type: 3}
+  m_Script: {fileID: 11500000, guid: 4106082628dc04804b38523b0a376cf5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  draggingTag: Draggable
-  cam: {fileID: 1755172752}
+  mouseClick:
+    m_Name: Mouse Click
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: e129357a-6b45-49e6-9616-ea3445477ac3
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: 4c56a14c-e5d2-4345-8fa4-51459061d519
+      m_Path: <Touchscreen>/press
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Mouse Click
+      m_Flags: 0
+  mouseDragPhysicsSpeed: 10
+  mouseDragSpeed: 1
