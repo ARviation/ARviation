@@ -70,7 +70,6 @@ public class DragManager : MonoBehaviour
     void StartTouch(InputAction.CallbackContext context)
     {
         Vector2 touchPosition = _touchControls.Touch.TouchPosition.ReadValue<Vector2>();
-        Debug.Log("Touch started " + touchPosition);
         posX = touchPosition.x;
         posY = touchPosition.y;
         if (OnStartTouch != null)
@@ -81,9 +80,8 @@ public class DragManager : MonoBehaviour
         if (Physics.Raycast(ray, out hit))
         {
             isTouch = true;
-            if (hit.collider != null && (hit.collider.gameObject.CompareTag("Draggable")))
+            if (hit.collider != null && (hit.collider.gameObject.layer == LayerMask.NameToLayer("Draggable")))
             {
-                Debug.Log("dragging somthing");
                 isDrag = true;
                 StartCoroutine(DragUpdate(hit.collider.gameObject));
             }
@@ -99,7 +97,6 @@ public class DragManager : MonoBehaviour
 
     void EndTouch(InputAction.CallbackContext context)
     {
-        Debug.Log("Touch ended" + _touchControls.Touch.TouchPosition.ReadValue<Vector2>());
         if (OnEndTouch != null)
             OnEndTouch(_touchControls.Touch.TouchPosition.ReadValue<Vector2>(), (float) context.time);
     }
@@ -110,7 +107,6 @@ public class DragManager : MonoBehaviour
         clickObj.TryGetComponent<Rigidbody>(out var rb);
         while (_touchControls.Touch.TouchPress.ReadValue<float>() != 0)
         {
-            Debug.Log("updating drag position");
             Ray ray = mainCamera.ScreenPointToRay(_touchControls.Touch.TouchPosition.ReadValue<Vector2>());
             if (rb != null)
             {

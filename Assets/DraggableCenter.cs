@@ -12,14 +12,20 @@ public class DraggableCenter : MonoBehaviour
     private float distance = 10.0f;
     private float rot = 0f;
     
+    private float xAngle = 0.0f;
+    private float yAngle = 0.0f;
+    private float xAngleTmp = 0.0f;
+    private float yAngleTmp = 0.0f;
+    
     private void Start()
     {
-        this.transform.position = targetObj.transform.position;
-        this.transform.rotation = targetObj.transform.rotation;
+        xAngle = 0.0f;
+        yAngle = 0.0f;
+        this.transform.rotation = Quaternion.Euler(yAngle, xAngle, 0.0f);
     }
 
     private void Update()
     {
-        throw new NotImplementedException();
+        
     }
 }
