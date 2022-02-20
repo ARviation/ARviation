@@ -6,8 +6,8 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/JimmyPlayground.unity
-    guid: 650114e02a76a6d42b9a408b6d36c342
+    path: Assets/Scenes/Intro.unity
+    guid: 28055a349aea7448bbc499e864ed169c
   m_configObjects:
     UnityEditor.XR.ARCore.ARCoreSettings: {fileID: 11400000, guid: 5509cb89d3eaf9a45a1d4d234d7e635c, type: 2}
     UnityEditor.XR.ARKit.ARKitSettings: {fileID: 11400000, guid: 08fb68aaabc803048a3ed0664732fa42, type: 2}
