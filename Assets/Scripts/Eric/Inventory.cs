@@ -67,6 +67,7 @@ public class Inventory : MonoBehaviour
         // object_part
         object_part.SetActive(false);
         object_part.transform.parent = part.transform;
+        object_part.name = object_part.name.Replace("(Clone)", "");
     }
 
 
