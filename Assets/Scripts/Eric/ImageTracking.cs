@@ -15,10 +15,11 @@ public class ImageTracking : MonoBehaviour
     {
         public string MarkerName;
         public GameObject AugmentObject;
+        //public GameObject Icon;
     }
     public AR_item[] AR_item_list;
 
-    Dictionary<string, bool> dict_detected = new Dictionary<string, bool>();
+    public Dictionary<string, bool> dict_active = new Dictionary<string, bool>();
     Dictionary<string, GameObject> dict_object = new Dictionary<string, GameObject>();
 
     ARTrackedImageManager trackedImageManager;
@@ -44,6 +45,13 @@ public class ImageTracking : MonoBehaviour
             dict_object.Add(MarkerName, object_AR);
         }
 
+        // set dict_active
+        for (int i = 0; i < AR_item_list.Length; i++)
+        {
+            string MarkerName = AR_item_list[i].MarkerName;
+            dict_active.Add(MarkerName, true);
+        }
+
         // get marker list
         var lib = GameObject.Find("AR Session Origin").GetComponent<ARTrackedImageManager>().referenceLibrary;
         int N_marker = lib.count;
@@ -51,13 +59,6 @@ public class ImageTracking : MonoBehaviour
         for (int i = 0; i < N_marker; i++)
         {
             marker_list[i] = lib[i].name;
-            //print(marker_list[i]);
-        }
-
-        // set dict_detected
-        foreach (string marker in marker_list)
-        {
-            dict_detected.Add(marker, false);
         }
 
         // sound
@@ -67,9 +68,19 @@ public class ImageTracking : MonoBehaviour
     }
 
 
-    // Start
-    void Start()
-    {
+    //// Start
+    //void Start()
+    //{
+    //}
+
+
+    // Update
+    private void Update()
+    {       
+        foreach (string key in dict_active.Keys)
+        {
+            dict_object[key].SetActive(dict_active[key]);
+        }
     }
 
 
@@ -96,12 +107,8 @@ public class ImageTracking : MonoBehaviour
             #if UNITY_ANDROID || UNITY_IPHONE
                 Handheld.Vibrate();
             #endif
+            source.volume = 0.5f;
             source.Play();
-
-            for (int i = 0; i < eventArgs.added.Count; i++)
-            {
-                dict_detected[eventArgs.added[i].referenceImage.name] = true;
-            }
             return;
         }
 
@@ -112,26 +119,126 @@ public class ImageTracking : MonoBehaviour
         }
     }
 
-
     // UpdateImage
     void UpdateImage(List<ARTrackedImage> trackedImageList)
     {
         foreach (ARTrackedImage trackedImage in trackedImageList)
         {
             string MarkerName = trackedImage.referenceImage.name;
+            GameObject object_AR = dict_object[MarkerName];
             Vector3 MarkerPosition = trackedImage.transform.position;
-            if (dict_object.ContainsKey(MarkerName))
+            if (dict_active[MarkerName])
             {
-                GameObject object_AR = dict_object[MarkerName];
-                object_AR.transform.position = MarkerPosition;
-                object_AR.SetActive(true);
-            }
+                object_AR.transform.position = MarkerPosition;                
+            }                
         }
+    }
 
+
+    // extract label
+    string extract_label(string x)
+    {
+        int i = x.IndexOf("_");
+        string x_;
+        if (i > 0)
+        {
+            x_ = x.Substring(i + 1);
+        }
+        else
+        {
+            x_ = x;
+        }
+        return x_;
     }
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///
+// if (dict_object.ContainsKey(MarkerName))
+
+//// UpdateImage
+//void UpdateImage(List<ARTrackedImage> trackedImageList)
+//{
+//    foreach (ARTrackedImage trackedImage in trackedImageList)
+//    {
+//        string MarkerName = trackedImage.referenceImage.name;
+//        GameObject object_AR = dict_object[MarkerName];
+//        Vector3 MarkerPosition = trackedImage.transform.position;
+//        if (!dict_active[MarkerName])
+//        {                
+//            object_AR.SetActive(false);
+//            return;
+//        }
+//        if (dict_object.ContainsKey(MarkerName))
+//        {
+//            object_AR.transform.position = MarkerPosition;
+//            object_AR.SetActive(true);
+//        }
+//    }
+//}
+
+
+//// rotation
+//Quaternion MarkerAngles = trackedImage.transform.rotation;
+//MarkerAngles = MarkerAngles * Quaternion.Euler(new Vector3(90, 0, 0));
+//if (counter > 1 & counter < counter_max)
+//{
+//    sampledRotation = Quaternion.Lerp(sampledRotation, MarkerAngles, 1.0f / (counter - 1));
+//}
+
+
+//// rotation
+//object_AR.transform.rotation = sampledRotation;
+
+
+//for (int i = 0; i < eventArgs.added.Count; i++)
+//{
+//    dict_detected[eventArgs.added[i].referenceImage.name] = true;
+//}
+
+////debug <<<
+//foreach (var item in dict_active)
+//{
+//    Debug.Log("dict_active:: key = " + item.Key + "  value = " + item.Value);
+//}
+////debug >>>
+
+//// set dict_detected
+//foreach (string marker in marker_list)
+//{
+//    dict_detected.Add(marker, false);
+//}
+
+//// set dict_icon
+//for (int i = 0; i < AR_item_list.Length; i++)
+//{
+//    GameObject icon = AR_item_list[i].Icon;
+//    string MarkerName = AR_item_list[i].MarkerName;
+//    icon.name = MarkerName;
+//    icon.SetActive(false);
+//    dict_icon.Add(MarkerName, icon);
+//}
+
+
+
+//// rotation
+//Quaternion sampledRotation = new Quaternion(0, 0, 0, 0);
+//int counter = 0;
+//int counter_max = 10; //100;
+
+
+//Dictionary<string, GameObject> dict_icon = new Dictionary<string, GameObject>();
+//Dictionary<string, bool> dict_detected = new Dictionary<string, bool>();
+
+
+//// Update
+//private void Update()
+//{
+//    foreach (var item in dict_active)
+//    {
+//        if (!item.Value) dict_object[item.Key].SetActive(false);
+//    }
+//}
 
 //// read offset
 //(offset, theta, phi) = csv_manager.instance.read_offset();
