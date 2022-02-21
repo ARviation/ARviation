@@ -33,15 +33,6 @@ public class TouchControl02 : MonoBehaviour
         source.Play();
         UI_icon.SetActive(true);
         inventory.is_UI_busy = true;
-        // show object
-        ////Debug <<<
-        //Debug.Log("label = " + label);
-        //for (int i = 0; i < transform.parent.childCount; i++)
-        //{
-        //    GameObject child = transform.parent.GetChild(i).gameObject;
-        //    print("name = " + child.name);
-        //}
-        ////Debug >>>
         string label = extract_label(transform.parent.name);
         GameObject go = transform.parent.Find(label).gameObject;
         go.transform.position = mainCamera.transform.position + mainCamera.transform.rotation * offset_object;
@@ -99,6 +90,15 @@ public class TouchControl02 : MonoBehaviour
 ///
 
 
+// show object
+////Debug <<<
+//Debug.Log("label = " + label);
+//for (int i = 0; i < transform.parent.childCount; i++)
+//{
+//    GameObject child = transform.parent.GetChild(i).gameObject;
+//    print("name = " + child.name);
+//}
+////Debug >>>
 
 
 
