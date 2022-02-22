@@ -2215,9 +2215,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   template: {fileID: 2126365723}
-  N1: 3
-  N2: 2
-  center0: {x: -350, y: -1000}
+  N1: 2
+  N2: 3
+  center0: {x: 300, y: -600}
   delta: {x: 350, y: 350}
   button_size: {x: 300, y: 300}
   is_UI_busy: 0
