@@ -20,6 +20,7 @@ public class ImageTracking : MonoBehaviour
     public AR_item[] AR_item_list;
 
     public Dictionary<string, bool> dict_active = new Dictionary<string, bool>();
+    Dictionary<string, bool> dict_detected = new Dictionary<string, bool>();
     Dictionary<string, GameObject> dict_object = new Dictionary<string, GameObject>();
 
     ARTrackedImageManager trackedImageManager;
@@ -52,6 +53,13 @@ public class ImageTracking : MonoBehaviour
             dict_active.Add(MarkerName, true);
         }
 
+        // set dict_detected
+        for (int i = 0; i < AR_item_list.Length; i++)
+        {
+            string MarkerName = AR_item_list[i].MarkerName;
+            dict_detected.Add(MarkerName, false);
+        }
+
         // get marker list
         var lib = GameObject.Find("AR Session Origin").GetComponent<ARTrackedImageManager>().referenceLibrary;
         int N_marker = lib.count;
@@ -79,7 +87,10 @@ public class ImageTracking : MonoBehaviour
     {       
         foreach (string key in dict_active.Keys)
         {
-            dict_object[key].SetActive(dict_active[key]);
+            if (dict_detected[key])
+            {
+                dict_object[key].SetActive(dict_active[key]);
+            }
         }
     }
 
@@ -126,6 +137,7 @@ public class ImageTracking : MonoBehaviour
         foreach (ARTrackedImage trackedImage in trackedImageList)
         {
             string MarkerName = trackedImage.referenceImage.name;
+            dict_detected[MarkerName] = true;
             if (!dict_object.ContainsKey(MarkerName)) continue;
             GameObject object_AR = dict_object[MarkerName];
             Vector3 MarkerPosition = trackedImage.transform.position;
