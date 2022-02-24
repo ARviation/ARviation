@@ -38,7 +38,6 @@ public class GameManager : MonoBehaviour
 
     public void ChangeSceneToHunt()
     {
-        print("here");
         ChangeSceneTo(SceneIndex.Hunt);
     }
 

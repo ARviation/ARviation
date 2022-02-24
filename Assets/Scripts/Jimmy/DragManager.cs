@@ -5,6 +5,14 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UIElements;
 
+public enum PlaneComponent : int
+{
+    Engine = 1,
+    Wings = 2,
+    Propeller = 3,
+    Wheels = 4,
+    OilTank = 5,
+}
 public class DragManager : MonoBehaviour
 {
     [SerializeField] private float mouseDragPhysicsSpeed = 10.0f;
