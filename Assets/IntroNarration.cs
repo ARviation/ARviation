@@ -1,4 +1,4 @@
-using System; 
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,7 +6,7 @@ using TMPro;
 using UnityEngine.UI;
 
 public class IntroNarration : MonoBehaviour
-{ 
+{
   [SerializeField] private float delay = 0.1f;
   [SerializeField] private string[] fullScripts;
   [SerializeField] private GameObject textDisplay;
@@ -43,15 +43,26 @@ public class IntroNarration : MonoBehaviour
     }
   }
 
+  public void OnSkipClip()
+  {
+    if (!isPlaying && currentScriptInd < (fullScripts.Length - 1))
+    {
+      currentScriptInd = fullScripts.Length - 1;
+      tmpCurrentText = fullScripts[currentScriptInd];
+      StartCoroutine(ShowText());
+    }
+  }
+
   IEnumerator ShowText()
   {
     isPlaying = true;
     for (int i = 0; i < tmpCurrentText.Length; i++)
     {
-        currentText = tmpCurrentText.Substring(0, i);
-        textDisplay.GetComponent<TMP_Text>().text = currentText;
-        yield return new WaitForSeconds(delay);
+      currentText = tmpCurrentText.Substring(0, i);
+      textDisplay.GetComponent<TMP_Text>().text = currentText;
+      yield return new WaitForSeconds(delay);
     }
+
     isPlaying = false;
 
     if (isFinal)
