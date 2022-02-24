@@ -103,6 +103,7 @@ public class ImageTracking : MonoBehaviour
     {
         if (eventArgs.added.Count > 0)
         {
+            //Debug.Log("image changed");
             UpdateImage(eventArgs.added);
             #if UNITY_ANDROID || UNITY_IPHONE
                 Handheld.Vibrate();
@@ -125,6 +126,7 @@ public class ImageTracking : MonoBehaviour
         foreach (ARTrackedImage trackedImage in trackedImageList)
         {
             string MarkerName = trackedImage.referenceImage.name;
+            if (!dict_object.ContainsKey(MarkerName)) continue;
             GameObject object_AR = dict_object[MarkerName];
             Vector3 MarkerPosition = trackedImage.transform.position;
             if (dict_active[MarkerName])
