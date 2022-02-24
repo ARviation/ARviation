@@ -102,7 +102,7 @@ public class ImageTracking : MonoBehaviour
     void ImageChanged(ARTrackedImagesChangedEventArgs eventArgs)
     {
         if (eventArgs.added.Count > 0)
-        {            
+        {
             UpdateImage(eventArgs.added);
             #if UNITY_ANDROID || UNITY_IPHONE
                 Handheld.Vibrate();
