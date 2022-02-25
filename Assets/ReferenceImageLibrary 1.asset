@@ -1,0 +1,47 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 848409ee8ba454f42a5ddff137688a27, type: 3}
+  m_Name: ReferenceImageLibrary 1
+  m_EditorClassIdentifier: 
+  m_GuidLow: 5173453215766204509
+  m_GuidHigh: 1962322962276416657
+  m_Images:
+  - m_SerializedGuid:
+      m_GuidLow: 5707323907930467558
+      m_GuidHigh: 14512684999481010588
+    m_SerializedTextureGuid:
+      m_GuidLow: 17322120174090987710
+      m_GuidHigh: 4321166033180127546
+    m_Size: {x: 0.25, y: 0.14981686}
+    m_SpecifySize: 1
+    m_Name: Alpha
+    m_Texture: {fileID: 2800000, guid: 955228be8885f0643a712fd79cddf73b, type: 3}
+  - m_SerializedGuid:
+      m_GuidLow: 4811552585817104673
+      m_GuidHigh: 17065891047813287580
+    m_SerializedTextureGuid:
+      m_GuidLow: 10904419183966841309
+      m_GuidHigh: 4542627259432542248
+    m_Size: {x: 0.25, y: 0.14981686}
+    m_SpecifySize: 1
+    m_Name: Romeo
+    m_Texture: {fileID: 2800000, guid: 464c69dd4779975428a07bb16ca70a3f, type: 3}
+  - m_SerializedGuid:
+      m_GuidLow: 5453544895072605037
+      m_GuidHigh: 13350716891515440282
+    m_SerializedTextureGuid:
+      m_GuidLow: 17407650396094698914
+      m_GuidHigh: 2916467010586704027
+    m_Size: {x: 0.25, y: 0.14981686}
+    m_SpecifySize: 1
+    m_Name: Yankee
+    m_Texture: {fileID: 2800000, guid: 396995a265cef1949b782a454b5f7928, type: 3}
