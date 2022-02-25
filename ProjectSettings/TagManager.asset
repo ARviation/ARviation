@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Wings
   - AR_object
+  - Draggable
+  - Engine
   layers:
   - Default
   - TransparentFX

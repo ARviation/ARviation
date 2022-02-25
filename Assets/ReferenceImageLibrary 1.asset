@@ -45,3 +45,33 @@ MonoBehaviour:
     m_SpecifySize: 1
     m_Name: Yankee
     m_Texture: {fileID: 2800000, guid: 396995a265cef1949b782a454b5f7928, type: 3}
+  - m_SerializedGuid:
+      m_GuidLow: 4904110193731613508
+      m_GuidHigh: 6045767186784252836
+    m_SerializedTextureGuid:
+      m_GuidLow: 15390068045173813993
+      m_GuidHigh: 2954215392577675658
+    m_Size: {x: 0.25, y: 0.14981686}
+    m_SpecifySize: 1
+    m_Name: Juluett
+    m_Texture: {fileID: 2800000, guid: d5acf2e98158d5948a6195583f7bff28, type: 3}
+  - m_SerializedGuid:
+      m_GuidLow: 5566109650549049241
+      m_GuidHigh: 15995116847921821076
+    m_SerializedTextureGuid:
+      m_GuidLow: 2014247008598172227
+      m_GuidHigh: 12248811676897368264
+    m_Size: {x: 0.25, y: 0.14981686}
+    m_SpecifySize: 1
+    m_Name: Papa
+    m_Texture: {fileID: 2800000, guid: 7d6322430afb1bf4c8d81fba5285fca9, type: 3}
+  - m_SerializedGuid:
+      m_GuidLow: 4642254859788637941
+      m_GuidHigh: 2351511029161325722
+    m_SerializedTextureGuid:
+      m_GuidLow: 55369521702522437
+      m_GuidHigh: 13303176583067828859
+    m_Size: {x: 0.25, y: 0.14981686}
+    m_SpecifySize: 1
+    m_Name: November
+    m_Texture: {fileID: 2800000, guid: 60764e45b64900c47b820d7a9e609eb8, type: 3}

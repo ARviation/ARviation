@@ -16,6 +16,7 @@ public class ImageRecognition : MonoBehaviour
   }
 
   [SerializeField] private ARItem[] ARItemList;
+  [SerializeField] private GameObject ARObjsParent;
 
   private Dictionary<string, bool> activeObjs = new Dictionary<string, bool>();
   private Dictionary<string, bool> detectedObjs = new Dictionary<string, bool>();
@@ -42,6 +43,7 @@ public class ImageRecognition : MonoBehaviour
     foreach (ARItem arItem in ARItemList)
     {
       GameObject arObj = Instantiate(arItem.AugmentObj, Vector3.zero, Quaternion.identity);
+      arObj.transform.parent = ARObjsParent.transform;
       string markerName = arItem.MarkerName;
       arObj.name = arItem.MarkerName;
       arObjs.Add(arItem.MarkerName, arObj);
