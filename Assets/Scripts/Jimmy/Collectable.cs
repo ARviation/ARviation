@@ -5,10 +5,10 @@ using UnityEngine;
 
 public class Collectable : MonoBehaviour
 {
-  [SerializeField] private string category;
-  [SerializeField] public ComponentCode componentCode;
+  [SerializeField] public MoseCode componentCode;
+  private string category;
   private InventoryItem[] inventoryItems;
-  private InventoryItem targetInventoryItem;
+  private InventoryItem matchedInventoryItem;
 
   private void Start()
   {
@@ -17,9 +17,9 @@ public class Collectable : MonoBehaviour
     category = gameObject.tag;
   }
 
-  public InventoryItem GetTargetInventoryItem()
+  public InventoryItem GetInventoryItem()
   {
-    return targetInventoryItem;
+    return matchedInventoryItem;
   }
 
   private void LocateInventoryCategory()
@@ -28,7 +28,7 @@ public class Collectable : MonoBehaviour
     {
       if (item.name == category)
       {
-        targetInventoryItem = item;
+        matchedInventoryItem = item;
       }
     }
   }

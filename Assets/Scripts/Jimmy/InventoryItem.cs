@@ -1,15 +1,17 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Threading;
 using UnityEngine;
 using UnityEngine.UI;
 
-public enum ComponentCode : int
+public enum MoseCode : int
 {
   A = 0,
-  B = 1,
-  C = 2,
+  R = 1,
+  Y = 2,
+  J = 3,
+  P = 4,
+  N = 5,
 }
 
 public class InventoryItem : MonoBehaviour
@@ -18,7 +20,7 @@ public class InventoryItem : MonoBehaviour
   [SerializeField] private GameObject inventoryIcon;
   [SerializeField] private Sprite[] candidates;
 
-  private ComponentCode _currentCode;
+  private MoseCode _currentCode;
   private bool isEnable = false;
   private bool isCollected = false;
 
@@ -42,7 +44,7 @@ public class InventoryItem : MonoBehaviour
     }
   }
 
-  public void OnHitComponent(ComponentCode componentCode)
+  public void OnHitComponent(MoseCode componentCode)
   {
     _currentCode = componentCode;
   }
@@ -56,4 +58,6 @@ public class InventoryItem : MonoBehaviour
       inventoryIcon.GetComponent<Image>().sprite = candidates[(int) _currentCode];
     }
   }
+
+  // make a method for removing current chosen component
 }

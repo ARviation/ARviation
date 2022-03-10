@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 6494865839036351588}
   - component: {fileID: 6905473383774233232}
   - component: {fileID: 7213864829527954644}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Junkers Engine No G
-  m_TagString: Untagged
+  m_TagString: Engine
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -58,8 +58,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe1f1de9c9c694f0aa8583c2592ab688, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  category: 
-  componentCode: 0
+  componentCode: 3
 --- !u!1001 &2288374635940655707
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -114,6 +113,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: e9ea7657ec25240168d3af3948b2443b, type: 3}
       propertyPath: m_Name
       value: model_junkers_jumo_004
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e9ea7657ec25240168d3af3948b2443b, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e9ea7657ec25240168d3af3948b2443b, type: 3}

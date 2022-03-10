@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6863383568854042279}
   - component: {fileID: 2551228054104399058}
   - component: {fileID: 2894681036998109681}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Constant Chord Wings No G
   m_TagString: Wings
   m_Icon: {fileID: 0}
@@ -58,8 +58,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe1f1de9c9c694f0aa8583c2592ab688, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  category: 
-  componentCode: 0
+  componentCode: 1
 --- !u!1001 &4143470555160287492
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -125,15 +124,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -5390689351210449407, guid: a1d9a222818a64b19ae7af59e1980ad1, type: 3}
       propertyPath: m_Layer
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: -419836515159490061, guid: a1d9a222818a64b19ae7af59e1980ad1, type: 3}
       propertyPath: m_Layer
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: -286713935174758890, guid: a1d9a222818a64b19ae7af59e1980ad1, type: 3}
       propertyPath: m_Layer
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: a1d9a222818a64b19ae7af59e1980ad1, type: 3}
       propertyPath: m_Name
@@ -141,19 +140,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: a1d9a222818a64b19ae7af59e1980ad1, type: 3}
       propertyPath: m_Layer
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 1963035160312945046, guid: a1d9a222818a64b19ae7af59e1980ad1, type: 3}
       propertyPath: m_Layer
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 3554189617647370119, guid: a1d9a222818a64b19ae7af59e1980ad1, type: 3}
       propertyPath: m_Layer
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 5034001266986536474, guid: a1d9a222818a64b19ae7af59e1980ad1, type: 3}
       propertyPath: m_Layer
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a1d9a222818a64b19ae7af59e1980ad1, type: 3}

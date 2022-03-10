@@ -113,10 +113,11 @@ public class DragManager : MonoBehaviour
         Collider collider = hit.collider;
         string name = collider.gameObject.name;
         string tag = collider.tag;
-        if (tag == "ARObj" && _touchControls.Touch.TouchPress.ReadValue<float>() != 0)
+        if ((hit.collider.gameObject.layer == LayerMask.NameToLayer("Collectable")) &&
+            _touchControls.Touch.TouchPress.ReadValue<float>() != 0)
         {
-          InventoryItem inventoryItem = hit.transform.GetComponent<Collectable>().GetTargetInventoryItem();
-          ComponentCode code = hit.transform.GetComponent<Collectable>().componentCode;
+          InventoryItem inventoryItem = hit.transform.GetComponent<Collectable>().GetInventoryItem();
+          MoseCode code = hit.transform.GetComponent<Collectable>().componentCode;
           inventoryItem.OnHitComponent(code);
           _collectPanel.gameObject.SetActive(true);
           _collectPanel.SetInventoryItem(inventoryItem);

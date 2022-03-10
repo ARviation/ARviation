@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2744242373732793629}
   - component: {fileID: 3506005939315129944}
   - component: {fileID: 687695529667467643}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: w9
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -92,7 +92,7 @@ GameObject:
   - component: {fileID: 8199911566431117387}
   - component: {fileID: 76373932226104015}
   - component: {fileID: 4127803168649202870}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: w9.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -171,7 +171,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5638124109730943882}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: delta wings model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -207,7 +207,7 @@ GameObject:
   - component: {fileID: 5310902279134417406}
   - component: {fileID: 5759128873436742961}
   - component: {fileID: 502005492198579802}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Delta Wings No G
   m_TagString: Wings
   m_Icon: {fileID: 0}
@@ -254,8 +254,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe1f1de9c9c694f0aa8583c2592ab688, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  category: Wings
-  componentCode: 0
+  componentCode: 2
 --- !u!1 &5950491325369516600
 GameObject:
   m_ObjectHideFlags: 0
@@ -267,7 +266,7 @@ GameObject:
   - component: {fileID: 2551068745631774418}
   - component: {fileID: 5158694081064127843}
   - component: {fileID: 2402827314442222127}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: wings turn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -348,7 +347,7 @@ GameObject:
   - component: {fileID: 5051132800898025496}
   - component: {fileID: 7168524156690505617}
   - component: {fileID: 8168533068340702641}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Wings
   m_TagString: Untagged
   m_Icon: {fileID: 0}
