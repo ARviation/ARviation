@@ -49,8 +49,11 @@ public class DragManager : MonoBehaviour
     _touchControls = new TouchControls();
     width = Screen.width / 2.0f;
     height = Screen.height / 2.0f;
-    _collectPanel = FindObjectOfType<CollectPanel>();
-    _collectPanel.gameObject.SetActive(false);
+    if (_collectPanel != null)
+    {
+      _collectPanel = FindObjectOfType<CollectPanel>();
+      _collectPanel.gameObject.SetActive(false);
+    }
   }
 
   private void OnGUI()
@@ -108,12 +111,7 @@ public class DragManager : MonoBehaviour
       }
       else
       {
-        Vector3 position = hit.point;
-        Transform trans = hit.transform;
-        Collider collider = hit.collider;
-        string name = collider.gameObject.name;
-        string tag = collider.tag;
-        if ((hit.collider.gameObject.layer == LayerMask.NameToLayer("Collectable")) &&
+        if (hit.collider.gameObject.layer == LayerMask.NameToLayer("Collectable") &&
             _touchControls.Touch.TouchPress.ReadValue<float>() != 0)
         {
           InventoryItem inventoryItem = hit.transform.GetComponent<Collectable>().GetInventoryItem();

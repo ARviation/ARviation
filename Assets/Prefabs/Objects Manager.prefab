@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1752057808544842652}
   - component: {fileID: 1752057808544842722}
   m_Layer: 0
-  m_Name: Dragging Manager
+  m_Name: Objects Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -45,3 +45,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mouseDragPhysicsSpeed: 10
   mouseDragSpeed: 1
+  _collectPanel: {fileID: 0}
+  canDrag: 0

@@ -19,6 +19,9 @@ public class Collectable : MonoBehaviour
 
   public InventoryItem GetInventoryItem()
   {
+    category = gameObject.tag;
+    inventoryItems = FindObjectsOfType<InventoryItem>();
+    LocateInventoryCategory();
     return matchedInventoryItem;
   }
 
