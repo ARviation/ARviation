@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 104896935}
   - component: {fileID: 104896934}
   m_Layer: 5
-  m_Name: Yes Btn
+  m_Name: Cancel Btn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -120,7 +120,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 104896935}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1076849978}
+        m_TargetAssemblyTypeName: CollectPanel, Assembly-CSharp
+        m_MethodName: OnCancelBtnClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &353586228
 GameObject:
   m_ObjectHideFlags: 0
@@ -573,7 +585,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enableFrame: {fileID: 1418469888}
   inventoryIcon: {fileID: 3619404417233879097}
-  candidates: []
 --- !u!114 &801807810
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -723,7 +734,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enableFrame: {fileID: 389038058}
   inventoryIcon: {fileID: 8673466106668961291}
-  candidates: []
 --- !u!114 &937470862
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -794,8 +804,8 @@ GameObject:
   - component: {fileID: 1020394375}
   - component: {fileID: 1020394374}
   m_Layer: 5
-  m_Name: Image (1)
-  m_TagString: Untagged
+  m_Name: Wings
+  m_TagString: Wings
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -873,7 +883,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enableFrame: {fileID: 1897514709}
   inventoryIcon: {fileID: 4832558637242681560}
-  candidates: []
 --- !u!114 &1020394374
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -941,8 +950,9 @@ GameObject:
   - component: {fileID: 1076849975}
   - component: {fileID: 1076849977}
   - component: {fileID: 1076849976}
+  - component: {fileID: 1076849978}
   m_Layer: 5
-  m_Name: Collect UI
+  m_Name: Collect Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -966,7 +976,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 723}
+  m_AnchoredPosition: {x: 0, y: 451}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1076849977
@@ -1007,6 +1017,25 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &1076849978
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1076849974}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ccc281fb84ead457b88f16a9583c1299, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  candidates:
+  - {fileID: 21300000, guid: b9f871f4c6bce5648b064e450b5b056a, type: 3}
+  - {fileID: 21300000, guid: 3f7ff139f4dfbf84083b47d17d3b3249, type: 3}
+  - {fileID: 21300000, guid: 937d2650d55411f48b06548ec9abaa68, type: 3}
+  - {fileID: 21300000, guid: 0f9348dcbd7c55e4baca145d599ff482, type: 3}
+  - {fileID: 21300000, guid: e940c517be5756a44be9d4448c8b9d9e, type: 3}
+  - {fileID: 21300000, guid: 320f8e9a1fc31cb4b82a32288a1594fc, type: 3}
 --- !u!1 &1113680904
 GameObject:
   m_ObjectHideFlags: 0
@@ -1021,8 +1050,8 @@ GameObject:
   - component: {fileID: 1113680907}
   - component: {fileID: 1113680906}
   m_Layer: 5
-  m_Name: Image - Engine
-  m_TagString: Untagged
+  m_Name: Engines
+  m_TagString: Engines
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1100,7 +1129,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enableFrame: {fileID: 1152772568}
   inventoryIcon: {fileID: 1167708328747078577}
-  candidates: []
 --- !u!114 &1113680906
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1459,7 +1487,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enableFrame: {fileID: 1410376573}
   inventoryIcon: {fileID: 7687936228335691572}
-  candidates: []
 --- !u!114 &1306336385
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1759,7 +1786,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enableFrame: {fileID: 379177528}
   inventoryIcon: {fileID: 3309198790887477969}
-  candidates: []
 --- !u!114 &1460866441
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1829,7 +1855,7 @@ GameObject:
   - component: {fileID: 1838868988}
   - component: {fileID: 1838868987}
   m_Layer: 5
-  m_Name: No Btn
+  m_Name: Collect Btn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1936,7 +1962,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1838868988}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1076849978}
+        m_TargetAssemblyTypeName: CollectPanel, Assembly-CSharp
+        m_MethodName: OnCollectBtnClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1897514709
 GameObject:
   m_ObjectHideFlags: 0
@@ -2105,7 +2143,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enableFrame: {fileID: 353586228}
   inventoryIcon: {fileID: 4886871664077231762}
-  candidates: []
 --- !u!114 &2067534078
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1,27 +1,33 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class Collectable : MonoBehaviour
 {
   [SerializeField] public MoseCode componentCode;
-  private string category;
+  public InventoryItem matchedInventoryItem;
   private InventoryItem[] inventoryItems;
-  private InventoryItem matchedInventoryItem;
+
+  private void Awake()
+  {
+    inventoryItems = FindObjectsOfType<InventoryItem>();
+  }
+
 
   private void Start()
   {
-    inventoryItems = FindObjectsOfType<InventoryItem>();
+    SetInventoryItem();
+  }
+
+  public void SetInventoryItem()
+  {
     LocateInventoryCategory();
-    category = gameObject.tag;
   }
 
   public InventoryItem GetInventoryItem()
   {
-    category = gameObject.tag;
-    inventoryItems = FindObjectsOfType<InventoryItem>();
-    LocateInventoryCategory();
     return matchedInventoryItem;
   }
 
@@ -29,9 +35,12 @@ public class Collectable : MonoBehaviour
   {
     foreach (InventoryItem item in inventoryItems)
     {
-      if (item.name == category)
+      if (!item.CompareTag("Untagged"))
       {
-        matchedInventoryItem = item;
+        if (item.CompareTag(gameObject.tag))
+        {
+          matchedInventoryItem = item;
+        }
       }
     }
   }

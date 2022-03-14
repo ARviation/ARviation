@@ -117,7 +117,7 @@ public class DragManager : MonoBehaviour
           InventoryItem inventoryItem = hit.transform.GetComponent<Collectable>().GetInventoryItem();
           MoseCode code = hit.transform.GetComponent<Collectable>().componentCode;
           inventoryItem.OnHitComponent(code);
-          _collectPanel.gameObject.SetActive(true);
+          _collectPanel.OpenPanel();
           _collectPanel.SetInventoryItem(inventoryItem);
         }
       }
