@@ -5,73 +5,70 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 
-namespace ARviation
+public class IntroNarration : MonoBehaviour
 {
-  public class IntroNarration : MonoBehaviour
+  [SerializeField] private float delay = 0.1f;
+  [SerializeField] private string[] fullScripts;
+  [SerializeField] private GameObject textDisplay;
+  [SerializeField] private float destroyAfterSeconds = 2.0f;
+  [SerializeField] private Button _buttonForNextScene;
+  [SerializeField] private Button _buttonForNextSent;
+
+  private string currentText = "";
+  private string tmpCurrentText = "";
+  private int currentScriptInd = 0;
+  private int scriptLength = 0;
+  private bool isPlaying = false;
+  private bool isFinal = false;
+
+  private void Start()
   {
-    [SerializeField] private float delay = 0.1f;
-    [SerializeField] private string[] fullScripts;
-    [SerializeField] private GameObject textDisplay;
-    [SerializeField] private float destroyAfterSeconds = 2.0f;
-    [SerializeField] private Button _buttonForNextScene;
-    [SerializeField] private Button _buttonForNextSent;
+    _buttonForNextScene.gameObject.SetActive(false);
+    scriptLength = fullScripts.Length;
+    tmpCurrentText = fullScripts[currentScriptInd];
+    StartCoroutine(ShowText());
+  }
 
-    private string currentText = "";
-    private string tmpCurrentText = "";
-    private int currentScriptInd = 0;
-    private int scriptLength = 0;
-    private bool isPlaying = false;
-    private bool isFinal = false;
+  private void Update()
+  {
+    isFinal = currentScriptInd == (scriptLength - 1);
+  }
 
-    private void Start()
+  public void OnNextClick()
+  {
+    if (!isPlaying && currentScriptInd < (fullScripts.Length - 1))
     {
-      _buttonForNextScene.gameObject.SetActive(false);
-      scriptLength = fullScripts.Length;
+      tmpCurrentText = fullScripts[++currentScriptInd];
+      StartCoroutine(ShowText());
+    }
+  }
+
+  public void OnSkipClip()
+  {
+    if (!isPlaying && currentScriptInd < (fullScripts.Length - 1))
+    {
+      currentScriptInd = fullScripts.Length - 1;
       tmpCurrentText = fullScripts[currentScriptInd];
       StartCoroutine(ShowText());
     }
+  }
 
-    private void Update()
+  IEnumerator ShowText()
+  {
+    isPlaying = true;
+    for (int i = 0; i < tmpCurrentText.Length; i++)
     {
-      isFinal = currentScriptInd == (scriptLength - 1);
+      currentText = tmpCurrentText.Substring(0, i);
+      textDisplay.GetComponent<TMP_Text>().text = currentText;
+      yield return new WaitForSeconds(delay);
     }
 
-    public void OnNextClick()
+    isPlaying = false;
+
+    if (isFinal)
     {
-      if (!isPlaying && currentScriptInd < (fullScripts.Length - 1))
-      {
-        tmpCurrentText = fullScripts[++currentScriptInd];
-        StartCoroutine(ShowText());
-      }
-    }
-
-    public void OnSkipClip()
-    {
-      if (!isPlaying && currentScriptInd < (fullScripts.Length - 1))
-      {
-        currentScriptInd = fullScripts.Length - 1;
-        tmpCurrentText = fullScripts[currentScriptInd];
-        StartCoroutine(ShowText());
-      }
-    }
-
-    IEnumerator ShowText()
-    {
-      isPlaying = true;
-      for (int i = 0; i < tmpCurrentText.Length; i++)
-      {
-        currentText = tmpCurrentText.Substring(0, i);
-        textDisplay.GetComponent<TMP_Text>().text = currentText;
-        yield return new WaitForSeconds(delay);
-      }
-
-      isPlaying = false;
-
-      if (isFinal)
-      {
-        _buttonForNextSent.gameObject.SetActive(false);
-        _buttonForNextScene.gameObject.SetActive(true);
-      }
+      _buttonForNextSent.gameObject.SetActive(false);
+      _buttonForNextScene.gameObject.SetActive(true);
     }
   }
 }

@@ -1,160 +1,154 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Collections.Specialized;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.Serialization;
-using UnityEngine.UIElements;
 
-namespace ARviation
+public enum PlaneComponent : int
 {
-  public enum PlaneComponent : int
+  Engine = 1,
+  Wings = 2,
+  Propeller = 3,
+  Wheels = 4,
+  OilTank = 5,
+}
+
+public class DragManager : MonoBehaviour
+{
+  [SerializeField] private float mouseDragPhysicsSpeed = 10.0f;
+  [SerializeField] private float mouseDragSpeed = 1.0f;
+  [SerializeField] private CollectPanel collectPanel;
+
+  public delegate void StartTouchEvent(Vector2 position, float time);
+
+  public event StartTouchEvent OnStartTouch;
+
+  public delegate void EndTouchEvent(Vector2 position, float time);
+
+  public event EndTouchEvent OnEndTouch;
+  private TouchControls _touchControls;
+  private Camera mainCamera;
+  private Vector3 velocity = Vector3.zero;
+  private WaitForFixedUpdate _waitForFixedUpdate = new WaitForFixedUpdate();
+
+  private float _width;
+  private float _height;
+  private bool _isEnable = false;
+  private bool _isPress = false;
+  private bool _isTouch = false;
+  private bool _isDrag = false;
+  private float _posX = .0f;
+  private float _posY = .0f;
+  [SerializeField] private bool canDrag = true;
+
+  private void Awake()
   {
-    Engine = 1,
-    Wings = 2,
-    Propeller = 3,
-    Wheels = 4,
-    OilTank = 5,
+    mainCamera = Camera.main;
+    _touchControls = new TouchControls();
+    _width = Screen.width / 2.0f;
+    _height = Screen.height / 2.0f;
+    if (collectPanel != null)
+    {
+      collectPanel = FindObjectOfType<CollectPanel>();
+      collectPanel.gameObject.SetActive(false);
+    }
   }
 
-  public class DragManager : MonoBehaviour
+  private void OnGUI()
   {
-    [SerializeField] private float mouseDragPhysicsSpeed = 10.0f;
-    [SerializeField] private float mouseDragSpeed = 1.0f;
-    [SerializeField] private CollectPanel collectPanel;
+    // Compute a fontSize based on the size of the screen width.
+    GUI.skin.label.fontSize = (int) (Screen.width / 50.0f);
 
-    public delegate void StartTouchEvent(Vector2 position, float time);
+    GUI.Label(new Rect(20, 20, _width, _height * 0.25f),
+      "pos(X) = " + _posX + " pos(Y) = " + _posY +
+      "enabled = " + _isEnable + " pressed = " + _isPress + " touched = " + _isTouch + " drag = " + _isDrag);
+  }
 
-    public event StartTouchEvent OnStartTouch;
+  private void Start()
+  {
+    _touchControls.Touch.TouchPress.started += ctx => StartTouch(ctx);
+    _touchControls.Touch.TouchPress.canceled += ctx => EndTouch(ctx);
+  }
 
-    public delegate void EndTouchEvent(Vector2 position, float time);
+  private void OnEnable()
+  {
+    _touchControls.Enable();
+    _isEnable = true;
+  }
 
-    public event EndTouchEvent OnEndTouch;
-    private TouchControls _touchControls;
-    private Camera mainCamera;
-    private Vector3 velocity = Vector3.zero;
-    private WaitForFixedUpdate _waitForFixedUpdate = new WaitForFixedUpdate();
+  private void OnDisable()
+  {
+    _touchControls.Disable();
+    _isEnable = false;
+  }
 
-    private float _width;
-    private float _height;
-    private bool _isEnable = false;
-    private bool _isPress = false;
-    private bool _isTouch = false;
-    private bool _isDrag = false;
-    private float _posX = .0f;
-    private float _posY = .0f;
-    [SerializeField] private bool canDrag = true;
+  void StartTouch(InputAction.CallbackContext context)
+  {
+    Vector2 touchPosition = _touchControls.Touch.TouchPosition.ReadValue<Vector2>();
+    _posX = touchPosition.x;
+    _posY = touchPosition.y;
+    if (OnStartTouch != null)
+      OnStartTouch(touchPosition, (float) context.startTime);
 
-    private void Awake()
+    Ray ray = mainCamera.ScreenPointToRay(touchPosition);
+    RaycastHit hit;
+    if (Physics.Raycast(ray, out hit))
     {
-      mainCamera = Camera.main;
-      _touchControls = new TouchControls();
-      _width = Screen.width / 2.0f;
-      _height = Screen.height / 2.0f;
-      if (collectPanel != null)
+      _isTouch = true;
+      if (canDrag)
       {
-        collectPanel = FindObjectOfType<CollectPanel>();
-        collectPanel.gameObject.SetActive(false);
-      }
-    }
-
-    private void OnGUI()
-    {
-      // Compute a fontSize based on the size of the screen width.
-      GUI.skin.label.fontSize = (int) (Screen.width / 50.0f);
-
-      GUI.Label(new Rect(20, 20, _width, _height * 0.25f),
-        "pos(X) = " + _posX + " pos(Y) = " + _posY +
-        "enabled = " + _isEnable + " pressed = " + _isPress + " touched = " + _isTouch + " drag = " + _isDrag);
-    }
-
-    private void Start()
-    {
-      _touchControls.Touch.TouchPress.started += ctx => StartTouch(ctx);
-      _touchControls.Touch.TouchPress.canceled += ctx => EndTouch(ctx);
-    }
-
-    private void OnEnable()
-    {
-      _touchControls.Enable();
-      _isEnable = true;
-    }
-
-    private void OnDisable()
-    {
-      _touchControls.Disable();
-      _isEnable = false;
-    }
-
-    void StartTouch(InputAction.CallbackContext context)
-    {
-      Vector2 touchPosition = _touchControls.Touch.TouchPosition.ReadValue<Vector2>();
-      _posX = touchPosition.x;
-      _posY = touchPosition.y;
-      if (OnStartTouch != null)
-        OnStartTouch(touchPosition, (float) context.startTime);
-
-      Ray ray = mainCamera.ScreenPointToRay(touchPosition);
-      RaycastHit hit;
-      if (Physics.Raycast(ray, out hit))
-      {
-        _isTouch = true;
-        if (canDrag)
+        if (hit.collider != null && (hit.collider.gameObject.layer == LayerMask.NameToLayer("Draggable")))
         {
-          if (hit.collider != null && (hit.collider.gameObject.layer == LayerMask.NameToLayer("Draggable")))
-          {
-            _isDrag = true;
-            StartCoroutine(DragUpdate(hit.collider.gameObject));
-          }
-          else
-          {
-            _isDrag = false;
-          }
+          _isDrag = true;
+          StartCoroutine(DragUpdate(hit.collider.gameObject));
         }
         else
         {
-          if (hit.collider.gameObject.layer == LayerMask.NameToLayer("Collectable") &&
-              _touchControls.Touch.TouchPress.ReadValue<float>() != 0)
-          {
-            InventoryItem inventoryItem = hit.transform.GetComponent<Collectable>().GetInventoryItem();
-            MoseCode code = hit.transform.GetComponent<Collectable>().componentCode;
-            inventoryItem.OnHitComponent(code);
-            collectPanel.OpenPanel();
-            collectPanel.SetInventoryItem(inventoryItem);
-          }
+          _isDrag = false;
         }
       }
-
-      _isTouch = false;
-      _isDrag = false;
-    }
-
-    void EndTouch(InputAction.CallbackContext context)
-    {
-      if (OnEndTouch != null)
-        OnEndTouch(_touchControls.Touch.TouchPosition.ReadValue<Vector2>(), (float) context.time);
-    }
-
-    private IEnumerator DragUpdate(GameObject clickObj)
-    {
-      float initialDistance = Vector3.Distance(clickObj.transform.position, mainCamera.transform.position);
-      clickObj.TryGetComponent<Rigidbody>(out var rb);
-      while (_touchControls.Touch.TouchPress.ReadValue<float>() != 0)
+      else
       {
-        Ray ray = mainCamera.ScreenPointToRay(_touchControls.Touch.TouchPosition.ReadValue<Vector2>());
-        if (rb != null)
+        if (hit.collider.gameObject.layer == LayerMask.NameToLayer("Collectable") &&
+            _touchControls.Touch.TouchPress.ReadValue<float>() != 0)
         {
-          Vector3 direction = ray.GetPoint(initialDistance) - clickObj.transform.position;
-          rb.velocity = direction * mouseDragPhysicsSpeed;
-          yield return _waitForFixedUpdate;
+          InventoryItem inventoryItem = hit.transform.GetComponent<Collectable>().GetInventoryItem();
+          MoseCode code = hit.transform.GetComponent<Collectable>().componentCode;
+          inventoryItem.OnHitComponent(code);
+          collectPanel.OpenPanel();
+          collectPanel.SetInventoryItem(inventoryItem);
         }
-        else
-        {
-          clickObj.transform.position = Vector3.SmoothDamp(clickObj.transform.position,
-            ray.GetPoint(initialDistance), ref velocity, mouseDragSpeed);
-          yield return null;
-        }
+      }
+    }
+
+    _isTouch = false;
+    _isDrag = false;
+  }
+
+  void EndTouch(InputAction.CallbackContext context)
+  {
+    if (OnEndTouch != null)
+      OnEndTouch(_touchControls.Touch.TouchPosition.ReadValue<Vector2>(), (float) context.time);
+  }
+
+  private IEnumerator DragUpdate(GameObject clickObj)
+  {
+    float initialDistance = Vector3.Distance(clickObj.transform.position, mainCamera.transform.position);
+    clickObj.TryGetComponent<Rigidbody>(out var rb);
+    while (_touchControls.Touch.TouchPress.ReadValue<float>() != 0)
+    {
+      Ray ray = mainCamera.ScreenPointToRay(_touchControls.Touch.TouchPosition.ReadValue<Vector2>());
+      if (rb != null)
+      {
+        Vector3 direction = ray.GetPoint(initialDistance) - clickObj.transform.position;
+        rb.velocity = direction * mouseDragPhysicsSpeed;
+        yield return _waitForFixedUpdate;
+      }
+      else
+      {
+        clickObj.transform.position = Vector3.SmoothDamp(clickObj.transform.position,
+          ray.GetPoint(initialDistance), ref velocity, mouseDragSpeed);
+        yield return null;
       }
     }
   }

@@ -3,55 +3,52 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace ARviation
+public enum SceneIndex : int
 {
-  public enum SceneIndex : int
+  Intro = 0,
+  Hunt = 1,
+  Assembly = 2,
+  End = 3,
+}
+
+public class GameManager : MonoBehaviour
+{
+  public static GameManager Instance = null;
+
+  private void Awake()
   {
-    Intro = 0,
-    Hunt = 1,
-    Assembly = 2,
-    End = 3,
+    if (Instance != null && Instance != this)
+    {
+      Destroy(gameObject);
+    }
+    else
+    {
+      Instance = this;
+    }
   }
 
-  public class GameManager : MonoBehaviour
+  private void ChangeSceneTo(SceneIndex index)
   {
-    public static GameManager Instance = null;
+    SceneManager.LoadScene((int) index);
+  }
 
-    private void Awake()
-    {
-      if (Instance != null && Instance != this)
-      {
-        Destroy(gameObject);
-      }
-      else
-      {
-        Instance = this;
-      }
-    }
+  public void ChangeSceneToIntro()
+  {
+    ChangeSceneTo(SceneIndex.Intro);
+  }
 
-    private void ChangeSceneTo(SceneIndex index)
-    {
-      SceneManager.LoadScene((int) index);
-    }
+  public void ChangeSceneToHunt()
+  {
+    ChangeSceneTo(SceneIndex.Hunt);
+  }
 
-    public void ChangeSceneToIntro()
-    {
-      ChangeSceneTo(SceneIndex.Intro);
-    }
+  public void ChangeSceneToAssembly()
+  {
+    ChangeSceneTo(SceneIndex.Assembly);
+  }
 
-    public void ChangeSceneToHunt()
-    {
-      ChangeSceneTo(SceneIndex.Hunt);
-    }
-
-    public void ChangeSceneToAssembly()
-    {
-      ChangeSceneTo(SceneIndex.Assembly);
-    }
-
-    public void ChangeSceneToEnd()
-    {
-      ChangeSceneTo(SceneIndex.End);
-    }
+  public void ChangeSceneToEnd()
+  {
+    ChangeSceneTo(SceneIndex.End);
   }
 }

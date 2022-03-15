@@ -3,24 +3,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace ARviation
+public class AssemblyPart : MonoBehaviour
 {
-  public class AssemblyPart : MonoBehaviour
+  [SerializeField] private GameObject hiddenObj;
+
+  private void Start()
   {
-    [SerializeField] private GameObject hiddenObj;
+    hiddenObj.SetActive(false);
+  }
 
-    private void Start()
+  private void OnTriggerEnter(Collider other)
+  {
+    if (other.transform.CompareTag("Wings"))
     {
-      hiddenObj.SetActive(false);
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-      if (other.transform.CompareTag("Wings"))
-      {
-        hiddenObj.SetActive(true);
-        other.gameObject.SetActive(false);
-      }
+      hiddenObj.SetActive(true);
+      other.gameObject.SetActive(false);
     }
   }
 }
