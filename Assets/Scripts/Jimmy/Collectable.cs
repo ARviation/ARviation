@@ -4,42 +4,45 @@ using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine;
 
-public class Collectable : MonoBehaviour
+namespace ARviation
 {
-  [SerializeField] public MoseCode componentCode;
-  public InventoryItem matchedInventoryItem;
-  private InventoryItem[] inventoryItems;
-
-  private void Awake()
+  public class Collectable : MonoBehaviour
   {
-    inventoryItems = FindObjectsOfType<InventoryItem>();
-  }
+    [SerializeField] public MoseCode componentCode;
+    private InventoryItem _matchedInventoryItem;
+    private InventoryItem[] _inventoryItems;
 
-
-  private void Start()
-  {
-    SetInventoryItem();
-  }
-
-  public void SetInventoryItem()
-  {
-    LocateInventoryCategory();
-  }
-
-  public InventoryItem GetInventoryItem()
-  {
-    return matchedInventoryItem;
-  }
-
-  private void LocateInventoryCategory()
-  {
-    foreach (InventoryItem item in inventoryItems)
+    private void Awake()
     {
-      if (!item.CompareTag("Untagged"))
+      _inventoryItems = FindObjectsOfType<InventoryItem>();
+    }
+
+
+    private void Start()
+    {
+      SetInventoryItem();
+    }
+
+    public void SetInventoryItem()
+    {
+      LocateInventoryCategory();
+    }
+
+    public InventoryItem GetInventoryItem()
+    {
+      return _matchedInventoryItem;
+    }
+
+    private void LocateInventoryCategory()
+    {
+      foreach (InventoryItem item in _inventoryItems)
       {
-        if (item.CompareTag(gameObject.tag))
+        if (!item.CompareTag("Untagged"))
         {
-          matchedInventoryItem = item;
+          if (item.CompareTag(gameObject.tag))
+          {
+            _matchedInventoryItem = item;
+          }
         }
       }
     }

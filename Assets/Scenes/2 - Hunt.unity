@@ -851,7 +851,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_SerializedLibrary: {fileID: 11400000, guid: 18c1fe2809c904456a054bbff5c76d6a, type: 2}
-  m_MaxNumberOfMovingImages: 4
+  m_MaxNumberOfMovingImages: 2
   m_TrackedImagePrefab: {fileID: 0}
 --- !u!1 &1875504535
 GameObject:
@@ -921,48 +921,56 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 801807808, guid: 66021d7d81be04ca8b3efa3a8c284b55, type: 3}
+      propertyPath: m_Name
+      value: Wings
+      objectReference: {fileID: 0}
+    - target: {fileID: 801807808, guid: 66021d7d81be04ca8b3efa3a8c284b55, type: 3}
       propertyPath: m_TagString
-      value: Untagged
+      value: Wings
+      objectReference: {fileID: 0}
+    - target: {fileID: 937470860, guid: 66021d7d81be04ca8b3efa3a8c284b55, type: 3}
+      propertyPath: m_Name
+      value: OilTank
       objectReference: {fileID: 0}
     - target: {fileID: 937470860, guid: 66021d7d81be04ca8b3efa3a8c284b55, type: 3}
       propertyPath: m_TagString
-      value: Untagged
+      value: OilTank
+      objectReference: {fileID: 0}
+    - target: {fileID: 1020394372, guid: 66021d7d81be04ca8b3efa3a8c284b55, type: 3}
+      propertyPath: m_Name
+      value: Engines
+      objectReference: {fileID: 0}
+    - target: {fileID: 1020394372, guid: 66021d7d81be04ca8b3efa3a8c284b55, type: 3}
+      propertyPath: m_TagString
+      value: Engines
+      objectReference: {fileID: 0}
+    - target: {fileID: 1113680904, guid: 66021d7d81be04ca8b3efa3a8c284b55, type: 3}
+      propertyPath: m_Name
+      value: Body
+      objectReference: {fileID: 0}
+    - target: {fileID: 1113680904, guid: 66021d7d81be04ca8b3efa3a8c284b55, type: 3}
+      propertyPath: m_TagString
+      value: Body
+      objectReference: {fileID: 0}
+    - target: {fileID: 1306336383, guid: 66021d7d81be04ca8b3efa3a8c284b55, type: 3}
+      propertyPath: m_Name
+      value: Wheels
       objectReference: {fileID: 0}
     - target: {fileID: 1306336383, guid: 66021d7d81be04ca8b3efa3a8c284b55, type: 3}
       propertyPath: m_TagString
-      value: Untagged
+      value: Wheels
+      objectReference: {fileID: 0}
+    - target: {fileID: 1460866439, guid: 66021d7d81be04ca8b3efa3a8c284b55, type: 3}
+      propertyPath: m_Name
+      value: Propellers
       objectReference: {fileID: 0}
     - target: {fileID: 1460866439, guid: 66021d7d81be04ca8b3efa3a8c284b55, type: 3}
       propertyPath: m_TagString
-      value: Untagged
+      value: Propellers
       objectReference: {fileID: 0}
     - target: {fileID: 2067534076, guid: 66021d7d81be04ca8b3efa3a8c284b55, type: 3}
-      propertyPath: m_TagString
-      value: Untagged
-      objectReference: {fileID: 0}
-    - target: {fileID: 294147078045352418, guid: 66021d7d81be04ca8b3efa3a8c284b55, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1167708328747078577, guid: 66021d7d81be04ca8b3efa3a8c284b55, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1780343657922917293, guid: 66021d7d81be04ca8b3efa3a8c284b55, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1860925344246703380, guid: 66021d7d81be04ca8b3efa3a8c284b55, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4651597616760613602, guid: 66021d7d81be04ca8b3efa3a8c284b55, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5805703129698190433, guid: 66021d7d81be04ca8b3efa3a8c284b55, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
+      propertyPath: m_Name
+      value: Extra
       objectReference: {fileID: 0}
     - target: {fileID: 6044512022872967098, guid: 66021d7d81be04ca8b3efa3a8c284b55, type: 3}
       propertyPath: m_Name
@@ -1056,13 +1064,5 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 612495607}
-    - target: {fileID: 8494075610545462174, guid: 66021d7d81be04ca8b3efa3a8c284b55, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8494075610545462174, guid: 66021d7d81be04ca8b3efa3a8c284b55, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 66021d7d81be04ca8b3efa3a8c284b55, type: 3}

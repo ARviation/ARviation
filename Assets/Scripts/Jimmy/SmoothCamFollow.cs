@@ -3,8 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SmoothCamFollow : MonoBehaviour
+namespace ARviation
 {
+  public class SmoothCamFollow : MonoBehaviour
+  {
     public Transform target;
     private new Transform camera;
     private float distance = 10.0f;
@@ -14,13 +16,14 @@ public class SmoothCamFollow : MonoBehaviour
 
     private void Start()
     {
-        camera = GetComponent<Transform>();
+      camera = GetComponent<Transform>();
     }
 
     private void Update()
     {
-        camera.position = Vector3.Lerp(camera.position, target.position, (posSpeed * Time.deltaTime));
-        
-        camera.rotation = Quaternion.Lerp(camera.rotation, target.rotation, (rotSpeed * Time.deltaTime));
+      camera.position = Vector3.Lerp(camera.position, target.position, (posSpeed * Time.deltaTime));
+
+      camera.rotation = Quaternion.Lerp(camera.rotation, target.rotation, (rotSpeed * Time.deltaTime));
     }
+  }
 }

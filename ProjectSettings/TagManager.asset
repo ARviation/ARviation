@@ -8,6 +8,10 @@ TagManager:
   - AR_object
   - Draggable
   - Engines
+  - Body
+  - Propellers
+  - Wheels
+  - OilTank
   layers:
   - Default
   - TransparentFX

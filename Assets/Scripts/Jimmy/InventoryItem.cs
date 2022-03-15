@@ -4,66 +4,63 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class InventoryItem : MonoBehaviour
+namespace ARviation
 {
-  [SerializeField] private GameObject enableFrame;
-  [SerializeField] private GameObject inventoryIcon;
-
-  private CollectPanel _collectPanel;
-  private MoseCode _currentCode;
-  private bool isEnable = false;
-  private bool isCollected = false;
-
-  private void Awake()
+  public class InventoryItem : MonoBehaviour
   {
-    _collectPanel = FindObjectOfType<CollectPanel>();
-  }
+    [SerializeField] private GameObject enableFrame;
+    [SerializeField] private GameObject inventoryIcon;
+    [SerializeField] private CollectPanel collectPanel;
 
-  private void Start()
-  {
-    enableFrame.SetActive(false);
-    inventoryIcon.SetActive(false);
-  }
+    private MoseCode _currentCode;
+    private bool isEnable = false;
+    private bool isCollected = false;
 
-  public void OnClick()
-  {
-    _collectPanel.OnInventoryItemClick(gameObject);
-    if (isEnable)
+    private void Start()
     {
+      enableFrame.SetActive(false);
+      inventoryIcon.SetActive(false);
+    }
+
+    public void OnClick()
+    {
+      collectPanel.OnInventoryItemClick(gameObject);
+      if (isEnable)
+      {
+        enableFrame.SetActive(false);
+        isEnable = false;
+      }
+      else
+      {
+        if (!isCollected) return;
+        enableFrame.SetActive(true);
+        isEnable = true;
+      }
+    }
+
+    public void CloseFrame()
+    {
+      if (!isEnable) return;
       enableFrame.SetActive(false);
       isEnable = false;
     }
-    else
+
+    public void OnHitComponent(MoseCode componentCode)
     {
-      if (!isCollected) return;
-      enableFrame.SetActive(true);
-      isEnable = true;
+      _currentCode = componentCode;
     }
-  }
 
-  public void CloseFrame()
-  {
-    if (!isEnable) return;
-    enableFrame.SetActive(false);
-    isEnable = false;
-  }
-
-  public void OnHitComponent(MoseCode componentCode)
-  {
-    _currentCode = componentCode;
-  }
-
-  public void OnCollectComponent()
-  {
-    Debug.Log("OnCollectComponent");
-    if (!isCollected)
+    public void OnCollectComponent()
     {
-      isCollected = true;
-      inventoryIcon.SetActive(true);
-    }
-    Debug.Log(_collectPanel.name);
-    inventoryIcon.GetComponent<Image>().sprite = _collectPanel.GetCandidateSprite((int) _currentCode);
-  }
+      if (!isCollected)
+      {
+        isCollected = true;
+        inventoryIcon.SetActive(true);
+      }
 
-  // make a method for removing current chosen component
+      inventoryIcon.GetComponent<Image>().sprite = collectPanel.GetCandidateSprite((int) _currentCode);
+    }
+
+    // make a method for removing current chosen component
+  }
 }

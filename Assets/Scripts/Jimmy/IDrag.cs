@@ -1,5 +1,8 @@
-public interface IDrag
+namespace ARviation
 {
+  public interface IDrag
+  {
     void onStartDrag();
     void onEndDrag();
+  }
 }
