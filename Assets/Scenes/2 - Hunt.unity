@@ -767,7 +767,7 @@ PrefabInstance:
       value: Objects Manager
       objectReference: {fileID: 0}
     - target: {fileID: 1752057808544842722, guid: f93f87787262f4c9da4f3437d6e51572, type: 3}
-      propertyPath: _collectPanel
+      propertyPath: collectPanel
       value: 
       objectReference: {fileID: 1076849978}
     m_RemovedComponents: []
@@ -920,58 +920,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 801807808, guid: 66021d7d81be04ca8b3efa3a8c284b55, type: 3}
-      propertyPath: m_Name
-      value: Wings
-      objectReference: {fileID: 0}
-    - target: {fileID: 801807808, guid: 66021d7d81be04ca8b3efa3a8c284b55, type: 3}
-      propertyPath: m_TagString
-      value: Wings
-      objectReference: {fileID: 0}
-    - target: {fileID: 937470860, guid: 66021d7d81be04ca8b3efa3a8c284b55, type: 3}
-      propertyPath: m_Name
-      value: OilTank
-      objectReference: {fileID: 0}
-    - target: {fileID: 937470860, guid: 66021d7d81be04ca8b3efa3a8c284b55, type: 3}
-      propertyPath: m_TagString
-      value: OilTank
-      objectReference: {fileID: 0}
-    - target: {fileID: 1020394372, guid: 66021d7d81be04ca8b3efa3a8c284b55, type: 3}
-      propertyPath: m_Name
-      value: Engines
-      objectReference: {fileID: 0}
-    - target: {fileID: 1020394372, guid: 66021d7d81be04ca8b3efa3a8c284b55, type: 3}
-      propertyPath: m_TagString
-      value: Engines
-      objectReference: {fileID: 0}
-    - target: {fileID: 1113680904, guid: 66021d7d81be04ca8b3efa3a8c284b55, type: 3}
-      propertyPath: m_Name
-      value: Body
-      objectReference: {fileID: 0}
-    - target: {fileID: 1113680904, guid: 66021d7d81be04ca8b3efa3a8c284b55, type: 3}
-      propertyPath: m_TagString
-      value: Body
-      objectReference: {fileID: 0}
-    - target: {fileID: 1306336383, guid: 66021d7d81be04ca8b3efa3a8c284b55, type: 3}
-      propertyPath: m_Name
-      value: Wheels
-      objectReference: {fileID: 0}
-    - target: {fileID: 1306336383, guid: 66021d7d81be04ca8b3efa3a8c284b55, type: 3}
-      propertyPath: m_TagString
-      value: Wheels
-      objectReference: {fileID: 0}
-    - target: {fileID: 1460866439, guid: 66021d7d81be04ca8b3efa3a8c284b55, type: 3}
-      propertyPath: m_Name
-      value: Propellers
-      objectReference: {fileID: 0}
-    - target: {fileID: 1460866439, guid: 66021d7d81be04ca8b3efa3a8c284b55, type: 3}
-      propertyPath: m_TagString
-      value: Propellers
-      objectReference: {fileID: 0}
-    - target: {fileID: 2067534076, guid: 66021d7d81be04ca8b3efa3a8c284b55, type: 3}
-      propertyPath: m_Name
-      value: Extra
-      objectReference: {fileID: 0}
     - target: {fileID: 6044512022872967098, guid: 66021d7d81be04ca8b3efa3a8c284b55, type: 3}
       propertyPath: m_Name
       value: Hunt Canvas
@@ -1064,5 +1012,26 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 612495607}
+    - target: {fileID: 9012436785241469354, guid: 66021d7d81be04ca8b3efa3a8c284b55, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 66021d7d81be04ca8b3efa3a8c284b55, type: 3}
+--- !u!1 &5922758114085222060 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5551571358894332082, guid: 66021d7d81be04ca8b3efa3a8c284b55, type: 3}
+  m_PrefabInstance: {fileID: 5922758114085222059}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &5922758114085222061
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5922758114085222060}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ee75d512f0f44a59ab96699657a904d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

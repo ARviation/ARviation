@@ -45,5 +45,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mouseDragPhysicsSpeed: 10
   mouseDragSpeed: 1
-  _collectPanel: {fileID: 0}
+  collectPanel: {fileID: 0}
   canDrag: 0
