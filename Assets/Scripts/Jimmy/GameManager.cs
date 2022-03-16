@@ -15,15 +15,19 @@ public class GameManager : MonoBehaviour
 {
   public static GameManager Instance = null;
 
+  public CollectedComponent savedCollectedComponent;
+
   private void Awake()
   {
-    if (Instance != null && Instance != this)
+    if (Instance == null)
+    {
+      savedCollectedComponent = gameObject.AddComponent<CollectedComponent>();
+      DontDestroyOnLoad(gameObject);
+      Instance = this;
+    }
+    else if (Instance != this)
     {
       Destroy(gameObject);
-    }
-    else
-    {
-      Instance = this;
     }
   }
 
@@ -39,11 +43,13 @@ public class GameManager : MonoBehaviour
 
   public void ChangeSceneToHunt()
   {
+    Debug.Log("123");
     ChangeSceneTo(SceneIndex.Hunt);
   }
 
   public void ChangeSceneToAssembly()
   {
+    FindObjectOfType<ObjectsManager>().SaveCollectedComponent();
     ChangeSceneTo(SceneIndex.Assembly);
   }
 

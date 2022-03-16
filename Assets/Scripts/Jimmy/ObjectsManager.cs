@@ -13,8 +13,12 @@ public enum PlaneComponent : int
   OilTank = 5,
 }
 
-public class DragManager : MonoBehaviour
+public class ObjectsManager : MonoBehaviour
 {
+  public static ObjectsManager Instance = null;
+
+  public CollectedComponent localCollectedComponent;
+
   [SerializeField] private float mouseDragPhysicsSpeed = 10.0f;
   [SerializeField] private float mouseDragSpeed = 1.0f;
   [SerializeField] private CollectPanel collectPanel;
@@ -31,27 +35,20 @@ public class DragManager : MonoBehaviour
   private Vector3 velocity = Vector3.zero;
   private WaitForFixedUpdate _waitForFixedUpdate = new WaitForFixedUpdate();
 
-  private float _width;
-  private float _height;
+  private float _width = Screen.width / 2.0f;
+  private float _height = Screen.height / 2.0f;
   private bool _isEnable = false;
   private bool _isPress = false;
   private bool _isTouch = false;
   private bool _isDrag = false;
   private float _posX = .0f;
   private float _posY = .0f;
-  [SerializeField] private bool canDrag = true;
+  // [SerializeField] private bool canDrag = true;
 
   private void Awake()
   {
     mainCamera = Camera.main;
     _touchControls = new TouchControls();
-    _width = Screen.width / 2.0f;
-    _height = Screen.height / 2.0f;
-    if (collectPanel != null)
-    {
-      collectPanel = FindObjectOfType<CollectPanel>();
-      collectPanel.gameObject.SetActive(false);
-    }
   }
 
   private void OnGUI()
@@ -66,9 +63,13 @@ public class DragManager : MonoBehaviour
 
   private void Start()
   {
+    if (collectPanel != null)
+      collectPanel.gameObject.SetActive(false);
+    LoadCollectedComponent();
     _touchControls.Touch.TouchPress.started += ctx => StartTouch(ctx);
     _touchControls.Touch.TouchPress.canceled += ctx => EndTouch(ctx);
   }
+
 
   private void OnEnable()
   {
@@ -95,29 +96,31 @@ public class DragManager : MonoBehaviour
     if (Physics.Raycast(ray, out hit))
     {
       _isTouch = true;
-      if (canDrag)
+      // if (canDrag)
+      // {
+      if (hit.collider != null && (hit.collider.gameObject.layer == LayerMask.NameToLayer("Draggable")))
       {
-        if (hit.collider != null && (hit.collider.gameObject.layer == LayerMask.NameToLayer("Draggable")))
-        {
-          _isDrag = true;
-          StartCoroutine(DragUpdate(hit.collider.gameObject));
-        }
-        else
-        {
-          _isDrag = false;
-        }
+        _isDrag = true;
+        StartCoroutine(DragUpdate(hit.collider.gameObject));
       }
-      else
+
+      // else
+      // {
+      // _isDrag = false;
+      // }
+      // }
+      // else
+      // {
+      else if (hit.collider.gameObject.layer == LayerMask.NameToLayer("Collectable") &&
+               _touchControls.Touch.TouchPress.ReadValue<float>() != 0)
       {
-        if (hit.collider.gameObject.layer == LayerMask.NameToLayer("Collectable") &&
-            _touchControls.Touch.TouchPress.ReadValue<float>() != 0)
-        {
-          InventoryItem inventoryItem = hit.transform.GetComponent<Collectable>().GetInventoryItem();
-          MoseCode code = hit.transform.GetComponent<Collectable>().componentCode;
-          inventoryItem.OnHitComponent(code);
-          collectPanel.OpenPanel();
-          collectPanel.SetInventoryItem(inventoryItem);
-        }
+        InventoryItem inventoryItem = hit.transform.GetComponent<Collectable>().GetInventoryItem();
+        Collectable collectable = hit.transform.GetComponent<Collectable>();
+        MoseCode code = collectable.componentCode;
+        inventoryItem.OnHitComponent(code);
+        collectPanel.OpenPanel();
+        collectPanel.SetInventoryItem(inventoryItem);
+        // }
       }
     }
 
@@ -151,5 +154,16 @@ public class DragManager : MonoBehaviour
         yield return null;
       }
     }
+  }
+
+  public void SaveCollectedComponent()
+  {
+    GameManager.Instance.savedCollectedComponent = localCollectedComponent;
+  }
+
+  private void LoadCollectedComponent()
+  {
+    localCollectedComponent = GameManager.Instance.savedCollectedComponent;
+    Debug.Log(localCollectedComponent.ToString());
   }
 }

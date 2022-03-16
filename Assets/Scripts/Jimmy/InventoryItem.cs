@@ -11,6 +11,7 @@ public class InventoryItem : MonoBehaviour
   [SerializeField] private CollectPanel collectPanel;
 
   private MoseCode _currentCode;
+  private string _currentCategory;
   private bool isEnable = false;
   private bool isCollected = false;
 
@@ -56,7 +57,34 @@ public class InventoryItem : MonoBehaviour
       inventoryIcon.SetActive(true);
     }
 
-    inventoryIcon.GetComponent<Image>().sprite = collectPanel.GetCandidateSprite((int) _currentCode);
+    int code = (int) _currentCode;
+
+    switch (gameObject.name)
+    {
+      case "Body":
+        FindObjectOfType<ObjectsManager>().localCollectedComponent.body = code;
+        break;
+      case "Engines":
+        FindObjectOfType<ObjectsManager>().localCollectedComponent.engine = code;
+        break;
+      case "Wings":
+        FindObjectOfType<ObjectsManager>().localCollectedComponent.wings = code;
+        break;
+      case "Propeller":
+        FindObjectOfType<ObjectsManager>().localCollectedComponent.propellers = code;
+        break;
+      case "Wheels":
+        FindObjectOfType<ObjectsManager>().localCollectedComponent.wheels = code;
+        break;
+      case "OilTank":
+        FindObjectOfType<ObjectsManager>().localCollectedComponent.oilTank = code;
+        break;
+      case "Extra":
+        FindObjectOfType<ObjectsManager>().localCollectedComponent.extra = code;
+        break;
+    }
+
+    inventoryIcon.GetComponent<Image>().sprite = collectPanel.GetCandidateSprite(code);
   }
 
   // make a method for removing current chosen component

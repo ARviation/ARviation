@@ -15,7 +15,6 @@ public class Collectable : MonoBehaviour
     _inventoryItems = FindObjectsOfType<InventoryItem>();
   }
 
-
   private void Start()
   {
     SetInventoryItem();

@@ -1039,6 +1039,9 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 0f9348dcbd7c55e4baca145d599ff482, type: 3}
   - {fileID: 21300000, guid: e940c517be5756a44be9d4448c8b9d9e, type: 3}
   - {fileID: 21300000, guid: 320f8e9a1fc31cb4b82a32288a1594fc, type: 3}
+  - {fileID: 21300000, guid: a4bab26196e5149dda1164510a80fae3, type: 3}
+  - {fileID: 21300000, guid: 089f1dfad72154479825102476c4f05a, type: 3}
+  - {fileID: 21300000, guid: 5dc0e22b98d1e4df883e23120f54dd00, type: 3}
 --- !u!1 &1113680904
 GameObject:
   m_ObjectHideFlags: 0
@@ -2941,6 +2944,7 @@ GameObject:
   - component: {fileID: 8186697670030573906}
   - component: {fileID: 9046102296448877975}
   - component: {fileID: 3158687738539018170}
+  - component: {fileID: 5922758114085222061}
   m_Layer: 5
   m_Name: Display Panel
   m_TagString: Untagged
@@ -3006,6 +3010,18 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &5922758114085222061
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5551571358894332082}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ee75d512f0f44a59ab96699657a904d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6044512022701601032
 GameObject:
   m_ObjectHideFlags: 0

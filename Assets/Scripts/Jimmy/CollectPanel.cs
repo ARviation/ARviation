@@ -3,16 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum MoseCode : int
-{
-  A = 0,
-  R = 1,
-  Y = 2,
-  J = 3,
-  P = 4,
-  N = 5,
-}
-
 public class CollectPanel : MonoBehaviour
 {
   [SerializeField] private Sprite[] candidates;
