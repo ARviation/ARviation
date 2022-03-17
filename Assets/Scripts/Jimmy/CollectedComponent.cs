@@ -4,16 +4,31 @@ using UnityEngine;
 
 public class CollectedComponent : MonoBehaviour
 {
-  public int body { get; set; } = -1;
-  public int engine { get; set; } = -1;
-  public int wings { get; set; } = -1;
-  public int propellers { get; set; } = -1;
-  public int oilTank { get; set; } = -1;
-  public int wheels { get; set; } = -1;
-  public int extra { get; set; } = -1;
+  public int Body { get; set; } = -1;
+  public int Engine { get; set; } = -1;
+  public int Wings { get; set; } = -1;
+  public int Propellers { get; set; } = -1;
+  public int OilTank { get; set; } = -1;
+  public int Wheels { get; set; } = -1;
+  public int Extra { get; set; } = -1;
+
+  public Dictionary<string, int> GetAllComponent()
+  {
+    var result = new Dictionary<string, int>
+    {
+      {"Body", Body},
+      {"Engines", Engine},
+      {"Wings", Wings},
+      {"Propellers", Propellers},
+      {"OilTank", OilTank},
+      {"Wheels", Wheels},
+      {"Extra", Extra}
+    };
+    return result;
+  }
 
   public override string ToString()
   {
-    return $"{body} {engine} {wings} {propellers} {oilTank} {wheels} {extra}";
+    return $"{Body} {Engine} {Wings} {Propellers} {OilTank} {Wheels} {Extra}";
   }
 }

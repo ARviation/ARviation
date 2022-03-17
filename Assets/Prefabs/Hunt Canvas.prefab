@@ -586,6 +586,7 @@ MonoBehaviour:
   enableFrame: {fileID: 1418469888}
   inventoryIcon: {fileID: 3619404417233879097}
   collectPanel: {fileID: 1076849978}
+  currentCode: 0
 --- !u!114 &801807810
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -736,6 +737,7 @@ MonoBehaviour:
   enableFrame: {fileID: 389038058}
   inventoryIcon: {fileID: 8673466106668961291}
   collectPanel: {fileID: 1076849978}
+  currentCode: 0
 --- !u!114 &937470862
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -886,6 +888,7 @@ MonoBehaviour:
   enableFrame: {fileID: 1897514709}
   inventoryIcon: {fileID: 4832558637242681560}
   collectPanel: {fileID: 1076849978}
+  currentCode: 0
 --- !u!114 &1020394374
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1136,6 +1139,7 @@ MonoBehaviour:
   enableFrame: {fileID: 1152772568}
   inventoryIcon: {fileID: 1167708328747078577}
   collectPanel: {fileID: 1076849978}
+  currentCode: 0
 --- !u!114 &1113680906
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1495,6 +1499,7 @@ MonoBehaviour:
   enableFrame: {fileID: 1410376573}
   inventoryIcon: {fileID: 7687936228335691572}
   collectPanel: {fileID: 1076849978}
+  currentCode: 0
 --- !u!114 &1306336385
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1795,6 +1800,7 @@ MonoBehaviour:
   enableFrame: {fileID: 379177528}
   inventoryIcon: {fileID: 3309198790887477969}
   collectPanel: {fileID: 1076849978}
+  currentCode: 0
 --- !u!114 &1460866441
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2153,6 +2159,7 @@ MonoBehaviour:
   enableFrame: {fileID: 353586228}
   inventoryIcon: {fileID: 4886871664077231762}
   collectPanel: {fileID: 1076849978}
+  currentCode: 0
 --- !u!114 &2067534078
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2951,7 +2958,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &8186697670030573906
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3332,7 +3339,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 2
+        m_CallState: 1
 --- !u!1 &7687936228335691572
 GameObject:
   m_ObjectHideFlags: 0

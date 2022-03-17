@@ -10,8 +10,7 @@ public class InventoryItem : MonoBehaviour
   [SerializeField] private GameObject inventoryIcon;
   [SerializeField] private CollectPanel collectPanel;
 
-  private MoseCode _currentCode;
-  private string _currentCategory;
+  public MoseCode currentCode;
   private bool isEnable = false;
   private bool isCollected = false;
 
@@ -46,45 +45,55 @@ public class InventoryItem : MonoBehaviour
 
   public void OnHitComponent(MoseCode componentCode)
   {
-    _currentCode = componentCode;
+    currentCode = componentCode;
   }
 
   public void OnCollectComponent()
   {
     if (!isCollected)
     {
-      isCollected = true;
       inventoryIcon.SetActive(true);
+      isCollected = true;
     }
 
-    int code = (int) _currentCode;
+    var code = (int) currentCode;
 
     switch (gameObject.name)
     {
       case "Body":
-        FindObjectOfType<ObjectsManager>().localCollectedComponent.body = code;
+        FindObjectOfType<ObjectsManager>().localCollectedComponent.Body = code;
         break;
       case "Engines":
-        FindObjectOfType<ObjectsManager>().localCollectedComponent.engine = code;
+        FindObjectOfType<ObjectsManager>().localCollectedComponent.Engine = code;
         break;
       case "Wings":
-        FindObjectOfType<ObjectsManager>().localCollectedComponent.wings = code;
+        FindObjectOfType<ObjectsManager>().localCollectedComponent.Wings = code;
         break;
       case "Propeller":
-        FindObjectOfType<ObjectsManager>().localCollectedComponent.propellers = code;
+        FindObjectOfType<ObjectsManager>().localCollectedComponent.Propellers = code;
         break;
       case "Wheels":
-        FindObjectOfType<ObjectsManager>().localCollectedComponent.wheels = code;
+        FindObjectOfType<ObjectsManager>().localCollectedComponent.Wheels = code;
         break;
       case "OilTank":
-        FindObjectOfType<ObjectsManager>().localCollectedComponent.oilTank = code;
+        FindObjectOfType<ObjectsManager>().localCollectedComponent.OilTank = code;
         break;
       case "Extra":
-        FindObjectOfType<ObjectsManager>().localCollectedComponent.extra = code;
+        FindObjectOfType<ObjectsManager>().localCollectedComponent.Extra = code;
         break;
     }
 
-    inventoryIcon.GetComponent<Image>().sprite = collectPanel.GetCandidateSprite(code);
+    UpdateSprite(code);
+  }
+
+  public void UpdateSprite(int code)
+  {
+    if (code >= 0)
+    {
+      inventoryIcon.GetComponent<Image>().sprite = collectPanel.GetCandidateSprite(code);
+      inventoryIcon.SetActive(true);
+      isCollected = true;
+    }
   }
 
   // make a method for removing current chosen component
