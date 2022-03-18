@@ -24,7 +24,7 @@ public class ImageRecognition : MonoBehaviour
 
   void OnEnable()
   {
-    _arTrackedImageManager.trackedImagesChanged += OnImageChanged;
+    // _arTrackedImageManager.trackedImagesChanged += OnImageChanged;
   }
 
   void OnDisable()
@@ -34,6 +34,7 @@ public class ImageRecognition : MonoBehaviour
 
   private void Start()
   {
+    _arTrackedImageManager.trackedImagesChanged += OnImageChanged;
     _referenceImageLibrary = _arTrackedImageManager.referenceLibrary;
     _refImageCount = _referenceImageLibrary.count;
     InitiateARObjs();
@@ -41,6 +42,7 @@ public class ImageRecognition : MonoBehaviour
 
   private void InitiateARObjs()
   {
+    Debug.Log("InitiateARObj");
     _arObjs = new Dictionary<string, GameObject>();
     for (int i = 0; i < _refImageCount; i++)
     {
@@ -56,6 +58,11 @@ public class ImageRecognition : MonoBehaviour
     _arObjs[_imageName].SetActive(true);
   }
 
+  private void DeactivateTrackedObj(string _imageName)
+  {
+    _arObjs[_imageName].SetActive(false);
+  }
+
   void OnImageChanged(ARTrackedImagesChangedEventArgs args)
   {
     foreach (var addedImage in args.added)
@@ -67,6 +74,11 @@ public class ImageRecognition : MonoBehaviour
     {
       _arObjs[updated.referenceImage.name].transform.position = updated.transform.position;
       _arObjs[updated.referenceImage.name].transform.rotation = updated.transform.rotation;
+    }
+
+    foreach (var remove in args.removed)
+    {
+      DeactivateTrackedObj(remove.referenceImage.name);
     }
   }
 }

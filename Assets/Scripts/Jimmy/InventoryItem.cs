@@ -17,7 +17,6 @@ public class InventoryItem : MonoBehaviour
   private void Start()
   {
     enableFrame.SetActive(false);
-    inventoryIcon.SetActive(false);
   }
 
   public void OnClick()
@@ -56,8 +55,11 @@ public class InventoryItem : MonoBehaviour
       isCollected = true;
     }
 
+    Debug.Log("here here");
     var code = (int) currentCode;
-
+    Debug.Log(gameObject.name);
+    Debug.Log(FindObjectOfType<ObjectsManager>());
+    Debug.Log(FindObjectOfType<ObjectsManager>().localCollectedComponent);
     switch (gameObject.name)
     {
       case "Body":
@@ -83,6 +85,8 @@ public class InventoryItem : MonoBehaviour
         break;
     }
 
+    Debug.Log("here");
+
     UpdateSprite(code);
   }
 
@@ -90,8 +94,11 @@ public class InventoryItem : MonoBehaviour
   {
     if (code >= 0)
     {
+      Debug.Log("Update sprite");
       inventoryIcon.GetComponent<Image>().sprite = collectPanel.GetCandidateSprite(code);
+      Debug.Log("get sprite");
       inventoryIcon.SetActive(true);
+      Debug.Log("open inv icon");
       isCollected = true;
     }
   }

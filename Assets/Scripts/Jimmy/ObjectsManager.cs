@@ -69,7 +69,6 @@ public class ObjectsManager : MonoBehaviour
     _touchControls.Touch.TouchPress.canceled += ctx => EndTouch(ctx);
   }
 
-
   private void OnEnable()
   {
     _touchControls.Enable();
@@ -93,6 +92,7 @@ public class ObjectsManager : MonoBehaviour
     RaycastHit hit;
     if (Physics.Raycast(ray, out hit))
     {
+      Debug.Log(hit.collider.gameObject.name);
       _isTouch = true;
       if (hit.collider != null && (hit.collider.gameObject.layer == LayerMask.NameToLayer("Draggable")))
       {
@@ -108,6 +108,10 @@ public class ObjectsManager : MonoBehaviour
         inventoryItem.OnHitComponent(code);
         collectPanel.OpenPanel();
         collectPanel.SetInventoryItem(inventoryItem);
+      }
+      else if (hit.collider.gameObject.layer == LayerMask.NameToLayer("RotateControl"))
+      {
+        Debug.Log("try rotating");
       }
     }
 
@@ -154,10 +158,13 @@ public class ObjectsManager : MonoBehaviour
     _inventoryItems = FindObjectsOfType<InventoryItem>();
     foreach (var inventoryItem in _inventoryItems)
     {
+      Debug.Log(inventoryItem.name);
       var inventoryItemCategory = inventoryItem.name;
       int code = componentMap[inventoryItemCategory];
       inventoryItem.currentCode = (MoseCode) code;
       inventoryItem.UpdateSprite(code);
     }
+
+    Debug.Log(localCollectedComponent.ToString());
   }
 }
