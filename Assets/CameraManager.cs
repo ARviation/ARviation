@@ -2,8 +2,8 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
-using UnityEngine.InputSystem.Interactions;
+using TMPro;
+using UnityEngine.Serialization;
 
 public enum RotateDir : int
 {
@@ -15,214 +15,124 @@ public enum RotateDir : int
 
 public class CameraManager : MonoBehaviour
 {
-  [SerializeField] private Camera camera_2d;
-  [SerializeField] private Camera camera_3d;
-  [SerializeField] private GameObject PlaneCenter;
+  [SerializeField] private Camera camera2D;
+  [SerializeField] private GameObject cameraAR;
+  [SerializeField] private GameObject planeCenter;
   [SerializeField] private float smoothness2D = 1f;
   [SerializeField] private float smoothness = 0.1f;
+  [SerializeField] private TMP_Text controllerText;
 
-  private float rotX = 0f;
-  private float rotY = 0f;
-  private float rotZ = 0f;
+  private const float RotX = 0f;
+  private const float RotY = 0f;
+  private const float RotZ = 0f;
   private bool isButtonHeld;
   private float delay = 0.1f;
-  private bool isRotateLeft = false;
-  private bool isRotateRight = false;
-  private bool isRotateUp = false;
-  private bool isRotateDown = false;
-  private Quaternion initRotation = Quaternion.identity;
-  private Quaternion endRotation = Quaternion.identity;
-  private float totalRotateAngle = 0f;
+  private bool _isRotateLeft = false;
+  private bool _isRotateRight = false;
+  private bool _isRotateUp = false;
+  private bool _isRotateDown = false;
+  private Quaternion _initRotation = Quaternion.identity;
+  private Quaternion _endRotation = Quaternion.identity;
+  private float _totalRotateAngle = 0f;
 
-  private bool is2D = true;
-  private bool isRotating = false;
-  private RotateDir currRotateDir = RotateDir.Left;
+  private bool _is2D = true;
+  private bool _isRotating = false;
+  private RotateDir _currRotateDir = RotateDir.Left;
 
   private void Start()
   {
-    camera_2d.gameObject.SetActive(true);
-    camera_3d.gameObject.SetActive(false);
-    initRotation.x = rotX;
-    initRotation.y = rotY;
-    initRotation.z = rotZ;
-    PlaneCenter.transform.rotation = initRotation;
+    camera2D.gameObject.SetActive(true);
+    cameraAR.gameObject.SetActive(false);
+    _initRotation.x = RotX;
+    _initRotation.y = RotY;
+    _initRotation.z = RotZ;
+    planeCenter.transform.rotation = _initRotation;
   }
 
   private void Update()
   {
-    if (isRotating)
+    if (!_isRotating) return;
+    switch (_currRotateDir)
     {
-      switch (currRotateDir)
-      {
-        case RotateDir.Left:
-          PlaneCenter.transform.RotateAround(PlaneCenter.transform.position, Vector3.up, smoothness2D);
-          break;
-        case RotateDir.Right:
-          PlaneCenter.transform.RotateAround(PlaneCenter.transform.position, Vector3.down, smoothness2D);
-          break;
-        case RotateDir.Up:
-          PlaneCenter.transform.RotateAround(PlaneCenter.transform.position, Vector3.right, smoothness2D);
-          break;
-        case RotateDir.Down:
-          PlaneCenter.transform.RotateAround(PlaneCenter.transform.position, Vector3.left, smoothness2D);
-          break;
-      }
-
-      totalRotateAngle += Mathf.Abs(smoothness2D);
-      if (totalRotateAngle >= 90.0f)
-      {
-        totalRotateAngle = 0f;
-        isRotating = false;
-      }
+      case RotateDir.Left:
+        planeCenter.transform.RotateAround(planeCenter.transform.position, Vector3.up, smoothness2D);
+        break;
+      case RotateDir.Right:
+        planeCenter.transform.RotateAround(planeCenter.transform.position, Vector3.down, smoothness2D);
+        break;
+      case RotateDir.Up:
+        planeCenter.transform.RotateAround(planeCenter.transform.position, Vector3.right, smoothness2D);
+        break;
+      case RotateDir.Down:
+        planeCenter.transform.RotateAround(planeCenter.transform.position, Vector3.left, smoothness2D);
+        break;
+      default:
+        throw new ArgumentOutOfRangeException();
     }
+
+    _totalRotateAngle += Mathf.Abs(smoothness2D);
+    if (!(_totalRotateAngle >= 90.0f)) return;
+    _totalRotateAngle = 0f;
+    _isRotating = false;
   }
-
-
-  // private void Update()
-  // {
-  //   if (!is2D)
-  //   {
-  //     RotationFor3D();
-  //   }
-  // }
-  //
-  // private void RotationFor3D()
-  // {
-  //   if (isRotateLeft)
-  //   {
-  //     // StartCoroutine(RotateLeft());
-  //     Debug.Log("rotate left");
-  //   }
-  //
-  //   if (isRotateRight)
-  //   {
-  //     // StartCoroutine(RotateRight());
-  //     Debug.Log("rotate right");
-  //   }
-  //
-  //   if (isRotateUp)
-  //   {
-  //     // StartCoroutine(RotateUp());
-  //     Debug.Log("rotate up");
-  //   }
-  //
-  //   if (isRotateDown)
-  //   {
-  //     // StartCoroutine(RotateDown());
-  //     Debug.Log("rotate down");
-  //   }
-  // }
 
   private IEnumerator StartRotate(Quaternion initRot, Quaternion endRot, float duration)
   {
-    // Debug.Log(initRot);
-    // Debug.Log(endRot);
-    // for (float time = 0; time < duration * 2; time += Time.deltaTime)
-    // {
-    //   float progress = Mathf.PingPong(time, duration) / duration;
-    //   PlaneCenter.transform.localRotation = Quaternion.Lerp(initRot, endRot, progress);
-    //   yield return null;
-    // }
     float step = smoothness / duration;
     float progress = 0.0f;
     while (progress <= 1)
     {
-      PlaneCenter.transform.rotation =
+      planeCenter.transform.rotation =
         Quaternion.Lerp(initRot, endRot, progress);
       progress += step;
       yield return null;
     }
 
-    isRotating = false;
+    _isRotating = false;
   }
 
   public void OnCameraViewSwitch()
   {
-    is2D = !is2D;
-    if (is2D)
+    _is2D = !_is2D;
+    if (_is2D)
     {
-      camera_2d.gameObject.SetActive(true);
-      camera_3d.gameObject.SetActive(false);
+      camera2D.gameObject.SetActive(true);
+      cameraAR.gameObject.SetActive(false);
+      controllerText.text = "View";
     }
     else
     {
-      camera_2d.gameObject.SetActive(false);
-      camera_3d.gameObject.SetActive(true);
+      camera2D.gameObject.SetActive(false);
+      cameraAR.gameObject.SetActive(true);
+      controllerText.text = "Assemble";
     }
   }
 
   public void OnRotateLeftDown()
   {
-    if (!is2D || isRotating) return;
-    currRotateDir = RotateDir.Left;
-    isRotating = true;
+    if (!_is2D || _isRotating) return;
+    _currRotateDir = RotateDir.Left;
+    _isRotating = true;
   }
 
   public void OnRotateRightDown()
   {
-    if (!is2D || isRotating) return;
-    currRotateDir = RotateDir.Right;
-    isRotating = true;
+    if (!_is2D || _isRotating) return;
+    _currRotateDir = RotateDir.Right;
+    _isRotating = true;
   }
 
   public void OnRotateUpDown()
   {
-    if (!is2D || isRotating) return;
-    currRotateDir = RotateDir.Up;
-    isRotating = true;
+    if (!_is2D || _isRotating) return;
+    _currRotateDir = RotateDir.Up;
+    _isRotating = true;
   }
 
   public void OnRotateDownDown()
   {
-    if (!is2D || isRotating) return;
-    currRotateDir = RotateDir.Down;
-    isRotating = true;
+    if (!_is2D || _isRotating) return;
+    _currRotateDir = RotateDir.Down;
+    _isRotating = true;
   }
-
-  // public void OnRotateLeftUp()
-  // {
-  //   isRotateLeft = false;
-  // }
-  //
-  // public void OnRotateRightDown()
-  // {
-  //   isRotateRight = true;
-  //   currRotation.x -= 90.0f;
-  //   if (!is2D || isRotating) return;
-  //   isRotating = true;
-  //   StartCoroutine(StartRotate());
-  // }
-  //
-  // public void OnRotateRightUp()
-  // {
-  //   isRotateRight = false;
-  // }
-  //
-  // public void OnRotateUpDown()
-  // {
-  //   isRotateUp = true;
-  //   currRotation.z += 90.0f;
-  //   if (!is2D || isRotating) return;
-  //   isRotating = true;
-  //   StartCoroutine(StartRotate());
-  // }
-  //
-  // public void OnRotateUpUp()
-  // {
-  //   isRotateUp = false;
-  // }
-  //
-  // public void OnRotateDownDown()
-  // {
-  //   isRotateDown = true;
-  //   currRotation.z -= 90.0f;
-  //   if (!is2D || isRotating) return;
-  //   isRotating = true;
-  //   StartCoroutine(StartRotate());
-  // }
-  //
-  // public void OnRotateDownUp()
-  // {
-  //   isRotateDown = false;
-  // }
 }

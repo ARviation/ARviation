@@ -4,15 +4,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public enum PlaneComponent : int
-{
-  Engine = 1,
-  Wings = 2,
-  Propeller = 3,
-  Wheels = 4,
-  OilTank = 5,
-}
-
 public class ObjectsManager : MonoBehaviour
 {
   public CollectedComponent localCollectedComponent;
@@ -29,24 +20,23 @@ public class ObjectsManager : MonoBehaviour
 
   public event EndTouchEvent OnEndTouch;
   private TouchControls _touchControls;
-  private Camera mainCamera;
-  private Vector3 velocity = Vector3.zero;
+  private Camera _mainCamera;
+  private Vector3 _velocity = Vector3.zero;
   private WaitForFixedUpdate _waitForFixedUpdate = new WaitForFixedUpdate();
   private InventoryItem[] _inventoryItems;
 
-  private float _width = Screen.width / 2.0f;
-  private float _height = Screen.height / 2.0f;
+  private readonly float _width = Screen.width / 2.0f;
+  private readonly float _height = Screen.height / 2.0f;
   private bool _isEnable = false;
   private bool _isPress = false;
   private bool _isTouch = false;
   private bool _isDrag = false;
   private float _posX = .0f;
-
   private float _posY = .0f;
 
   private void Awake()
   {
-    mainCamera = Camera.main;
+    _mainCamera = Camera.main;
     _touchControls = new TouchControls();
   }
 
@@ -88,13 +78,11 @@ public class ObjectsManager : MonoBehaviour
     _posY = touchPosition.y;
     OnStartTouch?.Invoke(touchPosition, (float) context.startTime);
 
-    Ray ray = mainCamera.ScreenPointToRay(touchPosition);
-    RaycastHit hit;
-    if (Physics.Raycast(ray, out hit))
+    Ray ray = _mainCamera.ScreenPointToRay(touchPosition);
+    if (Physics.Raycast(ray, out var hit))
     {
-      Debug.Log(hit.collider.gameObject.name);
       _isTouch = true;
-      if (hit.collider != null && (hit.collider.gameObject.layer == LayerMask.NameToLayer("Draggable")))
+      if (hit.collider != null && hit.collider.gameObject.layer == LayerMask.NameToLayer("Draggable"))
       {
         _isDrag = true;
         StartCoroutine(DragUpdate(hit.collider.gameObject));
@@ -109,9 +97,28 @@ public class ObjectsManager : MonoBehaviour
         collectPanel.OpenPanel();
         collectPanel.SetInventoryItem(inventoryItem);
       }
-      else if (hit.collider.gameObject.layer == LayerMask.NameToLayer("RotateControl"))
+      else if (hit.collider.gameObject.layer == LayerMask.NameToLayer("Attachable") &&
+               _touchControls.Touch.TouchPress.ReadValue<float>() != 0)
+
       {
-        Debug.Log("try rotating");
+        string hitTag = hit.transform.tag;
+        switch (hitTag)
+        {
+          case GameManager.Engine:
+            if (PlayerStats.Instance.selectedComponentCode == MoseCode.A)
+            {
+              hit.transform.gameObject.SetActive(true);
+            }
+
+            break;
+          case GameManager.Wings:
+            if (PlayerStats.Instance.selectedComponentCode == MoseCode.J)
+            {
+              hit.transform.gameObject.SetActive(true);
+            }
+
+            break;
+        }
       }
     }
 
@@ -126,11 +133,11 @@ public class ObjectsManager : MonoBehaviour
 
   private IEnumerator DragUpdate(GameObject clickObj)
   {
-    float initialDistance = Vector3.Distance(clickObj.transform.position, mainCamera.transform.position);
+    float initialDistance = Vector3.Distance(clickObj.transform.position, _mainCamera.transform.position);
     clickObj.TryGetComponent<Rigidbody>(out var rb);
     while (_touchControls.Touch.TouchPress.ReadValue<float>() != 0)
     {
-      Ray ray = mainCamera.ScreenPointToRay(_touchControls.Touch.TouchPosition.ReadValue<Vector2>());
+      Ray ray = _mainCamera.ScreenPointToRay(_touchControls.Touch.TouchPosition.ReadValue<Vector2>());
       if (rb != null)
       {
         Vector3 direction = ray.GetPoint(initialDistance) - clickObj.transform.position;
@@ -140,7 +147,7 @@ public class ObjectsManager : MonoBehaviour
       else
       {
         clickObj.transform.position = Vector3.SmoothDamp(clickObj.transform.position,
-          ray.GetPoint(initialDistance), ref velocity, mouseDragSpeed);
+          ray.GetPoint(initialDistance), ref _velocity, mouseDragSpeed);
         yield return null;
       }
     }
@@ -158,13 +165,10 @@ public class ObjectsManager : MonoBehaviour
     _inventoryItems = FindObjectsOfType<InventoryItem>();
     foreach (var inventoryItem in _inventoryItems)
     {
-      Debug.Log(inventoryItem.name);
       var inventoryItemCategory = inventoryItem.name;
       int code = componentMap[inventoryItemCategory];
       inventoryItem.currentCode = (MoseCode) code;
       inventoryItem.UpdateSprite(code);
     }
-
-    Debug.Log(localCollectedComponent.ToString());
   }
 }

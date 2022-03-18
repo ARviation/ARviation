@@ -7,11 +7,11 @@ TagManager:
   - Wings
   - AR_object
   - Draggable
-  - Engines
-  - Body
-  - Propellers
   - Wheels
-  - OilTank
+  - Fuselage
+  - Engine
+  - Propeller
+  - Tail
   layers:
   - Default
   - TransparentFX
@@ -21,7 +21,7 @@ TagManager:
   - UI
   - Draggable
   - Collectable
-  - RotateControl
+  - Attachable
   - 
   - 
   - 

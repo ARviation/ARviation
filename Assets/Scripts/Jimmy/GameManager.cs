@@ -15,6 +15,13 @@ public enum SceneIndex : int
 public class GameManager : MonoBehaviour
 {
   public static GameManager Instance = null;
+  public const string Fuselage = "Fuselage";
+  public const string Engine = "Engine";
+  public const string Wings = "Wings";
+  public const string Propeller = "Propeller";
+  public const string FuelTank = "FuelTank";
+  public const string Wheels = "Wheels";
+  public const string Tail = "Tail";
 
   private void Awake()
   {
@@ -28,7 +35,7 @@ public class GameManager : MonoBehaviour
     }
   }
 
-  private void ChangeSceneTo(SceneIndex index)
+  private static void ChangeSceneTo(SceneIndex index)
   {
     SceneManager.LoadScene((int) index);
   }

@@ -11,8 +11,8 @@ public class InventoryItem : MonoBehaviour
   [SerializeField] private CollectPanel collectPanel;
 
   public MoseCode currentCode;
-  private bool isEnable = false;
-  private bool isCollected = false;
+  private bool _isEnable = false;
+  private bool _isCollected = false;
 
   private void Start()
   {
@@ -22,24 +22,25 @@ public class InventoryItem : MonoBehaviour
   public void OnClick()
   {
     collectPanel.OnInventoryItemClick(gameObject);
-    if (isEnable)
+    if (_isEnable)
     {
       enableFrame.SetActive(false);
-      isEnable = false;
+      _isEnable = false;
     }
     else
     {
-      if (!isCollected) return;
+      if (!_isCollected) return;
       enableFrame.SetActive(true);
-      isEnable = true;
+      _isEnable = true;
+      PlayerStats.Instance.UpdateSelectedComponentCode(currentCode);
     }
   }
 
   public void CloseFrame()
   {
-    if (!isEnable) return;
+    if (!_isEnable) return;
     enableFrame.SetActive(false);
-    isEnable = false;
+    _isEnable = false;
   }
 
   public void OnHitComponent(MoseCode componentCode)
@@ -49,59 +50,46 @@ public class InventoryItem : MonoBehaviour
 
   public void OnCollectComponent()
   {
-    if (!isCollected)
+    if (!_isCollected)
     {
       inventoryIcon.SetActive(true);
-      isCollected = true;
+      _isCollected = true;
     }
 
-    Debug.Log("here here");
-    var code = (int) currentCode;
-    Debug.Log(gameObject.name);
-    Debug.Log(FindObjectOfType<ObjectsManager>());
-    Debug.Log(FindObjectOfType<ObjectsManager>().localCollectedComponent);
+    int code = (int) currentCode;
     switch (gameObject.name)
     {
-      case "Body":
-        FindObjectOfType<ObjectsManager>().localCollectedComponent.Body = code;
+      case GameManager.Fuselage:
+        FindObjectOfType<ObjectsManager>().localCollectedComponent.Fuselage = code;
         break;
-      case "Engines":
+      case GameManager.Engine:
         FindObjectOfType<ObjectsManager>().localCollectedComponent.Engine = code;
         break;
-      case "Wings":
+      case GameManager.Wings:
         FindObjectOfType<ObjectsManager>().localCollectedComponent.Wings = code;
         break;
-      case "Propeller":
+      case GameManager.Propeller:
         FindObjectOfType<ObjectsManager>().localCollectedComponent.Propellers = code;
         break;
-      case "Wheels":
+      case GameManager.Wheels:
         FindObjectOfType<ObjectsManager>().localCollectedComponent.Wheels = code;
         break;
-      case "OilTank":
-        FindObjectOfType<ObjectsManager>().localCollectedComponent.OilTank = code;
+      case GameManager.FuelTank:
+        FindObjectOfType<ObjectsManager>().localCollectedComponent.FuelTank = code;
         break;
-      case "Extra":
-        FindObjectOfType<ObjectsManager>().localCollectedComponent.Extra = code;
+      case GameManager.Tail:
+        FindObjectOfType<ObjectsManager>().localCollectedComponent.Tail = code;
         break;
     }
-
-    Debug.Log("here");
 
     UpdateSprite(code);
   }
 
   public void UpdateSprite(int code)
   {
-    if (code >= 0)
-    {
-      Debug.Log("Update sprite");
-      inventoryIcon.GetComponent<Image>().sprite = collectPanel.GetCandidateSprite(code);
-      Debug.Log("get sprite");
-      inventoryIcon.SetActive(true);
-      Debug.Log("open inv icon");
-      isCollected = true;
-    }
+    if (code < 0) return;
+    inventoryIcon.GetComponent<Image>().sprite = collectPanel.GetCandidateSprite(code);
+    inventoryIcon.SetActive(true);
+    _isCollected = true;
   }
-
-  // make a method for removing current chosen component
 }

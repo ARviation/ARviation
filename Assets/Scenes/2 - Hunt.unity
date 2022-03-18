@@ -195,7 +195,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3564977921201455951, guid: 1e988d596fc4b48f8a8a409f0db0ba56, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5349269418817374313, guid: 1e988d596fc4b48f8a8a409f0db0ba56, type: 3}
       propertyPath: m_RootOrder
@@ -298,7 +298,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3813884746644462217, guid: a4228c171697c4b848c444b492b8708b, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6863383568854042279, guid: a4228c171697c4b848c444b492b8708b, type: 3}
       propertyPath: m_RootOrder
@@ -783,7 +783,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 336786713562514172, guid: fc6f38945c3e04e3bafca062b0469d3b, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6494865839036351588, guid: fc6f38945c3e04e3bafca062b0469d3b, type: 3}
       propertyPath: m_RootOrder
@@ -1211,6 +1211,50 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 801807808, guid: 66021d7d81be04ca8b3efa3a8c284b55, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 937470860, guid: 66021d7d81be04ca8b3efa3a8c284b55, type: 3}
+      propertyPath: m_Name
+      value: FuelTank
+      objectReference: {fileID: 0}
+    - target: {fileID: 937470860, guid: 66021d7d81be04ca8b3efa3a8c284b55, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 1020394372, guid: 66021d7d81be04ca8b3efa3a8c284b55, type: 3}
+      propertyPath: m_Name
+      value: Engine
+      objectReference: {fileID: 0}
+    - target: {fileID: 1020394372, guid: 66021d7d81be04ca8b3efa3a8c284b55, type: 3}
+      propertyPath: m_TagString
+      value: Engine
+      objectReference: {fileID: 0}
+    - target: {fileID: 1113680904, guid: 66021d7d81be04ca8b3efa3a8c284b55, type: 3}
+      propertyPath: m_Name
+      value: Fuselage
+      objectReference: {fileID: 0}
+    - target: {fileID: 1113680904, guid: 66021d7d81be04ca8b3efa3a8c284b55, type: 3}
+      propertyPath: m_TagString
+      value: Fuselage
+      objectReference: {fileID: 0}
+    - target: {fileID: 1306336383, guid: 66021d7d81be04ca8b3efa3a8c284b55, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 1460866439, guid: 66021d7d81be04ca8b3efa3a8c284b55, type: 3}
+      propertyPath: m_Name
+      value: Propeller
+      objectReference: {fileID: 0}
+    - target: {fileID: 1460866439, guid: 66021d7d81be04ca8b3efa3a8c284b55, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 2067534076, guid: 66021d7d81be04ca8b3efa3a8c284b55, type: 3}
+      propertyPath: m_Name
+      value: Tail
+      objectReference: {fileID: 0}
     - target: {fileID: 6044512022872967098, guid: 66021d7d81be04ca8b3efa3a8c284b55, type: 3}
       propertyPath: m_Name
       value: Hunt Canvas
