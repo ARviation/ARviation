@@ -586,6 +586,7 @@ MonoBehaviour:
   enableFrame: {fileID: 1418469888}
   inventoryIcon: {fileID: 3619404417233879097}
   collectPanel: {fileID: 1076849978}
+  emptySprite: {fileID: 21300000, guid: 6ca928418c700472a9862958d1466524, type: 3}
   currentCode: 0
 --- !u!114 &801807810
 MonoBehaviour:
@@ -657,8 +658,8 @@ GameObject:
   - component: {fileID: 937470863}
   - component: {fileID: 937470862}
   m_Layer: 5
-  m_Name: OilTank
-  m_TagString: OilTank
+  m_Name: FuelTank
+  m_TagString: FuelTank
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -737,6 +738,7 @@ MonoBehaviour:
   enableFrame: {fileID: 389038058}
   inventoryIcon: {fileID: 8673466106668961291}
   collectPanel: {fileID: 1076849978}
+  emptySprite: {fileID: 21300000, guid: 6ca928418c700472a9862958d1466524, type: 3}
   currentCode: 0
 --- !u!114 &937470862
 MonoBehaviour:
@@ -808,8 +810,8 @@ GameObject:
   - component: {fileID: 1020394375}
   - component: {fileID: 1020394374}
   m_Layer: 5
-  m_Name: Engines
-  m_TagString: Engines
+  m_Name: Engine
+  m_TagString: Engine
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -888,6 +890,7 @@ MonoBehaviour:
   enableFrame: {fileID: 1897514709}
   inventoryIcon: {fileID: 4832558637242681560}
   collectPanel: {fileID: 1076849978}
+  emptySprite: {fileID: 21300000, guid: 6ca928418c700472a9862958d1466524, type: 3}
   currentCode: 0
 --- !u!114 &1020394374
 MonoBehaviour:
@@ -1059,8 +1062,8 @@ GameObject:
   - component: {fileID: 1113680907}
   - component: {fileID: 1113680906}
   m_Layer: 5
-  m_Name: Body
-  m_TagString: Body
+  m_Name: Fuselage
+  m_TagString: Fuselage
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1139,6 +1142,7 @@ MonoBehaviour:
   enableFrame: {fileID: 1152772568}
   inventoryIcon: {fileID: 1167708328747078577}
   collectPanel: {fileID: 1076849978}
+  emptySprite: {fileID: 21300000, guid: 6ca928418c700472a9862958d1466524, type: 3}
   currentCode: 0
 --- !u!114 &1113680906
 MonoBehaviour:
@@ -1499,6 +1503,7 @@ MonoBehaviour:
   enableFrame: {fileID: 1410376573}
   inventoryIcon: {fileID: 7687936228335691572}
   collectPanel: {fileID: 1076849978}
+  emptySprite: {fileID: 21300000, guid: 6ca928418c700472a9862958d1466524, type: 3}
   currentCode: 0
 --- !u!114 &1306336385
 MonoBehaviour:
@@ -1720,8 +1725,8 @@ GameObject:
   - component: {fileID: 1460866442}
   - component: {fileID: 1460866441}
   m_Layer: 5
-  m_Name: Propellers
-  m_TagString: Propellers
+  m_Name: Propeller
+  m_TagString: Propeller
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1800,6 +1805,7 @@ MonoBehaviour:
   enableFrame: {fileID: 379177528}
   inventoryIcon: {fileID: 3309198790887477969}
   collectPanel: {fileID: 1076849978}
+  emptySprite: {fileID: 21300000, guid: 6ca928418c700472a9862958d1466524, type: 3}
   currentCode: 0
 --- !u!114 &1460866441
 MonoBehaviour:
@@ -2079,8 +2085,8 @@ GameObject:
   - component: {fileID: 2067534079}
   - component: {fileID: 2067534078}
   m_Layer: 5
-  m_Name: Extra
-  m_TagString: Untagged
+  m_Name: Tail
+  m_TagString: Tail
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2159,6 +2165,7 @@ MonoBehaviour:
   enableFrame: {fileID: 353586228}
   inventoryIcon: {fileID: 4886871664077231762}
   collectPanel: {fileID: 1076849978}
+  emptySprite: {fileID: 21300000, guid: 6ca928418c700472a9862958d1466524, type: 3}
   currentCode: 0
 --- !u!114 &2067534078
 MonoBehaviour:

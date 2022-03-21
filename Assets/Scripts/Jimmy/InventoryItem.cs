@@ -9,6 +9,7 @@ public class InventoryItem : MonoBehaviour
   [SerializeField] private GameObject enableFrame;
   [SerializeField] private GameObject inventoryIcon;
   [SerializeField] private CollectPanel collectPanel;
+  [SerializeField] private Sprite emptySprite;
 
   public MoseCode currentCode;
   private bool _isEnable = false;
@@ -32,7 +33,7 @@ public class InventoryItem : MonoBehaviour
       if (!_isCollected) return;
       enableFrame.SetActive(true);
       _isEnable = true;
-      PlayerStats.Instance.UpdateSelectedComponentCode(currentCode);
+      PlayerStats.Instance.UpdateSelectedComponentCode(currentCode, this);
     }
   }
 
@@ -46,6 +47,14 @@ public class InventoryItem : MonoBehaviour
   public void OnHitComponent(MoseCode componentCode)
   {
     currentCode = componentCode;
+  }
+
+  public void OnUseComponent()
+  {
+    _isCollected = false;
+    enableFrame.SetActive(false);
+    _isEnable = false;
+    inventoryIcon.GetComponent<Image>().sprite = emptySprite;
   }
 
   public void OnCollectComponent()

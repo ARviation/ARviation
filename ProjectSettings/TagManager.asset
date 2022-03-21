@@ -4,14 +4,17 @@
 TagManager:
   serializedVersion: 2
   tags:
+  - Engine
   - Wings
-  - AR_object
-  - Draggable
   - Wheels
   - Fuselage
-  - Engine
+  - FuelTank
   - Propeller
   - Tail
+  - Propellers
+  - Engines
+  - Body
+  - OilTank
   layers:
   - Default
   - TransparentFX

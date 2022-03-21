@@ -107,14 +107,14 @@ public class ObjectsManager : MonoBehaviour
           case GameManager.Engine:
             if (PlayerStats.Instance.selectedComponentCode == MoseCode.A)
             {
-              hit.transform.gameObject.SetActive(true);
+              hit.transform.gameObject.GetComponent<AttachableComponent>().ShowObj();
             }
 
             break;
           case GameManager.Wings:
-            if (PlayerStats.Instance.selectedComponentCode == MoseCode.J)
+            if (PlayerStats.Instance.selectedComponentCode == MoseCode.N)
             {
-              hit.transform.gameObject.SetActive(true);
+              hit.transform.gameObject.GetComponent<AttachableComponent>().ShowObj();
             }
 
             break;

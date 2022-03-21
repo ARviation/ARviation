@@ -19,59 +19,59 @@ MonoBehaviour:
       m_GuidLow: 5707323907930467558
       m_GuidHigh: 14512684999481010588
     m_SerializedTextureGuid:
-      m_GuidLow: 4969186673425782638
-      m_GuidHigh: 8413552102249039578
-    m_Size: {x: 0.25, y: 0.25}
+      m_GuidLow: 16473061943085104049
+      m_GuidHigh: 7927483511001463704
+    m_Size: {x: 0.2, y: 0.2}
     m_SpecifySize: 1
-    m_Name: Alpha
-    m_Texture: {fileID: 2800000, guid: 9c26176e18f344f6da86cb610ff1c274, type: 3}
+    m_Name: Allison
+    m_Texture: {fileID: 0}
   - m_SerializedGuid:
       m_GuidLow: 4811552585817104673
       m_GuidHigh: 17065891047813287580
     m_SerializedTextureGuid:
-      m_GuidLow: 3756392128365073805
-      m_GuidHigh: 12219706768717678267
-    m_Size: {x: 0.25, y: 0.2497006}
+      m_GuidLow: 1481451223993781824
+      m_GuidHigh: 10383826356641328827
+    m_Size: {x: 0.2, y: 0.2}
     m_SpecifySize: 1
-    m_Name: Romeo
-    m_Texture: {fileID: 2800000, guid: 1046158d62bd3421bb86da38901e95a9, type: 3}
+    m_Name: Junkers
+    m_Texture: {fileID: 0}
   - m_SerializedGuid:
       m_GuidLow: 5453544895072605037
       m_GuidHigh: 13350716891515440282
     m_SerializedTextureGuid:
-      m_GuidLow: 7237047594959190013
-      m_GuidHigh: 14518678735396684715
-    m_Size: {x: 0.25, y: 0.2497006}
+      m_GuidLow: 4943116207573394445
+      m_GuidHigh: 9657925849440834250
+    m_Size: {x: 0.2, y: 0.19976048}
     m_SpecifySize: 1
-    m_Name: Yankee
-    m_Texture: {fileID: 2800000, guid: b02337fd2871646fab4356f762b57cc9, type: 3}
+    m_Name: Packard
+    m_Texture: {fileID: 0}
   - m_SerializedGuid:
       m_GuidLow: 4904110193731613508
       m_GuidHigh: 6045767186784252836
     m_SerializedTextureGuid:
-      m_GuidLow: 1443763575964137131
-      m_GuidHigh: 4059620532494221129
-    m_Size: {x: 0.25, y: 0.25}
+      m_GuidLow: 4940668890860218622
+      m_GuidHigh: 10234413621076861915
+    m_Size: {x: 0.2, y: 0.19976048}
     m_SpecifySize: 1
-    m_Name: Juluett
-    m_Texture: {fileID: 2800000, guid: acfd76ab47521409493f33925dab5638, type: 3}
+    m_Name: Constant
+    m_Texture: {fileID: 0}
   - m_SerializedGuid:
       m_GuidLow: 5566109650549049241
       m_GuidHigh: 15995116847921821076
     m_SerializedTextureGuid:
-      m_GuidLow: 1493634257241048229
-      m_GuidHigh: 8274481173793650411
-    m_Size: {x: 0.25, y: 0.2497006}
+      m_GuidLow: 14171252579172968165
+      m_GuidHigh: 2483137003705080586
+    m_Size: {x: 0.2, y: 0.19976048}
     m_SpecifySize: 1
-    m_Name: Papa
-    m_Texture: {fileID: 2800000, guid: 7f3504a5747114baebb6a098c9dcd472, type: 3}
+    m_Name: Delta
+    m_Texture: {fileID: 0}
   - m_SerializedGuid:
       m_GuidLow: 4642254859788637941
       m_GuidHigh: 2351511029161325722
     m_SerializedTextureGuid:
-      m_GuidLow: 15299533215803962538
-      m_GuidHigh: 8825706812991626360
-    m_Size: {x: 0.25, y: 0.2497006}
+      m_GuidLow: 16438774310450187979
+      m_GuidHigh: 7810832349230240153
+    m_Size: {x: 0.2, y: 0.19976048}
     m_SpecifySize: 1
-    m_Name: November
-    m_Texture: {fileID: 2800000, guid: 3d48f4aadc66d452785c1cf895357b7a, type: 3}
+    m_Name: Tapered
+    m_Texture: {fileID: 0}
