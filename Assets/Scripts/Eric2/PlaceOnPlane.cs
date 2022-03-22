@@ -30,8 +30,7 @@ public class PlaceOnPlane : MonoBehaviour
 
     void Awake()
     {
-        m_RaycastManager = GetComponent<ARRaycastManager>();
-
+        m_RaycastManager = GetComponent<ARRaycastManager>();        
         //if (placementUpdate == null)
         //    placementUpdate = new UnityEvent();
 
@@ -81,7 +80,7 @@ public class PlaceOnPlane : MonoBehaviour
     // button_launch_task
     public void button_launch_task()
     {
-        Animator m_Animator = spawnedObject.transform.Find("model").GetComponent<Animator>();
+        Animator m_Animator = spawnedObject.transform.Find("model_offset").transform.Find("model").GetComponent<Animator>();
         m_Animator.SetBool("is_launch", true);
         m_Animator.SetBool("is_land", false);
     }
@@ -90,7 +89,7 @@ public class PlaceOnPlane : MonoBehaviour
     // button_land_task
     public void button_return_task()
     {
-        Animator m_Animator = spawnedObject.transform.Find("model").GetComponent<Animator>();
+        Animator m_Animator = spawnedObject.transform.Find("model_offset").transform.Find("model").GetComponent<Animator>();
         m_Animator.SetBool("is_launch", false);
         m_Animator.SetBool("is_land", true);
     }
@@ -109,7 +108,8 @@ public class PlaceOnPlane : MonoBehaviour
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-///
+
+//Animator m_Animator = spawnedObject.transform.Find("model").GetComponent<Animator>();
 /// <summary>
 /// Listens for touch events and performs an AR raycast from the screen touch point.
 /// AR raycasts will only hit detected trackables like feature points and planes.
