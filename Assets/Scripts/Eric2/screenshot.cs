@@ -10,7 +10,7 @@ public class screenshot : MonoBehaviour
     // Variables
     public GameObject Canvas;
     public AudioSource source;
-    public string receiver_email = "yuzhu2@andrew.cmu.edu";
+    public string receiver_email = "ARviationAlbum@gmail.com";
     float t_pause = 1f;
     List<string> photo_file_list = new List<string>();
 

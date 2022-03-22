@@ -1105,7 +1105,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Canvas: {fileID: 1932333506}
   source: {fileID: 1481157288}
-  receiver_email: yuzhu2@andrew.cmu.edu
+  receiver_email: ARviationAlbum@gmail.com
 --- !u!82 &1481157288
 AudioSource:
   m_ObjectHideFlags: 0
