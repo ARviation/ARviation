@@ -36,36 +36,36 @@ public class ImageRecognition : MonoBehaviour
   {
     _referenceImageLibrary = _arTrackedImageManager.referenceLibrary;
     _refImageCount = _referenceImageLibrary.count;
-    // InitiateARObjs();
+    InstantiateObj();
   }
 
-  private void InstantiateObj(ARTrackedImage added)
+  private void InstantiateObj()
   {
-    for (int i = 0; i < _refImageCount; i++)
-    {
-      if (added.referenceImage.name == prefabToInstantiate[i].name)
-      {
-        GameObject prefab = Instantiate<GameObject>(prefabToInstantiate[i].prefab, transform.parent);
-        prefab.transform.position = added.transform.position;
-        prefab.transform.rotation = added.transform.rotation;
-
-        _arObjs.Add(added.referenceImage.name, prefab);
-      }
-    }
-    // _arObjs = new Dictionary<string, GameObject>();
     // for (int i = 0; i < _refImageCount; i++)
     // {
-    //   GameObject arObj = Instantiate(objsToPlace[i], Vector3.zero, Quaternion.identity);
-    //   arObj.GetComponent<Collectable>().SetInventoryItem();
-    //   _arObjs.Add(_referenceImageLibrary[i].name, arObj);
-    //   _arObjs[_referenceImageLibrary[i].name].SetActive(false);
+    //   if (added.referenceImage.name == prefabToInstantiate[i].name)
+    //   {
+    //     GameObject prefab = Instantiate<GameObject>(prefabToInstantiate[i].prefab, transform.parent);
+    //     prefab.transform.position = added.transform.position;
+    //     prefab.transform.rotation = added.transform.rotation;
+    //
+    //     _arObjs.Add(added.referenceImage.name, prefab);
+    //   }
     // }
+    _arObjs = new Dictionary<string, GameObject>();
+    for (int i = 0; i < _refImageCount; i++)
+    {
+      GameObject arObj = Instantiate(prefabToInstantiate[i].prefab, Vector3.zero, Quaternion.identity);
+      arObj.GetComponent<Collectable>().SetInventoryItem();
+      _arObjs.Add(_referenceImageLibrary[i].name, arObj);
+      _arObjs[_referenceImageLibrary[i].name].SetActive(false);
+    }
   }
 
-  // private void ActivateTrackedObj(string _imageName)
-  // {
-  // _arObjs[_imageName].SetActive(true);
-  // }
+  private void ActivateTrackedObj(string _imageName)
+  {
+  _arObjs[_imageName].SetActive(true);
+  }
 
   private void DeactivateTrackedObj(string _imageName)
   {
@@ -76,32 +76,32 @@ public class ImageRecognition : MonoBehaviour
   {
     foreach (var added in args.added)
     {
-      InstantiateObj(added);
-      // ActivateTrackedObj(added.referenceImage.name);
+      // InstantiateObj(added);
+      ActivateTrackedObj(added.referenceImage.name);
     }
 
     foreach (var updated in args.updated)
     {
-      if (updated.trackingState == TrackingState.Tracking)
-      {
-        UpdateTrackingObj(updated);
-      }
-      else if (updated.trackingState == TrackingState.Limited)
-      {
-        UpdateLimitedObj(updated);
-      }
-      else
-      {
-        UpdateNoneObj(updated);
-      }
-
+      // if (updated.trackingState == TrackingState.Tracking)
+      // {
+      //   UpdateTrackingObj(updated);
+      // }
+      // else if (updated.trackingState == TrackingState.Limited)
+      // {
+      //   UpdateLimitedObj(updated);
+      // }
+      // else
+      // {
+      //   UpdateNoneObj(updated);
+      // }
       _arObjs[updated.referenceImage.name].transform.position = updated.transform.position;
       _arObjs[updated.referenceImage.name].transform.rotation = updated.transform.rotation;
     }
 
     foreach (var remove in args.removed)
     {
-      DestroyObj(remove);
+      DeactivateTrackedObj(remove.referenceImage.name);
+      // DestroyObj(remove);
     }
   }
 

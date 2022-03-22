@@ -9,7 +9,7 @@ public enum SceneIndex : int
   Intro = 0,
   Hunt = 1,
   Assembly = 2,
-  End = 3,
+  Fly = 3,
 }
 
 public class GameManager : MonoBehaviour
@@ -56,8 +56,8 @@ public class GameManager : MonoBehaviour
     ChangeSceneTo(SceneIndex.Assembly);
   }
 
-  public void ChangeSceneToEnd()
+  public void ChangeSceneToFly()
   {
-    ChangeSceneTo(SceneIndex.End);
+    ChangeSceneTo(SceneIndex.Fly);
   }
 }
