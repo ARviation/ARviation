@@ -1,0 +1,141 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6128518191521412264
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6128518191521412266}
+  - component: {fileID: 6128518191521412267}
+  m_Layer: 0
+  m_Name: Character Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6128518191521412266
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6128518191521412264}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6128518191521412267
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6128518191521412264}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc13ffc6a549c4f02b477619b8660c57, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterMoodList:
+  - {fileID: 21300000, guid: 86c112cc1784d4211898981b4dcf57ed, type: 3}
+  - {fileID: 21300000, guid: f9ea096021663434a91cc1ea8a1b12ec, type: 3}
+  - {fileID: 21300000, guid: ea6a938764a2744f1a6d4bc8df6f3880, type: 3}
+  - {fileID: 21300000, guid: 26185376eb6724d019dc3e382ca27ab2, type: 3}
+  - {fileID: 21300000, guid: af344e8116c4d415aa19118bea4000dd, type: 3}
+  - {fileID: 21300000, guid: c7391fd27f3f8456fa3aec75029f5023, type: 3}
+  - {fileID: 21300000, guid: c9d6a5886337c42e792a0ccf2ae8fbfa, type: 3}
+  - {fileID: 21300000, guid: 6371716177cad4b27a7c2096f2840189, type: 3}
+  - {fileID: 21300000, guid: 712c4363ae4694f7dac3195c2d82f61c, type: 3}
+  - {fileID: 21300000, guid: ee0e787ddc39c4f9498f2cb24b0f2d93, type: 3}
+  - {fileID: 21300000, guid: aa14b67b58ce3469aa2bd9ef14e18e01, type: 3}
+  - {fileID: 21300000, guid: ea131d7f928e747d2b9f3be092293276, type: 3}
+  - {fileID: 21300000, guid: 1eca63adc7ace442c83fc681fb868ab2, type: 3}
+  - {fileID: 21300000, guid: d3e794e665fb546b58b9498acfde2cb4, type: 3}
+  - {fileID: 21300000, guid: eb8b77103f66b4b71bde603b3d242aee, type: 3}
+  - {fileID: 21300000, guid: c121170014843433fa1025a5a405aba4, type: 3}
+  - {fileID: 21300000, guid: 53c9cc62864cc4228b5a572ba27f9518, type: 3}
+  - {fileID: 21300000, guid: 5e8b7db213d18490a93f60f3fc9e1970, type: 3}
+  - {fileID: 21300000, guid: 3487555ef933741f3bd64d1f113be990, type: 3}
+  - {fileID: 21300000, guid: 3d898a9ea70e3432695af8b096088b12, type: 3}
+  - {fileID: 21300000, guid: ebf9ac1ecf36746c69600eeec536f655, type: 3}
+  - {fileID: 21300000, guid: 906505b6b056648ecb505638971d937f, type: 3}
+  - {fileID: 21300000, guid: 68f6d8d0637a54148a8efbbe5c2f55f4, type: 3}
+  - {fileID: 21300000, guid: b4a400792b1f247bfbe2ba83b39ae58e, type: 3}
+  - {fileID: 21300000, guid: 3a9b6d9be69bc42bd88ae4b01ebd9588, type: 3}
+  - {fileID: 21300000, guid: ab3d8e99960314f6a8040fb3c7205d0a, type: 3}
+  - {fileID: 21300000, guid: a329fd04e7c4d4df9a7e10179ab1de5f, type: 3}
+  - {fileID: 21300000, guid: f0e7cac80824742608a82146aa1fca45, type: 3}
+  - {fileID: 21300000, guid: 44afb0993f77949fe838f923628a49c6, type: 3}
+  - {fileID: 21300000, guid: 17877ae9479d14c7581a7b8b3e5bf760, type: 3}
+  fullScriptsIntro:
+  - "Hi there! My name is Charlie - I\u2019m 17 years old and love airplanes."
+  - "I got my license to fly recently! And there\u2019s one airplane I love in particular\u2026
+    My great-grandfather\u2019s P-51 Mustang!"
+  - He was a Tuskegee Airman during World War II, when he piloted his P-51 Mustang
+    for air battles.
+  - "I\u2019m very proud of him! He was one of the first African American pilots
+    in the United States Air Force."
+  - "I\u2019m excited to fly his old plane. But\u2026 it\u2019s missing a few parts
+    that got lost or damaged throughout the years."
+  - I heard that this place has the parts my airplane needs. And that your talented
+    team can help me fix the P-51 Mustang.
+  - 'Each of you has been assigned a role: physicist, historian, or engineer.'
+  - And each of you has been given a manual. Take your time to read it. Your manual
+    will help you become an expert in your role.
+  - "When you finish reading, press the button with your role on the screen. That
+    way, I\u2019ll know you\u2019ve become an expert!"
+  fullScriptsHunt:
+  - "Awesome! You\u2019re a team of experts now!"
+  - It looks like the parts for my airplane are scattered all over the place and
+    protected by codes. You can see the part types and options in the Parts List.
+  - 'Your storage can only keep one option for each part type: for example, you can
+    only store 1 set of wings, 1 propeller, 1 engine...'
+  - Make sure that the parts you collect are the right ones for the P-51 Mustang!
+    You can do this by using your manuals and working together to solve the codes
+    for the correct parts.
+  - Let me help you with the first part! It is called the fuselage, or the body of
+    the airplane.
+  - "The fuselage\u2019s code is A\u2026 Can you find the marker with the letter
+    A in the exhibit? It looks just like this."
+  - When you find it, scan it with the tablet!
+  - Fantastic job! The fuselage is now saved in the storage!
+  - "When your storage fills up, you\u2019ll be able to assemble the airplane."
+  - "Here\u2019s the catch! If you get a part that is not for the P-51 Mustang, you
+    won\u2019t know it\u2019s wrong until you begin assembling the airplane."
+  - "If any of your parts are incorrect, you\u2019ll have to go back to collecting\u2026
+    So make sure you work together to get the right parts from the first try!"
+  - "I think you\u2019re ready to start. I\u2019ll come back when you have all the
+    parts!"
+  fullScriptsAssembly:
+  - Awesome, your storage is full! Tap the button to start assembling the airplane.
+  - "WOW! The complete P-51 Mustang\u2026 ready to be flown!!! My great-grandpa would
+    be so proud."
+  - "I want to pilot it right away\u2026 Could you help me with this last step?"
+  fulllScriptsCollectReaction:
+  - Wonderful! The tapered wings are the correct ones!
+  - "Hmm, something doesn\u2019t look right. These are the wrong wings\u2026"
+  - "These wings don\u2019t fit correctly. Gotta find the right ones!"
+  - Excellent work! You got the perfect engine for the P-51 Mustang!
+  - "This engine doesn\u2019t fit the P-51 Mustang. The correct one is still out
+    there!"
+  - "Nice try, but the engine\u2019s not right. Gotta go back..."
+  - Incredible! You found the right propeller for this airplane!
+  - "Oh, this propeller won\u2019t work for the P-51 Mustang. Gotta get the right
+    one!"
+  - "This propeller won\u2019t work with the P-51 Mustang\u2026 But you can still
+    get the correct one!"
+  fullScriptsFly:
+  - Tap the buttons to tell me when to take off and land my airplane.
+  - "You\u2019ll see me up in the sky after I take off! And I\u2019ll come back to
+    the ground when I land."
+  - 'Oh, and you can also take photos with my airplane! I would love it if you did:
+    you were the ones who fixed it, after all.'
+  - "I can\u2019t thank you enough for your help and expertise. Your team is incredible!"
+  - See you later!

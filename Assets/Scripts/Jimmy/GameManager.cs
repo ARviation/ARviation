@@ -23,6 +23,8 @@ public class GameManager : MonoBehaviour
   public const string Wheels = "Wheels";
   public const string Tail = "Tail";
 
+  private SceneIndex currentSceneIndex = SceneIndex.Intro;
+
   private void Awake()
   {
     if (Instance != null && Instance != this)
@@ -35,29 +37,39 @@ public class GameManager : MonoBehaviour
     }
   }
 
-  private static void ChangeSceneTo(SceneIndex index)
+  private static void ChangeSceneTo(int index)
   {
-    SceneManager.LoadScene((int) index);
+    SceneManager.LoadScene(index);
   }
 
   public void ChangeSceneToIntro()
   {
-    ChangeSceneTo(SceneIndex.Intro);
+    currentSceneIndex = SceneIndex.Intro;
+    ChangeSceneTo((int) currentSceneIndex);
   }
 
   public void ChangeSceneToHunt()
   {
-    ChangeSceneTo(SceneIndex.Hunt);
+    currentSceneIndex = SceneIndex.Hunt;
+    ChangeSceneTo((int) SceneIndex.Hunt);
   }
 
   public void ChangeSceneToAssembly()
   {
-    FindObjectOfType<ObjectsManager>().SaveCollectedComponent();
-    ChangeSceneTo(SceneIndex.Assembly);
+    if (FindObjectOfType<ObjectsManager>().GetCanPass())
+    {
+      FindObjectOfType<ObjectsManager>().SaveCollectedComponent();
+      ChangeSceneTo((int) SceneIndex.Assembly);
+    }
   }
 
   public void ChangeSceneToFly()
   {
-    ChangeSceneTo(SceneIndex.Fly);
+    ChangeSceneTo((int) SceneIndex.Fly);
+  }
+
+  public int GetCurrentSceneIndex()
+  {
+    return SceneManager.GetActiveScene().buildIndex;
   }
 }

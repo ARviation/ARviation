@@ -11,6 +11,12 @@ public class ObjectsManager : MonoBehaviour
   [SerializeField] private float mouseDragPhysicsSpeed = 10.0f;
   [SerializeField] private float mouseDragSpeed = 1.0f;
   [SerializeField] private CollectPanel collectPanel;
+  [SerializeField] private int collectedComponent = 0;
+  [SerializeField] private int assembledPart = 0;
+  [SerializeField] private int targetComponentNumber = 4;
+  [SerializeField] private string componentPasscode = "";
+  [SerializeField] private GameObject nextButton;
+  [SerializeField] private GameObject finishAssembleButton;
 
   public delegate void StartTouchEvent(Vector2 position, float time);
 
@@ -33,6 +39,9 @@ public class ObjectsManager : MonoBehaviour
   private bool _isDrag = false;
   private float _posX = .0f;
   private float _posY = .0f;
+  private bool _showPass = false;
+  private bool _canPass = false;
+  private bool _finishAssemble = false;
 
   private void Awake()
   {
@@ -52,6 +61,16 @@ public class ObjectsManager : MonoBehaviour
 
   private void Start()
   {
+    if (nextButton != null)
+    {
+      nextButton.SetActive(false);
+    }
+
+    if (finishAssembleButton != null)
+    {
+      finishAssembleButton.SetActive(false);
+    }
+
     if (collectPanel != null)
       collectPanel.gameObject.SetActive(false);
     LoadCollectedComponent();
@@ -69,6 +88,26 @@ public class ObjectsManager : MonoBehaviour
   {
     _touchControls.Disable();
     _isEnable = false;
+  }
+
+  private void Update()
+  {
+    _showPass = collectedComponent == targetComponentNumber;
+    if (_showPass)
+    {
+      nextButton.SetActive(true);
+    }
+
+    _canPass = localCollectedComponent.ToString() == componentPasscode;
+    if (assembledPart == (targetComponentNumber - 1))
+    {
+      finishAssembleButton.SetActive(true);
+    }
+  }
+
+  public bool GetCanPass()
+  {
+    return _canPass;
   }
 
   private void StartTouch(InputAction.CallbackContext context)
@@ -93,6 +132,11 @@ public class ObjectsManager : MonoBehaviour
         InventoryItem inventoryItem = hit.transform.GetComponent<Collectable>().GetInventoryItem();
         Collectable collectable = hit.transform.GetComponent<Collectable>();
         MoseCode code = collectable.componentCode;
+        if (code == MoseCode.A)
+        {
+          FindObjectOfType<NarrationController>().SetHasConditionFalse();
+        }
+
         inventoryItem.OnHitComponent(code);
         collectPanel.OpenPanel();
         collectPanel.SetInventoryItem(inventoryItem);
@@ -104,17 +148,35 @@ public class ObjectsManager : MonoBehaviour
         string hitTag = hit.transform.tag;
         switch (hitTag)
         {
+          // case GameManager.Fuselage:
+          //   if (PlayerStats.Instance.selectedComponentCode == MoseCode.A)
+          //   {
+          //     hit.transform.gameObject.GetComponent<AttachableComponent>().ShowObj();
+          //     AddAssembledComponent();
+          //   }
+          //
+          //   break;
           case GameManager.Engine:
-            if (PlayerStats.Instance.selectedComponentCode == MoseCode.A)
+            if (PlayerStats.Instance.selectedComponentCode == MoseCode.V)
             {
               hit.transform.gameObject.GetComponent<AttachableComponent>().ShowObj();
+              AddAssembledComponent();
             }
 
             break;
           case GameManager.Wings:
-            if (PlayerStats.Instance.selectedComponentCode == MoseCode.N)
+            if (PlayerStats.Instance.selectedComponentCode == MoseCode.W)
             {
               hit.transform.gameObject.GetComponent<AttachableComponent>().ShowObj();
+              AddAssembledComponent();
+            }
+
+            break;
+          case GameManager.Propeller:
+            if (PlayerStats.Instance.selectedComponentCode == MoseCode.F)
+            {
+              hit.transform.gameObject.GetComponent<AttachableComponent>().ShowObj();
+              AddAssembledComponent();
             }
 
             break;
@@ -170,5 +232,15 @@ public class ObjectsManager : MonoBehaviour
       inventoryItem.currentCode = (MoseCode) code;
       inventoryItem.UpdateSprite(code);
     }
+  }
+
+  public void AddCollectedComponent()
+  {
+    collectedComponent++;
+  }
+
+  private void AddAssembledComponent()
+  {
+    assembledPart++;
   }
 }

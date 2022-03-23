@@ -63,6 +63,7 @@ public class InventoryItem : MonoBehaviour
     {
       inventoryIcon.SetActive(true);
       _isCollected = true;
+      FindObjectOfType<ObjectsManager>().AddCollectedComponent();
     }
 
     int code = (int) currentCode;
