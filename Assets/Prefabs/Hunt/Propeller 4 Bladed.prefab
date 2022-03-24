@@ -110,10 +110,30 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7415077051719842726, guid: 5e39b7ae1552d4da2bc61a9c7ab06ea1, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: aab748d01dcbdf7458d0fda9141e924f, type: 2}
+    - target: {fileID: -3349438967153448204, guid: 5e39b7ae1552d4da2bc61a9c7ab06ea1, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: aab748d01dcbdf7458d0fda9141e924f, type: 2}
+    - target: {fileID: 661255820138131693, guid: 5e39b7ae1552d4da2bc61a9c7ab06ea1, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: aab748d01dcbdf7458d0fda9141e924f, type: 2}
     - target: {fileID: 919132149155446097, guid: 5e39b7ae1552d4da2bc61a9c7ab06ea1, type: 3}
       propertyPath: m_Name
       value: model_hs_4_bladed_propeller
       objectReference: {fileID: 0}
+    - target: {fileID: 3597131139787558986, guid: 5e39b7ae1552d4da2bc61a9c7ab06ea1, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: aab748d01dcbdf7458d0fda9141e924f, type: 2}
+    - target: {fileID: 5901893356585517859, guid: 5e39b7ae1552d4da2bc61a9c7ab06ea1, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: aab748d01dcbdf7458d0fda9141e924f, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5e39b7ae1552d4da2bc61a9c7ab06ea1, type: 3}
 --- !u!4 &5762119098342387385 stripped

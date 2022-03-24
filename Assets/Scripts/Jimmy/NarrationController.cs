@@ -11,6 +11,7 @@ public class NarrationController : MonoBehaviour
   [SerializeField] private GameObject textDisplay;
   [SerializeField] private Button _buttonForNextScene;
   [SerializeField] private Button _buttonForNextSent;
+  [SerializeField] private Button _buttonToHide;
   [SerializeField] private CharacterMoodIndex[] _moodIndices;
   [SerializeField] private Image characterHolder;
   [SerializeField] private GameObject dialogObj;
@@ -60,6 +61,7 @@ public class NarrationController : MonoBehaviour
   {
     _buttonForNextSent.gameObject.SetActive(false);
     isFinal = currentScriptInd == (scriptLength - 1);
+
     currentScript = CharacterManager.Instance.GetCharacterScript(currentScriptInd);
     SoundManager.Instance.PlayVoiceOver(currentScriptInd);
     characterHolder.sprite = CharacterManager.Instance.GetCharacterMood(_moodIndices[currentScriptInd]);
@@ -114,5 +116,6 @@ public class NarrationController : MonoBehaviour
     canHide = false;
     currentScriptInd++;
     ShowNextLine();
+    _buttonToHide.gameObject.SetActive(false);
   }
 }

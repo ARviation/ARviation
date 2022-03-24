@@ -19,9 +19,9 @@ MonoBehaviour:
       m_GuidLow: 5707323907930467558
       m_GuidHigh: 14512684999481010588
     m_SerializedTextureGuid:
-      m_GuidLow: 3817802471569449567
-      m_GuidHigh: 12479214210907123544
-    m_Size: {x: 0.2, y: 0.19976048}
+      m_GuidLow: 15309320717074388090
+      m_GuidHigh: 285826196780144185
+    m_Size: {x: 0.25, y: 0.25}
     m_SpecifySize: 1
     m_Name: Fuselage
     m_Texture: {fileID: 0}
@@ -29,9 +29,9 @@ MonoBehaviour:
       m_GuidLow: 4811552585817104673
       m_GuidHigh: 17065891047813287580
     m_SerializedTextureGuid:
-      m_GuidLow: 16473061943085104049
-      m_GuidHigh: 7927483511001463704
-    m_Size: {x: 0.2, y: 0.2}
+      m_GuidLow: 16438369826234509013
+      m_GuidHigh: 7543457011410425832
+    m_Size: {x: 0.25, y: 0.35849056}
     m_SpecifySize: 1
     m_Name: Allison
     m_Texture: {fileID: 0}
@@ -39,9 +39,9 @@ MonoBehaviour:
       m_GuidLow: 5453544895072605037
       m_GuidHigh: 13350716891515440282
     m_SerializedTextureGuid:
-      m_GuidLow: 1481451223993781824
-      m_GuidHigh: 10383826356641328827
-    m_Size: {x: 0.2, y: 0.2}
+      m_GuidLow: 6055559144754996330
+      m_GuidHigh: 17330026131121277528
+    m_Size: {x: 0.25, y: 0.16678572}
     m_SpecifySize: 1
     m_Name: Junkers
     m_Texture: {fileID: 0}
@@ -49,9 +49,9 @@ MonoBehaviour:
       m_GuidLow: 4904110193731613508
       m_GuidHigh: 6045767186784252836
     m_SerializedTextureGuid:
-      m_GuidLow: 4943116207573394445
-      m_GuidHigh: 9657925849440834250
-    m_Size: {x: 0.2, y: 0.19976048}
+      m_GuidLow: 327171001399920221
+      m_GuidHigh: 6402666729789149706
+    m_Size: {x: 0.25, y: 0.15563278}
     m_SpecifySize: 1
     m_Name: Packard
     m_Texture: {fileID: 0}
@@ -59,21 +59,11 @@ MonoBehaviour:
       m_GuidLow: 5566109650549049241
       m_GuidHigh: 15995116847921821076
     m_SerializedTextureGuid:
-      m_GuidLow: 14171252579172968165
-      m_GuidHigh: 2483137003705080586
-    m_Size: {x: 0.2, y: 0.19976048}
+      m_GuidLow: 13027038569488114759
+      m_GuidHigh: 13060863329552173467
+    m_Size: {x: 0.25, y: 0.25}
     m_SpecifySize: 1
     m_Name: Delta
-    m_Texture: {fileID: 0}
-  - m_SerializedGuid:
-      m_GuidLow: 4642254859788637941
-      m_GuidHigh: 2351511029161325722
-    m_SerializedTextureGuid:
-      m_GuidLow: 11878717174692970071
-      m_GuidHigh: 8924692359283070458
-    m_Size: {x: 0.2, y: 0.19976048}
-    m_SpecifySize: 1
-    m_Name: Rectangular
     m_Texture: {fileID: 0}
   - m_SerializedGuid:
       m_GuidLow: 4620847573221552359
@@ -81,7 +71,7 @@ MonoBehaviour:
     m_SerializedTextureGuid:
       m_GuidLow: 16438774310450187979
       m_GuidHigh: 7810832349230240153
-    m_Size: {x: 0.2, y: 0.19976048}
+    m_Size: {x: 0.25, y: 0.2497006}
     m_SpecifySize: 1
     m_Name: Tapered
     m_Texture: {fileID: 0}
@@ -91,7 +81,7 @@ MonoBehaviour:
     m_SerializedTextureGuid:
       m_GuidLow: 4939666748299326809
       m_GuidHigh: 3117569058950713017
-    m_Size: {x: 0.2, y: 0.2}
+    m_Size: {x: 0.25, y: 0.25}
     m_SpecifySize: 1
     m_Name: Two
     m_Texture: {fileID: 0}
@@ -101,7 +91,7 @@ MonoBehaviour:
     m_SerializedTextureGuid:
       m_GuidLow: 8415776716216297976
       m_GuidHigh: 1385637083265883961
-    m_Size: {x: 0.2, y: 0.2}
+    m_Size: {x: 0.25, y: 0.25}
     m_SpecifySize: 1
     m_Name: Four
     m_Texture: {fileID: 0}
@@ -111,7 +101,17 @@ MonoBehaviour:
     m_SerializedTextureGuid:
       m_GuidLow: 15346042813636676456
       m_GuidHigh: 3872691111667303931
-    m_Size: {x: 0.2, y: 0.19976048}
+    m_Size: {x: 0.25, y: 0.2497006}
     m_SpecifySize: 1
     m_Name: Six
+    m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 4863025672732493682
+      m_GuidHigh: 13193260885137887663
+    m_SerializedTextureGuid:
+      m_GuidLow: 325058290910650283
+      m_GuidHigh: 3078660773459107769
+    m_Size: {x: 0.25, y: 0.29166666}
+    m_SpecifySize: 1
+    m_Name: Rectangular
     m_Texture: {fileID: 0}

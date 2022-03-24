@@ -1053,9 +1053,9 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1076849975, guid: 66021d7d81be04ca8b3efa3a8c284b55, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 827
+      value: 900
       objectReference: {fileID: 0}
-    - target: {fileID: 1388708119018660898, guid: 66021d7d81be04ca8b3efa3a8c284b55, type: 3}
+    - target: {fileID: 343913723374623399, guid: 66021d7d81be04ca8b3efa3a8c284b55, type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
@@ -1146,10 +1146,6 @@ PrefabInstance:
     - target: {fileID: 6044512022872967102, guid: 66021d7d81be04ca8b3efa3a8c284b55, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6044512023309508485, guid: 66021d7d81be04ca8b3efa3a8c284b55, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6044512023309508489, guid: 66021d7d81be04ca8b3efa3a8c284b55, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target

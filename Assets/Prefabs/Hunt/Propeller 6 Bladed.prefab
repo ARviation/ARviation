@@ -114,6 +114,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: model_mmg_6_bladed_propeller
       objectReference: {fileID: 0}
+    - target: {fileID: 5670784105149147771, guid: 728bce81762aa48cd94e37308fdef0bd, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: aab748d01dcbdf7458d0fda9141e924f, type: 2}
+    - target: {fileID: 5670784105149147771, guid: 728bce81762aa48cd94e37308fdef0bd, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: aab748d01dcbdf7458d0fda9141e924f, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 728bce81762aa48cd94e37308fdef0bd, type: 3}
 --- !u!4 &2005348626589819750 stripped

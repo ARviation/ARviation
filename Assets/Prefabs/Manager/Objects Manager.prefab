@@ -48,6 +48,8 @@ MonoBehaviour:
   mouseDragSpeed: 1
   collectPanel: {fileID: 0}
   collectedComponent: 0
+  assembledPart: 0
   targetComponentNumber: 4
-  componentPasscode: 0 1 6 8 -1 -1 -1
+  componentPasscode: 0 3 6 8 -1 -1 -1
   nextButton: {fileID: 0}
+  finishAssembleButton: {fileID: 0}
