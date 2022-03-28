@@ -6,7 +6,7 @@ public class ControlPanel : MonoBehaviour
 {
     // variables
     public bool is_AR_Camera = true;
-
+    public GameObject airplane_prefab;
 
     // Start
     void Start()
@@ -20,6 +20,9 @@ public class ControlPanel : MonoBehaviour
         {
             GameObject.Find("AR Session").gameObject.SetActive(false);
             GameObject.Find("AR Session Origin").gameObject.SetActive(false);
+            Vector3 hit_position = new Vector3(1, 0, 1);
+            Quaternion hit_rotation = Quaternion.Euler(0, 30, 0);
+            GameObject spawnedObject = Instantiate(airplane_prefab, hit_position, hit_rotation);
         }
     }
 }
