@@ -17,7 +17,7 @@ public class ObjectsManager : MonoBehaviour
   [SerializeField] private string componentPasscode = "";
   [SerializeField] private GameObject nextButton;
   [SerializeField] private GameObject finishAssembleButton;
-  
+
   public delegate void StartTouchEvent(Vector2 position, float time);
 
   public event StartTouchEvent OnStartTouch;
@@ -99,6 +99,10 @@ public class ObjectsManager : MonoBehaviour
       nextButton.SetActive(true);
     }
 
+
+    Debug.Log(localCollectedComponent.ToString());
+    Debug.Log(componentPasscode);
+    Debug.Log(localCollectedComponent.ToString() == componentPasscode);
     _canPass = localCollectedComponent.ToString() == componentPasscode;
     if (assembledPart != (targetComponentNumber - 1) || _hasOpenFinishButton) return;
     _hasOpenFinishButton = true;
@@ -150,14 +154,6 @@ public class ObjectsManager : MonoBehaviour
         string hitTag = hit.transform.tag;
         switch (hitTag)
         {
-          // case GameManager.Fuselage:
-          //   if (PlayerStats.Instance.selectedComponentCode == MoseCode.A)
-          //   {
-          //     hit.transform.gameObject.GetComponent<AttachableComponent>().ShowObj();
-          //     AddAssembledComponent();
-          //   }
-          //
-          //   break;
           case GameManager.Engine:
             if (PlayerStats.Instance.selectedComponentCode == MoseCode.H)
             {
@@ -176,6 +172,30 @@ public class ObjectsManager : MonoBehaviour
             break;
           case GameManager.Propeller:
             if (PlayerStats.Instance.selectedComponentCode == MoseCode.F)
+            {
+              hit.transform.gameObject.GetComponent<AttachableComponent>().ShowObj();
+              AddAssembledComponent();
+            }
+
+            break;
+          case GameManager.Wheels:
+            if (PlayerStats.Instance.selectedComponentCode == MoseCode.O)
+            {
+              hit.transform.gameObject.GetComponent<AttachableComponent>().ShowObj();
+              AddAssembledComponent();
+            }
+
+            break;
+          case GameManager.FuelTank:
+            if (PlayerStats.Instance.selectedComponentCode == MoseCode.E)
+            {
+              hit.transform.gameObject.GetComponent<AttachableComponent>().ShowObj();
+              AddAssembledComponent();
+            }
+
+            break;
+          case GameManager.Tail:
+            if (PlayerStats.Instance.selectedComponentCode == MoseCode.U)
             {
               hit.transform.gameObject.GetComponent<AttachableComponent>().ShowObj();
               AddAssembledComponent();

@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 1475679346435983577}
   - component: {fileID: 3998055375464518954}
   m_Layer: 7
-  m_Name: Wings Delta
-  m_TagString: Wings
+  m_Name: Fake Tail
+  m_TagString: Tail
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -58,7 +58,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe1f1de9c9c694f0aa8583c2592ab688, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  componentCode: 4
+  componentCode: 10
 --- !u!1001 &5567363029373484935
 PrefabInstance:
   m_ObjectHideFlags: 0

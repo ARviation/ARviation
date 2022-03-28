@@ -50,7 +50,8 @@ public class CollectPanel : MonoBehaviour
   public void OpenPanel(string name)
   {
     gameObject.SetActive(true);
-    componentName.text = name;
+    if (componentName != null)
+      componentName.text = name;
   }
 
   public Sprite GetCandidateSprite(int candidateCode)

@@ -704,12 +704,14 @@ MonoBehaviour:
   - {fileID: 21300000, guid: b9f871f4c6bce5648b064e450b5b056a, type: 3}
   - {fileID: 21300000, guid: 0f9348dcbd7c55e4baca145d599ff482, type: 3}
   - {fileID: 21300000, guid: e940c517be5756a44be9d4448c8b9d9e, type: 3}
-  - {fileID: 21300000, guid: 937d2650d55411f48b06548ec9abaa68, type: 3}
   - {fileID: 21300000, guid: 200ce9c9e453c4dd484f29f7982be1b3, type: 3}
   - {fileID: 21300000, guid: 320f8e9a1fc31cb4b82a32288a1594fc, type: 3}
   - {fileID: 21300000, guid: 5dc0e22b98d1e4df883e23120f54dd00, type: 3}
   - {fileID: 21300000, guid: a4bab26196e5149dda1164510a80fae3, type: 3}
-  - {fileID: 21300000, guid: 089f1dfad72154479825102476c4f05a, type: 3}
+  - {fileID: 21300000, guid: a72baa165270a45d3a806d905eebc906, type: 3}
+  - {fileID: 21300000, guid: cb1588285174b40429318a91c01a8a9c, type: 3}
+  - {fileID: 21300000, guid: 14ded82f8538b49a8b3ddeb1632b1d57, type: 3}
+  componentName: {fileID: 0}
 --- !u!1 &1453573177
 GameObject:
   m_ObjectHideFlags: 0
@@ -2040,7 +2042,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &3532271921268174909
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3891,6 +3893,7 @@ MonoBehaviour:
   hasCondition: 0
   conditionIndex: 0
   canHide: 1
+  fuselageTutorial: 0
 --- !u!1 &7712798504922589069
 GameObject:
   m_ObjectHideFlags: 0
