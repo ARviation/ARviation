@@ -21,6 +21,7 @@ public class CameraManager : MonoBehaviour
   [SerializeField] private float smoothness2D = 1f;
   [SerializeField] private float smoothness = 0.1f;
   [SerializeField] private TMP_Text controllerText;
+  [SerializeField] private float rotateDeg = 45.0f;
 
   private const float RotX = 0f;
   private const float RotY = 0f;
@@ -71,7 +72,7 @@ public class CameraManager : MonoBehaviour
     }
 
     _totalRotateAngle += Mathf.Abs(smoothness2D);
-    if (!(_totalRotateAngle >= 90.0f)) return;
+    if (!(_totalRotateAngle >= rotateDeg)) return;
     _totalRotateAngle = 0f;
     _isRotating = false;
   }

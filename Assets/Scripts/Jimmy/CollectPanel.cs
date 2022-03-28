@@ -2,10 +2,12 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class CollectPanel : MonoBehaviour
 {
   [SerializeField] private Sprite[] candidates;
+  [SerializeField] private TMP_Text componentName;
 
   private InventoryItem[] _inventoryItems;
   private InventoryItem _inventoryItem;
@@ -45,9 +47,11 @@ public class CollectPanel : MonoBehaviour
     gameObject.SetActive(false);
   }
 
-  public void OpenPanel()
+  public void OpenPanel(string name)
   {
     gameObject.SetActive(true);
+    if (componentName != null)
+      componentName.text = name;
   }
 
   public Sprite GetCandidateSprite(int candidateCode)

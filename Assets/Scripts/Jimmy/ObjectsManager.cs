@@ -42,6 +42,7 @@ public class ObjectsManager : MonoBehaviour
   private bool _showPass = false;
   private bool _canPass = false;
   private bool _finishAssemble = false;
+  private bool _hasOpenFinishButton = false;
 
   private void Awake()
   {
@@ -51,12 +52,12 @@ public class ObjectsManager : MonoBehaviour
 
   private void OnGUI()
   {
-    // Compute a fontSize based on the size of the screen width.
-    GUI.skin.label.fontSize = (int) (Screen.width / 50.0f);
-
-    GUI.Label(new Rect(20, 20, _width, _height * 0.25f),
-      "pos(X) = " + _posX + " pos(Y) = " + _posY +
-      "enabled = " + _isEnable + " pressed = " + _isPress + " touched = " + _isTouch + " drag = " + _isDrag);
+    // // Compute a fontSize based on the size of the screen width.
+    // GUI.skin.label.fontSize = (int) (Screen.width / 50.0f);
+    //
+    // GUI.Label(new Rect(20, 20, _width, _height * 0.25f),
+    //   "pos(X) = " + _posX + " pos(Y) = " + _posY +
+    //   "enabled = " + _isEnable + " pressed = " + _isPress + " touched = " + _isTouch + " drag = " + _isDrag);
   }
 
   private void Start()
@@ -98,11 +99,14 @@ public class ObjectsManager : MonoBehaviour
       nextButton.SetActive(true);
     }
 
+
+    Debug.Log(localCollectedComponent.ToString());
+    Debug.Log(componentPasscode);
+    Debug.Log(localCollectedComponent.ToString() == componentPasscode);
     _canPass = localCollectedComponent.ToString() == componentPasscode;
-    if (assembledPart == (targetComponentNumber - 1))
-    {
-      finishAssembleButton.SetActive(true);
-    }
+    if (assembledPart != (targetComponentNumber - 1) || _hasOpenFinishButton) return;
+    _hasOpenFinishButton = true;
+    finishAssembleButton.SetActive(true);
   }
 
   public bool GetCanPass()
@@ -138,7 +142,9 @@ public class ObjectsManager : MonoBehaviour
         }
 
         inventoryItem.OnHitComponent(code);
-        collectPanel.OpenPanel();
+        string componentName = hit.transform.name;
+        componentName = componentName.Replace("(Clone)", "").Trim();
+        collectPanel.OpenPanel(componentName);
         collectPanel.SetInventoryItem(inventoryItem);
       }
       else if (hit.collider.gameObject.layer == LayerMask.NameToLayer("Attachable") &&
@@ -148,16 +154,8 @@ public class ObjectsManager : MonoBehaviour
         string hitTag = hit.transform.tag;
         switch (hitTag)
         {
-          // case GameManager.Fuselage:
-          //   if (PlayerStats.Instance.selectedComponentCode == MoseCode.A)
-          //   {
-          //     hit.transform.gameObject.GetComponent<AttachableComponent>().ShowObj();
-          //     AddAssembledComponent();
-          //   }
-          //
-          //   break;
           case GameManager.Engine:
-            if (PlayerStats.Instance.selectedComponentCode == MoseCode.V)
+            if (PlayerStats.Instance.selectedComponentCode == MoseCode.H)
             {
               hit.transform.gameObject.GetComponent<AttachableComponent>().ShowObj();
               AddAssembledComponent();
@@ -174,6 +172,30 @@ public class ObjectsManager : MonoBehaviour
             break;
           case GameManager.Propeller:
             if (PlayerStats.Instance.selectedComponentCode == MoseCode.F)
+            {
+              hit.transform.gameObject.GetComponent<AttachableComponent>().ShowObj();
+              AddAssembledComponent();
+            }
+
+            break;
+          case GameManager.Wheels:
+            if (PlayerStats.Instance.selectedComponentCode == MoseCode.O)
+            {
+              hit.transform.gameObject.GetComponent<AttachableComponent>().ShowObj();
+              AddAssembledComponent();
+            }
+
+            break;
+          case GameManager.FuelTank:
+            if (PlayerStats.Instance.selectedComponentCode == MoseCode.E)
+            {
+              hit.transform.gameObject.GetComponent<AttachableComponent>().ShowObj();
+              AddAssembledComponent();
+            }
+
+            break;
+          case GameManager.Tail:
+            if (PlayerStats.Instance.selectedComponentCode == MoseCode.U)
             {
               hit.transform.gameObject.GetComponent<AttachableComponent>().ShowObj();
               AddAssembledComponent();

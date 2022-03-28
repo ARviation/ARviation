@@ -1,13 +1,14 @@
 public enum MoseCode : int
 {
-  A = 0, 
+  A = 0,
   V = 1,
   L = 2,
   H = 3,
-  Y = 4,
-  M = 5,
-  W = 6,
-  T = 7,
-  F = 8,
-  S = 9,
+  M = 4,
+  W = 5,
+  T = 6,
+  F = 7,
+  O = 8,
+  E = 9,
+  U = 10,
 }
