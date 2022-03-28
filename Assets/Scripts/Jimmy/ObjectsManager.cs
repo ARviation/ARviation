@@ -99,7 +99,6 @@ public class ObjectsManager : MonoBehaviour
       nextButton.SetActive(true);
     }
 
-
     Debug.Log(localCollectedComponent.ToString());
     Debug.Log(componentPasscode);
     Debug.Log(localCollectedComponent.ToString() == componentPasscode);

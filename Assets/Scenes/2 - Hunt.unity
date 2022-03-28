@@ -747,6 +747,10 @@ PrefabInstance:
       propertyPath: componentPasscode
       value: 0 3 5 7 8 9 10
       objectReference: {fileID: 0}
+    - target: {fileID: 1752057808544842722, guid: f93f87787262f4c9da4f3437d6e51572, type: 3}
+      propertyPath: targetComponentNumber
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f93f87787262f4c9da4f3437d6e51572, type: 3}
 --- !u!1 &1752953438

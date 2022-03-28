@@ -29,6 +29,6 @@ public class CollectedComponent : MonoBehaviour
 
   public override string ToString()
   {
-    return $"{Fuselage} {Engine} {Wings} {Propellers} {FuelTank} {Wheels} {Tail}";
+    return $"{Fuselage} {Engine} {Wings} {Propellers} {Wheels} {FuelTank} {Tail}";
   }
 }
