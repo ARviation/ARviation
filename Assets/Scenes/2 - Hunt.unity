@@ -182,36 +182,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &176378101
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 176378102}
-  m_Layer: 0
-  m_Name: ARObjects
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &176378102
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 176378101}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1162.5752, y: 1251.3744, z: 5.7888794}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 6
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &511109559
 GameObject:
   m_ObjectHideFlags: 0
@@ -578,7 +548,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &999557240
 PrefabInstance:
@@ -589,7 +559,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3220809560607417604, guid: 054fd588e22fb4cc191155586d809743, type: 3}
       propertyPath: m_RootOrder
-      value: 9
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 3220809560607417604, guid: 054fd588e22fb4cc191155586d809743, type: 3}
       propertyPath: m_LocalPosition.x
@@ -666,7 +636,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6440714509679935795, guid: 1bf3648c778e54d018a4da9c38306278, type: 3}
       propertyPath: m_RootOrder
-      value: 13
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 6440714509679935795, guid: 1bf3648c778e54d018a4da9c38306278, type: 3}
       propertyPath: m_LocalPosition.x
@@ -719,7 +689,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1752057808544842652, guid: f93f87787262f4c9da4f3437d6e51572, type: 3}
       propertyPath: m_RootOrder
-      value: 10
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 1752057808544842652, guid: f93f87787262f4c9da4f3437d6e51572, type: 3}
       propertyPath: m_LocalPosition.x
@@ -843,8 +813,6 @@ MonoBehaviour:
     prefab: {fileID: 336786713562514172, guid: fc6f38945c3e04e3bafca062b0469d3b, type: 3}
   - name: Packard
     prefab: {fileID: 4003609133617329930, guid: 05c328a715e8e4d8c927d30c252bf275, type: 3}
-  - name: Delta
-    prefab: {fileID: 4353619874711839416, guid: d58bedf4e67a446cda0ebd60b60a2429, type: 3}
   - name: Rectangular
     prefab: {fileID: 8277872037215943773, guid: 73cdc369876004a4a9b0e4c496f3d8a1, type: 3}
   - name: Tapered
@@ -853,8 +821,13 @@ MonoBehaviour:
     prefab: {fileID: 4267896840999062385, guid: eb2cfdbbafb404bf1ae41e12ba44d939, type: 3}
   - name: Four
     prefab: {fileID: 8039645369248759262, guid: 8758b5d0feb3241b49fd9eb8be758da4, type: 3}
-  - name: Six
+  - name: Landing
     prefab: {fileID: 7867264085243926959, guid: 37dc380f927d74699a4c27a2441d1114, type: 3}
+  - name: Tail
+    prefab: {fileID: 4353619874711839416, guid: d58bedf4e67a446cda0ebd60b60a2429, type: 3}
+  - name: Fuel
+    prefab: {fileID: 706682281903784119, guid: 32b892d72be78476cbcddb8182d42f87, type: 3}
+  isTutorial: 1
 --- !u!114 &1752953442
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -928,7 +901,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2139079428
 PrefabInstance:
@@ -943,7 +916,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6128518191521412266, guid: e57458d2e63f64176a34efac8cefbe1c, type: 3}
       propertyPath: m_RootOrder
-      value: 12
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 6128518191521412266, guid: e57458d2e63f64176a34efac8cefbe1c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -985,6 +958,43 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6128518191521412267, guid: e57458d2e63f64176a34efac8cefbe1c, type: 3}
+      propertyPath: fullScriptsHunt.Array.size
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 6128518191521412267, guid: e57458d2e63f64176a34efac8cefbe1c, type: 3}
+      propertyPath: fullScriptsHunt.Array.data[6]
+      value: When you find it, scan it with the tablet and click it!
+      objectReference: {fileID: 0}
+    - target: {fileID: 6128518191521412267, guid: e57458d2e63f64176a34efac8cefbe1c, type: 3}
+      propertyPath: fullScriptsHunt.Array.data[7]
+      value: Fantastic job! The fuselage is now saved in the storage!
+      objectReference: {fileID: 0}
+    - target: {fileID: 6128518191521412267, guid: e57458d2e63f64176a34efac8cefbe1c, type: 3}
+      propertyPath: fullScriptsHunt.Array.data[8]
+      value: "When your storage fills up, you\u2019ll be able to assemble the airplane."
+      objectReference: {fileID: 0}
+    - target: {fileID: 6128518191521412267, guid: e57458d2e63f64176a34efac8cefbe1c, type: 3}
+      propertyPath: fullScriptsHunt.Array.data[9]
+      value: "Here\u2019s the catch! If you get a part that is not for the P-51 Mustang,
+        you won\u2019t know it\u2019s wrong until you begin assembling the airplane."
+      objectReference: {fileID: 0}
+    - target: {fileID: 6128518191521412267, guid: e57458d2e63f64176a34efac8cefbe1c, type: 3}
+      propertyPath: fullScriptsHunt.Array.data[10]
+      value: "If any of your parts are incorrect, you\u2019ll have to go back to
+        collecting\u2026 So make sure you work together to get the right parts from
+        the first try!"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6128518191521412267, guid: e57458d2e63f64176a34efac8cefbe1c, type: 3}
+      propertyPath: fullScriptsHunt.Array.data[11]
+      value: "I think you\u2019re ready to start. I\u2019ll come back when you have
+        all the parts!"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6128518191521412267, guid: e57458d2e63f64176a34efac8cefbe1c, type: 3}
+      propertyPath: fullScriptsHunt.Array.data[12]
+      value: "I think you\u2019re ready to start. I\u2019ll come back when you have
+        all the parts!"
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e57458d2e63f64176a34efac8cefbe1c, type: 3}
 --- !u!1001 &2142735484
@@ -996,7 +1006,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4439859453589896226, guid: 55e34c4c386184c829649af3163b6021, type: 3}
       propertyPath: m_RootOrder
-      value: 11
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4439859453589896226, guid: 55e34c4c386184c829649af3163b6021, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1051,14 +1061,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1076849975, guid: 66021d7d81be04ca8b3efa3a8c284b55, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 900
-      objectReference: {fileID: 0}
-    - target: {fileID: 343913723374623399, guid: 66021d7d81be04ca8b3efa3a8c284b55, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 6044512022872967098, guid: 66021d7d81be04ca8b3efa3a8c284b55, type: 3}
       propertyPath: m_Name
       value: Hunt Canvas
@@ -1073,7 +1075,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6044512022872967102, guid: 66021d7d81be04ca8b3efa3a8c284b55, type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 6044512022872967102, guid: 66021d7d81be04ca8b3efa3a8c284b55, type: 3}
       propertyPath: m_AnchorMax.x

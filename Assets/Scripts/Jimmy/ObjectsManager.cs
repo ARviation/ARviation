@@ -17,7 +17,7 @@ public class ObjectsManager : MonoBehaviour
   [SerializeField] private string componentPasscode = "";
   [SerializeField] private GameObject nextButton;
   [SerializeField] private GameObject finishAssembleButton;
-
+  
   public delegate void StartTouchEvent(Vector2 position, float time);
 
   public event StartTouchEvent OnStartTouch;
@@ -138,7 +138,9 @@ public class ObjectsManager : MonoBehaviour
         }
 
         inventoryItem.OnHitComponent(code);
-        collectPanel.OpenPanel();
+        string componentName = hit.transform.name;
+        componentName = componentName.Replace("(Clone)", "").Trim();
+        collectPanel.OpenPanel(componentName);
         collectPanel.SetInventoryItem(inventoryItem);
       }
       else if (hit.collider.gameObject.layer == LayerMask.NameToLayer("Attachable") &&

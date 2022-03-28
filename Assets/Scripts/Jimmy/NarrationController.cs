@@ -18,6 +18,7 @@ public class NarrationController : MonoBehaviour
   [SerializeField] private bool hasCondition = false;
   [SerializeField] private int conditionIndex;
   [SerializeField] private bool canHide = false;
+  [SerializeField] private bool fuselageTutorial = false;
 
   private string currentScript = "";
   private string displayScript = "";
@@ -82,6 +83,11 @@ public class NarrationController : MonoBehaviour
 
     if (isFinal)
     {
+      if (fuselageTutorial)
+      {
+        Debug.Log("finish tutorial");
+        FindObjectOfType<ImageRecognition>().FinishTutorial();
+      }
       _buttonForNextSent.gameObject.SetActive(false);
       _buttonForNextScene.gameObject.SetActive(true);
     }
