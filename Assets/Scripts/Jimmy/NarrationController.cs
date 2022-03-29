@@ -14,11 +14,14 @@ public class NarrationController : MonoBehaviour
   [SerializeField] private Button _buttonToHide;
   [SerializeField] private CharacterMoodIndex[] _moodIndices;
   [SerializeField] private Image characterHolder;
+  [SerializeField] private Image imageHolder;
   [SerializeField] private GameObject dialogObj;
   [SerializeField] private bool hasCondition = false;
   [SerializeField] private int conditionIndex;
   [SerializeField] private bool canHide = false;
   [SerializeField] private bool fuselageTutorial = false;
+  [SerializeField] private bool hasImageHoder;
+  [SerializeField] private int imageHolderIndex;
 
   private string currentScript = "";
   private string displayScript = "";
@@ -60,6 +63,18 @@ public class NarrationController : MonoBehaviour
 
   private void ShowNextLine()
   {
+    if (hasImageHoder != null)
+    {
+      if (currentScriptInd == imageHolderIndex)
+      {
+        imageHolder.gameObject.SetActive(true);
+      }
+      else
+      {
+        imageHolder.gameObject.SetActive(false);
+      }
+    }
+
     _buttonForNextSent.gameObject.SetActive(false);
     isFinal = currentScriptInd == (scriptLength - 1);
 
@@ -88,6 +103,7 @@ public class NarrationController : MonoBehaviour
         Debug.Log("finish tutorial");
         FindObjectOfType<ImageRecognition>().FinishTutorial();
       }
+
       _buttonForNextSent.gameObject.SetActive(false);
       _buttonForNextScene.gameObject.SetActive(true);
     }
@@ -97,6 +113,10 @@ public class NarrationController : MonoBehaviour
       {
         _buttonForNextSent.gameObject.SetActive(true);
       }
+      else
+      {
+        dialogObj.gameObject.SetActive(false);
+      }
     }
   }
 
@@ -104,6 +124,7 @@ public class NarrationController : MonoBehaviour
   {
     hasCondition = false;
     _buttonForNextSent.gameObject.SetActive(true);
+    dialogObj.gameObject.SetActive(true);
   }
 
   public void OnFinishClick()

@@ -135,10 +135,6 @@ public class ObjectsManager : MonoBehaviour
         InventoryItem inventoryItem = hit.transform.GetComponent<Collectable>().GetInventoryItem();
         Collectable collectable = hit.transform.GetComponent<Collectable>();
         MoseCode code = collectable.componentCode;
-        if (code == MoseCode.A)
-        {
-          FindObjectOfType<NarrationController>().SetHasConditionFalse();
-        }
 
         inventoryItem.OnHitComponent(code);
         string componentName = hit.transform.name;
