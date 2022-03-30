@@ -18,13 +18,14 @@ public class FlyControl : MonoBehaviour
     float speed = 1f;
     float omega;
     float pi;
-    float alpha0 = 1f;
     float roll_max = 15; //degree
+    float roll_eta = 0.01f;  //dumping rate
 
     public string action;
     List<float> parameters;
     public List<job> job_list;
     public float alpha;
+    public float alpha0 = 1f;
     Vector3 velocity;
 
 
@@ -38,11 +39,12 @@ public class FlyControl : MonoBehaviour
         action = null;
         job_list = new List<job>();
 
-        alpha = alpha0;
+        alpha = 0;
         omega = speed / R;
         pi = Mathf.PI;
 
         StartCoroutine(fly_control_keyboard());
+        StartCoroutine(roll_angle_dumping());
     }
 
 
@@ -66,6 +68,7 @@ public class FlyControl : MonoBehaviour
         // action: straight
         if (action == "straight")
         {
+            alpha = 0;
             if (t == 0) action_origin = transform.position;
             var delta = transform.position - action_origin;
             if (delta.magnitude >= parameters[0])
@@ -79,9 +82,34 @@ public class FlyControl : MonoBehaviour
             return;
         }
 
+        // action: accelerate
+        if (action == "accelerate")
+        {
+            alpha = 0;
+            float t_max = Mathf.Sqrt(2 * Mathf.Abs(parameters[0] / parameters[1]));
+            if (t >= t_max)
+            {
+                action = null;
+                return;
+            }
+            velocity += transform.forward * parameters[1] * Time.deltaTime;
+            transform.position += velocity * Time.deltaTime;
+            t += Time.deltaTime;
+            return;
+        }
+
+        // action: change alpha
+        if (action == "change alpha")
+        {
+            alpha = parameters[0];
+            action = null;
+            return;
+        }
+
         // action: take off
         if (action == "take off")
         {
+            alpha = 0;
             if (t == 0) action_origin = transform.position;
             var delta = transform.position - action_origin;
             if (Mathf.Abs(delta.z) >= parameters[1])
@@ -99,7 +127,9 @@ public class FlyControl : MonoBehaviour
             velocity.y = speed * gamma / Mathf.Sqrt(1 + gamma * gamma);
             velocity.z = speed * 1 / Mathf.Sqrt(1 + gamma * gamma);
             transform.position += velocity * Time.deltaTime;
-            transform.Find("orientation").transform.localEulerAngles = new Vector3(-theta/pi*180, 0, 0);
+            Vector3 orientation = transform.Find("orientation").transform.localEulerAngles;
+            orientation.x = -theta / pi * 180;
+            transform.Find("orientation").transform.localEulerAngles = orientation;
             t += Time.deltaTime;
             return;
         }
@@ -107,6 +137,7 @@ public class FlyControl : MonoBehaviour
         // action: landing
         if (action == "landing")
         {
+            alpha = 0;
             if (t == 0) action_origin = transform.position;
             var delta = transform.position - action_origin;
             if (Mathf.Abs(delta.z) >= parameters[1])
@@ -114,7 +145,6 @@ public class FlyControl : MonoBehaviour
                 action = null;
                 return;
             }
-
             float h = parameters[0];
             float L = parameters[1];
             float z = delta.z;
@@ -124,7 +154,9 @@ public class FlyControl : MonoBehaviour
             velocity.y = - speed * gamma / Mathf.Sqrt(1 + gamma * gamma);
             velocity.z = - speed * 1 / Mathf.Sqrt(1 + gamma * gamma);
             transform.position += velocity * Time.deltaTime;
-            transform.Find("orientation").transform.localEulerAngles = new Vector3(theta / pi * 180, 0, 0);
+            Vector3 orientation = transform.Find("orientation").transform.localEulerAngles;
+            orientation.x = +theta / pi * 180;
+            transform.Find("orientation").transform.localEulerAngles = orientation;
             t += Time.deltaTime;
             return;
         }
@@ -134,8 +166,7 @@ public class FlyControl : MonoBehaviour
         {
             velocity = speed * transform.forward;
             transform.position += velocity * Time.deltaTime;
-            transform.Rotate(0, -omega*alpha * Time.deltaTime / pi * 180, 0);
-            transform.Find("orientation").transform.localEulerAngles = new Vector3(0, 0, alpha * roll_max);
+            transform.Rotate(0, -omega * alpha * Time.deltaTime / pi * 180, 0);
             return;
         }
 
@@ -147,7 +178,6 @@ public class FlyControl : MonoBehaviour
             velocity = speed * transform.forward;
             transform.position += velocity * Time.deltaTime;
             transform.Rotate(0, -omega * alpha * Time.deltaTime / pi * 180, 0);
-            transform.Find("orientation").transform.localEulerAngles = new Vector3(0, 0, alpha * roll_max);
             t += Time.deltaTime;
             if (t >= t_max)
             {
@@ -162,14 +192,17 @@ public class FlyControl : MonoBehaviour
     // take off
     void take_off()
     {
-        alpha = alpha0;
+        alpha = 0;
+        velocity = Vector3.zero;
         transform.localEulerAngles = Vector3.zero;
+        transform.localPosition = Vector3.zero;
         transform.Find("orientation").transform.localEulerAngles = Vector3.zero;
         action = null;
         job_list = new List<job>();
-        job_list.Add(new job() { action = "straight", parameters = new List<float> { L1 } });
+        job_list.Add(new job() { action = "accelerate", parameters = new List<float> { L1, speed*speed/(2*L1) } });
         job_list.Add(new job() { action = "take off", parameters = new List<float> { h, L2 } });
         job_list.Add(new job() { action = "straight", parameters = new List<float> { R } });
+        job_list.Add(new job() { action = "change alpha", parameters = new List<float> { alpha0 } });
         job_list.Add(new job() { action = "free flight", parameters = new List<float> { } });
     }
 
@@ -179,12 +212,12 @@ public class FlyControl : MonoBehaviour
     {
         // q0, theta0
         alpha = alpha0;
-        Vector3 r0 = transform.position + Quaternion.AngleAxis(-90f*Mathf.Sign(alpha0), Vector3.up) * velocity.normalized * R;
-        Vector3 r0_star = new Vector3(-R, h, L1+L2+2*R);
+        Vector3 r0 = transform.position + Quaternion.AngleAxis(-90f * Mathf.Sign(alpha0), Vector3.up) * velocity.normalized * R;
+        Vector3 r0_star = new Vector3(-R, h, L1 + L2 + 2 * R);
         Vector3 Delta = r0 - r0_star;
         (float _, int q0) = Atan3(Delta);
         (float theta0, int _) = Atan3(transform.position - r0);
-
+        
         // d0, d1, d2
         float theta = pi / 2 * q0;
         float d0 = (theta - theta0) / (2*pi);
@@ -210,10 +243,10 @@ public class FlyControl : MonoBehaviour
         job_list.Add(new job() { action = "straight", parameters = new List<float> { d1 } });
         job_list.Add(new job() { action = "circle", parameters = new List<float> { alpha0, 0.25f } });
         job_list.Add(new job() { action = "straight", parameters = new List<float> { d2 } });
-        job_list.Add(new job() { action = "circle", parameters = new List<float> { alpha0, 0.25f *q1 } });
+        job_list.Add(new job() { action = "circle", parameters = new List<float> { alpha0, 0.25f * q1 } });
         job_list.Add(new job() { action = "circle", parameters = new List<float> { -alpha0, 0.25f } });
         job_list.Add(new job() { action = "landing", parameters = new List<float> { h, L2 } });
-        job_list.Add(new job() { action = "straight", parameters = new List<float> { L1 } });
+        job_list.Add(new job() { action = "accelerate", parameters = new List<float> { L1, - speed * speed / (2 * L1) } });
     }
 
 
@@ -235,7 +268,7 @@ public class FlyControl : MonoBehaviour
             // landing
             if (Input.GetKeyDown(KeyCode.Return))
             {
-                if (action == "free flight")
+                if (action == "free flight" & alpha == alpha0)
                 {
                     landing();
                     yield return null;
@@ -263,6 +296,30 @@ public class FlyControl : MonoBehaviour
             }
 
             // other
+            yield return null;
+        }
+    }
+
+
+    // roll angle dumping
+    IEnumerator roll_angle_dumping()
+    {
+        while (true)
+        {
+            Vector3 orientation = transform.Find("orientation").transform.localEulerAngles;
+            float roll_angle_ = orientation.z;
+            
+            float angle_offset = 0;
+            if (roll_angle_ > 90) angle_offset = -360;
+            roll_angle_ += angle_offset;
+
+            float roll_angle = alpha * roll_max;
+            roll_angle_ = roll_eta * roll_angle + (1 - roll_eta) * roll_angle_;
+
+            roll_angle_ -= angle_offset;
+
+            orientation.z = roll_angle_;
+            transform.Find("orientation").transform.localEulerAngles = orientation;
             yield return null;
         }
     }
@@ -384,3 +441,84 @@ public class FlyControl : MonoBehaviour
 //job_list.RemoveAt(0);
 //print("action = " + job_new.action + "  para = " + job_new.parameters[0]);
 //print("job_list length = " + job_list.Count);
+
+
+//if (t == 0) action_origin = transform.position;
+//var delta = transform.position - action_origin;
+//if (delta.magnitude >= parameters[0])
+//{
+//    action = null;
+//    return;
+//}
+
+
+
+
+////Debug.Log("forward = " + transform.forward.x + "  " + transform.forward.y + "  " + transform.forward.z);
+////debug<<<
+//Vector3 center = transform.position + new Vector3(-R, h, L1 + L2 + R);
+//GameObject atom2 = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+//atom2.transform.position = center;
+//atom2.transform.localScale = new Vector3(1, 1, 1) * 0.1f;
+//atom2.GetComponent<MeshRenderer>().material = new Material(Shader.Find("Standard"));
+//atom2.GetComponent<MeshRenderer>().material.color = Color.green;
+////debug>>>
+///
+
+
+
+//var direction = transform.rotation * transform.forward;
+////velocity = speed * transform.forward;
+//velocity = speed * direction;   
+//transform.localPosition += velocity * Time.deltaTime;
+//transform.Rotate(0, -omega * alpha * Time.deltaTime / pi * 180, 0);
+
+//var direction = transform.InverseTransformDirection(transform.forward);
+//velocity = speed * direction;
+//transform.localPosition += velocity * Time.deltaTime;
+////transform.Rotate(0, -omega * alpha * Time.deltaTime / pi * 180, 0);
+//transform.localRotation = Quaternion.Euler(0, -omega * alpha * Time.deltaTime, 0);
+//debug >>>
+
+
+//transform.Find("orientation").transform.localEulerAngles = new Vector3(0, 0, alpha * roll_max);
+
+
+
+//Vector3 r0 = transform.position + Quaternion.AngleAxis(-90f*Mathf.Sign(alpha0), Vector3.up) * velocity.normalized * R;
+//debug <<<
+//Vector3 r0 = transform.localPosition + Quaternion.AngleAxis(-90f * Mathf.Sign(alpha0), Vector3.up) * velocity.normalized * R;
+//Vector3 r0 = transform.localPosition + transform.rotation * Quaternion.AngleAxis(-90f * Mathf.Sign(alpha0), Vector3.up) * velocity.normalized * R;
+
+
+//Debug.Log("transform.position = " + transform.position.x + " " + transform.position.y + " " + transform.position.z);
+//Debug.Log("velocity.normalized = " + velocity.normalized.x + " " + velocity.normalized.y + " " + velocity.normalized.z);
+//Debug.Log("r0 = " + r0.x + " " + r0.y + " " + r0.z);
+
+//debug >>>
+
+//debug <<<
+//Vector3 r0_star = new Vector3(-R, h, L1+L2+2*R);
+//Vector3 r0_star = transform.parent.position + transform.parent.rotation * new Vector3(-R, h, L1 + L2 + 2 * R);
+//debug >>>
+
+//debug <<<
+
+
+//GameObject atom = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+//atom.transform.position = r0;
+//atom.transform.localScale = new Vector3(1, 1, 1) * 0.1f;
+//atom.GetComponent<MeshRenderer>().material = new Material(Shader.Find("Standard"));
+//atom.GetComponent<MeshRenderer>().material.color = Color.red;
+
+//GameObject atom1 = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+//atom1.transform.position = r0_star;
+//atom1.transform.localScale = new Vector3(1, 1, 1) * 0.1f;
+//atom1.GetComponent<MeshRenderer>().material = new Material(Shader.Find("Standard"));
+//atom1.GetComponent<MeshRenderer>().material.color = Color.blue;
+
+
+//debug <<<
+//(float _, int q0) = Atan3(transform.InverseTransformDirection(Delta));
+//(float theta0, int _) = Atan3(transform.InverseTransformDirection(transform.position - r0));
+//debug >>>
