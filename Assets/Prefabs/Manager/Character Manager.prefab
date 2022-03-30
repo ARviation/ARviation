@@ -118,19 +118,7 @@ MonoBehaviour:
   - "WOW! The complete P-51 Mustang\u2026 ready to be flown!!! My great-grandpa would
     be so proud."
   - "I want to pilot it right away\u2026 Could you help me with this last step?"
-  fulllScriptsCollectReaction:
-  - Wonderful! The tapered wings are the correct ones!
-  - "Hmm, something doesn\u2019t look right. These are the wrong wings\u2026"
-  - "These wings don\u2019t fit correctly. Gotta find the right ones!"
-  - Excellent work! You got the perfect engine for the P-51 Mustang!
-  - "This engine doesn\u2019t fit the P-51 Mustang. The correct one is still out
-    there!"
-  - "Nice try, but the engine\u2019s not right. Gotta go back..."
-  - Incredible! You found the right propeller for this airplane!
-  - "Oh, this propeller won\u2019t work for the P-51 Mustang. Gotta get the right
-    one!"
-  - "This propeller won\u2019t work with the P-51 Mustang\u2026 But you can still
-    get the correct one!"
+  fullScriptsCollectReaction: []
   fullScriptsFly:
   - Tap the buttons to tell me when to take off and land my airplane.
   - "You\u2019ll see me up in the sky after I take off! And I\u2019ll come back to
@@ -139,3 +127,8 @@ MonoBehaviour:
     you were the ones who fixed it, after all.'
   - "I can\u2019t thank you enough for your help and expertise. Your team is incredible!"
   - See you later!
+  slideImagesIntro:
+  - {fileID: 0}
+  - {fileID: 21300000, guid: fb078300990234f22a38c9430fbf763b, type: 3}
+  - {fileID: 21300000, guid: af5182513843c4568b03ce9ff6b86eb5, type: 3}
+  slideImagesHunt: []

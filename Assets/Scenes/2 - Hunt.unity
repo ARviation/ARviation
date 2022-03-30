@@ -1051,6 +1051,10 @@ PrefabInstance:
       value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 6128518191521412267, guid: e57458d2e63f64176a34efac8cefbe1c, type: 3}
+      propertyPath: slideImagesHunt.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6128518191521412267, guid: e57458d2e63f64176a34efac8cefbe1c, type: 3}
       propertyPath: fullScriptsHunt.Array.data[6]
       value: When you find it, scan it with the tablet and click it!
       objectReference: {fileID: 0}
@@ -1067,6 +1071,10 @@ PrefabInstance:
       value: "Here\u2019s the catch! If you get a part that is not for the P-51 Mustang,
         you won\u2019t know it\u2019s wrong until you begin assembling the airplane."
       objectReference: {fileID: 0}
+    - target: {fileID: 6128518191521412267, guid: e57458d2e63f64176a34efac8cefbe1c, type: 3}
+      propertyPath: slideImagesHunt.Array.data[5]
+      value: 
+      objectReference: {fileID: 21300000, guid: ff9cc55e2f4a04e8c9355cd4f1775030, type: 3}
     - target: {fileID: 6128518191521412267, guid: e57458d2e63f64176a34efac8cefbe1c, type: 3}
       propertyPath: fullScriptsHunt.Array.data[10]
       value: "If any of your parts are incorrect, you\u2019ll have to go back to

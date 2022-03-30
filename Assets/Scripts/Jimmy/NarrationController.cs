@@ -3,100 +3,116 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
+
 
 public class NarrationController : MonoBehaviour
 {
   [SerializeField] private float delay = 0.05f;
   [SerializeField] private GameObject textDisplay;
-  [SerializeField] private Button _buttonForNextScene;
-  [SerializeField] private Button _buttonForNextSent;
-  [SerializeField] private Button _buttonToHide;
-  [SerializeField] private CharacterMoodIndex[] _moodIndices;
+  [SerializeField] private Button btnForNextScene;
+  [SerializeField] private Button btnForNextSentence;
+  [SerializeField] private TMP_Text txtForNextSentence;
+  [SerializeField] private Button buttonToHide;
   [SerializeField] private Image characterHolder;
-  [SerializeField] private Image imageHolder;
   [SerializeField] private GameObject dialogObj;
   [SerializeField] private bool hasCondition = false;
   [SerializeField] private int conditionIndex;
   [SerializeField] private bool canHide = false;
   [SerializeField] private bool fuselageTutorial = false;
   [SerializeField] private bool hasImageHoder;
-  [SerializeField] private int imageHolderIndex;
+  [SerializeField] private Image imageHolder;
 
-  private string currentScript = "";
-  private string displayScript = "";
-  private int currentScriptInd = 0;
-  private int scriptLength = 0;
-  private bool isPlaying = false;
-  private bool isFinal = false;
+  private string _currentScript = "";
+  private string _displayScript = "";
+  private int _currentScriptInd = 0;
+  private int _scriptLength = 0;
+  private bool _isPlaying = false;
+  private bool _isFinal = false;
 
   private void Start()
   {
-    currentScriptInd = 0;
-    _buttonForNextScene.gameObject.SetActive(false);
-    scriptLength = CharacterManager.Instance.GetScriptLength();
+    _currentScriptInd = 0;
+    btnForNextScene.gameObject.SetActive(false);
+    _scriptLength = CharacterManager.Instance.GetScriptLength();
     ShowNextLine();
   }
 
   public void OnNextClick()
   {
-    if (isPlaying || currentScriptInd >= (scriptLength - 1)) return;
+    if (_isPlaying || _currentScriptInd >= (_scriptLength - 1)) return;
     if (canHide)
     {
       HideDialog();
     }
     else
     {
-      currentScriptInd++;
+      _currentScriptInd++;
+      SoundManager.Instance.PlaySFXByIndex(SFXList.Click);
       ShowNextLine();
     }
   }
 
   public void OnSkipClick()
   {
-    if (!isPlaying && currentScriptInd < (scriptLength - 1))
+    if (!_isPlaying && _currentScriptInd < (_scriptLength - 1))
     {
-      currentScriptInd = scriptLength - 1;
+      _currentScriptInd = _scriptLength - 1;
       ShowNextLine();
     }
   }
 
   private void ShowNextLine()
   {
-    if (hasImageHoder != null)
+    ScriptElement scriptElement = CharacterManager.Instance.GetScriptElement(_currentScriptInd);
+    if (hasImageHoder)
     {
-      if (currentScriptInd == imageHolderIndex)
+      Sprite slideImage = scriptElement.slideImage;
+      if (slideImage != null)
       {
         imageHolder.gameObject.SetActive(true);
+        imageHolder.sprite = slideImage;
+        float iWidth = slideImage.rect.width;
+        float iHeight = slideImage.rect.height;
+        float ratio = iWidth / iHeight;
+        iHeight = Mathf.Clamp(iHeight, 320f, 800f);
+        iWidth = iHeight * ratio;
+        imageHolder.rectTransform.sizeDelta = new Vector2(iWidth, iHeight);
       }
       else
       {
         imageHolder.gameObject.SetActive(false);
       }
     }
+    else
+    {
+      imageHolder.gameObject.SetActive(false);
+    }
 
-    _buttonForNextSent.gameObject.SetActive(false);
-    isFinal = currentScriptInd == (scriptLength - 1);
-
-    currentScript = CharacterManager.Instance.GetCharacterScript(currentScriptInd);
-    SoundManager.Instance.PlayVoiceOver(currentScriptInd);
-    characterHolder.sprite = CharacterManager.Instance.GetCharacterMood(_moodIndices[currentScriptInd]);
+    
+    btnForNextSentence.gameObject.SetActive(false);
+    _isFinal = _currentScriptInd == (_scriptLength - 1);
+    _currentScript = scriptElement.script;
+    txtForNextSentence.text = scriptElement.nextBtnText;
+    characterHolder.sprite = CharacterManager.Instance.GetCharacterMood(scriptElement.MoodIndex);
+    SoundManager.Instance.PlayVoiceOver(_currentScriptInd);
     StartCoroutine(ShowText());
   }
 
   private IEnumerator ShowText()
   {
-    isPlaying = true;
-    for (int i = 0; i < currentScript.Length; i++)
+    _isPlaying = true;
+    for (int i = 0; i <= _currentScript.Length; i++)
     {
-      displayScript = currentScript.Substring(0, i);
-      textDisplay.GetComponent<TMP_Text>().text = displayScript;
+      _displayScript = _currentScript.Substring(0, i);
+      textDisplay.GetComponent<TMP_Text>().text = _displayScript;
       yield return new WaitForSeconds(delay);
     }
 
-    isPlaying = false;
+    _isPlaying = false;
 
-    if (isFinal)
+    if (_isFinal)
     {
       if (fuselageTutorial)
       {
@@ -104,14 +120,14 @@ public class NarrationController : MonoBehaviour
         FindObjectOfType<ImageRecognition>().FinishTutorial();
       }
 
-      _buttonForNextSent.gameObject.SetActive(false);
-      _buttonForNextScene.gameObject.SetActive(true);
+      btnForNextSentence.gameObject.SetActive(false);
+      btnForNextScene.gameObject.SetActive(true);
     }
     else
     {
-      if (!hasCondition || currentScriptInd != conditionIndex)
+      if (!hasCondition || _currentScriptInd != conditionIndex)
       {
-        _buttonForNextSent.gameObject.SetActive(true);
+        btnForNextSentence.gameObject.SetActive(true);
       }
       else
       {
@@ -123,7 +139,7 @@ public class NarrationController : MonoBehaviour
   public void SetHasConditionFalse()
   {
     hasCondition = false;
-    _buttonForNextSent.gameObject.SetActive(true);
+    btnForNextSentence.gameObject.SetActive(true);
     dialogObj.gameObject.SetActive(true);
   }
 
@@ -141,8 +157,8 @@ public class NarrationController : MonoBehaviour
   {
     dialogObj.SetActive(true);
     canHide = false;
-    currentScriptInd++;
+    _currentScriptInd++;
     ShowNextLine();
-    _buttonToHide.gameObject.SetActive(false);
+    buttonToHide.gameObject.SetActive(false);
   }
 }

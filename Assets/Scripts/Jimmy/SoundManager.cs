@@ -4,6 +4,7 @@ using UnityEngine;
 
 public enum SFXList : int
 {
+  Click = 0,
 }
 
 public class SoundManager : MonoBehaviour
