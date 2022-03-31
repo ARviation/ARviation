@@ -19,7 +19,7 @@ public class FlyControl_v4 : MonoBehaviour
     float speed = 1f;
     float omega;
     float pi;
-    float roll_max = 15; //degree
+    float roll_max = 15;     //degree
     float roll_eta = 0.01f;  //dumping rate
 
     public string action;
