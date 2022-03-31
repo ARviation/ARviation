@@ -46,25 +46,12 @@ public class ImageRecognition : MonoBehaviour
     {
       if (added.referenceImage.name == prefabToInstantiate[i].name)
       {
-        // if (isTutorial)
-        // {
-        //   if (added.referenceImage.name != "Fuselage" ||
-        //       added.referenceImage.name != prefabToInstantiate[i].name) continue;
-        //   GameObject prefab = Instantiate<GameObject>(prefabToInstantiate[i].prefab, transform.parent);
-        //   prefab.transform.position = added.transform.position;
-        //   prefab.transform.rotation = added.transform.rotation;
-        //
-        //   _arObjs.Add(added.referenceImage.name, prefab);
-        // }
-        // else
-        // {
         GameObject prefab = Instantiate<GameObject>(prefabToInstantiate[i].prefab, transform.parent);
         prefab.transform.position = added.transform.position;
         prefab.transform.rotation = added.transform.rotation;
         prefab.transform.localScale = Vector3.zero;
 
         _arObjs.Add(added.referenceImage.name, prefab);
-        // }
       }
     }
   }
@@ -108,6 +95,7 @@ public class ImageRecognition : MonoBehaviour
 
     foreach (var remove in args.removed)
     {
+      Debug.Log("removed");
       DestroyObj(remove);
     }
   }
@@ -116,14 +104,17 @@ public class ImageRecognition : MonoBehaviour
   {
     if (image.trackingState == TrackingState.Tracking)
     {
+      Debug.Log("update - tracking");
       UpdateTrackingObj(image);
     }
     else if (image.trackingState == TrackingState.Limited)
     {
+      Debug.Log("update limited");
       UpdateLimitedObj(image);
     }
     else
     {
+      Debug.Log("update none");
       UpdateNoneObj(image);
     }
   }
@@ -145,17 +136,19 @@ public class ImageRecognition : MonoBehaviour
     for (int i = 0; i < _arObjs.Count; i++)
     {
       if (!_arObjs.TryGetValue(updated.referenceImage.name, out GameObject prefab)) continue;
-      if (!prefab.GetComponent<ARTrackedImage>().destroyOnRemoval)
-      {
-        prefab.transform.position = updated.transform.position;
-        prefab.transform.rotation = updated.transform.rotation;
-        prefab.transform.localScale = Vector3.one;
-        prefab.SetActive(true);
-      }
-      else
-      {
-        prefab.SetActive(false);
-      }
+      prefab.SetActive(false);
+      // if (!prefab.GetComponent<ARTrackedImage>().destroyOnRemoval)
+      // {
+      //   // prefab.transform.position = updated.transform.position;
+      //   // prefab.transform.rotation = updated.transform.rotation;
+      //   // prefab.transform.localScale = Vector3.one;
+      //   prefab.transform.localScale = Vector3.zero;
+      // }
+      // else
+      // {
+      //   prefab.transform.localScale = Vector3.zero;
+      //   prefab.SetActive(false);
+      // }
     }
   }
 
