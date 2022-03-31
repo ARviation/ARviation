@@ -23,6 +23,7 @@ public class NarrationController : MonoBehaviour
   [SerializeField] private bool fuselageTutorial = false;
   [SerializeField] private bool hasImageHoder;
   [SerializeField] private Image imageHolder;
+  [SerializeField] private bool hasSelection = false;
 
   private string _currentScript = "";
   private string _displayScript = "";
@@ -34,7 +35,8 @@ public class NarrationController : MonoBehaviour
   private void Start()
   {
     _currentScriptInd = 0;
-    btnForNextScene.gameObject.SetActive(false);
+    if (btnForNextScene != null)
+      btnForNextScene.gameObject.SetActive(false);
     _scriptLength = CharacterManager.Instance.GetScriptLength();
     ShowNextLine();
   }
@@ -85,24 +87,28 @@ public class NarrationController : MonoBehaviour
         imageHolder.gameObject.SetActive(false);
       }
     }
-    else
-    {
-      imageHolder.gameObject.SetActive(false);
-    }
+    // else
+    // {
+    //   imageHolder.gameObject.SetActive(false);
+    // }
 
-    
+
     btnForNextSentence.gameObject.SetActive(false);
     _isFinal = _currentScriptInd == (_scriptLength - 1);
     _currentScript = scriptElement.script;
     txtForNextSentence.text = scriptElement.nextBtnText;
     characterHolder.sprite = CharacterManager.Instance.GetCharacterMood(scriptElement.MoodIndex);
-    SoundManager.Instance.PlayVoiceOver(_currentScriptInd);
+    // SoundManager.Instance.PlayVoiceOver(_currentScriptInd);
     StartCoroutine(ShowText());
   }
 
   private IEnumerator ShowText()
   {
     _isPlaying = true;
+
+    if (hasSelection)
+      FindObjectOfType<MultipleSelection>().ShowSelection();
+
     for (int i = 0; i <= _currentScript.Length; i++)
     {
       _displayScript = _currentScript.Substring(0, i);
@@ -116,12 +122,14 @@ public class NarrationController : MonoBehaviour
     {
       if (fuselageTutorial)
       {
-        Debug.Log("finish tutorial");
+        // TODO: add waiting time
+        yield return new WaitForSeconds(3.0f);
         FindObjectOfType<ImageRecognition>().FinishTutorial();
       }
 
       btnForNextSentence.gameObject.SetActive(false);
-      btnForNextScene.gameObject.SetActive(true);
+      if (btnForNextScene != null)
+        btnForNextScene.gameObject.SetActive(true);
     }
     else
     {

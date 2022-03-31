@@ -6,9 +6,9 @@ using UnityEngine.SceneManagement;
 
 public enum SceneIndex : int
 {
-  Intro = 2,
+  Intro = 0,
   Sort = 1,
-  Hunt = 0,
+  Hunt = 2,
   Assembly = 3,
   Fly = 4,
   Engine = 5,

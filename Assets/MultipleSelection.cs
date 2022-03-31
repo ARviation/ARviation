@@ -23,6 +23,7 @@ public class MultipleSelection : MonoBehaviour
   {
     _randomSeed = Random.Range(0, answer.Length);
     InitializeSelectionBox(_randomSeed);
+    HideSelection();
   }
 
   private void InitializeSelectionBox(int randomSeed)
@@ -39,11 +40,27 @@ public class MultipleSelection : MonoBehaviour
   {
     if (o.name == "True")
     {
-      Debug.Log("right choice");
+      GameManager.Instance.ChangeSceneToHunt();
     }
     else
     {
-      Debug.Log("wrong choice");
+      GameManager.Instance.ChangeSceneToEngine();
+    }
+  }
+
+  public void ShowSelection()
+  {
+    foreach (Image image in selectionBox)
+    {
+      image.transform.parent.gameObject.SetActive(true);
+    }
+  }
+
+  public void HideSelection()
+  {
+    foreach (Image image in selectionBox)
+    {
+      image.transform.parent.gameObject.SetActive(false);
     }
   }
 }

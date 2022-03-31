@@ -607,11 +607,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 054fd588e22fb4cc191155586d809743, type: 3}
---- !u!224 &1057625263 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 7570816458608721553, guid: 66021d7d81be04ca8b3efa3a8c284b55, type: 3}
-  m_PrefabInstance: {fileID: 5922758114085222059}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1076849978 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1076849978, guid: 66021d7d81be04ca8b3efa3a8c284b55, type: 3}
@@ -856,81 +851,6 @@ MonoBehaviour:
   m_SerializedLibrary: {fileID: 11400000, guid: 18c1fe2809c904456a054bbff5c76d6a, type: 2}
   m_MaxNumberOfMovingImages: 6
   m_TrackedImagePrefab: {fileID: 0}
---- !u!1 &1765356766
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1765356767}
-  - component: {fileID: 1765356769}
-  - component: {fileID: 1765356768}
-  m_Layer: 5
-  m_Name: Image Holder
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1765356767
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1765356766}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 7.5, y: 7.5, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1057625263}
-  m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 137}
-  m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1765356768
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1765356766}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: ff9cc55e2f4a04e8c9355cd4f1775030, type: 3}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!222 &1765356769
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1765356766}
-  m_CullTransparentMesh: 1
 --- !u!1 &1875504535
 GameObject:
   m_ObjectHideFlags: 0
@@ -1046,51 +966,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6128518191521412267, guid: e57458d2e63f64176a34efac8cefbe1c, type: 3}
-      propertyPath: fullScriptsHunt.Array.size
-      value: 12
-      objectReference: {fileID: 0}
-    - target: {fileID: 6128518191521412267, guid: e57458d2e63f64176a34efac8cefbe1c, type: 3}
-      propertyPath: slideImagesHunt.Array.size
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 6128518191521412267, guid: e57458d2e63f64176a34efac8cefbe1c, type: 3}
-      propertyPath: fullScriptsHunt.Array.data[6]
-      value: When you find it, scan it with the tablet and click it!
-      objectReference: {fileID: 0}
-    - target: {fileID: 6128518191521412267, guid: e57458d2e63f64176a34efac8cefbe1c, type: 3}
-      propertyPath: fullScriptsHunt.Array.data[7]
-      value: Fantastic job! The fuselage is now saved in the storage!
-      objectReference: {fileID: 0}
-    - target: {fileID: 6128518191521412267, guid: e57458d2e63f64176a34efac8cefbe1c, type: 3}
-      propertyPath: fullScriptsHunt.Array.data[8]
-      value: "When your storage fills up, you\u2019ll be able to assemble the airplane."
-      objectReference: {fileID: 0}
-    - target: {fileID: 6128518191521412267, guid: e57458d2e63f64176a34efac8cefbe1c, type: 3}
-      propertyPath: fullScriptsHunt.Array.data[9]
-      value: "Here\u2019s the catch! If you get a part that is not for the P-51 Mustang,
-        you won\u2019t know it\u2019s wrong until you begin assembling the airplane."
-      objectReference: {fileID: 0}
-    - target: {fileID: 6128518191521412267, guid: e57458d2e63f64176a34efac8cefbe1c, type: 3}
-      propertyPath: slideImagesHunt.Array.data[5]
-      value: 
-      objectReference: {fileID: 21300000, guid: ff9cc55e2f4a04e8c9355cd4f1775030, type: 3}
-    - target: {fileID: 6128518191521412267, guid: e57458d2e63f64176a34efac8cefbe1c, type: 3}
-      propertyPath: fullScriptsHunt.Array.data[10]
-      value: "If any of your parts are incorrect, you\u2019ll have to go back to
-        collecting\u2026 So make sure you work together to get the right parts from
-        the first try!"
-      objectReference: {fileID: 0}
-    - target: {fileID: 6128518191521412267, guid: e57458d2e63f64176a34efac8cefbe1c, type: 3}
-      propertyPath: fullScriptsHunt.Array.data[11]
-      value: "I think you\u2019re ready to start. I\u2019ll come back when you have
-        all the parts!"
-      objectReference: {fileID: 0}
-    - target: {fileID: 6128518191521412267, guid: e57458d2e63f64176a34efac8cefbe1c, type: 3}
-      propertyPath: fullScriptsHunt.Array.data[12]
-      value: "I think you\u2019re ready to start. I\u2019ll come back when you have
-        all the parts!"
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e57458d2e63f64176a34efac8cefbe1c, type: 3}
 --- !u!1001 &2142735484
@@ -1157,20 +1032,20 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 5922758114085222061, guid: 66021d7d81be04ca8b3efa3a8c284b55, type: 3}
-      propertyPath: imageHolder
-      value: 
-      objectReference: {fileID: 1765356768}
-    - target: {fileID: 5922758114085222061, guid: 66021d7d81be04ca8b3efa3a8c284b55, type: 3}
-      propertyPath: hasImageHoder
+    - target: {fileID: 1765356767, guid: 66021d7d81be04ca8b3efa3a8c284b55, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 1765356767, guid: 66021d7d81be04ca8b3efa3a8c284b55, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 1765356767, guid: 66021d7d81be04ca8b3efa3a8c284b55, type: 3}
+      propertyPath: m_LocalScale.x
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 5922758114085222061, guid: 66021d7d81be04ca8b3efa3a8c284b55, type: 3}
-      propertyPath: imageHolderIndex
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 5931283678946683407, guid: 66021d7d81be04ca8b3efa3a8c284b55, type: 3}
-      propertyPath: m_IsActive
+    - target: {fileID: 1765356767, guid: 66021d7d81be04ca8b3efa3a8c284b55, type: 3}
+      propertyPath: m_LocalScale.y
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6044512022872967098, guid: 66021d7d81be04ca8b3efa3a8c284b55, type: 3}

@@ -99,9 +99,6 @@ public class ObjectsManager : MonoBehaviour
       nextButton.SetActive(true);
     }
 
-    Debug.Log(localCollectedComponent.ToString());
-    Debug.Log(componentPasscode);
-    Debug.Log(localCollectedComponent.ToString() == componentPasscode);
     _canPass = localCollectedComponent.ToString() == componentPasscode;
     if (assembledPart != (targetComponentNumber - 1) || _hasOpenFinishButton) return;
     _hasOpenFinishButton = true;
