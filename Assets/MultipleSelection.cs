@@ -16,6 +16,7 @@ public class MultipleSelection : MonoBehaviour
 {
   [SerializeField] private Selection[] answer;
   [SerializeField] private Image[] selectionBox;
+  [SerializeField] private SceneIndex sceneWhenSuccess;
 
   private int _randomSeed;
 
@@ -40,7 +41,7 @@ public class MultipleSelection : MonoBehaviour
   {
     if (o.name == "True")
     {
-      GameManager.Instance.ChangeSceneToHunt();
+      GameManager.Instance.
     }
     else
     {

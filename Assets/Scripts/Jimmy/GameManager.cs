@@ -11,10 +11,10 @@ public enum SceneIndex : int
   Hunt = 2,
   Assembly = 3,
   Fly = 4,
-  Engine = 5,
-  Wings = 6,
+  Wings = 5,
+  FuelTank = 6,
   Propeller = 7,
-  FuelTank = 8,
+  Engine = 8,
 }
 
 public class GameManager : MonoBehaviour
@@ -43,6 +43,11 @@ public class GameManager : MonoBehaviour
   private static void ChangeSceneTo(int index)
   {
     SceneManager.LoadScene(index);
+  }
+
+  public void ChangeSceneTo(SceneIndex index)
+  {
+    ChangeSceneTo((int) index);
   }
 
   public void ChangeSceneToIntro()

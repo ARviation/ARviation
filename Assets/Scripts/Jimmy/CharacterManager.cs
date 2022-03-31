@@ -60,10 +60,10 @@ public class CharacterManager : MonoBehaviour
   [SerializeField] private ScriptElement[] scriptElementsAssembly;
   [SerializeField] private ScriptElement[] scriptElementsFly;
   [SerializeField] private ScriptElement[] scriptElementsReaction;
-  [SerializeField] private ScriptElement[] scriptElementsEngine;
   [SerializeField] private ScriptElement[] scriptElementsWings;
-  [SerializeField] private ScriptElement[] scriptElementsPropeller;
   [SerializeField] private ScriptElement[] scriptElementsFuelTank;
+  [SerializeField] private ScriptElement[] scriptElementsPropeller;
+  [SerializeField] private ScriptElement[] scriptElementsEngine;
 
   private void Awake()
   {

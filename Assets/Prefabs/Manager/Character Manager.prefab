@@ -191,40 +191,45 @@ MonoBehaviour:
     nextBtnText: Next
   scriptElementsFly: []
   scriptElementsReaction: []
-  scriptElementsEngine:
-  - script: "Incredible! The engine is last\u2026 You will need the cards shown below.
-      Which of the engine options is correct for the P-51 Mustang?"
-    MoodIndex: 6
-    slideImage: {fileID: 0}
-    nextBtnText: Next
-  - script: Which is the right one?
-    MoodIndex: 13
-    slideImage: {fileID: 0}
-    nextBtnText: Next
   scriptElementsWings:
-  - script: Let's find the wings!
+  - script: "Let\u2019s find the right wings. To do this, you will need the cards
+      shown below. Read them and work together to solve this problem: which of the
+      wing options is correct for the P-51 Mustang?"
     MoodIndex: 7
     slideImage: {fileID: 0}
     nextBtnText: Next
-  - script: Which is the right one?
+  - script: "You think you\u2019ve found the answer? Let\u2019s check! Tap the correct
+      wings below and we\u2019ll see if you\u2019re right."
     MoodIndex: 14
     slideImage: {fileID: 0}
     nextBtnText: Next
-  scriptElementsPropeller:
-  - script: Let's find the propeller!
-    MoodIndex: 8
-    slideImage: {fileID: 0}
-    nextBtnText: Next
-  - script: Which is the right one?
-    MoodIndex: 15
-    slideImage: {fileID: 0}
-    nextBtnText: Next
   scriptElementsFuelTank:
-  - script: Let's find the fuel tank!
+  - script: "Great job! Let\u2019s try the fuel tanks. You will need the cards shown
+      below. Read them and work together to solve this problem: which of the fuel
+      tank options is correct for the P-51 Mustang?"
     MoodIndex: 6
     slideImage: {fileID: 0}
     nextBtnText: Next
-  - script: Which is the right one?
+  - script: Find the correct fuel tanks!
     MoodIndex: 16
+    slideImage: {fileID: 0}
+    nextBtnText: Next
+  scriptElementsPropeller:
+  - script: "Awesome! Let\u2019s do it with the propeller now. You will need the
+      cards shown below. Which of the propeller options is correct for the P-51 Mustang?"
+    MoodIndex: 8
+    slideImage: {fileID: 0}
+    nextBtnText: Next
+  - script: Find the correct propeller!
+    MoodIndex: 15
+    slideImage: {fileID: 0}
+    nextBtnText: Next
+  scriptElementsEngine:
+  - script: "Incredible! The engine is last\u2026 You will need the cards shown below."
+    MoodIndex: 6
+    slideImage: {fileID: 0}
+    nextBtnText: Next
+  - script: Find the correct engine!
+    MoodIndex: 14
     slideImage: {fileID: 0}
     nextBtnText: Next
