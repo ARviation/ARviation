@@ -1,7 +1,10 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Serialization;
+using UnityEngine.UI;
 
 public enum CharacterMoodIndex : int
 {
@@ -37,17 +40,30 @@ public enum CharacterMoodIndex : int
   Thinking_4 = 29,
 }
 
+[Serializable]
+public struct ScriptElement
+{
+  public string script;
+  public CharacterMoodIndex MoodIndex;
+  public Sprite slideImage;
+  public string nextBtnText;
+}
+
 public class CharacterManager : MonoBehaviour
 {
   public static CharacterManager Instance = null;
 
   [SerializeField] public Sprite[] characterMoodList;
-  [SerializeField] private string[] fullScriptsIntro;
-  [SerializeField] private string[] fullScriptsHunt;
-  [SerializeField] private string[] fullScriptsAssembly;
-  [SerializeField] private string[] fulllScriptsCollectReaction;
-  [SerializeField] private string[] fullScriptsFly;
-
+  [SerializeField] private ScriptElement[] scriptElementsIntro;
+  [SerializeField] private ScriptElement[] scriptElementsSort;
+  [SerializeField] private ScriptElement[] scriptElementsHunt;
+  [SerializeField] private ScriptElement[] scriptElementsAssembly;
+  [SerializeField] private ScriptElement[] scriptElementsFly;
+  [SerializeField] private ScriptElement[] scriptElementsReaction;
+  [SerializeField] private ScriptElement[] scriptElementsEngine;
+  [SerializeField] private ScriptElement[] scriptElementsWings;
+  [SerializeField] private ScriptElement[] scriptElementsPropeller;
+  [SerializeField] private ScriptElement[] scriptElementsFuelTank;
 
   private void Awake()
   {
@@ -61,56 +77,45 @@ public class CharacterManager : MonoBehaviour
     }
   }
 
-
-  public string GetCharacterScript(int index)
+  public ScriptElement GetScriptElement(int index)
   {
     int sceneIndex = GameManager.Instance.GetCurrentSceneIndex();
-    if (sceneIndex == (int) SceneIndex.Intro)
+    return sceneIndex switch
     {
-      return fullScriptsIntro[index];
-    }
-    else if (sceneIndex == (int) SceneIndex.Hunt)
-    {
-      return fullScriptsHunt[index];
-    }
-    else if (sceneIndex == (int) SceneIndex.Assembly)
-    {
-      return fullScriptsAssembly[index];
-    }
-    else if (sceneIndex == (int) SceneIndex.Fly)
-    {
-      return fullScriptsFly[index];
-    }
-
-    return "";
-  }
-
-  public string GetCollectReactionScript(int index)
-  {
-    return fulllScriptsCollectReaction[index];
+      (int) SceneIndex.Intro => scriptElementsIntro[index],
+      (int) SceneIndex.Sort => scriptElementsSort[index],
+      (int) SceneIndex.Hunt => scriptElementsHunt[index],
+      (int) SceneIndex.Assembly => scriptElementsAssembly[index],
+      (int) SceneIndex.Fly => scriptElementsFly[index],
+      (int) SceneIndex.Engine => scriptElementsEngine[index],
+      (int) SceneIndex.Wings => scriptElementsWings[index],
+      (int) SceneIndex.Propeller => scriptElementsPropeller[index],
+      (int) SceneIndex.FuelTank => scriptElementsFuelTank[index],
+      _ => throw new ArgumentOutOfRangeException()
+    };
   }
 
   public int GetScriptLength()
   {
     int sceneIndex = GameManager.Instance.GetCurrentSceneIndex();
-    if (sceneIndex == (int) SceneIndex.Intro)
+    return sceneIndex switch
     {
-      return fullScriptsIntro.Length;
-    }
-    else if (sceneIndex == (int) SceneIndex.Hunt)
-    {
-      return fullScriptsHunt.Length;
-    }
-    else if (sceneIndex == (int) SceneIndex.Assembly)
-    {
-      return fullScriptsAssembly.Length;
-    }
-    else if (sceneIndex == (int) SceneIndex.Fly)
-    {
-      return fullScriptsFly.Length;
-    }
+      (int) SceneIndex.Intro => scriptElementsIntro.Length,
+      (int) SceneIndex.Sort => scriptElementsSort.Length,
+      (int) SceneIndex.Hunt => scriptElementsHunt.Length,
+      (int) SceneIndex.Assembly => scriptElementsAssembly.Length,
+      (int) SceneIndex.Fly => scriptElementsFly.Length,
+      (int) SceneIndex.Engine => scriptElementsEngine.Length,
+      (int) SceneIndex.Wings => scriptElementsWings.Length,
+      (int) SceneIndex.Propeller => scriptElementsPropeller.Length,
+      (int) SceneIndex.FuelTank => scriptElementsFuelTank.Length,
+      _ => 0
+    };
+  }
 
-    return 0;
+  public ScriptElement GetCollectReactionScript(int index)
+  {
+    return scriptElementsReaction[index];
   }
 
   public Sprite GetCharacterMood(CharacterMoodIndex index)

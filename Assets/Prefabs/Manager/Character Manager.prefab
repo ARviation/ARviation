@@ -74,68 +74,157 @@ MonoBehaviour:
   - {fileID: 21300000, guid: f0e7cac80824742608a82146aa1fca45, type: 3}
   - {fileID: 21300000, guid: 44afb0993f77949fe838f923628a49c6, type: 3}
   - {fileID: 21300000, guid: 17877ae9479d14c7581a7b8b3e5bf760, type: 3}
-  fullScriptsIntro:
-  - "Hi there! My name is Charlie - I\u2019m 17 years old and love airplanes."
-  - "I got my license to fly recently! And there\u2019s one airplane I love in particular\u2026
-    My great-grandfather\u2019s P-51 Mustang!"
-  - He was a Tuskegee Airman during World War II, when he piloted his P-51 Mustang
-    for air battles.
-  - "I\u2019m very proud of him! He was one of the first African American pilots
-    in the United States Air Force."
-  - "I\u2019m excited to fly his old plane. But\u2026 it\u2019s missing a few parts
-    that got lost or damaged throughout the years."
-  - I heard that this place has the parts my airplane needs. And that your talented
-    team can help me fix the P-51 Mustang.
-  - 'Each of you has been assigned a role: physicist, historian, or engineer.'
-  - And each of you has been given a manual. Take your time to read it. Your manual
-    will help you become an expert in your role.
-  - "When you finish reading, press the button with your role on the screen. That
-    way, I\u2019ll know you\u2019ve become an expert!"
-  fullScriptsHunt:
-  - "Awesome! You\u2019re a team of experts now!"
-  - It looks like the parts for my airplane are scattered all over the place and
-    protected by codes. You can see the part types and options in the Parts List.
-  - 'Your storage can only keep one option for each part type: for example, you can
-    only store 1 set of wings, 1 propeller, 1 engine...'
-  - Make sure that the parts you collect are the right ones for the P-51 Mustang!
-    You can do this by using your manuals and working together to solve the codes
-    for the correct parts.
-  - Let me help you with the first part! It is called the fuselage, or the body of
-    the airplane.
-  - "The fuselage\u2019s code is A\u2026 Can you find the marker with the letter
-    A in the exhibit? It looks just like this."
-  - When you find it, scan it with the tablet!
-  - Fantastic job! The fuselage is now saved in the storage!
-  - "When your storage fills up, you\u2019ll be able to assemble the airplane."
-  - "Here\u2019s the catch! If you get a part that is not for the P-51 Mustang, you
-    won\u2019t know it\u2019s wrong until you begin assembling the airplane."
-  - "If any of your parts are incorrect, you\u2019ll have to go back to collecting\u2026
-    So make sure you work together to get the right parts from the first try!"
-  - "I think you\u2019re ready to start. I\u2019ll come back when you have all the
-    parts!"
-  fullScriptsAssembly:
-  - Awesome, your storage is full! Tap the button to start assembling the airplane.
-  - "WOW! The complete P-51 Mustang\u2026 ready to be flown!!! My great-grandpa would
-    be so proud."
-  - "I want to pilot it right away\u2026 Could you help me with this last step?"
-  fulllScriptsCollectReaction:
-  - Wonderful! The tapered wings are the correct ones!
-  - "Hmm, something doesn\u2019t look right. These are the wrong wings\u2026"
-  - "These wings don\u2019t fit correctly. Gotta find the right ones!"
-  - Excellent work! You got the perfect engine for the P-51 Mustang!
-  - "This engine doesn\u2019t fit the P-51 Mustang. The correct one is still out
-    there!"
-  - "Nice try, but the engine\u2019s not right. Gotta go back..."
-  - Incredible! You found the right propeller for this airplane!
-  - "Oh, this propeller won\u2019t work for the P-51 Mustang. Gotta get the right
-    one!"
-  - "This propeller won\u2019t work with the P-51 Mustang\u2026 But you can still
-    get the correct one!"
-  fullScriptsFly:
-  - Tap the buttons to tell me when to take off and land my airplane.
-  - "You\u2019ll see me up in the sky after I take off! And I\u2019ll come back to
-    the ground when I land."
-  - 'Oh, and you can also take photos with my airplane! I would love it if you did:
-    you were the ones who fixed it, after all.'
-  - "I can\u2019t thank you enough for your help and expertise. Your team is incredible!"
-  - See you later!
+  scriptElementsIntro:
+  - script: "Hi there! My name is Charlie - I\u2019m 17 years old and love airplanes."
+    MoodIndex: 11
+    slideImage: {fileID: 21300000, guid: 0aa3bc4d477cc4be88cb5b3d9e64c2c6, type: 3}
+    nextBtnText: Next
+  - script: "I got my license to fly recently! And there\u2019s one airplane I love
+      in particular\u2026 My great-grandfather\u2019s P-51 Mustang!"
+    MoodIndex: 6
+    slideImage: {fileID: 21300000, guid: fb078300990234f22a38c9430fbf763b, type: 3}
+    nextBtnText: Next
+  - script: He was a Tuskegee Airman during World War II, when he piloted his P-51
+      Mustang as one of the first African American pilots in the United States Air
+      Force.
+    MoodIndex: 22
+    slideImage: {fileID: 21300000, guid: af5182513843c4568b03ce9ff6b86eb5, type: 3}
+    nextBtnText: Next
+  - script: "I\u2019m excited to fly his old plane. But\u2026 it\u2019s missing a
+      few parts that got lost or damaged throughout the years. It looks like this
+      place has all the parts my airplane needs..."
+    MoodIndex: 26
+    slideImage: {fileID: 0}
+    nextBtnText: Next
+  - script: I think that your talented team of experts can fix my P-51 Mustang! Will
+      you help me?
+    MoodIndex: 2
+    slideImage: {fileID: 0}
+    nextBtnText: Yes
+  scriptElementsSort:
+  - script: "The cards you were given have valuable information to find the parts
+      for my airplane, but they\u2019re a mess! Let\u2019s start by sorting them.
+      Place each card in the matching color section on the airplane diagram."
+    MoodIndex: 0
+    slideImage: {fileID: 0}
+    nextBtnText: Sorted!
+  - script: "Hmmm, very interesting\u2026 For some parts, you have more than one
+      card, which means you have more than one option. You have to find which option
+      is the correct one for the P-51 Mustang!."
+    MoodIndex: 0
+    slideImage: {fileID: 0}
+    nextBtnText: Next
+  scriptElementsHunt:
+  - script: "Awesome! You\u2019re a team of experts now!"
+    MoodIndex: 11
+    slideImage: {fileID: 0}
+    nextBtnText: Next
+  - script: It looks like the parts for my airplane are scattered all over the place
+      and protected by codes. You can see the part types and options in the Parts
+      List.
+    MoodIndex: 12
+    slideImage: {fileID: 0}
+    nextBtnText: Next
+  - script: 'Your storage can only keep one option for each part type: for example,
+      you can only store 1 set of wings, 1 propeller, 1 engine...'
+    MoodIndex: 11
+    slideImage: {fileID: 0}
+    nextBtnText: Next
+  - script: Make sure that the parts you collect are the right ones for the P-51
+      Mustang! You can do this by using your manuals and working together to solve
+      the codes for the correct parts.
+    MoodIndex: 12
+    slideImage: {fileID: 0}
+    nextBtnText: Next
+  - script: Let me help you with the first part! It is called the fuselage, or the
+      body of the airplane.
+    MoodIndex: 12
+    slideImage: {fileID: 0}
+    nextBtnText: Next
+  - script: "The fuselage\u2019s code is A\u2026 Can you find the marker with the
+      letter A in the exhibit? It looks just like this."
+    MoodIndex: 12
+    slideImage: {fileID: 21300000, guid: ff9cc55e2f4a04e8c9355cd4f1775030, type: 3}
+    nextBtnText: Next
+  - script: When you find it, scan it with the tablet and click it!
+    MoodIndex: 12
+    slideImage: {fileID: 0}
+    nextBtnText: Next
+  - script: Fantastic job! The fuselage is now saved in the storage!
+    MoodIndex: 12
+    slideImage: {fileID: 0}
+    nextBtnText: Next
+  - script: "When your storage fills up, you\u2019ll be able to assemble the airplane."
+    MoodIndex: 12
+    slideImage: {fileID: 0}
+    nextBtnText: Next
+  - script: "Here\u2019s the catch! If you get a part that is not for the P-51 Mustang,
+      you won\u2019t know it\u2019s wrong until you begin assembling the airplane."
+    MoodIndex: 12
+    slideImage: {fileID: 0}
+    nextBtnText: Next
+  - script: "If any of your parts are incorrect, you\u2019ll have to go back to collecting\u2026
+      So make sure you work together to get the right parts from the first try!"
+    MoodIndex: 12
+    slideImage: {fileID: 0}
+    nextBtnText: Next
+  - script: "I think you\u2019re ready to start. I\u2019ll come back when you have
+      all the parts!"
+    MoodIndex: 12
+    slideImage: {fileID: 0}
+    nextBtnText: Next
+  scriptElementsAssembly:
+  - script: Awesome, your storage is full! Tap the button to start assembling the
+      airplane.
+    MoodIndex: 2
+    slideImage: {fileID: 0}
+    nextBtnText: Next
+  - script: "WOW! The complete P-51 Mustang\u2026 ready to be flown!!! My great-grandpa
+      would be so proud."
+    MoodIndex: 6
+    slideImage: {fileID: 0}
+    nextBtnText: Next
+  - script: "I want to pilot it right away\u2026 Could you help me with this last
+      step?"
+    MoodIndex: 24
+    slideImage: {fileID: 0}
+    nextBtnText: Next
+  scriptElementsFly: []
+  scriptElementsReaction: []
+  scriptElementsEngine:
+  - script: "Incredible! The engine is last\u2026 You will need the cards shown below.
+      Which of the engine options is correct for the P-51 Mustang?"
+    MoodIndex: 6
+    slideImage: {fileID: 0}
+    nextBtnText: Next
+  - script: Which is the right one?
+    MoodIndex: 13
+    slideImage: {fileID: 0}
+    nextBtnText: Next
+  scriptElementsWings:
+  - script: Let's find the wings!
+    MoodIndex: 7
+    slideImage: {fileID: 0}
+    nextBtnText: Next
+  - script: Which is the right one?
+    MoodIndex: 14
+    slideImage: {fileID: 0}
+    nextBtnText: Next
+  scriptElementsPropeller:
+  - script: Let's find the propeller!
+    MoodIndex: 8
+    slideImage: {fileID: 0}
+    nextBtnText: Next
+  - script: Which is the right one?
+    MoodIndex: 15
+    slideImage: {fileID: 0}
+    nextBtnText: Next
+  scriptElementsFuelTank:
+  - script: Let's find the fuel tank!
+    MoodIndex: 6
+    slideImage: {fileID: 0}
+    nextBtnText: Next
+  - script: Which is the right one?
+    MoodIndex: 16
+    slideImage: {fileID: 0}
+    nextBtnText: Next

@@ -7,9 +7,14 @@ using UnityEngine.SceneManagement;
 public enum SceneIndex : int
 {
   Intro = 0,
-  Hunt = 1,
-  Assembly = 2,
-  Fly = 3,
+  Sort = 1,
+  Hunt = 2,
+  Assembly = 3,
+  Fly = 4,
+  Engine = 5,
+  Wings = 6,
+  Propeller = 7,
+  FuelTank = 8,
 }
 
 public class GameManager : MonoBehaviour
@@ -22,8 +27,6 @@ public class GameManager : MonoBehaviour
   public const string FuelTank = "FuelTank";
   public const string Wheels = "Wheels";
   public const string Tail = "Tail";
-
-  private SceneIndex currentSceneIndex = SceneIndex.Intro;
 
   private void Awake()
   {
@@ -44,13 +47,16 @@ public class GameManager : MonoBehaviour
 
   public void ChangeSceneToIntro()
   {
-    currentSceneIndex = SceneIndex.Intro;
-    ChangeSceneTo((int) currentSceneIndex);
+    ChangeSceneTo((int) SceneIndex.Intro);
+  }
+
+  public void ChangeSceneToSort()
+  {
+    ChangeSceneTo((int) SceneIndex.Sort);
   }
 
   public void ChangeSceneToHunt()
   {
-    currentSceneIndex = SceneIndex.Hunt;
     ChangeSceneTo((int) SceneIndex.Hunt);
   }
 
@@ -66,6 +72,26 @@ public class GameManager : MonoBehaviour
   public void ChangeSceneToFly()
   {
     ChangeSceneTo((int) SceneIndex.Fly);
+  }
+
+  public void ChangeSceneToEngine()
+  {
+    ChangeSceneTo((int) SceneIndex.Engine);
+  }
+
+  public void ChangeSceneToWings()
+  {
+    ChangeSceneTo((int) SceneIndex.Wings);
+  }
+
+  public void ChangeSceneToPropeller()
+  {
+    ChangeSceneTo((int) SceneIndex.Propeller);
+  }
+
+  public void ChangeSceneToFuelTank()
+  {
+    ChangeSceneTo((int) SceneIndex.FuelTank);
   }
 
   public int GetCurrentSceneIndex()

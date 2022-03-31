@@ -71,6 +71,7 @@ public class InventoryItem : MonoBehaviour
     {
       case GameManager.Fuselage:
         FindObjectOfType<ObjectsManager>().localCollectedComponent.Fuselage = code;
+        FindObjectOfType<NarrationController>().SetHasConditionFalse();
         break;
       case GameManager.Engine:
         FindObjectOfType<ObjectsManager>().localCollectedComponent.Engine = code;

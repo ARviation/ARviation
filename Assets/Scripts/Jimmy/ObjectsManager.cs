@@ -99,10 +99,6 @@ public class ObjectsManager : MonoBehaviour
       nextButton.SetActive(true);
     }
 
-
-    Debug.Log(localCollectedComponent.ToString());
-    Debug.Log(componentPasscode);
-    Debug.Log(localCollectedComponent.ToString() == componentPasscode);
     _canPass = localCollectedComponent.ToString() == componentPasscode;
     if (assembledPart != (targetComponentNumber - 1) || _hasOpenFinishButton) return;
     _hasOpenFinishButton = true;
@@ -136,10 +132,6 @@ public class ObjectsManager : MonoBehaviour
         InventoryItem inventoryItem = hit.transform.GetComponent<Collectable>().GetInventoryItem();
         Collectable collectable = hit.transform.GetComponent<Collectable>();
         MoseCode code = collectable.componentCode;
-        if (code == MoseCode.A)
-        {
-          FindObjectOfType<NarrationController>().SetHasConditionFalse();
-        }
 
         inventoryItem.OnHitComponent(code);
         string componentName = hit.transform.name;
