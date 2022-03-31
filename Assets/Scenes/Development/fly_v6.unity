@@ -1230,7 +1230,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3f603f38d01809468351fc40349c233, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  is_AR_Camera: 0
+  is_AR_Camera: 1
   airplane_prefab: {fileID: 7419229118397895217, guid: 89a2b5c4a255d984ebf7f007417129ef, type: 3}
 --- !u!4 &1098889044
 Transform:
@@ -1571,8 +1571,6 @@ GameObject:
   - component: {fileID: 1603844216}
   - component: {fileID: 1603844219}
   - component: {fileID: 1603844218}
-  - component: {fileID: 1603844221}
-  - component: {fileID: 1603844220}
   - component: {fileID: 1603844222}
   m_Layer: 0
   m_Name: AR Session Origin
@@ -1636,38 +1634,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_PlanePrefab: {fileID: 373265080020709647, guid: 53565f36c242d4340b3f626a865dff16, type: 3}
   m_DetectionMode: 1
---- !u!114 &1603844220
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1603844215}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2d5a3b1eea79f124c990b0e18844e8ec, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_PlacedPrefab: {fileID: 7419229118397895217, guid: 89a2b5c4a255d984ebf7f007417129ef, type: 3}
-  button_launch: {fileID: 942672070}
-  button_return: {fileID: 1776343612}
-  m_ARSessionOrigin: {fileID: 1603844216}
---- !u!114 &1603844221
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1603844215}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4957b39481c51fc4cac5319dd2282f3a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_PlacedPrefab: {fileID: 5677613229528284190, guid: 22ae303efe37ea44c970918cb7abcdbc, type: 3}
-  button_launch: {fileID: 942672070}
-  button_return: {fileID: 1776343612}
-  m_ARSessionOrigin: {fileID: 1603844216}
 --- !u!114 &1603844222
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1680,7 +1646,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f7381069f7064846b94be056229b971, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_PlacedPrefab: {fileID: 3840911898441613750, guid: fb86b1d1a67786f40af7938d369acc80, type: 3}
+  m_PlacedPrefab: {fileID: 7419229118397895217, guid: a76a2ca2010c1fa4ab24267438b58d6e, type: 3}
   m_ARSessionOrigin: {fileID: 1603844216}
 --- !u!1 &1714564619
 GameObject:
@@ -2238,6 +2204,7 @@ GameObject:
   - component: {fileID: 1932333509}
   - component: {fileID: 1932333508}
   - component: {fileID: 1932333507}
+  - component: {fileID: 1932333511}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -2330,6 +2297,19 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1932333511
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1932333506}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e37e65641bacf740b6d54e793190664, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slider_m: {fileID: 761855436}
 --- !u!1 &2014932625
 GameObject:
   m_ObjectHideFlags: 0

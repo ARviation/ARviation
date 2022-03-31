@@ -30,13 +30,15 @@ public class FlyControl_v4 : MonoBehaviour
     Vector3 velocity;
 
     Slider slider_alpha;
+    Button button_launch;
+    Button button_return;
 
     float t;
     Vector3 action_origin;
 
 
-    // Start
-    void Start()
+    // Awake
+    void Awake()
     {
         action = null;
         job_list = new List<job>();
@@ -48,7 +50,12 @@ public class FlyControl_v4 : MonoBehaviour
         StartCoroutine(fly_control_keyboard());
         StartCoroutine(roll_angle_dumping());
 
+        // button
         slider_alpha = GameObject.Find("Canvas").transform.Find("slider_control").GetComponent<Slider>();
+        button_launch = GameObject.Find("Canvas").transform.Find("button_launch").GetComponent<Button>();
+        button_return = GameObject.Find("Canvas").transform.Find("button_return").GetComponent<Button>();
+        button_launch.onClick.AddListener(button_launch_task);
+        button_return.onClick.AddListener(button_return_task);
     }
 
 
@@ -56,11 +63,10 @@ public class FlyControl_v4 : MonoBehaviour
     void Update()
     {
         //Debug.Log("action = " + action + "  len(job_list) = " + job_list.Count);
-        
+
         // read alpha
         float value = slider_alpha.value;
-        //Debug.Log("value = " + value);
-        alpha = 1 - 2 * value;
+        if (action != null) alpha = 1 - 2 * value;
 
         // new action
         if (action == null)
@@ -369,7 +375,7 @@ public class FlyControl_v4 : MonoBehaviour
 
     // button_land_task
     public void button_return_task()
-    {        
+    {
         if (action == "free flight")
         {
             landing();
