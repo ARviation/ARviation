@@ -35,7 +35,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 1125, y: -850}
+  m_AnchoredPosition: {x: 1125, y: -620}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &946567995
@@ -593,10 +593,9 @@ MonoBehaviour:
   buttonToHide: {fileID: 0}
   characterHolder: {fileID: 5797829613043750871}
   dialogObj: {fileID: 0}
-  hasCondition: 0
-  conditionIndex: 0
+  hasHideCondition: 0
+  hideConditionIndex: 0
   canHide: 0
-  fuselageTutorial: 0
   hasImageHoder: 1
   imageHolder: {fileID: 5797829614078470035}
   hasSelection: 0

@@ -386,17 +386,6 @@ Transform:
   m_Father: {fileID: 1752953440}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &612495607 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3220809560607417605, guid: 054fd588e22fb4cc191155586d809743, type: 3}
-  m_PrefabInstance: {fileID: 999557240}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2abb4bf761fcb40c0bb70ee99330a8e4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -618,11 +607,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ccc281fb84ead457b88f16a9583c1299, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &1484621844 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6044512023309508485, guid: 66021d7d81be04ca8b3efa3a8c284b55, type: 3}
-  m_PrefabInstance: {fileID: 5922758114085222059}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1629960354
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -738,7 +722,7 @@ PrefabInstance:
     - target: {fileID: 1752057808544842722, guid: f93f87787262f4c9da4f3437d6e51572, type: 3}
       propertyPath: nextButton
       value: 
-      objectReference: {fileID: 1484621844}
+      objectReference: {fileID: 0}
     - target: {fileID: 1752057808544842722, guid: f93f87787262f4c9da4f3437d6e51572, type: 3}
       propertyPath: collectPanel
       value: 
@@ -966,6 +950,27 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6128518191521412267, guid: e57458d2e63f64176a34efac8cefbe1c, type: 3}
+      propertyPath: scriptElementsHunt.Array.size
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6128518191521412267, guid: e57458d2e63f64176a34efac8cefbe1c, type: 3}
+      propertyPath: scriptElementsHunt.Array.data[5].script
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6128518191521412267, guid: e57458d2e63f64176a34efac8cefbe1c, type: 3}
+      propertyPath: scriptElementsHunt.Array.data[6].script
+      value: Excellent, the fuselage is now saved in your storage! To collect the
+        rest of the parts, you have to use the Morse code in the cards.
+      objectReference: {fileID: 0}
+    - target: {fileID: 6128518191521412267, guid: e57458d2e63f64176a34efac8cefbe1c, type: 3}
+      propertyPath: scriptElementsHunt.Array.data[5].MoodIndex
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6128518191521412267, guid: e57458d2e63f64176a34efac8cefbe1c, type: 3}
+      propertyPath: scriptElementsHunt.Array.data[6].MoodIndex
+      value: 18
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e57458d2e63f64176a34efac8cefbe1c, type: 3}
 --- !u!1001 &2142735484
@@ -1032,21 +1037,25 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1765356767, guid: 66021d7d81be04ca8b3efa3a8c284b55, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 1000
+    - target: {fileID: 612141015, guid: 66021d7d81be04ca8b3efa3a8c284b55, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -620
       objectReference: {fileID: 0}
-    - target: {fileID: 1765356767, guid: 66021d7d81be04ca8b3efa3a8c284b55, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 500
+    - target: {fileID: 5551571358894332082, guid: 66021d7d81be04ca8b3efa3a8c284b55, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1765356767, guid: 66021d7d81be04ca8b3efa3a8c284b55, type: 3}
-      propertyPath: m_LocalScale.x
+    - target: {fileID: 5922758114085222061, guid: 66021d7d81be04ca8b3efa3a8c284b55, type: 3}
+      propertyPath: hasHideCondition
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 1765356767, guid: 66021d7d81be04ca8b3efa3a8c284b55, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1
+    - target: {fileID: 5922758114085222061, guid: 66021d7d81be04ca8b3efa3a8c284b55, type: 3}
+      propertyPath: hasTutorialDelay
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5922758114085222061, guid: 66021d7d81be04ca8b3efa3a8c284b55, type: 3}
+      propertyPath: hideConditionIndex
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6044512022872967098, guid: 66021d7d81be04ca8b3efa3a8c284b55, type: 3}
       propertyPath: m_Name
@@ -1136,9 +1145,5 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6044512023309508489, guid: 66021d7d81be04ca8b3efa3a8c284b55, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 612495607}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 66021d7d81be04ca8b3efa3a8c284b55, type: 3}

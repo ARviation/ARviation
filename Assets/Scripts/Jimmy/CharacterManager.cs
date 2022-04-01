@@ -53,6 +53,7 @@ public class CharacterManager : MonoBehaviour
   [SerializeField] public Sprite[] characterMoodList;
   [SerializeField] private ScriptElement[] scriptElementsIntro;
   [SerializeField] private ScriptElement[] scriptElementsSort;
+  [SerializeField] private ScriptElement[] scriptElementsFinishSelect;
   [SerializeField] private ScriptElement[] scriptElementsHunt;
   [SerializeField] private ScriptElement[] scriptElementsAssembly;
   [SerializeField] private ScriptElement[] scriptElementsFly;
@@ -81,6 +82,7 @@ public class CharacterManager : MonoBehaviour
     {
       (int) SceneIndex.Intro => scriptElementsIntro[index],
       (int) SceneIndex.Sort => scriptElementsSort[index],
+      (int) SceneIndex.FinishSelect => scriptElementsFinishSelect[index],
       (int) SceneIndex.Hunt => scriptElementsHunt[index],
       (int) SceneIndex.Assembly => scriptElementsAssembly[index],
       (int) SceneIndex.Fly => scriptElementsFly[index],
@@ -99,6 +101,7 @@ public class CharacterManager : MonoBehaviour
     {
       (int) SceneIndex.Intro => scriptElementsIntro.Length,
       (int) SceneIndex.Sort => scriptElementsSort.Length,
+      (int) SceneIndex.FinishSelect=> scriptElementsFinishSelect.Length,
       (int) SceneIndex.Hunt => scriptElementsHunt.Length,
       (int) SceneIndex.Assembly => scriptElementsAssembly.Length,
       (int) SceneIndex.Fly => scriptElementsFly.Length,

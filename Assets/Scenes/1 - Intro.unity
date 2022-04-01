@@ -364,11 +364,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3220809560607417604, guid: 054fd588e22fb4cc191155586d809743, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1366
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3220809560607417604, guid: 054fd588e22fb4cc191155586d809743, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1024
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3220809560607417604, guid: 054fd588e22fb4cc191155586d809743, type: 3}
       propertyPath: m_LocalPosition.z
@@ -701,14 +701,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Sound Manager
       objectReference: {fileID: 0}
-    - target: {fileID: 6440714509679935794, guid: 1bf3648c778e54d018a4da9c38306278, type: 3}
-      propertyPath: sfxList.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6440714509679935794, guid: 1bf3648c778e54d018a4da9c38306278, type: 3}
-      propertyPath: sfxList.Array.data[0]
-      value: 
-      objectReference: {fileID: 8300000, guid: 6f6a52c21825d4987b703ac03053911b, type: 3}
     - target: {fileID: 6440714509679935795, guid: 1bf3648c778e54d018a4da9c38306278, type: 3}
       propertyPath: m_RootOrder
       value: 8

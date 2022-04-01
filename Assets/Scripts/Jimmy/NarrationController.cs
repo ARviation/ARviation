@@ -5,7 +5,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 
-
+// TODO: clean useless code and comments after finish implementing all narration function
 public class NarrationController : MonoBehaviour
 {
   [SerializeField] private float delay = 0.05f;
@@ -16,10 +16,13 @@ public class NarrationController : MonoBehaviour
   [SerializeField] private Button buttonToHide;
   [SerializeField] private Image characterHolder;
   [SerializeField] private GameObject dialogObj;
-  [SerializeField] private bool hasCondition = false;
-  [SerializeField] private int conditionIndex;
+  [SerializeField] private bool hasHideCondition = false;
+  [SerializeField] private int hideConditionIndex;
+
   [SerializeField] private bool canHide = false;
-  [SerializeField] private bool fuselageTutorial = false;
+
+  // [SerializeField] private bool hasTutorialDelay = false;
+  // [SerializeField] private int tutorialDelayIndex;
   [SerializeField] private bool hasImageHoder;
   [SerializeField] private Image imageHolder;
   [SerializeField] private bool hasSelection = false;
@@ -92,14 +95,11 @@ public class NarrationController : MonoBehaviour
         imageHolder.gameObject.SetActive(false);
       }
     }
-    // else
-    // {
-    //   imageHolder.gameObject.SetActive(false);
-    // }
-
 
     btnForNextSentence.gameObject.SetActive(false);
     btnForPrevSentence.gameObject.SetActive(false);
+    if (btnForNextScene != null)
+      btnForNextScene.gameObject.SetActive(false);
     _isFinal = _currentScriptInd == (_scriptLength - 1);
     _currentScript = scriptElement.script;
     characterHolder.sprite = CharacterManager.Instance.GetCharacterMood(scriptElement.MoodIndex);
@@ -126,23 +126,23 @@ public class NarrationController : MonoBehaviour
 
     _isPlaying = false;
 
+    // if (hasTutorialDelay && _currentScriptInd == tutorialDelayIndex)
+    // {
+    // StartCoroutine(StartTutorialDelay(3.0f));
+    // }
+    // else
+    // {
     if (_isFinal)
     {
-      if (fuselageTutorial)
-      {
-        // TODO: add waiting time
-        yield return new WaitForSeconds(3.0f);
-        FindObjectOfType<ImageRecognition>().FinishTutorial();
-      }
-
-      btnForNextSentence.gameObject.SetActive(false);
-      btnForPrevSentence.gameObject.SetActive(false);
+      // btnForNextSentence.gameObject.SetActive(false);
+      if (_currentScriptInd != 0)
+        btnForPrevSentence.gameObject.SetActive(true);
       if (btnForNextScene != null)
         btnForNextScene.gameObject.SetActive(true);
     }
     else
     {
-      if (!hasCondition || _currentScriptInd != conditionIndex)
+      if (!hasHideCondition || _currentScriptInd != hideConditionIndex)
       {
         btnForNextSentence.gameObject.SetActive(true);
         if (_currentScriptInd != 0)
@@ -150,14 +150,33 @@ public class NarrationController : MonoBehaviour
       }
       else
       {
-        dialogObj.gameObject.SetActive(false);
+        HideDialog();
+        // }
       }
     }
   }
 
+// private IEnumerator StartTutorialDelay(float duration)
+// {
+//   float timer = 0f;
+//   while (timer <= duration)
+//   {
+//     Debug.Log(timer);
+//     timer += 0.1f;
+//     yield return new WaitForSeconds(0.1f);
+//   }
+//
+//   FindObjectOfType<ImageRecognition>().FinishTutorial();
+//   hasTutorialDelay = false;
+//   btnForNextSentence.gameObject.SetActive(false);
+//   btnForPrevSentence.gameObject.SetActive(false);
+//   if (btnForNextScene != null)
+//     btnForNextScene.gameObject.SetActive(true);
+// }
+
   public void SetHasConditionFalse()
   {
-    hasCondition = false;
+    hasHideCondition = false;
     btnForNextSentence.gameObject.SetActive(true);
     btnForPrevSentence.gameObject.SetActive(true);
     dialogObj.gameObject.SetActive(true);

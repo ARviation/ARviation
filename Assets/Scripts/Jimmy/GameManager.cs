@@ -8,13 +8,14 @@ public enum SceneIndex : int
 {
   Intro = 0,
   Sort = 1,
-  Hunt = 2,
-  Assembly = 3,
-  Fly = 4,
-  Wings = 5,
-  FuelTank = 6,
-  Propeller = 7,
-  Engine = 8,
+  FinishSelect = 2,
+  Hunt = 3,
+  Assembly = 4,
+  Fly = 5,
+  Wings = 6,
+  FuelTank = 7,
+  Propeller = 8,
+  Engine = 9,
 }
 
 public class GameManager : MonoBehaviour
@@ -58,6 +59,11 @@ public class GameManager : MonoBehaviour
   public void ChangeSceneToSort()
   {
     ChangeSceneTo((int) SceneIndex.Sort);
+  }
+
+  public void ChangeSceneToFinishSelect()
+  {
+    ChangeSceneTo((int) SceneIndex.FinishSelect);
   }
 
   public void ChangeSceneToHunt()

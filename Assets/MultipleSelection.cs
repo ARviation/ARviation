@@ -58,11 +58,17 @@ public class MultipleSelection : MonoBehaviour
   private IEnumerator ToNextComponent(GameObject o)
   {
     float timer = 0;
+    float offset = 10f;
     o.GetComponent<Image>().color = new Color(255f / 255f, 255f / 255f, 213f / 255f);
     while (timer <= 2)
     {
-      timer += 0.1f;
-      yield return new WaitForSeconds(0.1f);
+      var position = o.transform.position;
+      Vector3 oldPosition = position;
+      Vector3 newPosition = new Vector3(position.x, position.y + offset, position.z);
+      o.transform.position = newPosition;
+      offset *= -1;
+      timer += 0.3f;
+      yield return new WaitForSeconds(0.3f);
     }
 
     o.GetComponent<Image>().color = Color.white;

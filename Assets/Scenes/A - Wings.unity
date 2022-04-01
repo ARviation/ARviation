@@ -673,58 +673,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6128518191521412267, guid: e57458d2e63f64176a34efac8cefbe1c, type: 3}
-      propertyPath: scriptElementsWings.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 6128518191521412267, guid: e57458d2e63f64176a34efac8cefbe1c, type: 3}
-      propertyPath: scriptElementsSort.Array.data[0].script
-      value: "The cards you were given have valuable information to find the parts
-        for my airplane, but they\u2019re a mess! "
-      objectReference: {fileID: 0}
-    - target: {fileID: 6128518191521412267, guid: e57458d2e63f64176a34efac8cefbe1c, type: 3}
-      propertyPath: scriptElementsWings.Array.data[0].script
-      value: "Let\u2019s find the correct wings. To do this, you need the cards shown
-        above. Tap the button when you have the cards!"
-      objectReference: {fileID: 0}
-    - target: {fileID: 6128518191521412267, guid: e57458d2e63f64176a34efac8cefbe1c, type: 3}
-      propertyPath: scriptElementsWings.Array.data[1].script
-      value: 'Now, read the cards and work together to answer this question: Which
-        wings are correct for the P-51 Mustang?'
-      objectReference: {fileID: 0}
-    - target: {fileID: 6128518191521412267, guid: e57458d2e63f64176a34efac8cefbe1c, type: 3}
-      propertyPath: scriptElementsWings.Array.data[2].script
-      value: "You think you\u2019ve found the answer? Let\u2019s check! Tap the correct
-        wings above and we\u2019ll see if you\u2019re right."
-      objectReference: {fileID: 0}
-    - target: {fileID: 6128518191521412267, guid: e57458d2e63f64176a34efac8cefbe1c, type: 3}
-      propertyPath: scriptElementsSort.Array.data[0].MoodIndex
-      value: 16
-      objectReference: {fileID: 0}
-    - target: {fileID: 6128518191521412267, guid: e57458d2e63f64176a34efac8cefbe1c, type: 3}
-      propertyPath: scriptElementsIntro.Array.data[1].MoodIndex
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 6128518191521412267, guid: e57458d2e63f64176a34efac8cefbe1c, type: 3}
-      propertyPath: scriptElementsIntro.Array.data[3].MoodIndex
-      value: 27
-      objectReference: {fileID: 0}
-    - target: {fileID: 6128518191521412267, guid: e57458d2e63f64176a34efac8cefbe1c, type: 3}
-      propertyPath: scriptElementsIntro.Array.data[4].MoodIndex
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 6128518191521412267, guid: e57458d2e63f64176a34efac8cefbe1c, type: 3}
-      propertyPath: scriptElementsWings.Array.data[0].MoodIndex
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6128518191521412267, guid: e57458d2e63f64176a34efac8cefbe1c, type: 3}
-      propertyPath: scriptElementsWings.Array.data[1].MoodIndex
-      value: 26
-      objectReference: {fileID: 0}
-    - target: {fileID: 6128518191521412267, guid: e57458d2e63f64176a34efac8cefbe1c, type: 3}
-      propertyPath: scriptElementsWings.Array.data[2].MoodIndex
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e57458d2e63f64176a34efac8cefbe1c, type: 3}
 --- !u!1001 &6440714509168930040

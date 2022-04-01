@@ -80,7 +80,7 @@ MonoBehaviour:
     slideImage: {fileID: 21300000, guid: 0aa3bc4d477cc4be88cb5b3d9e64c2c6, type: 3}
   - script: "I got my license to fly recently! And there\u2019s one airplane I love
       in particular\u2026 My great-grandfather\u2019s P-51 Mustang!"
-    MoodIndex: 6
+    MoodIndex: 7
     slideImage: {fileID: 21300000, guid: fb078300990234f22a38c9430fbf763b, type: 3}
   - script: He was a Tuskegee Airman during World War II, when he piloted his P-51
       Mustang as one of the first African American pilots in the United States Air
@@ -90,15 +90,15 @@ MonoBehaviour:
   - script: "I\u2019m excited to fly his old plane. But\u2026 it\u2019s missing a
       few parts that got lost or damaged throughout the years. It looks like this
       place has all the parts my airplane needs..."
-    MoodIndex: 26
+    MoodIndex: 27
     slideImage: {fileID: 0}
   - script: I think that your talented team of experts can fix my P-51 Mustang! Will
       you help me?
-    MoodIndex: 2
+    MoodIndex: 4
     slideImage: {fileID: 0}
   scriptElementsSort:
   - script: "The cards you were given have valuable information to find the parts
-      for my airplane, but they\u2019re a mess!"
+      for my airplane, but they\u2019re a mess! "
     MoodIndex: 16
     slideImage: {fileID: 0}
   - script: "Let\u2019s start by sorting them. Place each card in the matching color
@@ -113,52 +113,35 @@ MonoBehaviour:
       I can help you out.
     MoodIndex: 17
     slideImage: {fileID: 0}
+  scriptElementsFinishSelect:
+  - script: "You did it! Now that you found all the correct parts, take their cards
+      and keep them with you, you\u2019ll need them!"
+    MoodIndex: 21
+    slideImage: {fileID: 0}
   scriptElementsHunt:
-  - script: "Awesome! You\u2019re a team of experts now!"
-    MoodIndex: 11
+  - script: "Where are these parts hiding? All around the exhibit! They\u2019re protected
+      by letters that you have to scan with the tablet."
+    MoodIndex: 27
     slideImage: {fileID: 0}
-  - script: It looks like the parts for my airplane are scattered all over the place
-      and protected by codes. You can see the part types and options in the Parts
-      List.
-    MoodIndex: 12
+  - script: "Let me help you with the first part: it\u2019s called the fuselage.
+      The top of the fuselage card has\u2026 a code!"
+    MoodIndex: 28
     slideImage: {fileID: 0}
-  - script: 'Your storage can only keep one option for each part type: for example,
-      you can only store 1 set of wings, 1 propeller, 1 engine...'
-    MoodIndex: 11
+  - script: This is Morse code, used to send encrypted messages as sounds. The dots
+      are short sounds and the dashes are long sounds.
+    MoodIndex: 1
     slideImage: {fileID: 0}
-  - script: Make sure that the parts you collect are the right ones for the P-51
-      Mustang! You can do this by using your manuals and working together to solve
-      the codes for the correct parts.
-    MoodIndex: 12
+  - script: "Using our Morse Code guide, I see that the fuselage\u2019s code is A.
+      It sounds like this\u2026"
+    MoodIndex: 14
     slideImage: {fileID: 0}
-  - script: Let me help you with the first part! It is called the fuselage, or the
-      body of the airplane.
-    MoodIndex: 12
-    slideImage: {fileID: 0}
-  - script: "The fuselage\u2019s code is A\u2026 Can you find the marker with the
-      letter A in the exhibit? It looks just like this."
-    MoodIndex: 12
+  - script: Find the letter A in the exhibit and scan it with the tablet. It looks
+      just like this!
+    MoodIndex: 2
     slideImage: {fileID: 21300000, guid: ff9cc55e2f4a04e8c9355cd4f1775030, type: 3}
-  - script: When you find it, scan it with the tablet and click it!
-    MoodIndex: 12
-    slideImage: {fileID: 0}
-  - script: Fantastic job! The fuselage is now saved in the storage!
-    MoodIndex: 12
-    slideImage: {fileID: 0}
-  - script: "When your storage fills up, you\u2019ll be able to assemble the airplane."
-    MoodIndex: 12
-    slideImage: {fileID: 0}
-  - script: "Here\u2019s the catch! If you get a part that is not for the P-51 Mustang,
-      you won\u2019t know it\u2019s wrong until you begin assembling the airplane."
-    MoodIndex: 12
-    slideImage: {fileID: 0}
-  - script: "If any of your parts are incorrect, you\u2019ll have to go back to collecting\u2026
-      So make sure you work together to get the right parts from the first try!"
-    MoodIndex: 12
-    slideImage: {fileID: 0}
-  - script: "I think you\u2019re ready to start. I\u2019ll come back when you have
-      all the parts!"
-    MoodIndex: 12
+  - script: Excellent, the fuselage is now saved in your storage! To collect the
+      rest of the parts, you have to use the Morse code in the cards.
+    MoodIndex: 18
     slideImage: {fileID: 0}
   scriptElementsAssembly:
   - script: Awesome, your storage is full! Tap the button to start assembling the
@@ -176,36 +159,39 @@ MonoBehaviour:
   scriptElementsFly: []
   scriptElementsReaction: []
   scriptElementsWings:
-  - script: "Let\u2019s find the right wings. To do this, you will need the cards
-      shown below. Read them and work together to solve this problem: which of the
-      wing options is correct for the P-51 Mustang?"
-    MoodIndex: 7
+  - script: "Let\u2019s find the correct wings. To do this, you need the cards shown
+      above. Tap the button when you have the cards!"
+    MoodIndex: 1
+    slideImage: {fileID: 0}
+  - script: 'Now, read the cards and work together to answer this question: Which
+      wings are correct for the P-51 Mustang?'
+    MoodIndex: 26
     slideImage: {fileID: 0}
   - script: "You think you\u2019ve found the answer? Let\u2019s check! Tap the correct
-      wings below and we\u2019ll see if you\u2019re right."
-    MoodIndex: 14
+      wings above and we\u2019ll see if you\u2019re right."
+    MoodIndex: 0
     slideImage: {fileID: 0}
   scriptElementsFuelTank:
   - script: "Great job! Let\u2019s try the fuel tanks. You will need the cards shown
-      below. Read them and work together to solve this problem: which of the fuel
-      tank options is correct for the P-51 Mustang?"
-    MoodIndex: 6
+      above to figure out which fuel tanks are correct for the P-51 Mustang."
+    MoodIndex: 18
     slideImage: {fileID: 0}
   - script: Find the correct fuel tanks!
-    MoodIndex: 16
+    MoodIndex: 1
     slideImage: {fileID: 0}
   scriptElementsPropeller:
-  - script: "Awesome! Let\u2019s do it with the propeller now. You will need the
-      cards shown below. Which of the propeller options is correct for the P-51 Mustang?"
+  - script: Awesome! The propeller is next. You will need the cards shown above to
+      figure out the correct propeller.
     MoodIndex: 8
     slideImage: {fileID: 0}
   - script: Find the correct propeller!
-    MoodIndex: 15
+    MoodIndex: 0
     slideImage: {fileID: 0}
   scriptElementsEngine:
-  - script: "Incredible! The engine is last\u2026 You will need the cards shown below."
-    MoodIndex: 6
+  - script: "Fantastic! The engine is last\u2026 You will need the cards shown above
+      to figure out the correct engine."
+    MoodIndex: 17
     slideImage: {fileID: 0}
   - script: Find the correct engine!
-    MoodIndex: 14
+    MoodIndex: 1
     slideImage: {fileID: 0}
