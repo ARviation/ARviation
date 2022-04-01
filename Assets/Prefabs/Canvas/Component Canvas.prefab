@@ -1131,12 +1131,13 @@ MonoBehaviour:
     correctness: 0
   - selectionImage: {fileID: 21300000, guid: 0f9348dcbd7c55e4baca145d599ff482, type: 3}
     correctness: 1
-  - selectionImage: {fileID: 0}
+  - selectionImage: {fileID: 21300000, guid: e940c517be5756a44be9d4448c8b9d9e, type: 3}
     correctness: 1
   selectionBox:
   - {fileID: 8283085678249338163}
   - {fileID: 8283085678350009024}
-  - {fileID: 0}
+  - {fileID: 6702261110807283820}
+  sceneWhenSuccess: 8
 --- !u!1 &8283085677157902183
 GameObject:
   m_ObjectHideFlags: 0

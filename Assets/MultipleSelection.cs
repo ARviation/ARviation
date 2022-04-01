@@ -41,12 +41,58 @@ public class MultipleSelection : MonoBehaviour
   {
     if (o.name == "True")
     {
-      GameManager.Instance.
+      OnSelectionTrue(o);
     }
     else
     {
-      GameManager.Instance.ChangeSceneToEngine();
+      OnSelectionFalse(o);
     }
+  }
+
+  private void OnSelectionTrue(GameObject o)
+  {
+    SoundManager.Instance.PlaySFXByIndex(SFXList.Success);
+    StartCoroutine(ToNextComponent(o));
+  }
+
+  private IEnumerator ToNextComponent(GameObject o)
+  {
+    float timer = 0;
+    o.GetComponent<Image>().color = new Color(255f / 255f, 255f / 255f, 213f / 255f);
+    while (timer <= 2)
+    {
+      timer += 0.1f;
+      yield return new WaitForSeconds(0.1f);
+    }
+
+    o.GetComponent<Image>().color = Color.white;
+    GameManager.Instance.ChangeSceneTo(sceneWhenSuccess);
+  }
+
+  private void OnSelectionFalse(GameObject o)
+  {
+    SoundManager.Instance.PlaySFXByIndex(SFXList.Fail);
+    StartCoroutine(StartShimmer(o));
+  }
+
+  private IEnumerator StartShimmer(GameObject o)
+  {
+    float timer = 0;
+    float offset = 10f;
+    // o.GetComponent<Image>().color = Color.red;
+    o.GetComponent<Image>().color = new Color(255f / 255f, 165f / 255f, 165f / 255f);
+    while (timer <= 2)
+    {
+      var position = o.transform.position;
+      Vector3 oldPosition = position;
+      Vector3 newPosition = new Vector3(position.x + offset, position.y, position.z);
+      o.transform.position = newPosition;
+      offset *= -1;
+      timer += 0.1f;
+      yield return new WaitForSeconds(0.1f);
+    }
+
+    o.GetComponent<Image>().color = Color.white;
   }
 
   public void ShowSelection()

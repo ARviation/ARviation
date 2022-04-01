@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657838, g: 0.49641234, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.4440681, g: 0.49333978, b: 0.57238823, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -539,7 +539,7 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1231296403, guid: de2e95e516a0744c6b593a78dc10fa67, type: 3}
+    - target: {fileID: 946567993, guid: de2e95e516a0744c6b593a78dc10fa67, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1344237990}
@@ -629,24 +629,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1655430279670602719, guid: de2e95e516a0744c6b593a78dc10fa67, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1655430280224493268, guid: de2e95e516a0744c6b593a78dc10fa67, type: 3}
-      propertyPath: m_text
-      value: "Hmmm, very interesting\u2026 For some parts, you have more than one
-        card, which means you have more than one option. You have to find which option
-        is the correct one for the P-51 Mustang!."
-      objectReference: {fileID: 0}
-    - target: {fileID: 1655430280224493268, guid: de2e95e516a0744c6b593a78dc10fa67, type: 3}
-      propertyPath: m_fontSize
-      value: 12
-      objectReference: {fileID: 0}
-    - target: {fileID: 1655430280224493268, guid: de2e95e516a0744c6b593a78dc10fa67, type: 3}
-      propertyPath: m_fontSizeBase
-      value: 12
-      objectReference: {fileID: 0}
-    - target: {fileID: 1655430280224493268, guid: de2e95e516a0744c6b593a78dc10fa67, type: 3}
-      propertyPath: m_enableAutoSizing
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

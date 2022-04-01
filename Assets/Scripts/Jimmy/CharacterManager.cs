@@ -1,9 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public enum CharacterMoodIndex : int
@@ -46,7 +44,6 @@ public struct ScriptElement
   public string script;
   public CharacterMoodIndex MoodIndex;
   public Sprite slideImage;
-  public string nextBtnText;
 }
 
 public class CharacterManager : MonoBehaviour

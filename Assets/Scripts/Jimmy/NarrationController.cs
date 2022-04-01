@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 
@@ -13,7 +12,7 @@ public class NarrationController : MonoBehaviour
   [SerializeField] private GameObject textDisplay;
   [SerializeField] private Button btnForNextScene;
   [SerializeField] private Button btnForNextSentence;
-  [SerializeField] private TMP_Text txtForNextSentence;
+  [SerializeField] private Button btnForPrevSentence;
   [SerializeField] private Button buttonToHide;
   [SerializeField] private Image characterHolder;
   [SerializeField] private GameObject dialogObj;
@@ -56,13 +55,19 @@ public class NarrationController : MonoBehaviour
     }
   }
 
+  public void OnPrevClick()
+  {
+    if (_currentScriptInd - 1 < 0) return;
+    _currentScriptInd--;
+    SoundManager.Instance.PlaySFXByIndex(SFXList.Click);
+    ShowNextLine();
+  }
+
   public void OnSkipClick()
   {
-    if (!_isPlaying && _currentScriptInd < (_scriptLength - 1))
-    {
-      _currentScriptInd = _scriptLength - 1;
-      ShowNextLine();
-    }
+    if (_isPlaying || _currentScriptInd >= (_scriptLength - 1)) return;
+    _currentScriptInd = _scriptLength - 1;
+    ShowNextLine();
   }
 
   private void ShowNextLine()
@@ -94,9 +99,9 @@ public class NarrationController : MonoBehaviour
 
 
     btnForNextSentence.gameObject.SetActive(false);
+    btnForPrevSentence.gameObject.SetActive(false);
     _isFinal = _currentScriptInd == (_scriptLength - 1);
     _currentScript = scriptElement.script;
-    txtForNextSentence.text = scriptElement.nextBtnText;
     characterHolder.sprite = CharacterManager.Instance.GetCharacterMood(scriptElement.MoodIndex);
     // SoundManager.Instance.PlayVoiceOver(_currentScriptInd);
     StartCoroutine(ShowText());
@@ -106,8 +111,11 @@ public class NarrationController : MonoBehaviour
   {
     _isPlaying = true;
 
-    if (hasSelection)
-      FindObjectOfType<MultipleSelection>().ShowSelection();
+    if (_isFinal)
+    {
+      if (hasSelection)
+        FindObjectOfType<MultipleSelection>().ShowSelection();
+    }
 
     for (int i = 0; i <= _currentScript.Length; i++)
     {
@@ -128,6 +136,7 @@ public class NarrationController : MonoBehaviour
       }
 
       btnForNextSentence.gameObject.SetActive(false);
+      btnForPrevSentence.gameObject.SetActive(false);
       if (btnForNextScene != null)
         btnForNextScene.gameObject.SetActive(true);
     }
@@ -136,6 +145,8 @@ public class NarrationController : MonoBehaviour
       if (!hasCondition || _currentScriptInd != conditionIndex)
       {
         btnForNextSentence.gameObject.SetActive(true);
+        if (_currentScriptInd != 0)
+          btnForPrevSentence.gameObject.SetActive(true);
       }
       else
       {
@@ -148,6 +159,7 @@ public class NarrationController : MonoBehaviour
   {
     hasCondition = false;
     btnForNextSentence.gameObject.SetActive(true);
+    btnForPrevSentence.gameObject.SetActive(true);
     dialogObj.gameObject.SetActive(true);
   }
 
