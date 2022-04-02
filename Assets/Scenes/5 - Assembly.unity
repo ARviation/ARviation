@@ -8733,7 +8733,7 @@ PrefabInstance:
     - target: {fileID: 1752057808544842722, guid: f93f87787262f4c9da4f3437d6e51572, type: 3}
       propertyPath: finishAssembleButton
       value: 
-      objectReference: {fileID: 4428806758492275754}
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f93f87787262f4c9da4f3437d6e51572, type: 3}
 --- !u!33 &1755931683152581755
@@ -15994,6 +15994,30 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1141136722}
+    - target: {fileID: 807772860937694194, guid: 671f24c2f59714a908bb877cb1148a44, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 807772860937694194, guid: 671f24c2f59714a908bb877cb1148a44, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2139789485010760807, guid: 671f24c2f59714a908bb877cb1148a44, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3099140030830470835, guid: 671f24c2f59714a908bb877cb1148a44, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 03e15aeaa455b49eeaa9e867a212eaca, type: 3}
+    - target: {fileID: 3365432476798398471, guid: 671f24c2f59714a908bb877cb1148a44, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 3365432476798398471, guid: 671f24c2f59714a908bb877cb1148a44, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 3870721809357022689, guid: 671f24c2f59714a908bb877cb1148a44, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -16082,6 +16106,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Assembly Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 5990307671274307741, guid: 671f24c2f59714a908bb877cb1148a44, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6323404037130839423, guid: 671f24c2f59714a908bb877cb1148a44, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -16089,6 +16117,22 @@ PrefabInstance:
     - target: {fileID: 7924453551081416870, guid: 671f24c2f59714a908bb877cb1148a44, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 3056
+      objectReference: {fileID: 0}
+    - target: {fileID: 7954591604364238775, guid: 671f24c2f59714a908bb877cb1148a44, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8969153220555528775, guid: 671f24c2f59714a908bb877cb1148a44, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 9190798658573197932, guid: 671f24c2f59714a908bb877cb1148a44, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 9190798658573197932, guid: 671f24c2f59714a908bb877cb1148a44, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 100
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 671f24c2f59714a908bb877cb1148a44, type: 3}
@@ -18358,11 +18402,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &4428806758492275754 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 631023683812624228, guid: 671f24c2f59714a908bb877cb1148a44, type: 3}
-  m_PrefabInstance: {fileID: 3870721809310188366}
-  m_PrefabAsset: {fileID: 0}
 --- !u!23 &4429468746749205881
 MeshRenderer:
   m_ObjectHideFlags: 0

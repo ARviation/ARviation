@@ -821,7 +821,7 @@ MonoBehaviour:
     prefab: {fileID: 8039645369248759262, guid: 8758b5d0feb3241b49fd9eb8be758da4, type: 3}
     code: 7
   - name: Landing
-    prefab: {fileID: 706682281903784119, guid: 32b892d72be78476cbcddb8182d42f87, type: 3}
+    prefab: {fileID: 7017650364674233262, guid: 858e83b0697fa4110b9d61d5f56f8d83, type: 3}
     code: 8
   - name: Tail
     prefab: {fileID: 4353619874711839416, guid: d58bedf4e67a446cda0ebd60b60a2429, type: 3}
@@ -830,7 +830,7 @@ MonoBehaviour:
     prefab: {fileID: 7867264085243926959, guid: 37dc380f927d74699a4c27a2441d1114, type: 3}
     code: 11
   - name: Fuel
-    prefab: {fileID: 706682281903784119, guid: 78c60bc7941b84ce29d67b56a4904afe, type: 3}
+    prefab: {fileID: 2767983330513251450, guid: a9cb223f1db8941e08b168f206489d3b, type: 3}
     code: 9
   - name: WrongFuel
     prefab: {fileID: 706682281903784119, guid: 0faf6c9b91a1f4a95a8a5503c2c0308a, type: 3}
