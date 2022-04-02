@@ -39,7 +39,7 @@ public class ObjectsManager : MonoBehaviour
   private bool _isDrag = false;
   private float _posX = .0f;
   private float _posY = .0f;
-  private bool _showPass = false;
+  private bool hasCollectAll = false;
   private bool _canPass = false;
   private bool _finishAssemble = false;
   private bool _hasOpenFinishButton = false;
@@ -93,14 +93,16 @@ public class ObjectsManager : MonoBehaviour
 
   private void Update()
   {
-    _showPass = collectedComponent == targetComponentNumber;
-    if (_showPass)
+    Debug.Log(collectedComponent);
+    hasCollectAll = collectedComponent == targetComponentNumber;
+    if (hasCollectAll)
     {
-      FindObjectOfType<NarrationController>().RevealDialog(false);
+      FindObjectOfType<NarrationController>().RevealDialog();
     }
 
     _canPass = localCollectedComponent.ToString() == componentPasscode;
     if (assembledPart != (targetComponentNumber - 1) || _hasOpenFinishButton) return;
+    FindObjectOfType<NarrationController>().RevealDialog();
     _hasOpenFinishButton = true;
     finishAssembleButton.SetActive(true);
   }

@@ -75,7 +75,8 @@ public class InventoryItem : MonoBehaviour
         if (code == (int) MorseCode.A)
         {
           FindObjectOfType<ObjectsManager>().localCollectedComponent.Fuselage = code;
-          FindObjectOfType<NarrationController>().SetHasConditionFalse();
+          FindObjectOfType<NarrationController>().RevealDialog();
+          FindObjectOfType<NarrationController>().RemoveHadHideCondition();
           FindObjectOfType<NarrationController>().CollectRight();
         }
         else

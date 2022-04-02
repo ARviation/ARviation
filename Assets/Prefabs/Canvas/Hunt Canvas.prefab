@@ -4352,13 +4352,13 @@ MonoBehaviour:
   hasHideCondition: 1
   hideConditionIndex: 5
   hideBackground: {fileID: 3185830246308340376}
-  arCamera: {fileID: 0}
   hasImageHoder: 1
   imageHolder: {fileID: 1765356768}
   hasSelection: 0
   isHunting: 1
   huntingMorseIndex: 3
-  huntingHideIndex: 7
+  huntingHideIndex: 6
+  _currentScriptInd: 0
 --- !u!1 &6392385111299242344
 GameObject:
   m_ObjectHideFlags: 0

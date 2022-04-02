@@ -44,6 +44,10 @@ public struct ScriptElement
   public string script;
   public CharacterMoodIndex MoodIndex;
   public Sprite slideImage;
+  public bool showPrev;
+  public bool showNext;
+  public bool showNextScene;
+  public bool hideAtStart;
 }
 
 public class CharacterManager : MonoBehaviour

@@ -49,3 +49,4 @@ MonoBehaviour:
   smoothness2D: 1
   smoothness: 0.2
   controllerText: {fileID: 0}
+  rotateDeg: 45
