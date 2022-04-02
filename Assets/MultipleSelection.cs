@@ -17,7 +17,9 @@ public class MultipleSelection : MonoBehaviour
   [SerializeField] private Selection[] answer;
   [SerializeField] private Image[] selectionBox;
   [SerializeField] private SceneIndex sceneWhenSuccess;
+  [SerializeField] private float feedbackDuration = 1.5f;
 
+  private bool _canTriggerFeedback = true;
   private int _randomSeed;
 
   private void Start()
@@ -39,6 +41,7 @@ public class MultipleSelection : MonoBehaviour
 
   public void OnClickChoice(GameObject o)
   {
+    if (!_canTriggerFeedback) return;
     if (o.name == "True")
     {
       OnSelectionTrue(o);
@@ -52,18 +55,18 @@ public class MultipleSelection : MonoBehaviour
   private void OnSelectionTrue(GameObject o)
   {
     SoundManager.Instance.PlaySFXByIndex(SFXList.Success);
-    StartCoroutine(ToNextComponent(o));
+    StartCoroutine(CorrectChoice(o));
   }
 
-  private IEnumerator ToNextComponent(GameObject o)
+  private IEnumerator CorrectChoice(GameObject o)
   {
     float timer = 0;
     float offset = 10f;
     o.GetComponent<Image>().color = new Color(255f / 255f, 255f / 255f, 213f / 255f);
-    while (timer <= 2)
+    _canTriggerFeedback = false;
+    while (timer <= feedbackDuration)
     {
       var position = o.transform.position;
-      Vector3 oldPosition = position;
       Vector3 newPosition = new Vector3(position.x, position.y + offset, position.z);
       o.transform.position = newPosition;
       offset *= -1;
@@ -71,6 +74,7 @@ public class MultipleSelection : MonoBehaviour
       yield return new WaitForSeconds(0.3f);
     }
 
+    _canTriggerFeedback = true;
     o.GetComponent<Image>().color = Color.white;
     GameManager.Instance.ChangeSceneTo(sceneWhenSuccess);
   }
@@ -78,19 +82,18 @@ public class MultipleSelection : MonoBehaviour
   private void OnSelectionFalse(GameObject o)
   {
     SoundManager.Instance.PlaySFXByIndex(SFXList.Fail);
-    StartCoroutine(StartShimmer(o));
+    StartCoroutine(WrongChoice(o));
   }
 
-  private IEnumerator StartShimmer(GameObject o)
+  private IEnumerator WrongChoice(GameObject o)
   {
     float timer = 0;
     float offset = 10f;
-    // o.GetComponent<Image>().color = Color.red;
     o.GetComponent<Image>().color = new Color(255f / 255f, 165f / 255f, 165f / 255f);
-    while (timer <= 2)
+    _canTriggerFeedback = false;
+    while (timer <= feedbackDuration)
     {
       var position = o.transform.position;
-      Vector3 oldPosition = position;
       Vector3 newPosition = new Vector3(position.x + offset, position.y, position.z);
       o.transform.position = newPosition;
       offset *= -1;
@@ -98,6 +101,7 @@ public class MultipleSelection : MonoBehaviour
       yield return new WaitForSeconds(0.1f);
     }
 
+    _canTriggerFeedback = true;
     o.GetComponent<Image>().color = Color.white;
   }
 

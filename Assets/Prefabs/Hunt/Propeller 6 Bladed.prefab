@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 8898623235272197646}
   - component: {fileID: 1383812030846119902}
   m_Layer: 7
-  m_Name: Fake Wheel
-  m_TagString: Wheels
+  m_Name: Propeller 6 Bladed
+  m_TagString: Propeller
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -58,7 +58,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe1f1de9c9c694f0aa8583c2592ab688, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  componentCode: 8
+  componentCode: 11
 --- !u!1001 &2044304987290944653
 PrefabInstance:
   m_ObjectHideFlags: 0

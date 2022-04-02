@@ -1,4 +1,4 @@
-public enum MoseCode : int
+public enum MorseCode : int
 {
   A = 0,
   V = 1,
@@ -11,4 +11,7 @@ public enum MoseCode : int
   O = 8,
   E = 9,
   U = 10,
+  S = 11,
+  P = 12,
+  R = 13,
 }

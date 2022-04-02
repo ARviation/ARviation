@@ -100,11 +100,11 @@ MonoBehaviour:
   - script: "The cards you were given have valuable information to find the parts
       for my airplane, but they\u2019re a mess! "
     MoodIndex: 16
-    slideImage: {fileID: 0}
+    slideImage: {fileID: 21300000, guid: 92abac4612969473fbd871b17d625f87, type: 3}
   - script: "Let\u2019s start by sorting them. Place each card in the matching color
       section on the airplane diagram. Tap the button when you finish!"
     MoodIndex: 3
-    slideImage: {fileID: 0}
+    slideImage: {fileID: 21300000, guid: 61e4d73d69be74f0f9e9b59b18b7a1e2, type: 3}
   - script: "Hmmm, very interesting\u2026 For some parts, you have more than one
       card, which means you have more than one option."
     MoodIndex: 28
@@ -122,26 +122,33 @@ MonoBehaviour:
   - script: "Where are these parts hiding? All around the exhibit! They\u2019re protected
       by letters that you have to scan with the tablet."
     MoodIndex: 27
-    slideImage: {fileID: 0}
+    slideImage: {fileID: 21300000, guid: ea70f88d86d6642bea78e9fd70b87f22, type: 3}
   - script: "Let me help you with the first part: it\u2019s called the fuselage.
       The top of the fuselage card has\u2026 a code!"
     MoodIndex: 28
-    slideImage: {fileID: 0}
+    slideImage: {fileID: 21300000, guid: c0d602f732f6b44d5b601bef1a5218c7, type: 3}
   - script: This is Morse code, used to send encrypted messages as sounds. The dots
       are short sounds and the dashes are long sounds.
     MoodIndex: 1
-    slideImage: {fileID: 0}
+    slideImage: {fileID: 21300000, guid: 76b25e202730a4dfea62fb0237d30c85, type: 3}
   - script: "Using our Morse Code guide, I see that the fuselage\u2019s code is A.
       It sounds like this\u2026"
     MoodIndex: 14
-    slideImage: {fileID: 0}
+    slideImage: {fileID: 21300000, guid: 9e146945a1e364c9a8e9041094b2f7a6, type: 3}
   - script: Find the letter A in the exhibit and scan it with the tablet. It looks
       just like this!
     MoodIndex: 2
-    slideImage: {fileID: 21300000, guid: ff9cc55e2f4a04e8c9355cd4f1775030, type: 3}
+    slideImage: {fileID: 21300000, guid: fba17c306fdaf40fbbb3aa328f3878dc, type: 3}
+  - script: 
+    MoodIndex: 0
+    slideImage: {fileID: 0}
   - script: Excellent, the fuselage is now saved in your storage! To collect the
       rest of the parts, you have to use the Morse code in the cards.
     MoodIndex: 18
+    slideImage: {fileID: 0}
+  - script: "Incredible, you found all the missing parts! I\u2019m really impressed!
+      You\u2019re now ready to assemble my airplane."
+    MoodIndex: 17
     slideImage: {fileID: 0}
   scriptElementsAssembly:
   - script: Awesome, your storage is full! Tap the button to start assembling the
@@ -162,11 +169,11 @@ MonoBehaviour:
   - script: "Let\u2019s find the correct wings. To do this, you need the cards shown
       above. Tap the button when you have the cards!"
     MoodIndex: 1
-    slideImage: {fileID: 0}
+    slideImage: {fileID: 21300000, guid: c353b55663198412eb2947ad7f257674, type: 3}
   - script: 'Now, read the cards and work together to answer this question: Which
       wings are correct for the P-51 Mustang?'
     MoodIndex: 26
-    slideImage: {fileID: 0}
+    slideImage: {fileID: 21300000, guid: ab7fbdcef11d842eb842deeacf04ed09, type: 3}
   - script: "You think you\u2019ve found the answer? Let\u2019s check! Tap the correct
       wings above and we\u2019ll see if you\u2019re right."
     MoodIndex: 0
@@ -175,7 +182,7 @@ MonoBehaviour:
   - script: "Great job! Let\u2019s try the fuel tanks. You will need the cards shown
       above to figure out which fuel tanks are correct for the P-51 Mustang."
     MoodIndex: 18
-    slideImage: {fileID: 0}
+    slideImage: {fileID: 21300000, guid: 4cc13abfc338d4d9f87f590253467f27, type: 3}
   - script: Find the correct fuel tanks!
     MoodIndex: 1
     slideImage: {fileID: 0}
@@ -183,7 +190,7 @@ MonoBehaviour:
   - script: Awesome! The propeller is next. You will need the cards shown above to
       figure out the correct propeller.
     MoodIndex: 8
-    slideImage: {fileID: 0}
+    slideImage: {fileID: 21300000, guid: c2ddd5424284c4e7487d8ad681196e6a, type: 3}
   - script: Find the correct propeller!
     MoodIndex: 0
     slideImage: {fileID: 0}
@@ -191,7 +198,7 @@ MonoBehaviour:
   - script: "Fantastic! The engine is last\u2026 You will need the cards shown above
       to figure out the correct engine."
     MoodIndex: 17
-    slideImage: {fileID: 0}
+    slideImage: {fileID: 21300000, guid: 450c88954e08345369a0a1a0af727918, type: 3}
   - script: Find the correct engine!
     MoodIndex: 1
     slideImage: {fileID: 0}

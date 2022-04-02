@@ -65,7 +65,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 5d8b81e9cbe894ca1b47dea5ca4673e3, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e4b08bd286290419c8dc9fa3be6e9cce, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -743,20 +743,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 206e643ab115a4f67b269b1b78971164, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  delay: 0.05
+  defaultDelay: 0.05
   textDisplay: {fileID: 3680713034642756084}
   btnForNextScene: {fileID: 0}
   btnForNextSentence: {fileID: 8911324413244636065}
   btnForPrevSentence: {fileID: 4462944300163695802}
-  buttonToHide: {fileID: 0}
+  btnToReveal: {fileID: 0}
   characterHolder: {fileID: 8474586209111918837}
-  dialogObj: {fileID: 0}
+  dialogueObj: {fileID: 5233120678325181211}
   hasHideCondition: 0
   hideConditionIndex: 0
-  canHide: 0
+  hideBackground: {fileID: 0}
+  arCamera: {fileID: 0}
   hasImageHoder: 1
   imageHolder: {fileID: 8474586208136067249}
   hasSelection: 1
+  isHunting: 0
+  huntingMorseIndex: 0
+  huntingHideIndex: 0
 --- !u!114 &2265329067961673057
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -778,6 +782,7 @@ MonoBehaviour:
   - {fileID: 3680713033120435768}
   - {fileID: 3680713033154013643}
   sceneWhenSuccess: 7
+  feedbackDuration: 1.5
 --- !u!1 &3680713034642530458
 GameObject:
   m_ObjectHideFlags: 0
@@ -845,7 +850,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 46ed379cbb0e9493d9e68d5e68f9910e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 15a27e089482e4b2d974fd8f683403ee, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1046,14 +1051,14 @@ RectTransform:
   m_GameObject: {fileID: 4178746406052714264}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 1}
+  m_LocalScale: {x: 0.75, y: 0.75, z: 1}
   m_Children: []
   m_Father: {fileID: 8483407915580515976}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 1125, y: -600}
+  m_AnchoredPosition: {x: 861, y: -871}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2810409361042544899
@@ -1084,7 +1089,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 77f94d91e4a0645ba967505958df5614, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 37c9ec821113e4e51a137231e5754ec2, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1160,7 +1165,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8483407915580515976}
   m_Layer: 5
-  m_Name: Dialog
+  m_Name: Dialogue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1353,15 +1358,15 @@ RectTransform:
   m_GameObject: {fileID: 7585532673835737027}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 1}
+  m_LocalScale: {x: 3, y: 1.5, z: 1}
   m_Children: []
   m_Father: {fileID: 8483407915580515976}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 1125, y: -850}
-  m_SizeDelta: {x: 75, y: 75}
+  m_AnchoredPosition: {x: 815, y: -414}
+  m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5360122608138650260
 CanvasRenderer:
@@ -1391,7 +1396,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 3f5f579d05b3f43dcaee5dd3f41fd1a1, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a76bcd0c31b194813a245c8999301596, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

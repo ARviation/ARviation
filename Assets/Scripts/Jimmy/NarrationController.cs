@@ -4,63 +4,82 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using UnityEngine.XR.ARFoundation;
 
 // TODO: clean useless code and comments after finish implementing all narration function
 public class NarrationController : MonoBehaviour
 {
-  [SerializeField] private float delay = 0.05f;
+  [SerializeField] private float defaultDelay = 0.05f;
   [SerializeField] private GameObject textDisplay;
   [SerializeField] private Button btnForNextScene;
   [SerializeField] private Button btnForNextSentence;
   [SerializeField] private Button btnForPrevSentence;
-  [SerializeField] private Button buttonToHide;
+  [SerializeField] private Button btnToReveal;
   [SerializeField] private Image characterHolder;
-  [SerializeField] private GameObject dialogObj;
+  [SerializeField] private GameObject dialogueObj;
   [SerializeField] private bool hasHideCondition = false;
   [SerializeField] private int hideConditionIndex;
-
-  [SerializeField] private bool canHide = false;
-
-  // [SerializeField] private bool hasTutorialDelay = false;
-  // [SerializeField] private int tutorialDelayIndex;
+  [SerializeField] private Image hideBackground;
+  [SerializeField] private ARCameraManager arCamera;
   [SerializeField] private bool hasImageHoder;
   [SerializeField] private Image imageHolder;
   [SerializeField] private bool hasSelection = false;
+  [SerializeField] private bool isHunting = false;
+  [SerializeField] private int huntingMorseIndex;
+  [SerializeField] private int huntingHideIndex;
 
+  private float delay;
   private string _currentScript = "";
   private string _displayScript = "";
   private int _currentScriptInd = 0;
   private int _scriptLength = 0;
   private bool _isPlaying = false;
   private bool _isFinal = false;
+  private bool isMorsePlay = false;
 
   private void Start()
   {
     _currentScriptInd = 0;
+    delay = defaultDelay;
     if (btnForNextScene != null)
       btnForNextScene.gameObject.SetActive(false);
     _scriptLength = CharacterManager.Instance.GetScriptLength();
     ShowNextLine();
   }
 
-  public void OnNextClick()
+  private void Update()
   {
-    if (_isPlaying || _currentScriptInd >= (_scriptLength - 1)) return;
-    if (canHide)
+    if (hasHideCondition && _currentScriptInd == hideConditionIndex)
+    {
+      HideDialog();
+      hideBackground.gameObject.SetActive(false);
+    }
+
+    if (isHunting && _currentScriptInd == huntingHideIndex)
     {
       HideDialog();
     }
-    else
-    {
-      _currentScriptInd++;
-      SoundManager.Instance.PlaySFXByIndex(SFXList.Click);
-      ShowNextLine();
-    }
+  }
+
+  public bool GetHadHideCondition()
+  {
+    return hasHideCondition;
+  }
+
+  public void OnNextClick()
+  {
+    delay = defaultDelay;
+    if (_isPlaying || _currentScriptInd > (_scriptLength - 1)) return;
+    SoundManager.Instance.PlaySFXByIndex(SFXList.Click);
+    _currentScriptInd++;
+    ShowNextLine();
   }
 
   public void OnPrevClick()
   {
     if (_currentScriptInd - 1 < 0) return;
+    if (hasSelection)
+      FindObjectOfType<MultipleSelection>().HideSelection();
     _currentScriptInd--;
     SoundManager.Instance.PlaySFXByIndex(SFXList.Click);
     ShowNextLine();
@@ -68,6 +87,7 @@ public class NarrationController : MonoBehaviour
 
   public void OnSkipClick()
   {
+    delay -= 0.04f;
     if (_isPlaying || _currentScriptInd >= (_scriptLength - 1)) return;
     _currentScriptInd = _scriptLength - 1;
     ShowNextLine();
@@ -126,15 +146,14 @@ public class NarrationController : MonoBehaviour
 
     _isPlaying = false;
 
-    // if (hasTutorialDelay && _currentScriptInd == tutorialDelayIndex)
-    // {
-    // StartCoroutine(StartTutorialDelay(3.0f));
-    // }
-    // else
-    // {
+    if (isHunting && _currentScriptInd == huntingMorseIndex && !isMorsePlay)
+    {
+      SoundManager.Instance.PlaySFXByMorseCode(MorseCode.A);
+      isMorsePlay = true;
+    }
+
     if (_isFinal)
     {
-      // btnForNextSentence.gameObject.SetActive(false);
       if (_currentScriptInd != 0)
         btnForPrevSentence.gameObject.SetActive(true);
       if (btnForNextScene != null)
@@ -151,53 +170,39 @@ public class NarrationController : MonoBehaviour
       else
       {
         HideDialog();
-        // }
       }
     }
   }
-
-// private IEnumerator StartTutorialDelay(float duration)
-// {
-//   float timer = 0f;
-//   while (timer <= duration)
-//   {
-//     Debug.Log(timer);
-//     timer += 0.1f;
-//     yield return new WaitForSeconds(0.1f);
-//   }
-//
-//   FindObjectOfType<ImageRecognition>().FinishTutorial();
-//   hasTutorialDelay = false;
-//   btnForNextSentence.gameObject.SetActive(false);
-//   btnForPrevSentence.gameObject.SetActive(false);
-//   if (btnForNextScene != null)
-//     btnForNextScene.gameObject.SetActive(true);
-// }
 
   public void SetHasConditionFalse()
   {
     hasHideCondition = false;
     btnForNextSentence.gameObject.SetActive(true);
     btnForPrevSentence.gameObject.SetActive(true);
-    dialogObj.gameObject.SetActive(true);
-  }
-
-  public void OnFinishClick()
-  {
-    HideDialog();
+    RevealDialog();
   }
 
   public void HideDialog()
   {
-    dialogObj.SetActive(false);
+    dialogueObj.SetActive(false);
   }
 
-  public void RevealDialog()
+  public void RevealDialog(bool showPrevBtn = true)
   {
-    dialogObj.SetActive(true);
-    canHide = false;
+    dialogueObj.SetActive(true);
+    btnForPrevSentence.gameObject.SetActive(showPrevBtn);
     _currentScriptInd++;
     ShowNextLine();
-    buttonToHide.gameObject.SetActive(false);
+    // btnToReveal.gameObject.SetActive(false);
+  }
+
+  public void CollectWrong()
+  {
+    SoundManager.Instance.PlaySFXByIndex(SFXList.Fail);
+  }
+
+  public void CollectRight()
+  {
+    SoundManager.Instance.PlaySFXByIndex(SFXList.Success);
   }
 }

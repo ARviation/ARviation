@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class Collectable : MonoBehaviour
 {
-  [SerializeField] public MoseCode componentCode;
+  [SerializeField] public MorseCode componentCode;
   private InventoryItem _matchedInventoryItem;
   private InventoryItem[] _inventoryItems;
 

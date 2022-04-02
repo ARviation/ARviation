@@ -96,7 +96,7 @@ public class ObjectsManager : MonoBehaviour
     _showPass = collectedComponent == targetComponentNumber;
     if (_showPass)
     {
-      nextButton.SetActive(true);
+      FindObjectOfType<NarrationController>().RevealDialog(false);
     }
 
     _canPass = localCollectedComponent.ToString() == componentPasscode;
@@ -129,15 +129,15 @@ public class ObjectsManager : MonoBehaviour
       else if (hit.collider.gameObject.layer == LayerMask.NameToLayer("Collectable") &&
                _touchControls.Touch.TouchPress.ReadValue<float>() != 0)
       {
-        InventoryItem inventoryItem = hit.transform.GetComponent<Collectable>().GetInventoryItem();
-        Collectable collectable = hit.transform.GetComponent<Collectable>();
-        MoseCode code = collectable.componentCode;
-
-        inventoryItem.OnHitComponent(code);
-        string componentName = hit.transform.name;
-        componentName = componentName.Replace("(Clone)", "").Trim();
-        collectPanel.OpenPanel(componentName);
-        collectPanel.SetInventoryItem(inventoryItem);
+        // InventoryItem inventoryItem = hit.transform.GetComponent<Collectable>().GetInventoryItem();
+        // Collectable collectable = hit.transform.GetComponent<Collectable>();
+        // MoseCode code = collectable.componentCode;
+        //
+        // inventoryItem.OnHitComponent(code);
+        // string componentName = hit.transform.name;
+        // componentName = componentName.Replace("(Clone)", "").Trim();
+        // collectPanel.OpenPanel(componentName);
+        // collectPanel.SetInventoryItem(inventoryItem);
       }
       else if (hit.collider.gameObject.layer == LayerMask.NameToLayer("Attachable") &&
                _touchControls.Touch.TouchPress.ReadValue<float>() != 0)
@@ -147,7 +147,7 @@ public class ObjectsManager : MonoBehaviour
         switch (hitTag)
         {
           case GameManager.Engine:
-            if (PlayerStats.Instance.selectedComponentCode == MoseCode.H)
+            if (PlayerStats.Instance.selectedComponentCode == MorseCode.H)
             {
               hit.transform.gameObject.GetComponent<AttachableComponent>().ShowObj();
               AddAssembledComponent();
@@ -155,7 +155,7 @@ public class ObjectsManager : MonoBehaviour
 
             break;
           case GameManager.Wings:
-            if (PlayerStats.Instance.selectedComponentCode == MoseCode.W)
+            if (PlayerStats.Instance.selectedComponentCode == MorseCode.W)
             {
               hit.transform.gameObject.GetComponent<AttachableComponent>().ShowObj();
               AddAssembledComponent();
@@ -163,7 +163,7 @@ public class ObjectsManager : MonoBehaviour
 
             break;
           case GameManager.Propeller:
-            if (PlayerStats.Instance.selectedComponentCode == MoseCode.F)
+            if (PlayerStats.Instance.selectedComponentCode == MorseCode.F)
             {
               hit.transform.gameObject.GetComponent<AttachableComponent>().ShowObj();
               AddAssembledComponent();
@@ -171,7 +171,7 @@ public class ObjectsManager : MonoBehaviour
 
             break;
           case GameManager.Wheels:
-            if (PlayerStats.Instance.selectedComponentCode == MoseCode.O)
+            if (PlayerStats.Instance.selectedComponentCode == MorseCode.O)
             {
               hit.transform.gameObject.GetComponent<AttachableComponent>().ShowObj();
               AddAssembledComponent();
@@ -179,7 +179,7 @@ public class ObjectsManager : MonoBehaviour
 
             break;
           case GameManager.FuelTank:
-            if (PlayerStats.Instance.selectedComponentCode == MoseCode.E)
+            if (PlayerStats.Instance.selectedComponentCode == MorseCode.E)
             {
               hit.transform.gameObject.GetComponent<AttachableComponent>().ShowObj();
               AddAssembledComponent();
@@ -187,7 +187,7 @@ public class ObjectsManager : MonoBehaviour
 
             break;
           case GameManager.Tail:
-            if (PlayerStats.Instance.selectedComponentCode == MoseCode.U)
+            if (PlayerStats.Instance.selectedComponentCode == MorseCode.U)
             {
               hit.transform.gameObject.GetComponent<AttachableComponent>().ShowObj();
               AddAssembledComponent();
@@ -243,7 +243,7 @@ public class ObjectsManager : MonoBehaviour
     {
       var inventoryItemCategory = inventoryItem.name;
       int code = componentMap[inventoryItemCategory];
-      inventoryItem.currentCode = (MoseCode) code;
+      inventoryItem.currCode = (MorseCode) code;
       inventoryItem.UpdateSprite(code);
     }
   }
