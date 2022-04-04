@@ -125,3 +125,13 @@ MonoBehaviour:
     m_SpecifySize: 1
     m_Name: Fuel
     m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 5020487002310821434
+      m_GuidHigh: 9732066621855828374
+    m_SerializedTextureGuid:
+      m_GuidLow: 6509032344247942334
+      m_GuidHigh: 486625631718251672
+    m_Size: {x: 0.07, y: 0.19358025}
+    m_SpecifySize: 1
+    m_Name: marker31_L
+    m_Texture: {fileID: 2800000, guid: 466d3cbeba6e5a54989c2a0d6fd7c006, type: 3}

@@ -66,7 +66,7 @@ public class FlyControl_v4 : MonoBehaviour
 
         // read alpha
         float value = slider_alpha.value;
-        if (action != null) alpha = 1 - 2 * value;
+        if (action == "free flight") alpha = 1 - 2 * value;
 
         // new action
         if (action == null)
