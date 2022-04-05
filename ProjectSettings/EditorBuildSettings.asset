@@ -5,36 +5,39 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/1 - Intro.unity
     guid: 28055a349aea7448bbc499e864ed169c
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/2 - Sort.unity
     guid: e297259f6840445049018582d6db7249
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/3 - Finish Select.unity
     guid: 10f0b5dff7c4c46418fb9a44d9d3596d
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/4 - Hunt.unity
     guid: a391728c61bab498bb3f46b61e649d74
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/5 - Assembly.unity
     guid: 650114e02a76a6d42b9a408b6d36c342
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Development/fly_v5.unity
     guid: d9d10b416c956eb4cb5710f838f4fff2
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/A - Wings.unity
     guid: 48b12a01bd5604d3483695937cab5ae7
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/B - FuelTank.unity
     guid: c79e5e55213ba49a0b436876da51c6e5
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/C - Propeller.unity
     guid: 20b931a8eebb84926898b5d24a381823
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/D - Engine.unity
     guid: 63a8670d8a68c40089f119990e33e7cf
+  - enabled: 1
+    path: Assets/Scenes/Development/fly_v7.unity
+    guid: ce33340391f04124e8b58f3163c19068
   m_configObjects:
     UnityEditor.XR.ARCore.ARCoreSettings: {fileID: 11400000, guid: 5509cb89d3eaf9a45a1d4d234d7e635c, type: 2}
     UnityEditor.XR.ARKit.ARKitSettings: {fileID: 11400000, guid: 08fb68aaabc803048a3ed0664732fa42, type: 2}

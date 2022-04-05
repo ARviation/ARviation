@@ -11,7 +11,8 @@ public class ImageTracking_v2 : MonoBehaviour
     public GameObject airplane_prefab;
     private ARTrackedImageManager trackedImageManager;
 
-    string marker_L_name = "marker31_L";
+    //string marker_L_name = "marker31_L";
+    string marker_L_name = "marker40_L28";
     GameObject airplane;
     AudioSource source;
     Quaternion sampledRotation = new Quaternion(0, 0, 0, 0);
