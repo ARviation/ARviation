@@ -5,6 +5,8 @@ using UnityEngine;
 public enum SFXList : int
 {
   Click = 0,
+  Success = 1,
+  Fail = 2,
 }
 
 public class SoundManager : MonoBehaviour
@@ -12,6 +14,7 @@ public class SoundManager : MonoBehaviour
   public static SoundManager Instance = null;
 
   [SerializeField] public AudioClip[] sfxList;
+  [SerializeField] public AudioClip[] sfxMorseList;
   [SerializeField] public AudioClip[] voiceOverListIntro;
   [SerializeField] public AudioClip[] voiceOverListHunt;
   [SerializeField] public AudioClip[] voiceOverListAssembly;
@@ -41,6 +44,11 @@ public class SoundManager : MonoBehaviour
     _audioSource.PlayOneShot(sfxList[(int) sfxIndex], volume);
   }
 
+  public void PlaySFXByMorseCode(MorseCode code, float volume = 1.0f)
+  {
+    _audioSource.PlayOneShot(sfxMorseList[(int) code], volume);
+  }
+  
   public void PlaySFX(AudioClip audioClip, float volume = 1.0f)
   {
     _audioSource.PlayOneShot(audioClip, volume);

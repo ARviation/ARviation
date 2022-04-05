@@ -6,7 +6,7 @@ public class PlayerStats : MonoBehaviour
 {
   public static PlayerStats Instance = null;
   public CollectedComponent savedCollectedComponent;
-  public MoseCode selectedComponentCode;
+  public MorseCode selectedComponentCode;
   public InventoryItem selectedComponent;
 
   private void Awake()
@@ -24,7 +24,7 @@ public class PlayerStats : MonoBehaviour
     }
   }
 
-  public void UpdateSelectedComponentCode(MoseCode code, InventoryItem item)
+  public void UpdateSelectedComponentCode(MorseCode code, InventoryItem item)
   {
     selectedComponentCode = code;
     selectedComponent = item;

@@ -49,7 +49,7 @@ MonoBehaviour:
   collectPanel: {fileID: 0}
   collectedComponent: 0
   assembledPart: 0
-  targetComponentNumber: 4
-  componentPasscode: 0 3 6 8 -1 -1 -1
+  targetComponentNumber: 7
+  componentPasscode: 0 3 5 7 8 9 10
   nextButton: {fileID: 0}
   finishAssembleButton: {fileID: 0}

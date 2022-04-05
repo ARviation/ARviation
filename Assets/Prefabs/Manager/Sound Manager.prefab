@@ -46,6 +46,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sfxList:
   - {fileID: 8300000, guid: 6f6a52c21825d4987b703ac03053911b, type: 3}
+  - {fileID: 8300000, guid: db143068022314acbafee15a31fb6bfd, type: 3}
+  - {fileID: 8300000, guid: 3143d5a5445d44a608764d93d9e3ab8b, type: 3}
+  sfxMorseList:
+  - {fileID: 8300000, guid: 254ffa08b8ec44823bd268d98fda1985, type: 3}
+  - {fileID: 8300000, guid: aea50735fe5e34da69b9cfad710c57a3, type: 3}
+  - {fileID: 8300000, guid: 4f5d0a02cdc36471b8ff01c3478eb2e5, type: 3}
+  - {fileID: 8300000, guid: 195efebeef3f3402ebf53b936e146be2, type: 3}
+  - {fileID: 8300000, guid: 2b5af2f8bf2aa4a35a4493172cba0603, type: 3}
+  - {fileID: 8300000, guid: 916ad1a2ff14e4464b95c525168eb93f, type: 3}
+  - {fileID: 8300000, guid: b9e9b1394400c48feb6a659d90b56452, type: 3}
+  - {fileID: 8300000, guid: 9535f6d54eaf14c12af9f9d88ba374a3, type: 3}
+  - {fileID: 8300000, guid: 7dcb42c32f6d64c108af7ed8b2a90caf, type: 3}
+  - {fileID: 8300000, guid: 60b016ee7ec7a4547b0da66e9064b4a7, type: 3}
+  - {fileID: 8300000, guid: d036786f8ec1349c890d638214c38b31, type: 3}
+  - {fileID: 8300000, guid: 885a838e50d454bf597d8aee4ccb0c4a, type: 3}
+  - {fileID: 8300000, guid: 20bd7a73bbb1749099bdfeb3959169d0, type: 3}
+  - {fileID: 8300000, guid: 3eafe217221b3425184ea6e9c0ccaa14, type: 3}
   voiceOverListIntro:
   - {fileID: 8300000, guid: 599f702fb0ac748038ee2cf8ce3c4d14, type: 3}
   - {fileID: 8300000, guid: c2d6befcab3eb46d0a767cd4169fd6e9, type: 3}

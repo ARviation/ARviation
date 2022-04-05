@@ -77,8 +77,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 200, y: 200}
+  m_AnchoredPosition: {x: 0, y: 150}
+  m_SizeDelta: {x: 400, y: 400}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3350960156837224710
 CanvasRenderer:
@@ -161,7 +161,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 9091438545149943640}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 6816192819927895658}
+        m_TargetAssemblyTypeName: MultipleSelection, Assembly-CSharp
+        m_MethodName: OnClickChoice
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 2668477134226838070}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &3722582491839943231
 GameObject:
   m_ObjectHideFlags: 0
@@ -197,7 +209,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 200, y: 200}
+  m_SizeDelta: {x: 400, y: 400}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1996496712236787405
 CanvasRenderer:
@@ -304,8 +316,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Skip
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: a85c86866992946b495e606d9f7bf28e, type: 2}
+  m_sharedMaterial: {fileID: 2900888453603309436, guid: a85c86866992946b495e606d9f7bf28e, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -870,7 +882,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 385.76315, y: -5.999939}
-  m_SizeDelta: {x: 245.0117, y: 54.511}
+  m_SizeDelta: {x: 240, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8283085676592642810
 CanvasRenderer:
@@ -902,8 +914,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: a85c86866992946b495e606d9f7bf28e, type: 2}
+  m_sharedMaterial: {fileID: 2900888453603309436, guid: a85c86866992946b495e606d9f7bf28e, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -930,16 +942,16 @@ MonoBehaviour:
   m_fontSize: 14
   m_fontSizeBase: 14
   m_fontWeight: 400
-  m_enableAutoSizing: 0
-  m_fontSizeMin: 12
-  m_fontSizeMax: 18
+  m_enableAutoSizing: 1
+  m_fontSizeMin: 10
+  m_fontSizeMax: 14
   m_fontStyle: 0
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
-  m_lineSpacing: 0
+  m_lineSpacing: 20
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
@@ -963,7 +975,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: -11.244434, z: 0, w: -11.244719}
+  m_margin: {x: 0, y: 0.354702, z: 0, w: 0.35607526}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -1101,6 +1113,7 @@ MonoBehaviour:
   fuselageTutorial: 0
   hasImageHoder: 1
   imageHolder: {fileID: 3781947028770771898}
+  hasSelection: 1
 --- !u!114 &6816192819927895658
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1113,8 +1126,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45c9c721220144f7ab81a3a87d166a57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  answer: []
-  selectionBox: []
+  answer:
+  - selectionImage: {fileID: 21300000, guid: b9f871f4c6bce5648b064e450b5b056a, type: 3}
+    correctness: 0
+  - selectionImage: {fileID: 21300000, guid: 0f9348dcbd7c55e4baca145d599ff482, type: 3}
+    correctness: 1
+  - selectionImage: {fileID: 21300000, guid: e940c517be5756a44be9d4448c8b9d9e, type: 3}
+    correctness: 1
+  selectionBox:
+  - {fileID: 8283085678249338163}
+  - {fileID: 8283085678350009024}
+  - {fileID: 6702261110807283820}
+  sceneWhenSuccess: 8
 --- !u!1 &8283085677157902183
 GameObject:
   m_ObjectHideFlags: 0
@@ -1151,8 +1174,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -700, y: 0}
-  m_SizeDelta: {x: 200, y: 200}
+  m_AnchoredPosition: {x: -800, y: 150}
+  m_SizeDelta: {x: 400, y: 400}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8283085677157902179
 CanvasRenderer:
@@ -1235,7 +1258,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 8283085677157902178}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 6816192819927895658}
+        m_TargetAssemblyTypeName: MultipleSelection, Assembly-CSharp
+        m_MethodName: OnClickChoice
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8283085677157902183}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &8283085677231778906
 GameObject:
   m_ObjectHideFlags: 0
@@ -1303,8 +1338,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Next
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: a85c86866992946b495e606d9f7bf28e, type: 2}
+  m_sharedMaterial: {fileID: 2900888453603309436, guid: a85c86866992946b495e606d9f7bf28e, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1538,7 +1573,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 200, y: 200}
+  m_SizeDelta: {x: 400, y: 400}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8283085678249338160
 CanvasRenderer:
@@ -1614,8 +1649,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 700, y: 0}
-  m_SizeDelta: {x: 200, y: 200}
+  m_AnchoredPosition: {x: 800, y: 150}
+  m_SizeDelta: {x: 400, y: 400}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8283085678313014726
 CanvasRenderer:
@@ -1698,7 +1733,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 8283085678313014729}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 6816192819927895658}
+        m_TargetAssemblyTypeName: MultipleSelection, Assembly-CSharp
+        m_MethodName: OnClickChoice
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8283085678313014730}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &8283085678344080837
 GameObject:
   m_ObjectHideFlags: 0
@@ -1766,8 +1813,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Choose the Engine
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: a85c86866992946b495e606d9f7bf28e, type: 2}
+  m_sharedMaterial: {fileID: 2900888453603309436, guid: a85c86866992946b495e606d9f7bf28e, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1868,7 +1915,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 200, y: 200}
+  m_SizeDelta: {x: 400, y: 400}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8283085678350009025
 CanvasRenderer:

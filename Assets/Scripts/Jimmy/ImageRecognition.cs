@@ -1,22 +1,29 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Net;
 using UnityEngine;
 using UnityEngine.XR;
 using UnityEngine.XR.ARFoundation;
 using UnityEngine.XR.ARSubsystems;
+using UnityEngine.UI;
 
 [RequireComponent(typeof(ARTrackedImageManager))]
 public class ImageRecognition : MonoBehaviour
 {
   [SerializeField] TrackedPrefab[] prefabToInstantiate;
-  [SerializeField] private bool isTutorial = true;
+  [SerializeField] private CollectPanel collectPanel;
+  [SerializeField] private Image alreadyUsedImageHolder;
 
   private int _refImageCount;
   private Dictionary<string, GameObject> _arObjs = new Dictionary<string, GameObject>();
+  private Dictionary<string, bool> _arObjsUsed = new Dictionary<string, bool>();
+  private Dictionary<MorseCode, string> _arObjsMarker = new Dictionary<MorseCode, string>();
 
   private ARTrackedImageManager _arTrackedImageManager;
   private IReferenceImageLibrary _referenceImageLibrary;
+  private NarrationController _narrationController;
+  private bool hasMorseCodePlayed = false;
 
   void Awake()
   {
@@ -35,9 +42,10 @@ public class ImageRecognition : MonoBehaviour
 
   private void Start()
   {
+    _narrationController = FindObjectOfType<NarrationController>();
     _referenceImageLibrary = _arTrackedImageManager.referenceLibrary;
     _refImageCount = _referenceImageLibrary.count;
-    // InstantiateObj();
+    alreadyUsedImageHolder.gameObject.SetActive(false);
   }
 
   private void InstantiateObj(ARTrackedImage added)
@@ -52,25 +60,10 @@ public class ImageRecognition : MonoBehaviour
         prefab.transform.localScale = Vector3.zero;
 
         _arObjs.Add(added.referenceImage.name, prefab);
+        _arObjsUsed.Add(added.referenceImage.name, false);
+        _arObjsMarker.Add(prefabToInstantiate[i].code, added.referenceImage.name);
       }
     }
-  }
-
-  public void FinishTutorial()
-  {
-    isTutorial = false;
-  }
-
-  private void ActivateTrackedObj(string _imageName)
-  {
-    Debug.Log("Activate: name " + _imageName);
-    _arObjs[_imageName].SetActive(true);
-  }
-
-  private void DeactivateTrackedObj(string _imageName)
-  {
-    Debug.Log("Deactivate: name" + _imageName);
-    _arObjs[_imageName].SetActive(false);
   }
 
   void OnImageChanged(ARTrackedImagesChangedEventArgs args)
@@ -82,10 +75,10 @@ public class ImageRecognition : MonoBehaviour
 
     foreach (var updated in args.updated)
     {
-      if (isTutorial)
+      if (_narrationController.GetHadHideCondition())
       {
-        if (updated.referenceImage.name != "Fuselage") continue;
-        UpdateImage(updated);
+        if (updated.referenceImage.name == GameManager.Fuselage)
+          UpdateImage(updated);
       }
       else
       {
@@ -95,7 +88,6 @@ public class ImageRecognition : MonoBehaviour
 
     foreach (var remove in args.removed)
     {
-      Debug.Log("removed");
       DestroyObj(remove);
     }
   }
@@ -104,17 +96,14 @@ public class ImageRecognition : MonoBehaviour
   {
     if (image.trackingState == TrackingState.Tracking)
     {
-      Debug.Log("update - tracking");
       UpdateTrackingObj(image);
     }
     else if (image.trackingState == TrackingState.Limited)
     {
-      Debug.Log("update limited");
       UpdateLimitedObj(image);
     }
     else
     {
-      Debug.Log("update none");
       UpdateNoneObj(image);
     }
   }
@@ -124,10 +113,34 @@ public class ImageRecognition : MonoBehaviour
     for (int i = 0; i < _arObjs.Count; i++)
     {
       if (!_arObjs.TryGetValue(updated.referenceImage.name, out GameObject prefab)) continue;
-      prefab.transform.position = updated.transform.position;
-      prefab.transform.rotation = updated.transform.rotation;
-      prefab.transform.localScale = Vector3.one;
-      prefab.SetActive(true);
+      if (!_arObjsUsed.TryGetValue(updated.referenceImage.name, out bool used)) continue;
+      if (used)
+      {
+        alreadyUsedImageHolder.gameObject.SetActive(true);
+      }
+      else
+      {
+        alreadyUsedImageHolder.gameObject.SetActive(false);
+        prefab.transform.position = updated.transform.position;
+        prefab.transform.rotation = updated.transform.rotation;
+        prefab.transform.localScale = Vector3.one;
+        prefab.SetActive(true);
+
+        InventoryItem inventoryItem = prefab.GetComponent<Collectable>().GetInventoryItem();
+        Collectable collectable = prefab.GetComponent<Collectable>();
+        MorseCode code = collectable.componentCode;
+        if (!hasMorseCodePlayed)
+        {
+          SoundManager.Instance.PlaySFXByMorseCode(code);
+          hasMorseCodePlayed = true;
+        }
+
+        inventoryItem.OnHitComponent(code);
+        string componentName = prefab.name;
+        componentName = componentName.Replace("(Clone)", "").Trim();
+        collectPanel.OpenPanel(componentName);
+        collectPanel.SetInventoryItem(inventoryItem);
+      }
     }
   }
 
@@ -136,19 +149,12 @@ public class ImageRecognition : MonoBehaviour
     for (int i = 0; i < _arObjs.Count; i++)
     {
       if (!_arObjs.TryGetValue(updated.referenceImage.name, out GameObject prefab)) continue;
+      if (!_arObjsUsed.TryGetValue(updated.referenceImage.name, out bool used)) continue;
+
+      hasMorseCodePlayed = false;
+      alreadyUsedImageHolder.gameObject.SetActive(false);
       prefab.SetActive(false);
-      // if (!prefab.GetComponent<ARTrackedImage>().destroyOnRemoval)
-      // {
-      //   // prefab.transform.position = updated.transform.position;
-      //   // prefab.transform.rotation = updated.transform.rotation;
-      //   // prefab.transform.localScale = Vector3.one;
-      //   prefab.transform.localScale = Vector3.zero;
-      // }
-      // else
-      // {
-      //   prefab.transform.localScale = Vector3.zero;
-      //   prefab.SetActive(false);
-      // }
+      collectPanel.ClosePanel();
     }
   }
 
@@ -157,6 +163,12 @@ public class ImageRecognition : MonoBehaviour
     for (int i = 0; i < _arObjs.Count; i++)
     {
       if (_arObjs.TryGetValue(updated.referenceImage.name, out GameObject prefab))
+      {
+        prefab.SetActive(false);
+      }
+
+      if (!_arObjsUsed.TryGetValue(updated.referenceImage.name, out bool used)) continue;
+      if (used)
       {
         prefab.SetActive(false);
       }
@@ -174,6 +186,27 @@ public class ImageRecognition : MonoBehaviour
       }
     }
   }
+
+  public void HideUsedObj(string name)
+  {
+    if (!_arObjs.TryGetValue(name, out GameObject prefab))
+      return;
+    prefab.SetActive(false);
+    _arObjsUsed[name] = true;
+  }
+
+  public void UnUsedObj(string name)
+  {
+    if (!_arObjs.TryGetValue(name, out GameObject prefab))
+      return;
+    prefab.SetActive(true);
+    _arObjsUsed[name] = false;
+  }
+
+  public string GetPrefabName(MorseCode code)
+  {
+    return !_arObjsMarker.TryGetValue(code, out string name) ? "" : name;
+  }
 }
 
 [System.Serializable]
@@ -181,4 +214,5 @@ public struct TrackedPrefab
 {
   public string name;
   public GameObject prefab;
+  public MorseCode code;
 }

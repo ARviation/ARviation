@@ -8,13 +8,14 @@ public enum SceneIndex : int
 {
   Intro = 0,
   Sort = 1,
-  Hunt = 2,
-  Assembly = 3,
-  Fly = 4,
-  Engine = 5,
+  FinishSelect = 2,
+  Hunt = 3,
+  Assembly = 4,
+  Fly = 5,
   Wings = 6,
-  Propeller = 7,
-  FuelTank = 8,
+  FuelTank = 7,
+  Propeller = 8,
+  Engine = 9,
 }
 
 public class GameManager : MonoBehaviour
@@ -42,21 +43,36 @@ public class GameManager : MonoBehaviour
 
   private static void ChangeSceneTo(int index)
   {
+    SoundManager.Instance.PlaySFXByIndex(SFXList.Click);
     SceneManager.LoadScene(index);
+  }
+
+  public void ChangeSceneTo(SceneIndex index)
+  {
+    ChangeSceneTo((int) index);
   }
 
   public void ChangeSceneToIntro()
   {
+    SoundManager.Instance.PlaySFXByIndex(SFXList.Click);
     ChangeSceneTo((int) SceneIndex.Intro);
   }
 
   public void ChangeSceneToSort()
   {
+    SoundManager.Instance.PlaySFXByIndex(SFXList.Click);
     ChangeSceneTo((int) SceneIndex.Sort);
+  }
+
+  public void ChangeSceneToFinishSelect()
+  {
+    SoundManager.Instance.PlaySFXByIndex(SFXList.Click);
+    ChangeSceneTo((int) SceneIndex.FinishSelect);
   }
 
   public void ChangeSceneToHunt()
   {
+    SoundManager.Instance.PlaySFXByIndex(SFXList.Click);
     ChangeSceneTo((int) SceneIndex.Hunt);
   }
 
@@ -64,6 +80,7 @@ public class GameManager : MonoBehaviour
   {
     if (FindObjectOfType<ObjectsManager>().GetCanPass())
     {
+      SoundManager.Instance.PlaySFXByIndex(SFXList.Click);
       FindObjectOfType<ObjectsManager>().SaveCollectedComponent();
       ChangeSceneTo((int) SceneIndex.Assembly);
     }
@@ -71,26 +88,31 @@ public class GameManager : MonoBehaviour
 
   public void ChangeSceneToFly()
   {
+    SoundManager.Instance.PlaySFXByIndex(SFXList.Click);
     ChangeSceneTo((int) SceneIndex.Fly);
   }
 
   public void ChangeSceneToEngine()
   {
+    SoundManager.Instance.PlaySFXByIndex(SFXList.Click);
     ChangeSceneTo((int) SceneIndex.Engine);
   }
 
   public void ChangeSceneToWings()
   {
+    SoundManager.Instance.PlaySFXByIndex(SFXList.Click);
     ChangeSceneTo((int) SceneIndex.Wings);
   }
 
   public void ChangeSceneToPropeller()
   {
+    SoundManager.Instance.PlaySFXByIndex(SFXList.Click);
     ChangeSceneTo((int) SceneIndex.Propeller);
   }
 
   public void ChangeSceneToFuelTank()
   {
+    SoundManager.Instance.PlaySFXByIndex(SFXList.Click);
     ChangeSceneTo((int) SceneIndex.FuelTank);
   }
 

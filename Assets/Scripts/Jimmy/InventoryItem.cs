@@ -11,7 +11,8 @@ public class InventoryItem : MonoBehaviour
   [SerializeField] private CollectPanel collectPanel;
   [SerializeField] private Sprite emptySprite;
 
-  public MoseCode currentCode;
+  public MorseCode currCode;
+  public MorseCode collectedCode;
   private bool _isEnable = false;
   private bool _isCollected = false;
 
@@ -33,7 +34,7 @@ public class InventoryItem : MonoBehaviour
       if (!_isCollected) return;
       enableFrame.SetActive(true);
       _isEnable = true;
-      PlayerStats.Instance.UpdateSelectedComponentCode(currentCode, this);
+      PlayerStats.Instance.UpdateSelectedComponentCode(currCode, this);
     }
   }
 
@@ -44,9 +45,9 @@ public class InventoryItem : MonoBehaviour
     _isEnable = false;
   }
 
-  public void OnHitComponent(MoseCode componentCode)
+  public void OnHitComponent(MorseCode componentCode)
   {
-    currentCode = componentCode;
+    currCode = componentCode;
   }
 
   public void OnUseComponent()
@@ -66,39 +67,118 @@ public class InventoryItem : MonoBehaviour
       FindObjectOfType<ObjectsManager>().AddCollectedComponent();
     }
 
-    int code = (int) currentCode;
+    int code = (int) currCode;
+    bool valid = true;
     switch (gameObject.name)
     {
       case GameManager.Fuselage:
-        FindObjectOfType<ObjectsManager>().localCollectedComponent.Fuselage = code;
-        FindObjectOfType<NarrationController>().SetHasConditionFalse();
+        if (code == (int) MorseCode.A)
+        {
+          FindObjectOfType<ObjectsManager>().localCollectedComponent.Fuselage = code;
+          FindObjectOfType<NarrationController>().RevealDialog();
+          FindObjectOfType<NarrationController>().RemoveHadHideCondition();
+          FindObjectOfType<NarrationController>().CollectRight();
+        }
+        else
+        {
+          FindObjectOfType<NarrationController>().CollectWrong();
+          valid = false;
+        }
+
         break;
       case GameManager.Engine:
-        FindObjectOfType<ObjectsManager>().localCollectedComponent.Engine = code;
+        if (code == (int) MorseCode.H)
+        {
+          FindObjectOfType<ObjectsManager>().localCollectedComponent.Engine = code;
+          FindObjectOfType<NarrationController>().CollectRight();
+        }
+        else
+        {
+          FindObjectOfType<NarrationController>().CollectWrong();
+          valid = false;
+        }
+
         break;
       case GameManager.Wings:
-        FindObjectOfType<ObjectsManager>().localCollectedComponent.Wings = code;
+        if (code == (int) MorseCode.W)
+        {
+          FindObjectOfType<ObjectsManager>().localCollectedComponent.Wings = code;
+          FindObjectOfType<NarrationController>().CollectRight();
+        }
+        else
+        {
+          FindObjectOfType<NarrationController>().CollectWrong();
+          valid = false;
+        }
+
         break;
       case GameManager.Propeller:
-        FindObjectOfType<ObjectsManager>().localCollectedComponent.Propellers = code;
+        if (code == (int) MorseCode.F)
+        {
+          FindObjectOfType<ObjectsManager>().localCollectedComponent.Propellers = code;
+          FindObjectOfType<NarrationController>().CollectRight();
+        }
+        else
+        {
+          FindObjectOfType<NarrationController>().CollectWrong();
+          valid = false;
+        }
+
         break;
       case GameManager.Wheels:
-        FindObjectOfType<ObjectsManager>().localCollectedComponent.Wheels = code;
+        if (code == (int) MorseCode.O)
+        {
+          FindObjectOfType<ObjectsManager>().localCollectedComponent.Wheels = code;
+          FindObjectOfType<NarrationController>().CollectRight();
+        }
+        else
+        {
+          FindObjectOfType<NarrationController>().CollectWrong();
+          valid = false;
+        }
+
         break;
       case GameManager.FuelTank:
-        FindObjectOfType<ObjectsManager>().localCollectedComponent.FuelTank = code;
+        if (code == (int) MorseCode.E)
+        {
+          FindObjectOfType<ObjectsManager>().localCollectedComponent.FuelTank = code;
+          FindObjectOfType<NarrationController>().CollectRight();
+        }
+        else
+        {
+          FindObjectOfType<NarrationController>().CollectWrong();
+          valid = false;
+        }
+
         break;
       case GameManager.Tail:
-        FindObjectOfType<ObjectsManager>().localCollectedComponent.Tail = code;
+        if (code == (int) MorseCode.U)
+        {
+          FindObjectOfType<ObjectsManager>().localCollectedComponent.Tail = code;
+          FindObjectOfType<NarrationController>().CollectRight();
+        }
+        else
+        {
+          FindObjectOfType<NarrationController>().CollectWrong();
+          valid = false;
+        }
+
         break;
     }
 
+    if (!valid) return;
     UpdateSprite(code);
+    // for switching collected components
+    ImageRecognition imageRecognition = FindObjectOfType<ImageRecognition>();
+    imageRecognition.HideUsedObj(imageRecognition.GetPrefabName(currCode));
+    // imageRecognition.UnUsedObj(imageRecognition.GetPrefabName(collectedCode));
+    // collectedCode = currCode;
   }
 
   public void UpdateSprite(int code)
   {
     if (code < 0) return;
+    if (code >= 12) return;
     inventoryIcon.GetComponent<Image>().sprite = collectPanel.GetCandidateSprite(code);
     inventoryIcon.SetActive(true);
     _isCollected = true;
