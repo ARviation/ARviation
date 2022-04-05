@@ -19,8 +19,6 @@ public class ObjectsManager : MonoBehaviour
   [SerializeField] private GameObject nextButton;
   [SerializeField] private GameObject finishAssembleButton;
 
-  [SerializeField] private Canvas _canvas;
-
   public delegate void StartTouchEvent(Vector2 position, float time);
 
   public event StartTouchEvent OnStartTouch;
@@ -61,16 +59,6 @@ public class ObjectsManager : MonoBehaviour
     // GUI.Label(new Rect(20, 20, _width, _height * 0.25f),
     //   "pos(X) = " + _posX + " pos(Y) = " + _posY +
     //   "enabled = " + _isEnable + " pressed = " + _isPress + " touched = " + _isTouch + " drag = " + _isDrag);
-  }
-
-  public void DragHandler(BaseEventData data)
-  {
-    PointerEventData pointerData = (PointerEventData) data;
-    Vector2 position;
-    RectTransformUtility.ScreenPointToLocalPointInRectangle(
-      (RectTransform) _canvas.transform, pointerData.position, _canvas.worldCamera, out position);
-    Debug.Log(position);
-    transform.position = _canvas.transform.TransformPoint(position);
   }
 
   private void Start()
@@ -134,12 +122,13 @@ public class ObjectsManager : MonoBehaviour
     OnStartTouch?.Invoke(touchPosition, (float) context.startTime);
 
     Ray ray = _mainCamera.ScreenPointToRay(touchPosition);
+    // RectTransformUtility.ScreenPointToLocalPointInRectangle()
+    Debug.Log(touchPosition);
     if (Physics.Raycast(ray, out var hit))
     {
       _isTouch = true;
       if (hit.collider != null && hit.collider.gameObject.layer == LayerMask.NameToLayer("Draggable"))
       {
-        Debug.Log("here");
         _isDrag = true;
         StartCoroutine(DragUpdate(hit.collider.gameObject));
       }
