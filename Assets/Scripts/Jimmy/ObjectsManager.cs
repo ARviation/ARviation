@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.EventSystems;
 
 public class ObjectsManager : MonoBehaviour
 {
@@ -17,6 +18,8 @@ public class ObjectsManager : MonoBehaviour
   [SerializeField] private string componentPasscode = "";
   [SerializeField] private GameObject nextButton;
   [SerializeField] private GameObject finishAssembleButton;
+
+  [SerializeField] private Canvas _canvas;
 
   public delegate void StartTouchEvent(Vector2 position, float time);
 
@@ -60,6 +63,16 @@ public class ObjectsManager : MonoBehaviour
     //   "enabled = " + _isEnable + " pressed = " + _isPress + " touched = " + _isTouch + " drag = " + _isDrag);
   }
 
+  public void DragHandler(BaseEventData data)
+  {
+    PointerEventData pointerData = (PointerEventData) data;
+    Vector2 position;
+    RectTransformUtility.ScreenPointToLocalPointInRectangle(
+      (RectTransform) _canvas.transform, pointerData.position, _canvas.worldCamera, out position);
+    Debug.Log(position);
+    transform.position = _canvas.transform.TransformPoint(position);
+  }
+
   private void Start()
   {
     if (nextButton != null)
@@ -100,7 +113,8 @@ public class ObjectsManager : MonoBehaviour
       FindObjectOfType<NarrationController>().RevealDialog();
     }
 
-    _canPass = localCollectedComponent.ToString() == componentPasscode;
+    _canPass = true;
+    // _canPass = localCollectedComponent.ToString() == componentPasscode;
     if (assembledPart != (targetComponentNumber - 1) || _hasOpenFinishButton) return;
     FindObjectOfType<NarrationController>().RevealDialog();
     _hasOpenFinishButton = true;
@@ -125,25 +139,12 @@ public class ObjectsManager : MonoBehaviour
       _isTouch = true;
       if (hit.collider != null && hit.collider.gameObject.layer == LayerMask.NameToLayer("Draggable"))
       {
+        Debug.Log("here");
         _isDrag = true;
         StartCoroutine(DragUpdate(hit.collider.gameObject));
       }
-      else if (hit.collider.gameObject.layer == LayerMask.NameToLayer("Collectable") &&
-               _touchControls.Touch.TouchPress.ReadValue<float>() != 0)
-      {
-        // InventoryItem inventoryItem = hit.transform.GetComponent<Collectable>().GetInventoryItem();
-        // Collectable collectable = hit.transform.GetComponent<Collectable>();
-        // MoseCode code = collectable.componentCode;
-        //
-        // inventoryItem.OnHitComponent(code);
-        // string componentName = hit.transform.name;
-        // componentName = componentName.Replace("(Clone)", "").Trim();
-        // collectPanel.OpenPanel(componentName);
-        // collectPanel.SetInventoryItem(inventoryItem);
-      }
       else if (hit.collider.gameObject.layer == LayerMask.NameToLayer("Attachable") &&
                _touchControls.Touch.TouchPress.ReadValue<float>() != 0)
-
       {
         string hitTag = hit.transform.tag;
         switch (hitTag)

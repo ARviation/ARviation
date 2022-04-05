@@ -4,13 +4,21 @@ using UnityEngine;
 
 public class CollectedComponent : MonoBehaviour
 {
-  public int Fuselage { get; set; } = -1;
-  public int Engine { get; set; } = -1;
-  public int Wings { get; set; } = -1;
-  public int Propellers { get; set; } = -1;
-  public int FuelTank { get; set; } = -1;
-  public int Wheels { get; set; } = -1;
-  public int Tail { get; set; } = -1;
+  public int Fuselage { get; set; } = (int) MorseCode.A;
+  public int Engine { get; set; } = (int) MorseCode.H;
+  public int Wings { get; set; } = (int) MorseCode.W;
+  public int Propellers { get; set; } = (int) MorseCode.F;
+  public int FuelTank { get; set; } = (int) MorseCode.E;
+  public int Wheels { get; set; } = (int) MorseCode.O;
+  public int Tail { get; set; } = (int) MorseCode.U;
+
+  // public int Fuselage { get; set; } = -1;
+  // public int Engine { get; set; } = -1;
+  // public int Wings { get; set; } = -1;
+  // public int Propellers { get; set; } = -1;
+  // public int FuelTank { get; set; } = -1;
+  // public int Wheels { get; set; } = -1;
+  // public int Tail { get; set; } = -1;
 
   public Dictionary<string, int> GetAllComponent()
   {
