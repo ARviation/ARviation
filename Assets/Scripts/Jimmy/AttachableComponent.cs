@@ -6,6 +6,7 @@ public class AttachableComponent : MonoBehaviour
 {
   [SerializeField] private GameObject objToHide;
   [SerializeField] private InventoryItem item;
+  [SerializeField] public Placeable placeable;
 
   private void Start()
   {
@@ -16,5 +17,6 @@ public class AttachableComponent : MonoBehaviour
   {
     objToHide.gameObject.SetActive(true);
     item.OnUseComponent();
+    placeable.PlaceComponent();
   }
 }
