@@ -156,12 +156,32 @@ MonoBehaviour:
     m_Name: WrongLanding
     m_Texture: {fileID: 0}
   - m_SerializedGuid:
-      m_GuidLow: 5569795030153915426
-      m_GuidHigh: 7814208180763928465
+      m_GuidLow: 5428791619962235160
+      m_GuidHigh: 5289267265015924627
     m_SerializedTextureGuid:
-      m_GuidLow: 18245251767857453686
-      m_GuidHigh: 8460793023695822075
-    m_Size: {x: 1.1, y: 1.8798507}
+      m_GuidLow: 11165674885422465262
+      m_GuidHigh: 2753104561359680681
+    m_Size: {x: 1, y: 1.3253424}
     m_SpecifySize: 1
-    m_Name: marker40_L28
-    m_Texture: {fileID: 2800000, guid: bcb61a7627d0fd34fb1c7e876dc66a75, type: 3}
+    m_Name: marker43_L28
+    m_Texture: {fileID: 2800000, guid: 671b40ee72269af4a9f4591103fe3426, type: 3}
+  - m_SerializedGuid:
+      m_GuidLow: 5706083846610274101
+      m_GuidHigh: 11753710864334810775
+    m_SerializedTextureGuid:
+      m_GuidLow: 13962561183283037834
+      m_GuidHigh: 10917165556039951256
+    m_Size: {x: 2, y: 1.5}
+    m_SpecifySize: 1
+    m_Name: marker51_photo
+    m_Texture: {fileID: 2800000, guid: 5c3e468afb6bc1c49823e4493b908197, type: 3}
+  - m_SerializedGuid:
+      m_GuidLow: 5089770449917185721
+      m_GuidHigh: 14164363768705350811
+    m_SerializedTextureGuid:
+      m_GuidLow: 14872272637491536818
+      m_GuidHigh: 13339559764624966330
+    m_Size: {x: 0.16, y: 0.10666666}
+    m_SpecifySize: 1
+    m_Name: marker50_image
+    m_Texture: {fileID: 2800000, guid: c871e3b2ed2ace64ba82900eeea21fb9, type: 3}

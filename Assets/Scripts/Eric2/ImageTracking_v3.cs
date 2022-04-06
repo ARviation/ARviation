@@ -5,10 +5,11 @@ using UnityEngine.XR;
 using UnityEngine.XR.ARFoundation;
 
 [RequireComponent(typeof(ARTrackedImageManager))]
-public class ImageTracking_v2 : MonoBehaviour
+public class ImageTracking_v3 : MonoBehaviour
 {
     // Variables
-    public string marker_name;
+    public List<string> marker_name_list;
+    string marker_name = "";
     public GameObject airplane_prefab;
     private ARTrackedImageManager trackedImageManager;
 
@@ -56,8 +57,9 @@ public class ImageTracking_v2 : MonoBehaviour
         foreach (ARTrackedImage trackedImage in eventArgs.added)
         {
             string name = trackedImage.referenceImage.name;
-            if (name == marker_name)
+            if (marker_name.Length == 0 & marker_name_list.IndexOf(name) >= 0)
             {
+                marker_name = name;
                 UpdateImage(trackedImage);
                 #if UNITY_ANDROID || UNITY_IPHONE
                 Handheld.Vibrate();

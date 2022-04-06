@@ -237,6 +237,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10c2164df13f18e4dbd7d980cd397ac5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  marker_name: marker43_L28
   airplane_prefab: {fileID: 7419229118397895217, guid: a76a2ca2010c1fa4ab24267438b58d6e, type: 3}
 --- !u!114 &1048274594
 MonoBehaviour:
@@ -522,8 +523,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4966719baa26e4b0e8231a24d9bd491a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FocusMode: 1
-  m_LightEstimationMode: 0
+  m_FocusMode: -1
+  m_LightEstimationMode: -1
   m_AutoFocus: 1
   m_LightEstimation: 0
   m_FacingDirection: 1
