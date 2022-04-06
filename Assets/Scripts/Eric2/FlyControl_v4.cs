@@ -229,8 +229,6 @@ public class FlyControl_v4 : MonoBehaviour
     // landing
     public void landing()
     {
-        Debug.Log("FlyControl:: landing");
-
         // q0, theta0
         alpha = alpha0;
         Vector3 r0 = transform.position + Quaternion.AngleAxis(-90f * Mathf.Sign(alpha0), Vector3.up) * velocity.normalized * R;
@@ -330,6 +328,9 @@ public class FlyControl_v4 : MonoBehaviour
     {
         while (true)
         {
+            
+            if (action == null) yield return null;
+
             Vector3 orientation = transform.Find("orientation").transform.localEulerAngles;
             float roll_angle_ = orientation.z;
             
@@ -366,6 +367,7 @@ public class FlyControl_v4 : MonoBehaviour
     // button_launch_task
     public void button_launch_task()
     {
+        Debug.Log("button_launch_task");
         if (action == null)
         {
             take_off();
@@ -376,6 +378,7 @@ public class FlyControl_v4 : MonoBehaviour
     // button_land_task
     public void button_return_task()
     {
+        Debug.Log("button_launch_return");
         if (action == "free flight")
         {
             landing();
