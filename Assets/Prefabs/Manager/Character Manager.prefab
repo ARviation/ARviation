@@ -108,17 +108,17 @@ MonoBehaviour:
     showNext: 1
     showNextScene: 0
     hideAtStart: 0
-  - script: I think that your talented team of experts can fix my P-51 Mustang! Will
-      you help me?
+  - script: "I think that your talented team of experts can fix my P-51 Mustang!
+      Let\u2019s go!"
     MoodIndex: 4
     slideImage: {fileID: 0}
     showPrev: 1
     showNext: 0
     showNextScene: 1
     hideAtStart: 0
-  scriptElementsSort:
+  scriptElementsSortOne:
   - script: "The cards you were given have valuable information to find the parts
-      for my airplane, but they\u2019re a mess! "
+      for my airplane, but they\u2019re a mess!"
     MoodIndex: 16
     slideImage: {fileID: 21300000, guid: 92abac4612969473fbd871b17d625f87, type: 3}
     showPrev: 0
@@ -130,14 +130,15 @@ MonoBehaviour:
     MoodIndex: 3
     slideImage: {fileID: 21300000, guid: 61e4d73d69be74f0f9e9b59b18b7a1e2, type: 3}
     showPrev: 1
-    showNext: 1
-    showNextScene: 0
+    showNext: 0
+    showNextScene: 1
     hideAtStart: 0
+  scriptElementsSortTwo:
   - script: "Hmmm, very interesting\u2026 For some parts, you have more than one
       card, which means you have more than one option."
     MoodIndex: 28
     slideImage: {fileID: 0}
-    showPrev: 1
+    showPrev: 0
     showNext: 1
     showNextScene: 0
     hideAtStart: 0
@@ -246,9 +247,33 @@ MonoBehaviour:
     showNext: 0
     showNextScene: 1
     hideAtStart: 0
-  scriptElementsFly: []
+  scriptElementsFly:
+  - script: "We\u2019re going to fly the P-51 Mustang now! You can use the controls
+      on the screen to take off, fly around, and land."
+    MoodIndex: 23
+    slideImage: {fileID: 0}
+    showPrev: 0
+    showNext: 1
+    showNextScene: 0
+    hideAtStart: 0
+  - script: You can also take photos with the airplane! You were the ones who fixed
+      it after all.
+    MoodIndex: 18
+    slideImage: {fileID: 0}
+    showPrev: 1
+    showNext: 1
+    showNextScene: 0
+    hideAtStart: 0
+  - script: "I can\u2019t thank you enough for your help and expertise. Your team
+      is incredible!"
+    MoodIndex: 24
+    slideImage: {fileID: 0}
+    showPrev: 1
+    showNext: 0
+    showNextScene: 1
+    hideAtStart: 0
   scriptElementsReaction: []
-  scriptElementsWings:
+  scriptElementsWingsOne:
   - script: "Let\u2019s find the correct wings. To do this, you need the cards shown
       above. Tap the button when you have the cards!"
     MoodIndex: 1
@@ -261,15 +286,16 @@ MonoBehaviour:
       wings are correct for the P-51 Mustang?'
     MoodIndex: 26
     slideImage: {fileID: 21300000, guid: ab7fbdcef11d842eb842deeacf04ed09, type: 3}
-    showPrev: 1
-    showNext: 1
-    showNextScene: 0
+    showPrev: 0
+    showNext: 0
+    showNextScene: 1
     hideAtStart: 0
+  scriptElementsWingsTwo:
   - script: "You think you\u2019ve found the answer? Let\u2019s check! Tap the correct
       wings above and we\u2019ll see if you\u2019re right."
     MoodIndex: 0
     slideImage: {fileID: 0}
-    showPrev: 1
+    showPrev: 0
     showNext: 0
     showNextScene: 0
     hideAtStart: 0
@@ -290,8 +316,8 @@ MonoBehaviour:
     showNextScene: 0
     hideAtStart: 0
   scriptElementsPropeller:
-  - script: Awesome! The propeller is next. You will need the cards shown above to
-      figure out the correct propeller.
+  - script: "Fantastic! The propeller is last\u2026 You will need the cards shown
+      above to figure out the correct propeller."
     MoodIndex: 8
     slideImage: {fileID: 21300000, guid: c2ddd5424284c4e7487d8ad681196e6a, type: 3}
     showPrev: 0
@@ -306,8 +332,8 @@ MonoBehaviour:
     showNextScene: 0
     hideAtStart: 0
   scriptElementsEngine:
-  - script: "Fantastic! The engine is last\u2026 You will need the cards shown above
-      to figure out the correct engine."
+  - script: Awesome! The engine is next. You will need the cards shown above to figure
+      out the correct engine.
     MoodIndex: 17
     slideImage: {fileID: 21300000, guid: 450c88954e08345369a0a1a0af727918, type: 3}
     showPrev: 0

@@ -48,6 +48,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 6f6a52c21825d4987b703ac03053911b, type: 3}
   - {fileID: 8300000, guid: db143068022314acbafee15a31fb6bfd, type: 3}
   - {fileID: 8300000, guid: 3143d5a5445d44a608764d93d9e3ab8b, type: 3}
+  - {fileID: 8300000, guid: 713ac9c3535e74ac199ad158d7b69660, type: 3}
   sfxMorseList:
   - {fileID: 8300000, guid: 254ffa08b8ec44823bd268d98fda1985, type: 3}
   - {fileID: 8300000, guid: aea50735fe5e34da69b9cfad710c57a3, type: 3}

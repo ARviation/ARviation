@@ -19,7 +19,7 @@ public enum MorseCode : int
 public enum CorrectMorseCode : int
 {
   Fuselage = MorseCode.A,
-  Engine = MorseCode.V,
+  Engine = MorseCode.H,
   Propeller = MorseCode.F,
   Wings = MorseCode.W,
   Wheels = MorseCode.O,

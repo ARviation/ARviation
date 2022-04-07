@@ -7,6 +7,7 @@ public enum SFXList : int
   Click = 0,
   Success = 1,
   Fail = 2,
+  FailTwo = 3,
 }
 
 public class SoundManager : MonoBehaviour

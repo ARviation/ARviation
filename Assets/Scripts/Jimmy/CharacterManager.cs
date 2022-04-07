@@ -56,13 +56,15 @@ public class CharacterManager : MonoBehaviour
 
   [SerializeField] public Sprite[] characterMoodList;
   [SerializeField] private ScriptElement[] scriptElementsIntro;
-  [SerializeField] private ScriptElement[] scriptElementsSort;
+  [SerializeField] private ScriptElement[] scriptElementsSortOne;
+  [SerializeField] private ScriptElement[] scriptElementsSortTwo;
   [SerializeField] private ScriptElement[] scriptElementsFinishSelect;
   [SerializeField] private ScriptElement[] scriptElementsHunt;
   [SerializeField] private ScriptElement[] scriptElementsAssembly;
   [SerializeField] private ScriptElement[] scriptElementsFly;
   [SerializeField] private ScriptElement[] scriptElementsReaction;
-  [SerializeField] private ScriptElement[] scriptElementsWings;
+  [SerializeField] private ScriptElement[] scriptElementsWingsOne;
+  [SerializeField] private ScriptElement[] scriptElementsWingsTwo;
   [SerializeField] private ScriptElement[] scriptElementsFuelTank;
   [SerializeField] private ScriptElement[] scriptElementsPropeller;
   [SerializeField] private ScriptElement[] scriptElementsEngine;
@@ -85,13 +87,15 @@ public class CharacterManager : MonoBehaviour
     return sceneIndex switch
     {
       (int) SceneIndex.Intro => scriptElementsIntro[index],
-      (int) SceneIndex.Sort => scriptElementsSort[index],
+      (int) SceneIndex.SortOne => scriptElementsSortOne[index],
+      (int) SceneIndex.SortTwo => scriptElementsSortTwo[index],
       (int) SceneIndex.FinishSelect => scriptElementsFinishSelect[index],
       (int) SceneIndex.Hunt => scriptElementsHunt[index],
       (int) SceneIndex.Assembly => scriptElementsAssembly[index],
       (int) SceneIndex.Fly => scriptElementsFly[index],
       (int) SceneIndex.Engine => scriptElementsEngine[index],
-      (int) SceneIndex.Wings => scriptElementsWings[index],
+      (int) SceneIndex.WingsOne => scriptElementsWingsOne[index],
+      (int) SceneIndex.WingsTwo => scriptElementsWingsTwo[index],
       (int) SceneIndex.Propeller => scriptElementsPropeller[index],
       (int) SceneIndex.FuelTank => scriptElementsFuelTank[index],
       _ => throw new ArgumentOutOfRangeException()
@@ -104,13 +108,15 @@ public class CharacterManager : MonoBehaviour
     return sceneIndex switch
     {
       (int) SceneIndex.Intro => scriptElementsIntro.Length,
-      (int) SceneIndex.Sort => scriptElementsSort.Length,
+      (int) SceneIndex.SortOne => scriptElementsSortOne.Length,
+      (int) SceneIndex.SortTwo => scriptElementsSortTwo.Length,
       (int) SceneIndex.FinishSelect=> scriptElementsFinishSelect.Length,
       (int) SceneIndex.Hunt => scriptElementsHunt.Length,
       (int) SceneIndex.Assembly => scriptElementsAssembly.Length,
       (int) SceneIndex.Fly => scriptElementsFly.Length,
       (int) SceneIndex.Engine => scriptElementsEngine.Length,
-      (int) SceneIndex.Wings => scriptElementsWings.Length,
+      (int) SceneIndex.WingsOne => scriptElementsWingsOne.Length,
+      (int) SceneIndex.WingsTwo => scriptElementsWingsTwo.Length,
       (int) SceneIndex.Propeller => scriptElementsPropeller.Length,
       (int) SceneIndex.FuelTank => scriptElementsFuelTank.Length,
       _ => 0

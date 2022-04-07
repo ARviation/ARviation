@@ -23,8 +23,10 @@ public class NarrationController : MonoBehaviour
   [SerializeField] private Image hideBackground;
 
   // [SerializeField] private ARCameraManager arCamera;
-  [SerializeField] private bool hasImageHoder;
-  [SerializeField] private Image imageHolder;
+  [SerializeField] private bool hasImgHolder;
+  [SerializeField] private float imgHolderMinHeight = 480.0f;
+  [SerializeField] private float imgHolderMaxHeight = 800.0f;
+  [SerializeField] private Image imgHolder;
   [SerializeField] private bool hasSelection = false;
   [SerializeField] private bool isHunting = false;
   [SerializeField] private int huntingMorseIndex;
@@ -81,12 +83,17 @@ public class NarrationController : MonoBehaviour
   public void OnNextClick()
   {
     if (_isPlaying || _currentScriptInd >= (_scriptLength - 1)) return;
+    _currentScriptInd++;
+    scriptElement = CharacterManager.Instance.GetScriptElement(_currentScriptInd);
+    // if (hasSpecialForNextSentence && _currentScriptInd == (_scriptLength - 1))
+    // {
+    //   GameManager.Instance.ChangeSceneToWings();
+    // }
+
     HideBtn();
     delay = defaultDelay;
     SoundManager.Instance.PlaySFXByIndex(SFXList.Click);
 
-    _currentScriptInd++;
-    scriptElement = CharacterManager.Instance.GetScriptElement(_currentScriptInd);
     if (scriptElement.hideAtStart)
     {
       HideDialog();
@@ -128,7 +135,7 @@ public class NarrationController : MonoBehaviour
 
   private void ShowLine(ScriptElement scriptElement)
   {
-    if (hasImageHoder)
+    if (hasImgHolder)
     {
       ImageHolderAutoSize();
     }
@@ -145,18 +152,18 @@ public class NarrationController : MonoBehaviour
     Sprite slideImage = scriptElement.slideImage;
     if (slideImage != null)
     {
-      imageHolder.gameObject.SetActive(true);
-      imageHolder.sprite = slideImage;
+      imgHolder.gameObject.SetActive(true);
+      imgHolder.sprite = slideImage;
       float iWidth = slideImage.rect.width;
       float iHeight = slideImage.rect.height;
       float ratio = iWidth / iHeight;
-      iHeight = Mathf.Clamp(iHeight, 320f, 800f);
+      iHeight = Mathf.Clamp(iHeight, imgHolderMinHeight, imgHolderMaxHeight);
       iWidth = iHeight * ratio;
-      imageHolder.rectTransform.sizeDelta = new Vector2(iWidth, iHeight);
+      imgHolder.rectTransform.sizeDelta = new Vector2(iWidth, iHeight);
     }
     else
     {
-      imageHolder.gameObject.SetActive(false);
+      imgHolder.gameObject.SetActive(false);
     }
   }
 
@@ -199,7 +206,7 @@ public class NarrationController : MonoBehaviour
 
   public void CollectWrong()
   {
-    SoundManager.Instance.PlaySFXByIndex(SFXList.Fail);
+    SoundManager.Instance.PlaySFXByIndex(SFXList.FailTwo);
   }
 
   public void CollectRight()

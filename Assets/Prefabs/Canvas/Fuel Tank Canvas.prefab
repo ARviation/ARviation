@@ -576,14 +576,14 @@ RectTransform:
   m_GameObject: {fileID: 3368922709099632260}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 5.0620008, y: 10.855955, z: 5.0620003}
+  m_LocalScale: {x: 5, y: 12, z: 5}
   m_Children: []
   m_Father: {fileID: 3368922709100455829}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 385.76315, y: -5.999939}
+  m_AnchoredPosition: {x: 190, y: -6}
   m_SizeDelta: {x: 240, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3368922709099632257
@@ -719,8 +719,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -107, y: -711}
-  m_SizeDelta: {x: 2048, y: 975}
+  m_AnchoredPosition: {x: 100, y: -711}
+  m_SizeDelta: {x: 1680, y: 975}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3368922709100455831
 CanvasRenderer:
@@ -1051,13 +1051,15 @@ MonoBehaviour:
   hasHideCondition: 0
   hideConditionIndex: 0
   hideBackground: {fileID: 0}
-  arCamera: {fileID: 0}
-  hasImageHoder: 1
-  imageHolder: {fileID: 7516388050431557569}
+  hasImgHolder: 1
+  imgHolderMinHeight: 840
+  imgHolderMaxHeight: 1000
+  imgHolder: {fileID: 7516388050431557569}
   hasSelection: 1
   isHunting: 0
   huntingMorseIndex: 0
   huntingHideIndex: 0
+  _currentScriptInd: 0
 --- !u!114 &190352481510859281
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1078,7 +1080,7 @@ MonoBehaviour:
   selectionBox:
   - {fileID: 3368922708617333064}
   - {fileID: 3368922708650946235}
-  sceneWhenSuccess: 8
+  sceneWhenSuccess: 10
   feedbackDuration: 1.5
 --- !u!1 &4011567257494237101
 GameObject:
