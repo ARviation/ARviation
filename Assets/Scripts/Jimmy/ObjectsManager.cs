@@ -7,7 +7,7 @@ using UnityEngine.EventSystems;
 
 public class ObjectsManager : MonoBehaviour
 {
-  public CollectedComponent localCollectedComponent;
+  // public CollectedComponent localCollectedComponent;
 
   [SerializeField] private float mouseDragPhysicsSpeed = 10.0f;
   [SerializeField] private float mouseDragSpeed = 1.0f;
@@ -41,7 +41,9 @@ public class ObjectsManager : MonoBehaviour
   private float _posX = .0f;
   private float _posY = .0f;
   private bool hasCollectAll = false;
-  private bool _canPass = false;
+  private bool hasTriggerCollectAll = false;
+
+  // private bool _canPass = false;
   private bool _finishAssemble = false;
   private bool _hasOpenFinishButton = false;
 
@@ -75,7 +77,7 @@ public class ObjectsManager : MonoBehaviour
 
     if (collectPanel != null)
       collectPanel.gameObject.SetActive(false);
-    LoadCollectedComponent();
+    // LoadCollectedComponent();
     _touchControls.Touch.TouchPress.started += ctx => StartTouch(ctx);
     _touchControls.Touch.TouchPress.canceled += ctx => EndTouch(ctx);
   }
@@ -94,14 +96,14 @@ public class ObjectsManager : MonoBehaviour
 
   private void Update()
   {
-    Debug.Log(collectedComponent);
     hasCollectAll = collectedComponent == targetComponentNumber;
-    if (hasCollectAll)
+    if (hasCollectAll && !hasTriggerCollectAll)
     {
       FindObjectOfType<NarrationController>().RevealDialog();
+      hasTriggerCollectAll = true;
     }
 
-    _canPass = true;
+    // _canPass = true;
     // _canPass = localCollectedComponent.ToString() == componentPasscode;
     if (assembledPart != (targetComponentNumber - 1) || _hasOpenFinishButton) return;
     FindObjectOfType<NarrationController>().RevealDialog();
@@ -109,10 +111,10 @@ public class ObjectsManager : MonoBehaviour
     finishAssembleButton.SetActive(true);
   }
 
-  public bool GetCanPass()
-  {
-    return _canPass;
-  }
+  // public bool GetCanPass()
+  // {
+  //   return _canPass;
+  // }
 
   private void StartTouch(InputAction.CallbackContext context)
   {
@@ -122,8 +124,6 @@ public class ObjectsManager : MonoBehaviour
     OnStartTouch?.Invoke(touchPosition, (float) context.startTime);
 
     Ray ray = _mainCamera.ScreenPointToRay(touchPosition);
-    // RectTransformUtility.ScreenPointToLocalPointInRectangle()
-    Debug.Log(touchPosition);
     if (Physics.Raycast(ray, out var hit))
     {
       _isTouch = true;
@@ -139,7 +139,7 @@ public class ObjectsManager : MonoBehaviour
         switch (hitTag)
         {
           case GameManager.Engine:
-            if (PlayerStats.Instance.selectedComponentCode == MorseCode.H)
+            if (PlayerStats.Instance.selectedComponentCode == (MorseCode) CorrectMorseCode.Engine)
             {
               hit.transform.gameObject.GetComponent<AttachableComponent>().ShowObj();
               AddAssembledComponent();
@@ -147,7 +147,7 @@ public class ObjectsManager : MonoBehaviour
 
             break;
           case GameManager.Wings:
-            if (PlayerStats.Instance.selectedComponentCode == MorseCode.W)
+            if (PlayerStats.Instance.selectedComponentCode == (MorseCode) CorrectMorseCode.Wings)
             {
               hit.transform.gameObject.GetComponent<AttachableComponent>().ShowObj();
               AddAssembledComponent();
@@ -155,7 +155,7 @@ public class ObjectsManager : MonoBehaviour
 
             break;
           case GameManager.Propeller:
-            if (PlayerStats.Instance.selectedComponentCode == MorseCode.F)
+            if (PlayerStats.Instance.selectedComponentCode == (MorseCode) CorrectMorseCode.Propeller)
             {
               hit.transform.gameObject.GetComponent<AttachableComponent>().ShowObj();
               AddAssembledComponent();
@@ -163,7 +163,7 @@ public class ObjectsManager : MonoBehaviour
 
             break;
           case GameManager.Wheels:
-            if (PlayerStats.Instance.selectedComponentCode == MorseCode.O)
+            if (PlayerStats.Instance.selectedComponentCode == (MorseCode) CorrectMorseCode.Wheels)
             {
               hit.transform.gameObject.GetComponent<AttachableComponent>().ShowObj();
               AddAssembledComponent();
@@ -171,7 +171,7 @@ public class ObjectsManager : MonoBehaviour
 
             break;
           case GameManager.FuelTank:
-            if (PlayerStats.Instance.selectedComponentCode == MorseCode.E)
+            if (PlayerStats.Instance.selectedComponentCode == (MorseCode) CorrectMorseCode.FuelTank)
             {
               hit.transform.gameObject.GetComponent<AttachableComponent>().ShowObj();
               AddAssembledComponent();
@@ -179,7 +179,7 @@ public class ObjectsManager : MonoBehaviour
 
             break;
           case GameManager.Tail:
-            if (PlayerStats.Instance.selectedComponentCode == MorseCode.U)
+            if (PlayerStats.Instance.selectedComponentCode == (MorseCode) CorrectMorseCode.Tail)
             {
               hit.transform.gameObject.GetComponent<AttachableComponent>().ShowObj();
               AddAssembledComponent();
@@ -221,24 +221,24 @@ public class ObjectsManager : MonoBehaviour
     }
   }
 
-  public void SaveCollectedComponent()
-  {
-    PlayerStats.Instance.savedCollectedComponent = localCollectedComponent;
-  }
-
-  private void LoadCollectedComponent()
-  {
-    localCollectedComponent = PlayerStats.Instance.savedCollectedComponent;
-    var componentMap = localCollectedComponent.GetAllComponent();
-    _inventoryItems = FindObjectsOfType<InventoryItem>();
-    foreach (var inventoryItem in _inventoryItems)
-    {
-      var inventoryItemCategory = inventoryItem.name;
-      int code = componentMap[inventoryItemCategory];
-      inventoryItem.currCode = (MorseCode) code;
-      inventoryItem.UpdateSprite(code);
-    }
-  }
+  // public void SaveCollectedComponent()
+  // {
+  //   PlayerStats.Instance.savedCollectedComponent = localCollectedComponent;
+  // }
+  //
+  // private void LoadCollectedComponent()
+  // {
+  //   localCollectedComponent = PlayerStats.Instance.savedCollectedComponent;
+  //   var componentMap = localCollectedComponent.GetAllComponent();
+  //   _inventoryItems = FindObjectsOfType<InventoryItem>();
+  //   foreach (var inventoryItem in _inventoryItems)
+  //   {
+  //     var inventoryItemCategory = inventoryItem.name;
+  //     int code = componentMap[inventoryItemCategory];
+  //     inventoryItem.currCode = (MorseCode) code;
+  //     inventoryItem.UpdateSprite(code);
+  //   }
+  // }
 
   public void AddCollectedComponent()
   {

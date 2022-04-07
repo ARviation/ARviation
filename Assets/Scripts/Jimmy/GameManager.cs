@@ -78,12 +78,12 @@ public class GameManager : MonoBehaviour
 
   public void ChangeSceneToAssembly()
   {
-    if (FindObjectOfType<ObjectsManager>().GetCanPass())
-    {
-      SoundManager.Instance.PlaySFXByIndex(SFXList.Click);
-      FindObjectOfType<ObjectsManager>().SaveCollectedComponent();
-      ChangeSceneTo((int) SceneIndex.Assembly);
-    }
+    // if (FindObjectOfType<ObjectsManager>().GetCanPass())
+    // {
+    SoundManager.Instance.PlaySFXByIndex(SFXList.Click);
+    // FindObjectOfType<ObjectsManager>().SaveCollectedComponent();
+    ChangeSceneTo((int) SceneIndex.Assembly);
+    // }
   }
 
   public void ChangeSceneToFly()

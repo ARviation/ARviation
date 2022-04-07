@@ -838,6 +838,9 @@ MonoBehaviour:
   - name: WrongLanding
     prefab: {fileID: 706682281903784119, guid: a6044a7a393c44511914a78b09602605, type: 3}
     code: 13
+  - name: RunwayL
+    prefab: {fileID: 7419229118397895217, guid: a76a2ca2010c1fa4ab24267438b58d6e, type: 3}
+    code: 13
   collectPanel: {fileID: 1076849978}
   alreadyUsedImageHolder: {fileID: 5922758114085222060}
 --- !u!114 &1752953442

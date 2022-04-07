@@ -15,3 +15,14 @@ public enum MorseCode : int
   P = 12,
   R = 13,
 }
+
+public enum CorrectMorseCode : int
+{
+  Fuselage = MorseCode.A,
+  Engine = MorseCode.V,
+  Propeller = MorseCode.F,
+  Wings = MorseCode.W,
+  Wheels = MorseCode.O,
+  FuelTank = MorseCode.E,
+  Tail = MorseCode.U,
+}
