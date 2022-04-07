@@ -28,6 +28,7 @@ public class FlyControl_v4 : MonoBehaviour
     public float alpha;
     public float alpha0 = 1f;
     Vector3 velocity;
+    bool is_fixed_traj = false;
 
     Slider slider_alpha;
     Button button_launch;
@@ -49,6 +50,7 @@ public class FlyControl_v4 : MonoBehaviour
 
         StartCoroutine(fly_control_keyboard());
         StartCoroutine(roll_angle_dumping());
+        StartCoroutine(update_UI_state());
 
         // button
         slider_alpha = GameObject.Find("Canvas").transform.Find("slider_control").GetComponent<Slider>();
@@ -205,6 +207,17 @@ public class FlyControl_v4 : MonoBehaviour
             }
             return;
         }
+
+        // action: set traj flag
+        {
+            if (action == "lock traj")
+            {
+                float tf = parameters[0];
+                is_fixed_traj = (tf > 0);
+                action = null;
+                return;
+            }
+        }
     }
 
 
@@ -218,10 +231,12 @@ public class FlyControl_v4 : MonoBehaviour
         transform.Find("orientation").transform.localEulerAngles = Vector3.zero;
         action = null;
         job_list = new List<job>();
+        job_list.Add(new job() { action = "lock traj", parameters = new List<float> { 1f } });
         job_list.Add(new job() { action = "accelerate", parameters = new List<float> { L1, speed*speed/(2*L1) } });        
         job_list.Add(new job() { action = "take off", parameters = new List<float> { h, L2 } });
         job_list.Add(new job() { action = "straight", parameters = new List<float> { R } });
         job_list.Add(new job() { action = "change alpha", parameters = new List<float> { alpha0 } });
+        job_list.Add(new job() { action = "lock traj", parameters = new List<float> { -1f } });
         job_list.Add(new job() { action = "free flight", parameters = new List<float> { } });
     }
 
@@ -261,6 +276,7 @@ public class FlyControl_v4 : MonoBehaviour
         // job_list
         action = null;
         job_list = new List<job>();
+        job_list.Add(new job() { action = "lock traj", parameters = new List<float> { 1f } });
         job_list.Add(new job() { action = "circle", parameters = new List<float> { alpha0, d0 } });
         job_list.Add(new job() { action = "straight", parameters = new List<float> { d1 } });
         job_list.Add(new job() { action = "circle", parameters = new List<float> { alpha0, 0.25f } });
@@ -269,6 +285,7 @@ public class FlyControl_v4 : MonoBehaviour
         job_list.Add(new job() { action = "circle", parameters = new List<float> { -alpha0, 0.25f } });
         job_list.Add(new job() { action = "landing", parameters = new List<float> { h, L2 } });
         job_list.Add(new job() { action = "accelerate", parameters = new List<float> { L1, - speed * speed / (2 * L1) } });
+        job_list.Add(new job() { action = "lock traj", parameters = new List<float> { -1f } });
     }
 
 
@@ -350,7 +367,32 @@ public class FlyControl_v4 : MonoBehaviour
     }
 
 
-    // Atan3
+    // update_UI_state
+    IEnumerator update_UI_state()
+    {
+        while (true)
+        {
+            if (GameObject.Find("Canvas"))
+            {
+                if (action == null & !is_fixed_traj)
+                {
+                    GameObject.Find("Canvas").GetComponent<UI_control_v2>().state = "idling";
+                }
+                if (action != null & !is_fixed_traj)
+                {
+                    GameObject.Find("Canvas").GetComponent<UI_control_v2>().state = "free flight";
+                }
+                if (action != null & is_fixed_traj)
+                {
+                    GameObject.Find("Canvas").GetComponent<UI_control_v2>().state = "fixed traj";
+                }
+            }
+            yield return null;
+        }
+    }
+    
+
+    // tan3
     (float theta3, int q3) Atan3(Vector3 vv)
     {
         float x = vv.x;
