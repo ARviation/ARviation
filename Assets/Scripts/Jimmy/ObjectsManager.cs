@@ -136,6 +136,7 @@ public class ObjectsManager : MonoBehaviour
                _touchControls.Touch.TouchPress.ReadValue<float>() != 0)
       {
         string hitTag = hit.transform.tag;
+        bool valid = false;
         switch (hitTag)
         {
           case GameManager.Engine:
@@ -143,6 +144,7 @@ public class ObjectsManager : MonoBehaviour
             {
               hit.transform.gameObject.GetComponent<AttachableComponent>().ShowObj();
               AddAssembledComponent();
+              valid = true;
             }
 
             break;
@@ -151,6 +153,7 @@ public class ObjectsManager : MonoBehaviour
             {
               hit.transform.gameObject.GetComponent<AttachableComponent>().ShowObj();
               AddAssembledComponent();
+              valid = true;
             }
 
             break;
@@ -159,6 +162,7 @@ public class ObjectsManager : MonoBehaviour
             {
               hit.transform.gameObject.GetComponent<AttachableComponent>().ShowObj();
               AddAssembledComponent();
+              valid = true;
             }
 
             break;
@@ -167,6 +171,7 @@ public class ObjectsManager : MonoBehaviour
             {
               hit.transform.gameObject.GetComponent<AttachableComponent>().ShowObj();
               AddAssembledComponent();
+              valid = true;
             }
 
             break;
@@ -175,6 +180,7 @@ public class ObjectsManager : MonoBehaviour
             {
               hit.transform.gameObject.GetComponent<AttachableComponent>().ShowObj();
               AddAssembledComponent();
+              valid = true;
             }
 
             break;
@@ -183,9 +189,19 @@ public class ObjectsManager : MonoBehaviour
             {
               hit.transform.gameObject.GetComponent<AttachableComponent>().ShowObj();
               AddAssembledComponent();
+              valid = true;
             }
 
             break;
+        }
+
+        if (valid)
+        {
+          SoundManager.Instance.PlaySuccessSFX();
+        }
+        else
+        {
+          SoundManager.Instance.PlayFailSFX();
         }
       }
     }

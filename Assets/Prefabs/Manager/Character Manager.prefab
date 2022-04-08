@@ -204,6 +204,14 @@ MonoBehaviour:
       rest of the parts, you have to use the Morse code in the cards.
     MoodIndex: 18
     slideImage: {fileID: 0}
+    showPrev: 1
+    showNext: 1
+    showNextScene: 0
+    hideAtStart: 0
+  - script: "Decipher their correct letters, find them around the exhibit, and scan
+      them. Let\u2019s go!"
+    MoodIndex: 5
+    slideImage: {fileID: 0}
     showPrev: 0
     showNext: 1
     showNextScene: 0
@@ -222,6 +230,14 @@ MonoBehaviour:
     MoodIndex: 1
     slideImage: {fileID: 0}
     showPrev: 0
+    showNext: 1
+    showNextScene: 0
+    hideAtStart: 0
+  - script: You can use other buttons on the screen to see different views of the
+      airplane.
+    MoodIndex: 4
+    slideImage: {fileID: 0}
+    showPrev: 1
     showNext: 1
     showNextScene: 0
     hideAtStart: 0
@@ -248,16 +264,24 @@ MonoBehaviour:
     showNextScene: 1
     hideAtStart: 0
   scriptElementsFly:
-  - script: "We\u2019re going to fly the P-51 Mustang now! You can use the controls
-      on the screen to take off, fly around, and land."
+  - script: "We\u2019re going to fly the P-51 Mustang now! The first step is to find
+      the runway and scan it. The runway looks just like this."
     MoodIndex: 23
     slideImage: {fileID: 0}
     showPrev: 0
     showNext: 1
     showNextScene: 0
-    hideAtStart: 0
-  - script: You can also take photos with the airplane! You were the ones who fixed
-      it after all.
+    hideAtStart: 1
+  - script: "You did it! Now, you\u2019ll be able to use the controls on the screen
+      to take off, fly around, and land."
+    MoodIndex: 7
+    slideImage: {fileID: 0}
+    showPrev: 0
+    showNext: 1
+    showNextScene: 0
+    hideAtStart: 1
+  - script: You can also take photos with the airplane! To receive all your photos
+      at the end, you must tap the check mark to finish this activity.
     MoodIndex: 18
     slideImage: {fileID: 0}
     showPrev: 1
@@ -269,8 +293,30 @@ MonoBehaviour:
     MoodIndex: 24
     slideImage: {fileID: 0}
     showPrev: 1
+    showNext: 1
+    showNextScene: 0
+    hideAtStart: 0
+  - script: I hope you had fun helping me rebuild my great-grandpa's P-51 Mustang.
+    MoodIndex: 6
+    slideImage: {fileID: 0}
+    showPrev: 1
+    showNext: 1
+    showNextScene: 0
+    hideAtStart: 0
+  - script: "Aviation is not just for pilots, but also for people who love designing
+      airplanes, maintaining them, and helping them fly\u2026 Just like you!"
+    MoodIndex: 21
+    slideImage: {fileID: 0}
+    showPrev: 1
+    showNext: 1
+    showNextScene: 0
+    hideAtStart: 0
+  - script: Have a wonderful day, and I hope to see you again soon!
+    MoodIndex: 11
+    slideImage: {fileID: 0}
+    showPrev: 1
     showNext: 0
-    showNextScene: 1
+    showNextScene: 0
     hideAtStart: 0
   scriptElementsReaction: []
   scriptElementsWingsOne:

@@ -202,15 +202,4 @@ public class NarrationController : MonoBehaviour
   {
     dialogueObj.SetActive(false);
   }
-
-
-  public void CollectWrong()
-  {
-    SoundManager.Instance.PlaySFXByIndex(SFXList.FailTwo);
-  }
-
-  public void CollectRight()
-  {
-    SoundManager.Instance.PlaySFXByIndex(SFXList.Success);
-  }
 }

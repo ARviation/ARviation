@@ -10,7 +10,8 @@ public class InventoryItem : MonoBehaviour
   [SerializeField] private Image background;
   [SerializeField] private Image componentIcon;
   [SerializeField] private CollectPanel collectPanel;
-  [SerializeField] private Sprite usedSprite;
+  [SerializeField] private bool isAssembly = false;
+  [SerializeField] private bool isFuselage = false;
 
   public MorseCode currCode;
   public MorseCode collectedCode;
@@ -20,8 +21,17 @@ public class InventoryItem : MonoBehaviour
   private void Start()
   {
     enableFrame.gameObject.SetActive(false);
-    background.gameObject.SetActive(true);
-    componentIcon.gameObject.SetActive(false);
+    if (isAssembly && !isFuselage)
+    {
+      background.gameObject.SetActive(false);
+      componentIcon.gameObject.SetActive(true);
+      _isCollected = true;
+    }
+    else
+    {
+      background.gameObject.SetActive(true);
+      componentIcon.gameObject.SetActive(false);
+    }
   }
 
   public void OnClick()
@@ -55,18 +65,15 @@ public class InventoryItem : MonoBehaviour
 
   public void OnUseComponent()
   {
-    // _isCollected = false;
+    _isCollected = false;
     _isEnable = false;
     enableFrame.gameObject.SetActive(false);
-    componentIcon.GetComponent<Image>().sprite = usedSprite;
+    componentIcon.gameObject.SetActive(false);
+    background.gameObject.SetActive(true);
   }
 
   public void OnCollectComponent()
   {
-    // if (!_isCollected)
-    // {
-    //   _isCollected = true;
-    // }
     int code = (int) currCode;
     bool isRightComponent = true;
     switch (gameObject.name)
@@ -77,11 +84,11 @@ public class InventoryItem : MonoBehaviour
           // FindObjectOfType<ObjectsManager>().localCollectedComponent.Fuselage = code;
           FindObjectOfType<NarrationController>().RevealDialog();
           FindObjectOfType<NarrationController>().RemoveHadHideCondition();
-          FindObjectOfType<NarrationController>().CollectRight();
+          SoundManager.Instance.PlaySuccessSFX();
         }
         else
         {
-          FindObjectOfType<NarrationController>().CollectWrong();
+          SoundManager.Instance.PlayFailSFX();
           isRightComponent = false;
         }
 
@@ -90,11 +97,11 @@ public class InventoryItem : MonoBehaviour
         if (code == (int) CorrectMorseCode.Engine)
         {
           // FindObjectOfType<ObjectsManager>().localCollectedComponent.Engine = code;
-          FindObjectOfType<NarrationController>().CollectRight();
+          SoundManager.Instance.PlaySuccessSFX();
         }
         else
         {
-          FindObjectOfType<NarrationController>().CollectWrong();
+          SoundManager.Instance.PlayFailSFX();
           isRightComponent = false;
         }
 
@@ -103,11 +110,11 @@ public class InventoryItem : MonoBehaviour
         if (code == (int) CorrectMorseCode.Wings)
         {
           // FindObjectOfType<ObjectsManager>().localCollectedComponent.Wings = code;
-          FindObjectOfType<NarrationController>().CollectRight();
+          SoundManager.Instance.PlaySuccessSFX();
         }
         else
         {
-          FindObjectOfType<NarrationController>().CollectWrong();
+          SoundManager.Instance.PlayFailSFX();
           isRightComponent = false;
         }
 
@@ -116,11 +123,11 @@ public class InventoryItem : MonoBehaviour
         if (code == (int) CorrectMorseCode.Propeller)
         {
           // FindObjectOfType<ObjectsManager>().localCollectedComponent.Propellers = code;
-          FindObjectOfType<NarrationController>().CollectRight();
+          SoundManager.Instance.PlaySuccessSFX();
         }
         else
         {
-          FindObjectOfType<NarrationController>().CollectWrong();
+          SoundManager.Instance.PlayFailSFX();
           isRightComponent = false;
         }
 
@@ -129,11 +136,11 @@ public class InventoryItem : MonoBehaviour
         if (code == (int) CorrectMorseCode.Wheels)
         {
           // FindObjectOfType<ObjectsManager>().localCollectedComponent.Wheels = code;
-          FindObjectOfType<NarrationController>().CollectRight();
+          SoundManager.Instance.PlaySuccessSFX();
         }
         else
         {
-          FindObjectOfType<NarrationController>().CollectWrong();
+          SoundManager.Instance.PlayFailSFX();
           isRightComponent = false;
         }
 
@@ -142,11 +149,11 @@ public class InventoryItem : MonoBehaviour
         if (code == (int) CorrectMorseCode.FuelTank)
         {
           // FindObjectOfType<ObjectsManager>().localCollectedComponent.FuelTank = code;
-          FindObjectOfType<NarrationController>().CollectRight();
+          SoundManager.Instance.PlaySuccessSFX();
         }
         else
         {
-          FindObjectOfType<NarrationController>().CollectWrong();
+          SoundManager.Instance.PlayFailSFX();
           isRightComponent = false;
         }
 
@@ -155,11 +162,11 @@ public class InventoryItem : MonoBehaviour
         if (code == (int) CorrectMorseCode.Tail)
         {
           // FindObjectOfType<ObjectsManager>().localCollectedComponent.Tail = code;
-          FindObjectOfType<NarrationController>().CollectRight();
+          SoundManager.Instance.PlaySuccessSFX();
         }
         else
         {
-          FindObjectOfType<NarrationController>().CollectWrong();
+          SoundManager.Instance.PlayFailSFX();
           isRightComponent = false;
         }
 
@@ -168,14 +175,17 @@ public class InventoryItem : MonoBehaviour
 
     if (!isRightComponent) return;
 
+    if (!_isCollected)
+    {
+      _isCollected = true;
+    }
+
     FindObjectOfType<ObjectsManager>().AddCollectedComponent();
     componentIcon.gameObject.SetActive(true);
     background.gameObject.SetActive(false);
-    // UpdateSprite(code);
     // for switching collected components
     ImageRecognition imageRecognition = FindObjectOfType<ImageRecognition>();
     imageRecognition.HideUsedObj(imageRecognition.GetPrefabName(currCode));
-    // imageRecognition.UnUsedObj(imageRecognition.GetPrefabName(collectedCode));
     // collectedCode = currCode;
   }
 
