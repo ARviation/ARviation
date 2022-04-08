@@ -22,6 +22,7 @@ public class FlyControl_v4 : MonoBehaviour
     float roll_max = 15;     //degree
     float roll_eta = 0.01f;  //dumping rate
 
+    GameObject CanvasObj;
     public string action;
     List<float> parameters;
     public List<job> job_list;
@@ -48,10 +49,9 @@ public class FlyControl_v4 : MonoBehaviour
         omega = speed / R;
         pi = Mathf.PI;
 
-        StartCoroutine(fly_control_keyboard());
-        StartCoroutine(roll_angle_dumping());
-        StartCoroutine(update_UI_state());
-
+        //print("check CanvasObj");
+        CanvasObj = GameObject.Find("Canvas").gameObject;
+        
         // button
         slider_alpha = GameObject.Find("Canvas").transform.Find("slider_control").GetComponent<Slider>();
         button_launch = GameObject.Find("Canvas").transform.Find("button_launch").GetComponent<Button>();
@@ -65,6 +65,11 @@ public class FlyControl_v4 : MonoBehaviour
     void Update()
     {
         //Debug.Log("action = " + action + "  len(job_list) = " + job_list.Count);
+
+        // call coroutines
+        // comment: coroutines do not work on prefab, replace them by void functions
+        update_UI_state();
+        roll_angle_dumping();
 
         // read alpha
         float value = slider_alpha.value;
@@ -217,7 +222,7 @@ public class FlyControl_v4 : MonoBehaviour
                 action = null;
                 return;
             }
-        }
+        }        
     }
 
 
@@ -289,108 +294,149 @@ public class FlyControl_v4 : MonoBehaviour
     }
 
 
-    // keyboard fly control	
-    IEnumerator fly_control_keyboard()
-    {
-        while (true)
-        {
-            // take off
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                if (action == null)
-                {
-                    take_off();
-                    yield return null;
-                }
-            }
+    //// keyboard fly control	
+    //IEnumerator fly_control_keyboard()
+    //{
+    //    while (true)
+    //    {
+    //        // take off
+    //        if (Input.GetKeyDown(KeyCode.Space))
+    //        {
+    //            if (action == null)
+    //            {
+    //                take_off();
+    //                yield return null;
+    //            }
+    //        }
 
-            // landing
-            if (Input.GetKeyDown(KeyCode.Return))
-            {
-                if (action == "free flight" & alpha == alpha0)
-                {
-                    landing();
-                    yield return null;
-                }
-            }
+    //        // landing
+    //        if (Input.GetKeyDown(KeyCode.Return))
+    //        {
+    //            if (action == "free flight" & alpha == alpha0)
+    //            {
+    //                landing();
+    //                yield return null;
+    //            }
+    //        }
 
-            // turn right
-            if (Input.GetKeyDown(KeyCode.RightArrow))
-            {
-                if (action == "free flight")
-                {
-                    alpha = Mathf.Max(-1f, alpha - 0.1f);
-                    yield return null;
-                }                    
-            }
+    //        // turn right
+    //        if (Input.GetKeyDown(KeyCode.RightArrow))
+    //        {
+    //            if (action == "free flight")
+    //            {
+    //                alpha = Mathf.Max(-1f, alpha - 0.1f);
+    //                yield return null;
+    //            }                    
+    //        }
 
-            // turn left
-            if (Input.GetKeyDown(KeyCode.LeftArrow))
-            {
-                if (action == "free flight")
-                {
-                    alpha = Mathf.Min(1f, alpha + 0.1f);
-                    yield return null;
-                }
-            }
+    //        // turn left
+    //        if (Input.GetKeyDown(KeyCode.LeftArrow))
+    //        {
+    //            if (action == "free flight")
+    //            {
+    //                alpha = Mathf.Min(1f, alpha + 0.1f);
+    //                yield return null;
+    //            }
+    //        }
 
-            // other
-            yield return null;
-        }
-    }
+    //        // other
+    //        yield return null;
+    //    }
+    //}
+
+
+    //// roll angle dumping
+    //IEnumerator roll_angle_dumping()
+    //{
+    //    while (true)
+    //    {
+
+    //        if (action == null) yield return null;
+
+    //        Vector3 orientation = transform.Find("orientation").transform.localEulerAngles;
+    //        float roll_angle_ = orientation.z;
+
+    //        float angle_offset = 0;
+    //        if (roll_angle_ > 90) angle_offset = -360;
+    //        roll_angle_ += angle_offset;
+
+    //        float roll_angle = alpha * roll_max;
+    //        roll_angle_ = roll_eta * roll_angle + (1 - roll_eta) * roll_angle_;
+
+    //        roll_angle_ -= angle_offset;
+
+    //        orientation.z = roll_angle_;
+    //        transform.Find("orientation").transform.localEulerAngles = orientation;
+    //        yield return null;
+    //    }
+    //}
 
 
     // roll angle dumping
-    IEnumerator roll_angle_dumping()
+    void roll_angle_dumping()
     {
-        while (true)
-        {
-            
-            if (action == null) yield return null;
+        if (action == null) return;
 
-            Vector3 orientation = transform.Find("orientation").transform.localEulerAngles;
-            float roll_angle_ = orientation.z;
-            
-            float angle_offset = 0;
-            if (roll_angle_ > 90) angle_offset = -360;
-            roll_angle_ += angle_offset;
+        Vector3 orientation = transform.Find("orientation").transform.localEulerAngles;
+        float roll_angle_ = orientation.z;
 
-            float roll_angle = alpha * roll_max;
-            roll_angle_ = roll_eta * roll_angle + (1 - roll_eta) * roll_angle_;
+        float angle_offset = 0;
+        if (roll_angle_ > 90) angle_offset = -360;
+        roll_angle_ += angle_offset;
 
-            roll_angle_ -= angle_offset;
+        float roll_angle = alpha * roll_max;
+        roll_angle_ = roll_eta * roll_angle + (1 - roll_eta) * roll_angle_;
 
-            orientation.z = roll_angle_;
-            transform.Find("orientation").transform.localEulerAngles = orientation;
-            yield return null;
-        }
+        roll_angle_ -= angle_offset;
+
+        orientation.z = roll_angle_;
+        transform.Find("orientation").transform.localEulerAngles = orientation;
     }
 
 
     // update_UI_state
-    IEnumerator update_UI_state()
+    void update_UI_state()
     {
-        while (true)
+        if (action == null & !is_fixed_traj)
         {
-            if (GameObject.Find("Canvas"))
-            {
-                if (action == null & !is_fixed_traj)
-                {
-                    GameObject.Find("Canvas").GetComponent<UI_control_v2>().state = "idling";
-                }
-                if (action != null & !is_fixed_traj)
-                {
-                    GameObject.Find("Canvas").GetComponent<UI_control_v2>().state = "free flight";
-                }
-                if (action != null & is_fixed_traj)
-                {
-                    GameObject.Find("Canvas").GetComponent<UI_control_v2>().state = "fixed traj";
-                }
-            }
-            yield return null;
+            CanvasObj.GetComponent<UI_control_v2>().state = "idling";
+        }
+        if (action != null & !is_fixed_traj)
+        {
+            CanvasObj.GetComponent<UI_control_v2>().state = "free flight";
+        }
+        if (action != null & is_fixed_traj)
+        {
+            CanvasObj.GetComponent<UI_control_v2>().state = "fixed traj";
         }
     }
-    
+
+
+    //// update_UI_state
+    //IEnumerator update_UI_state()
+    //{
+    //    while (true)
+    //    {
+    //        if (GameObject.Find("Canvas"))
+    //        {
+    //            if (action == null & !is_fixed_traj)
+    //            {
+    //                GameObject.Find("Canvas").GetComponent<UI_control_v2>().state = "idling";
+    //            }
+    //            if (action != null & !is_fixed_traj)
+    //            {
+    //                GameObject.Find("Canvas").GetComponent<UI_control_v2>().state = "free flight";
+    //            }
+    //            if (action != null & is_fixed_traj)
+    //            {
+    //                GameObject.Find("Canvas").GetComponent<UI_control_v2>().state = "fixed traj";
+    //            }
+    //        }
+    //        yield return null;
+    //    }
+    //}
+
+   
 
     // tan3
     (float theta3, int q3) Atan3(Vector3 vv)
@@ -431,6 +477,67 @@ public class FlyControl_v4 : MonoBehaviour
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////
+//// update_UI_state
+//IEnumerator update_UI_state()
+//{
+//    while (true)
+//    {
+//        //Debug.Log("update_UI_state:: action = " + action + "  is_fixed_traj = " + is_fixed_traj);
+//        //if (!CanvasObj) Debug.Log("cannot find CanvasObj!!!");
+//        if (action == null & !is_fixed_traj)
+//        {
+//            //debug <<<
+//            GameObject atom = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+//            atom.transform.position = new Vector3(1, 1, 1);
+//            atom.transform.localScale = new Vector3(1, 1, 1) * 0.1f;
+//            atom.GetComponent<MeshRenderer>().material = new Material(Shader.Find("Standard"));
+//            atom.GetComponent<MeshRenderer>().material.color = Color.black;
+//            //debug >>>
+//            CanvasObj.GetComponent<UI_control_v2>().state = "idling";
+//        }
+
+//        //debug <<<
+//        if (action == null & is_fixed_traj)
+//        {
+//            //debug <<<
+//            GameObject atom = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+//            atom.transform.position = new Vector3(1, 1, 1);
+//            atom.transform.localScale = new Vector3(1, 1, 1) * 0.1f;
+//            atom.GetComponent<MeshRenderer>().material = new Material(Shader.Find("Standard"));
+//            atom.GetComponent<MeshRenderer>().material.color = Color.white;
+//            //debug >>>
+//            CanvasObj.GetComponent<UI_control_v2>().state = "idling";
+//        }
+//        //debug >>>
+
+//        if (action != null & !is_fixed_traj)
+//        {
+//            //debug <<<
+//            GameObject atom = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+//            atom.transform.position = new Vector3(1, 1, 1);
+//            atom.transform.localScale = new Vector3(1, 1, 1) * 0.1f;
+//            atom.GetComponent<MeshRenderer>().material = new Material(Shader.Find("Standard"));
+//            atom.GetComponent<MeshRenderer>().material.color = Color.blue;
+//            //debug >>>
+//            CanvasObj.GetComponent<UI_control_v2>().state = "free flight";
+//        }
+//        if (action != null & is_fixed_traj)
+//        {
+//            //debug <<<
+//            GameObject atom = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+//            atom.transform.position = new Vector3(1, 1, 1);
+//            atom.transform.localScale = new Vector3(1, 1, 1) * 0.1f;
+//            atom.GetComponent<MeshRenderer>().material = new Material(Shader.Find("Standard"));
+//            atom.GetComponent<MeshRenderer>().material.color = Color.green;
+//            //debug >>>
+//            CanvasObj.GetComponent<UI_control_v2>().state = "fixed traj";
+//        }
+//        yield return null;
+//    }
+//}
+
+
+
 //// button launch
 //public void button_launch()
 //{
@@ -629,3 +736,30 @@ public class FlyControl_v4 : MonoBehaviour
 //(float _, int q0) = Atan3(transform.InverseTransformDirection(Delta));
 //(float theta0, int _) = Atan3(transform.InverseTransformDirection(transform.position - r0));
 //debug >>>
+
+
+//if (CanvasObj)
+//{
+//    //debug <<<
+//    GameObject atom = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+//    atom.transform.position = new Vector3(1, 1, 1);
+//    atom.transform.localScale = new Vector3(1, 1, 1) * 0.1f;
+//    atom.GetComponent<MeshRenderer>().material = new Material(Shader.Find("Standard"));
+//    atom.GetComponent<MeshRenderer>().material.color = Color.red;
+//    //debug >>>
+//    Debug.Log("CanvasObj name = " + CanvasObj.name);
+//}
+//else
+//{
+//    //debug <<<
+//    GameObject atom = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+//    atom.transform.position = new Vector3(1, 1, 1);
+//    atom.transform.localScale = new Vector3(1, 1, 1) * 0.1f;
+//    atom.GetComponent<MeshRenderer>().material = new Material(Shader.Find("Standard"));
+//    atom.GetComponent<MeshRenderer>().material.color = Color.blue;
+//    //debug >>>
+//    Debug.Log("not find CanvasObj");
+//}
+//StartCoroutine(fly_control_keyboard());
+//StartCoroutine(roll_angle_dumping());
+//StartCoroutine(update_UI_state());

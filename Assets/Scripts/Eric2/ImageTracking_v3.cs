@@ -11,6 +11,7 @@ public class ImageTracking_v3 : MonoBehaviour
     public List<string> marker_name_list;
     string marker_name = "";
     public GameObject airplane_prefab;
+    public bool isMarkerDetected = false;
     private ARTrackedImageManager trackedImageManager;
 
     GameObject airplane;
@@ -65,6 +66,7 @@ public class ImageTracking_v3 : MonoBehaviour
                 Handheld.Vibrate();
                 #endif
                 source.Play();
+                isMarkerDetected = true;
             }                
         }
         foreach (ARTrackedImage trackedImage in eventArgs.updated)

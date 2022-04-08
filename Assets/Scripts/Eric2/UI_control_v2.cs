@@ -14,6 +14,8 @@ public class UI_control_v2 : MonoBehaviour
     public GameObject button_take_photo;
     public GameObject screenshot;
     public GameObject quit_inquiry_screen;
+    public GameObject scan_prompt_screen;
+    public ImageTracking_v3 imageTracking;
 
     float dumping_rate = 0.01f;
 
@@ -21,7 +23,7 @@ public class UI_control_v2 : MonoBehaviour
     // Start
     void Start()
     {
-        state = "idling";
+        state = "scanning";
         StartCoroutine(slider_dumping());
         quit_inquiry_screen.SetActive(false);
     }
@@ -30,12 +32,31 @@ public class UI_control_v2 : MonoBehaviour
     // Update
     void Update()
     {
-        if (state == "idling")
+        //Debug.Log("state = " + state);
+        if (state == "scanning")
         {
+            button_quit.SetActive(false);
+            button_take_photo.SetActive(false);
+            button_launch.SetActive(false);
+            button_return.SetActive(false);
+            slider_control.SetActive(false);
+            if (imageTracking.isMarkerDetected)
+            {
+                scan_prompt_screen.SetActive(false);
+                button_quit.SetActive(true);
+                button_take_photo.SetActive(true);
+                button_launch.SetActive(true);
+                state = "idling";
+            }
+            return;
+        }
+        if (state == "idling")
+        {            
             button_launch.SetActive(true);
             button_launch.GetComponent<Button>().interactable = true;
             button_return.SetActive(false);
             slider_control.SetActive(false);
+            return;
         }
         if (state == "free flight")
         {
@@ -44,6 +65,7 @@ public class UI_control_v2 : MonoBehaviour
             button_return.GetComponent<Button>().interactable = true;
             slider_control.SetActive(true);
             slider_control.GetComponent<Slider>().interactable = true;
+            return;
         }
         if (state == "fixed traj")
         {
@@ -51,6 +73,7 @@ public class UI_control_v2 : MonoBehaviour
             button_launch.GetComponent<Button>().interactable = false;
             button_return.SetActive(false);
             slider_control.SetActive(false);
+            return;
         }
 
     }

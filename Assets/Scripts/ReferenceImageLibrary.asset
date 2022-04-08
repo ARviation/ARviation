@@ -185,3 +185,13 @@ MonoBehaviour:
     m_SpecifySize: 1
     m_Name: marker50_image
     m_Texture: {fileID: 2800000, guid: c871e3b2ed2ace64ba82900eeea21fb9, type: 3}
+  - m_SerializedGuid:
+      m_GuidLow: 5341804119723385096
+      m_GuidHigh: 11751075424702026418
+    m_SerializedTextureGuid:
+      m_GuidLow: 6153141126532138568
+      m_GuidHigh: 487800160235426602
+    m_Size: {x: 0.8, y: 0.68958837}
+    m_SpecifySize: 1
+    m_Name: marker80
+    m_Texture: {fileID: 2800000, guid: fbcb8648594055642a133648a903c506, type: 3}
