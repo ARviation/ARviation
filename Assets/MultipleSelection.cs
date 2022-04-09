@@ -18,6 +18,7 @@ public class MultipleSelection : MonoBehaviour
   [SerializeField] private Image[] selectionBox;
   [SerializeField] private SceneIndex sceneWhenSuccess;
   [SerializeField] private float feedbackDuration = 1.5f;
+  [SerializeField] private bool showSelectionAtBegin = false;
 
   private bool _canTriggerFeedback = true;
   private int _randomSeed;
@@ -26,7 +27,8 @@ public class MultipleSelection : MonoBehaviour
   {
     _randomSeed = Random.Range(0, answer.Length);
     InitializeSelectionBox(_randomSeed);
-    HideSelection();
+    if (!showSelectionAtBegin)
+      HideSelection();
   }
 
   private void InitializeSelectionBox(int randomSeed)
@@ -61,7 +63,7 @@ public class MultipleSelection : MonoBehaviour
   private IEnumerator CorrectChoice(GameObject o)
   {
     float timer = 0;
-    float offset = 10f;
+    float offset = 20f;
     o.GetComponent<Image>().color = new Color(255f / 255f, 255f / 255f, 213f / 255f);
     _canTriggerFeedback = false;
     while (timer <= feedbackDuration)
@@ -81,7 +83,7 @@ public class MultipleSelection : MonoBehaviour
 
   private void OnSelectionFalse(GameObject o)
   {
-    SoundManager.Instance.PlaySFXByIndex(SFXList.Fail);
+    SoundManager.Instance.PlaySFXByIndex(SFXList.FailTwo);
     StartCoroutine(WrongChoice(o));
   }
 

@@ -24,7 +24,6 @@ public class CollectPanel : MonoBehaviour
 
   public void OnCollectBtnClick()
   {
-    
     _inventoryItem.OnCollectComponent();
     ClosePanel();
   }

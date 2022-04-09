@@ -138,8 +138,11 @@ public class ImageRecognition : MonoBehaviour
         inventoryItem.OnHitComponent(code);
         string componentName = prefab.name;
         componentName = componentName.Replace("(Clone)", "").Trim();
-        collectPanel.OpenPanel(componentName);
-        collectPanel.SetInventoryItem(inventoryItem);
+        if (collectPanel != null)
+        {
+          collectPanel.OpenPanel(componentName);
+          collectPanel.SetInventoryItem(inventoryItem);
+        }
       }
     }
   }
@@ -154,7 +157,8 @@ public class ImageRecognition : MonoBehaviour
       hasMorseCodePlayed = false;
       alreadyUsedImageHolder.gameObject.SetActive(false);
       prefab.SetActive(false);
-      collectPanel.ClosePanel();
+      if (collectPanel != null)
+        collectPanel.ClosePanel();
     }
   }
 

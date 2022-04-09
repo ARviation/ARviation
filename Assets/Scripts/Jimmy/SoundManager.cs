@@ -7,6 +7,7 @@ public enum SFXList : int
   Click = 0,
   Success = 1,
   Fail = 2,
+  FailTwo = 3,
 }
 
 public class SoundManager : MonoBehaviour
@@ -80,5 +81,15 @@ public class SoundManager : MonoBehaviour
   {
     _audioSource.Stop();
     _audioSource.PlayOneShot(voiceOverListCollectReaction[index]);
+  }
+
+  public void PlaySuccessSFX()
+  {
+    PlaySFXByIndex(SFXList.Success);
+  }
+
+  public void PlayFailSFX()
+  {
+    PlaySFXByIndex(SFXList.FailTwo);
   }
 }
