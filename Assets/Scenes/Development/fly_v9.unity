@@ -2771,10 +2771,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   marker_name_list:
+  - marker80
   - marker43_L28
   - marker50_image
   - marker51_photo
-  - marker80
   airplane_prefab: {fileID: 2261753852884802055, guid: 20b8cd26e8267b442a708223509b223e, type: 3}
   isMarkerDetected: 0
 --- !u!114 &1603844221
@@ -2789,7 +2789,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4dea56a9eaadd1c439095de4f9a371cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_SerializedLibrary: {fileID: 11400000, guid: 18c1fe2809c904456a054bbff5c76d6a, type: 2}
+  m_SerializedLibrary: {fileID: 11400000, guid: 2953ecec355e8544f8ed4647d9a6d607, type: 2}
   m_MaxNumberOfMovingImages: 4
   m_TrackedImagePrefab: {fileID: 0}
 --- !u!1 &1662643997

@@ -155,13 +155,3 @@ MonoBehaviour:
     m_SpecifySize: 1
     m_Name: WrongLanding
     m_Texture: {fileID: 0}
-  - m_SerializedGuid:
-      m_GuidLow: 5443666913412343858
-      m_GuidHigh: 13287557947574582933
-    m_SerializedTextureGuid:
-      m_GuidLow: 6111732448811752621
-      m_GuidHigh: 5656666530546977065
-    m_Size: {x: 1, y: 0.49245432}
-    m_SpecifySize: 1
-    m_Name: RunwayL
-    m_Texture: {fileID: 0}
