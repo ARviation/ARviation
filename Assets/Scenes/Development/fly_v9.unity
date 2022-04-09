@@ -2116,6 +2116,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   is_AR_Camera: 0
   airplane_prefab: {fileID: 7419229118397895217, guid: a76a2ca2010c1fa4ab24267438b58d6e, type: 3}
+  m_UI_control: {fileID: 1932333511}
 --- !u!4 &1098889044
 Transform:
   m_ObjectHideFlags: 0
