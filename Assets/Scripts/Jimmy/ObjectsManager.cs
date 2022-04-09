@@ -140,9 +140,10 @@ public class ObjectsManager : MonoBehaviour
         switch (hitTag)
         {
           case GameManager.Engine:
+            Debug.Log(PlayerStats.Instance.selectedComponentCode);
             if (PlayerStats.Instance.selectedComponentCode == (MorseCode) CorrectMorseCode.Engine)
             {
-              hit.transform.gameObject.GetComponent<AttachableComponent>().ShowObj();
+              hit.transform.parent.gameObject.GetComponent<AttachableComponent>().ShowObj();
               AddAssembledComponent();
               valid = true;
             }
@@ -151,7 +152,7 @@ public class ObjectsManager : MonoBehaviour
           case GameManager.Wings:
             if (PlayerStats.Instance.selectedComponentCode == (MorseCode) CorrectMorseCode.Wings)
             {
-              hit.transform.gameObject.GetComponent<AttachableComponent>().ShowObj();
+              hit.transform.parent.gameObject.GetComponent<AttachableComponent>().ShowObj();
               AddAssembledComponent();
               valid = true;
             }
@@ -160,7 +161,7 @@ public class ObjectsManager : MonoBehaviour
           case GameManager.Propeller:
             if (PlayerStats.Instance.selectedComponentCode == (MorseCode) CorrectMorseCode.Propeller)
             {
-              hit.transform.gameObject.GetComponent<AttachableComponent>().ShowObj();
+              hit.transform.parent.gameObject.GetComponent<AttachableComponent>().ShowObj();
               AddAssembledComponent();
               valid = true;
             }
@@ -169,7 +170,7 @@ public class ObjectsManager : MonoBehaviour
           case GameManager.Wheels:
             if (PlayerStats.Instance.selectedComponentCode == (MorseCode) CorrectMorseCode.Wheels)
             {
-              hit.transform.gameObject.GetComponent<AttachableComponent>().ShowObj();
+              hit.transform.parent.gameObject.GetComponent<AttachableComponent>().ShowObj();
               AddAssembledComponent();
               valid = true;
             }
@@ -178,7 +179,7 @@ public class ObjectsManager : MonoBehaviour
           case GameManager.FuelTank:
             if (PlayerStats.Instance.selectedComponentCode == (MorseCode) CorrectMorseCode.FuelTank)
             {
-              hit.transform.gameObject.GetComponent<AttachableComponent>().ShowObj();
+              hit.transform.parent.gameObject.GetComponent<AttachableComponent>().ShowObj();
               AddAssembledComponent();
               valid = true;
             }
@@ -187,7 +188,7 @@ public class ObjectsManager : MonoBehaviour
           case GameManager.Tail:
             if (PlayerStats.Instance.selectedComponentCode == (MorseCode) CorrectMorseCode.Tail)
             {
-              hit.transform.gameObject.GetComponent<AttachableComponent>().ShowObj();
+              hit.transform.parent.gameObject.GetComponent<AttachableComponent>().ShowObj();
               AddAssembledComponent();
               valid = true;
             }
