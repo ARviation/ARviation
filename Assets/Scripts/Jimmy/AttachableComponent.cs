@@ -4,19 +4,38 @@ using UnityEngine;
 
 public class AttachableComponent : MonoBehaviour
 {
-  [SerializeField] private GameObject objToHide;
+  [SerializeField] private Material normalMat;
+  [SerializeField] private Material outlineMat;
   [SerializeField] private InventoryItem item;
-  [SerializeField] public Placeable placeable;
+
+  private MeshRenderer _meshRenderer;
+  private bool isAttached = false;
 
   private void Start()
   {
-    objToHide.gameObject.SetActive(false);
+    _meshRenderer = GetComponent<MeshRenderer>();
+    _meshRenderer.material = outlineMat;
+    _meshRenderer.gameObject.SetActive(false);
+  }
+
+  public void ShowOutline()
+  {
+    _meshRenderer.gameObject.SetActive(true);
   }
 
   public void ShowObj()
   {
-    objToHide.gameObject.SetActive(true);
+    _meshRenderer.material = normalMat;
     item.OnUseComponent();
-    placeable.PlaceComponent();
+  }
+
+  public void AttachComponent()
+  {
+    isAttached = true;
+  }
+
+  public bool GetIsAttached()
+  {
+    return isAttached;
   }
 }

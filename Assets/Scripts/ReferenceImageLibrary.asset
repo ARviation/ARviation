@@ -156,47 +156,6 @@ MonoBehaviour:
     m_Name: WrongLanding
     m_Texture: {fileID: 0}
   - m_SerializedGuid:
-<<<<<<< HEAD
-      m_GuidLow: 5428791619962235160
-      m_GuidHigh: 5289267265015924627
-    m_SerializedTextureGuid:
-      m_GuidLow: 11165674885422465262
-      m_GuidHigh: 2753104561359680681
-    m_Size: {x: 1, y: 1.3253424}
-    m_SpecifySize: 1
-    m_Name: marker43_L28
-    m_Texture: {fileID: 2800000, guid: 671b40ee72269af4a9f4591103fe3426, type: 3}
-  - m_SerializedGuid:
-      m_GuidLow: 5706083846610274101
-      m_GuidHigh: 11753710864334810775
-    m_SerializedTextureGuid:
-      m_GuidLow: 13962561183283037834
-      m_GuidHigh: 10917165556039951256
-    m_Size: {x: 2, y: 1.5}
-    m_SpecifySize: 1
-    m_Name: marker51_photo
-    m_Texture: {fileID: 2800000, guid: 5c3e468afb6bc1c49823e4493b908197, type: 3}
-  - m_SerializedGuid:
-      m_GuidLow: 5089770449917185721
-      m_GuidHigh: 14164363768705350811
-    m_SerializedTextureGuid:
-      m_GuidLow: 14872272637491536818
-      m_GuidHigh: 13339559764624966330
-    m_Size: {x: 0.16, y: 0.10666666}
-    m_SpecifySize: 1
-    m_Name: marker50_image
-    m_Texture: {fileID: 2800000, guid: c871e3b2ed2ace64ba82900eeea21fb9, type: 3}
-  - m_SerializedGuid:
-      m_GuidLow: 5341804119723385096
-      m_GuidHigh: 11751075424702026418
-    m_SerializedTextureGuid:
-      m_GuidLow: 6153141126532138568
-      m_GuidHigh: 487800160235426602
-    m_Size: {x: 0.8, y: 0.68958837}
-    m_SpecifySize: 1
-    m_Name: marker80
-    m_Texture: {fileID: 2800000, guid: fbcb8648594055642a133648a903c506, type: 3}
-=======
       m_GuidLow: 5443666913412343858
       m_GuidHigh: 13287557947574582933
     m_SerializedTextureGuid:
@@ -206,4 +165,3 @@ MonoBehaviour:
     m_SpecifySize: 1
     m_Name: RunwayL
     m_Texture: {fileID: 0}
->>>>>>> e7f9926b6ab2bcd65aba9673489f70feb4c28569
