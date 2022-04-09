@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.EventSystems;
 
 public class ObjectsManager : MonoBehaviour
 {
@@ -18,6 +17,7 @@ public class ObjectsManager : MonoBehaviour
   [SerializeField] private string componentPasscode = "";
   [SerializeField] private GameObject nextButton;
   [SerializeField] private GameObject finishAssembleButton;
+  [SerializeField] private Camera _camera;
 
   public delegate void StartTouchEvent(Vector2 position, float time);
 
@@ -116,6 +116,11 @@ public class ObjectsManager : MonoBehaviour
   //   return _canPass;
   // }
 
+  public void SetCamera(Camera camera)
+  {
+    _camera = camera;
+  }
+
   private void StartTouch(InputAction.CallbackContext context)
   {
     Vector2 touchPosition = _touchControls.Touch.TouchPosition.ReadValue<Vector2>();
@@ -123,7 +128,7 @@ public class ObjectsManager : MonoBehaviour
     _posY = touchPosition.y;
     OnStartTouch?.Invoke(touchPosition, (float) context.startTime);
 
-    Ray ray = _mainCamera.ScreenPointToRay(touchPosition);
+    Ray ray = _camera.ScreenPointToRay(touchPosition);
     if (Physics.Raycast(ray, out var hit))
     {
       _isTouch = true;

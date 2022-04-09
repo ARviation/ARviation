@@ -411,11 +411,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!223 &348954676 stripped
-Canvas:
-  m_CorrespondingSourceObject: {fileID: 3870721809357022688, guid: 671f24c2f59714a908bb877cb1148a44, type: 3}
-  m_PrefabInstance: {fileID: 3870721809310188366}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &397426041
 GameObject:
   m_ObjectHideFlags: 0
@@ -2156,17 +2151,13 @@ PrefabInstance:
       value: Objects Manager
       objectReference: {fileID: 0}
     - target: {fileID: 1752057808544842722, guid: f93f87787262f4c9da4f3437d6e51572, type: 3}
-      propertyPath: _canvas
+      propertyPath: _camera
       value: 
-      objectReference: {fileID: 348954676}
+      objectReference: {fileID: 252545652}
     - target: {fileID: 1752057808544842722, guid: f93f87787262f4c9da4f3437d6e51572, type: 3}
       propertyPath: collectPanel
       value: 
       objectReference: {fileID: 1820572767}
-    - target: {fileID: 1752057808544842722, guid: f93f87787262f4c9da4f3437d6e51572, type: 3}
-      propertyPath: finishAssembleButton
-      value: 
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f93f87787262f4c9da4f3437d6e51572, type: 3}
 --- !u!1001 &3220809561613776983
@@ -2234,14 +2225,6 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 3733105452476597304, guid: e101a5c4c01f449a7bde81bdd139a2ec, type: 3}
-      propertyPath: camera2D
-      value: 
-      objectReference: {fileID: 252545652}
-    - target: {fileID: 3733105452476597304, guid: e101a5c4c01f449a7bde81bdd139a2ec, type: 3}
-      propertyPath: cameraAR
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 3733105452476597304, guid: e101a5c4c01f449a7bde81bdd139a2ec, type: 3}
       propertyPath: cameraTop
       value: 
       objectReference: {fileID: 1445976857}
@@ -2253,10 +2236,6 @@ PrefabInstance:
       propertyPath: planeCenter
       value: 
       objectReference: {fileID: 198564980}
-    - target: {fileID: 3733105452476597304, guid: e101a5c4c01f449a7bde81bdd139a2ec, type: 3}
-      propertyPath: controllerText
-      value: 
-      objectReference: {fileID: 7095050137592545531}
     - target: {fileID: 3733105452476597305, guid: e101a5c4c01f449a7bde81bdd139a2ec, type: 3}
       propertyPath: m_RootOrder
       value: 13
@@ -2406,10 +2385,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Assembly Canvas
       objectReference: {fileID: 0}
-    - target: {fileID: 6323404037130839421, guid: 671f24c2f59714a908bb877cb1148a44, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6323404037130839423, guid: 671f24c2f59714a908bb877cb1148a44, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -2554,17 +2529,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 31e6e52fd78d74c48973a326f91e0933, type: 3}
---- !u!114 &7095050137592545531 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6323404037165204405, guid: 671f24c2f59714a908bb877cb1148a44, type: 3}
-  m_PrefabInstance: {fileID: 3870721809310188366}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &8017267689382542388
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -102,6 +102,7 @@ public class CameraManager : MonoBehaviour
     if (_isRotating) return;
     cameraTop.enabled = true;
     cameraFront.enabled = false;
+    FindObjectOfType<ObjectsManager>().SetCamera(cameraTop);
     SoundManager.Instance.PlaySFXByIndex(SFXList.Click);
   }
 
@@ -110,6 +111,7 @@ public class CameraManager : MonoBehaviour
     if (_isRotating) return;
     cameraTop.enabled = false;
     cameraFront.enabled = true;
+    FindObjectOfType<ObjectsManager>().SetCamera(cameraFront);
     SoundManager.Instance.PlaySFXByIndex(SFXList.Click);
   }
 }

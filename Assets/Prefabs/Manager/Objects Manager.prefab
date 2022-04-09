@@ -43,7 +43,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4106082628dc04804b38523b0a376cf5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  localCollectedComponent: {fileID: 0}
   mouseDragPhysicsSpeed: 10
   mouseDragSpeed: 1
   collectPanel: {fileID: 0}
@@ -53,3 +52,4 @@ MonoBehaviour:
   componentPasscode: 0 3 5 7 8 9 10
   nextButton: {fileID: 0}
   finishAssembleButton: {fileID: 0}
+  _camera: {fileID: 0}
