@@ -113,7 +113,7 @@ public class UI_control_v2 : MonoBehaviour
         // hide quit inqiry screen
         quit_inquiry_screen.SetActive(false);
         // send email
-        screenshot.GetComponent<screenshot>().button_send_email();
+        screenshot.GetComponent<screenshot_v2>().button_send_email();
         // disable UI
         gameObject.SetActive(false);
         // quit
