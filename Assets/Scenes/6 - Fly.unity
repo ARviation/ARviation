@@ -679,6 +679,10 @@ PrefabInstance:
       value: Objects Manager
       objectReference: {fileID: 0}
     - target: {fileID: 1752057808544842722, guid: f93f87787262f4c9da4f3437d6e51572, type: 3}
+      propertyPath: _camera
+      value: 
+      objectReference: {fileID: 557772116}
+    - target: {fileID: 1752057808544842722, guid: f93f87787262f4c9da4f3437d6e51572, type: 3}
       propertyPath: collectPanel
       value: 
       objectReference: {fileID: 0}

@@ -11,10 +11,7 @@ TagManager:
   - FuelTank
   - Propeller
   - Tail
-  - Propellers
-  - Engines
   - Body
-  - OilTank
   layers:
   - Default
   - TransparentFX

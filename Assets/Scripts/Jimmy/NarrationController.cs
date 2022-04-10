@@ -21,6 +21,7 @@ public class NarrationController : MonoBehaviour
   [SerializeField] private int hideConditionIndex;
 
   [SerializeField] private Image hideBackground;
+  [SerializeField] private Image scanImage;
 
   // [SerializeField] private ARCameraManager arCamera;
   [SerializeField] private bool hasImgHolder;
@@ -47,6 +48,8 @@ public class NarrationController : MonoBehaviour
   {
     _currentScriptInd = 0;
     delay = defaultDelay;
+    if (hasHideCondition && scanImage != null)
+      scanImage.gameObject.SetActive(false);
     HideBtn();
     _scriptLength = CharacterManager.Instance.GetScriptLength();
     scriptElement = CharacterManager.Instance.GetScriptElement(_currentScriptInd);
@@ -64,9 +67,10 @@ public class NarrationController : MonoBehaviour
 
   private void Update()
   {
-    if (hasHideCondition && _currentScriptInd == hideConditionIndex)
+    if (hasHideCondition && _currentScriptInd == hideConditionIndex && scanImage != null)
     {
       hideBackground.gameObject.SetActive(false);
+      scanImage.gameObject.SetActive(true);
     }
   }
 
@@ -138,6 +142,10 @@ public class NarrationController : MonoBehaviour
     if (hasImgHolder)
     {
       ImageHolderAutoSize();
+    }
+    else
+    {
+      imgHolder.gameObject.SetActive(false);
     }
 
     _isFinal = _currentScriptInd == (_scriptLength - 1);

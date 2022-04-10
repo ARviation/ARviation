@@ -43,10 +43,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58cd43c41611542f691814139f6d07b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  camera2D: {fileID: 0}
-  cameraAR: {fileID: 0}
+  cameraFront: {fileID: 0}
+  cameraTop: {fileID: 0}
   planeCenter: {fileID: 0}
   smoothness2D: 1
   smoothness: 0.2
-  controllerText: {fileID: 0}
   rotateDeg: 45

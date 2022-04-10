@@ -283,8 +283,8 @@ MonoBehaviour:
   collectPanel: {fileID: 8293815818620585398}
   isAssembly: 1
   isFuselage: 0
-  currCode: 0
-  collectedCode: 0
+  currCode: 8
+  collectedCode: 8
 --- !u!114 &185840591
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -849,8 +849,8 @@ MonoBehaviour:
   collectPanel: {fileID: 8293815818620585398}
   isAssembly: 1
   isFuselage: 0
-  currCode: 0
-  collectedCode: 0
+  currCode: 10
+  collectedCode: 10
 --- !u!114 &993799112
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1115,8 +1115,8 @@ MonoBehaviour:
   collectPanel: {fileID: 8293815818620585398}
   isAssembly: 1
   isFuselage: 0
-  currCode: 0
-  collectedCode: 0
+  currCode: 9
+  collectedCode: 9
 --- !u!114 &1031966814
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1388,8 +1388,8 @@ MonoBehaviour:
   collectPanel: {fileID: 8293815818620585398}
   isAssembly: 1
   isFuselage: 0
-  currCode: 0
-  collectedCode: 0
+  currCode: 5
+  collectedCode: 5
 --- !u!114 &1163499013
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1504,8 +1504,8 @@ MonoBehaviour:
   collectPanel: {fileID: 8293815818620585398}
   isAssembly: 1
   isFuselage: 0
-  currCode: 0
-  collectedCode: 0
+  currCode: 7
+  collectedCode: 7
 --- !u!114 &1176334216
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2336,8 +2336,8 @@ MonoBehaviour:
   collectPanel: {fileID: 8293815818620585398}
   isAssembly: 1
   isFuselage: 0
-  currCode: 0
-  collectedCode: 0
+  currCode: 3
+  collectedCode: 3
 --- !u!114 &2097725069
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3337,10 +3337,11 @@ MonoBehaviour:
   hasHideCondition: 0
   hideConditionIndex: 0
   hideBackground: {fileID: 0}
+  scanImage: {fileID: 0}
   hasImgHolder: 0
   imgHolderMinHeight: 480
   imgHolderMaxHeight: 800
-  imgHolder: {fileID: 0}
+  imgHolder: {fileID: 8823055189849219550}
   hasSelection: 0
   isHunting: 0
   huntingMorseIndex: 0
@@ -4118,7 +4119,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 6323404037148076101}
         m_TargetAssemblyTypeName: NarrationController, Assembly-CSharp
-        m_MethodName: OnNextClick
+        m_MethodName: OnPrevClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4146,7 +4147,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &6323404037130839422
 RectTransform:
   m_ObjectHideFlags: 0

@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class AttachableComponent : MonoBehaviour
 {
-  [SerializeField] private Material normalMat;
-  [SerializeField] private Material outlineMat;
+  [SerializeField] private GameObject[] outlineObjs;
   [SerializeField] private InventoryItem item;
+  [SerializeField] private GameObject fuelTank;
 
   private MeshRenderer _meshRenderer;
   private bool isAttached = false;
@@ -14,22 +14,51 @@ public class AttachableComponent : MonoBehaviour
   private void Start()
   {
     _meshRenderer = GetComponent<MeshRenderer>();
-    _meshRenderer.material = outlineMat;
-    _meshRenderer.gameObject.SetActive(false);
+    AdjustOutline(false);
+    _meshRenderer.enabled = false;
+    if (fuelTank != null)
+    {
+      fuelTank.SetActive(false);
+    }
+  }
+
+  private void AdjustOutline(bool value)
+  {
+    foreach (var outlineObj in outlineObjs)
+    {
+      outlineObj.gameObject.SetActive(value);
+    }
   }
 
   public void ShowOutline()
   {
-    _meshRenderer.gameObject.SetActive(true);
+    AdjustOutline(true);
+  }
+
+  public void CloseOutline()
+  {
+    AdjustOutline(false);
   }
 
   public void ShowObj()
   {
-    _meshRenderer.material = normalMat;
+    AttachableComponent[] attachableComponents = FindObjectsOfType<AttachableComponent>();
+    foreach (var attachableComponent in attachableComponents)
+    {
+      attachableComponent.CloseOutline();
+    }
+    
+    AttachComponent();
+    AdjustOutline(false);
+    _meshRenderer.enabled = true;
     item.OnUseComponent();
+    if (fuelTank != null)
+    {
+      fuelTank.SetActive(true);
+    }
   }
 
-  public void AttachComponent()
+  private void AttachComponent()
   {
     isAttached = true;
   }

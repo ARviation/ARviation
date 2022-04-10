@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.EventSystems;
 
 public class ObjectsManager : MonoBehaviour
 {
@@ -18,6 +17,7 @@ public class ObjectsManager : MonoBehaviour
   [SerializeField] private string componentPasscode = "";
   [SerializeField] private GameObject nextButton;
   [SerializeField] private GameObject finishAssembleButton;
+  [SerializeField] private Camera _camera;
 
   public delegate void StartTouchEvent(Vector2 position, float time);
 
@@ -116,6 +116,11 @@ public class ObjectsManager : MonoBehaviour
   //   return _canPass;
   // }
 
+  public void SetCamera(Camera camera)
+  {
+    _camera = camera;
+  }
+
   private void StartTouch(InputAction.CallbackContext context)
   {
     Vector2 touchPosition = _touchControls.Touch.TouchPosition.ReadValue<Vector2>();
@@ -123,7 +128,7 @@ public class ObjectsManager : MonoBehaviour
     _posY = touchPosition.y;
     OnStartTouch?.Invoke(touchPosition, (float) context.startTime);
 
-    Ray ray = _mainCamera.ScreenPointToRay(touchPosition);
+    Ray ray = _camera.ScreenPointToRay(touchPosition);
     if (Physics.Raycast(ray, out var hit))
     {
       _isTouch = true;
@@ -140,9 +145,10 @@ public class ObjectsManager : MonoBehaviour
         switch (hitTag)
         {
           case GameManager.Engine:
+            Debug.Log(PlayerStats.Instance.selectedComponentCode);
             if (PlayerStats.Instance.selectedComponentCode == (MorseCode) CorrectMorseCode.Engine)
             {
-              hit.transform.gameObject.GetComponent<AttachableComponent>().ShowObj();
+              hit.transform.parent.gameObject.GetComponent<AttachableComponent>().ShowObj();
               AddAssembledComponent();
               valid = true;
             }
@@ -151,7 +157,7 @@ public class ObjectsManager : MonoBehaviour
           case GameManager.Wings:
             if (PlayerStats.Instance.selectedComponentCode == (MorseCode) CorrectMorseCode.Wings)
             {
-              hit.transform.gameObject.GetComponent<AttachableComponent>().ShowObj();
+              hit.transform.parent.gameObject.GetComponent<AttachableComponent>().ShowObj();
               AddAssembledComponent();
               valid = true;
             }
@@ -160,7 +166,7 @@ public class ObjectsManager : MonoBehaviour
           case GameManager.Propeller:
             if (PlayerStats.Instance.selectedComponentCode == (MorseCode) CorrectMorseCode.Propeller)
             {
-              hit.transform.gameObject.GetComponent<AttachableComponent>().ShowObj();
+              hit.transform.parent.gameObject.GetComponent<AttachableComponent>().ShowObj();
               AddAssembledComponent();
               valid = true;
             }
@@ -169,7 +175,7 @@ public class ObjectsManager : MonoBehaviour
           case GameManager.Wheels:
             if (PlayerStats.Instance.selectedComponentCode == (MorseCode) CorrectMorseCode.Wheels)
             {
-              hit.transform.gameObject.GetComponent<AttachableComponent>().ShowObj();
+              hit.transform.parent.gameObject.GetComponent<AttachableComponent>().ShowObj();
               AddAssembledComponent();
               valid = true;
             }
@@ -178,7 +184,7 @@ public class ObjectsManager : MonoBehaviour
           case GameManager.FuelTank:
             if (PlayerStats.Instance.selectedComponentCode == (MorseCode) CorrectMorseCode.FuelTank)
             {
-              hit.transform.gameObject.GetComponent<AttachableComponent>().ShowObj();
+              hit.transform.parent.gameObject.GetComponent<AttachableComponent>().ShowObj();
               AddAssembledComponent();
               valid = true;
             }
@@ -187,7 +193,7 @@ public class ObjectsManager : MonoBehaviour
           case GameManager.Tail:
             if (PlayerStats.Instance.selectedComponentCode == (MorseCode) CorrectMorseCode.Tail)
             {
-              hit.transform.gameObject.GetComponent<AttachableComponent>().ShowObj();
+              hit.transform.parent.gameObject.GetComponent<AttachableComponent>().ShowObj();
               AddAssembledComponent();
               valid = true;
             }

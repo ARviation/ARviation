@@ -37,17 +37,46 @@ public class InventoryItem : MonoBehaviour
   public void OnClick()
   {
     collectPanel.OnInventoryItemClick(gameObject);
+    AttachableComponent[] attachableComponents = null;
+    if (isAssembly)
+    {
+      attachableComponents = FindObjectsOfType<AttachableComponent>();
+    }
+
     if (_isEnable)
     {
+      SoundManager.Instance.PlaySFXByIndex(SFXList.Click);
       enableFrame.gameObject.SetActive(false);
       _isEnable = false;
+
+      if (isAssembly)
+      {
+        foreach (AttachableComponent attachableComponent in attachableComponents)
+        {
+          if (!attachableComponent.GetIsAttached())
+          {
+            attachableComponent.CloseOutline();
+          }
+        }
+      }
     }
     else
     {
       if (!_isCollected) return;
+      SoundManager.Instance.PlaySFXByIndex(SFXList.Click);
       enableFrame.gameObject.SetActive(true);
       _isEnable = true;
       PlayerStats.Instance.UpdateSelectedComponentCode(currCode, this);
+      if (isAssembly)
+      {
+        foreach (AttachableComponent attachableComponent in attachableComponents)
+        {
+          if (!attachableComponent.GetIsAttached())
+          {
+            attachableComponent.ShowOutline();
+          }
+        }
+      }
     }
   }
 

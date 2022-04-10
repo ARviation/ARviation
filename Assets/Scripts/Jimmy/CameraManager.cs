@@ -1,9 +1,6 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
-using UnityEngine.Serialization;
 
 public enum RotateDir : int
 {
@@ -15,35 +12,27 @@ public enum RotateDir : int
 
 public class CameraManager : MonoBehaviour
 {
-  [SerializeField] private Camera camera2D;
-  [SerializeField] private GameObject cameraAR;
+  [SerializeField] private Camera cameraFront;
+  [SerializeField] private Camera cameraTop;
   [SerializeField] private GameObject planeCenter;
   [SerializeField] private float smoothness2D = 1f;
   [SerializeField] private float smoothness = 0.1f;
-  [SerializeField] private TMP_Text controllerText;
   [SerializeField] private float rotateDeg = 45.0f;
 
   private const float RotX = 0f;
   private const float RotY = 0f;
   private const float RotZ = 0f;
-  private bool isButtonHeld;
-  private float delay = 0.1f;
-  private bool _isRotateLeft = false;
-  private bool _isRotateRight = false;
-  private bool _isRotateUp = false;
-  private bool _isRotateDown = false;
   private Quaternion _initRotation = Quaternion.identity;
   private Quaternion _endRotation = Quaternion.identity;
   private float _totalRotateAngle = 0f;
 
-  private bool _is2D = true;
   private bool _isRotating = false;
   private RotateDir _currRotateDir = RotateDir.Left;
 
   private void Start()
   {
-    camera2D.gameObject.SetActive(true);
-    cameraAR.gameObject.SetActive(false);
+    cameraFront.enabled = true;
+    cameraTop.enabled = false;
     _initRotation.x = RotX;
     _initRotation.y = RotY;
     _initRotation.z = RotZ;
@@ -92,48 +81,37 @@ public class CameraManager : MonoBehaviour
     _isRotating = false;
   }
 
-  public void OnCameraViewSwitch()
-  {
-    _is2D = !_is2D;
-    if (_is2D)
-    {
-      camera2D.gameObject.SetActive(true);
-      cameraAR.gameObject.SetActive(false);
-      controllerText.text = "View";
-    }
-    else
-    {
-      camera2D.gameObject.SetActive(false);
-      cameraAR.gameObject.SetActive(true);
-      controllerText.text = "Assemble";
-    }
-  }
-
   public void OnRotateLeftDown()
   {
-    if (!_is2D || _isRotating) return;
+    if (_isRotating) return;
     _currRotateDir = RotateDir.Left;
     _isRotating = true;
+    SoundManager.Instance.PlaySFXByIndex(SFXList.Click);
   }
 
   public void OnRotateRightDown()
   {
-    if (!_is2D || _isRotating) return;
+    if (_isRotating) return;
     _currRotateDir = RotateDir.Right;
     _isRotating = true;
+    SoundManager.Instance.PlaySFXByIndex(SFXList.Click);
   }
 
-  public void OnRotateUpDown()
+  public void OnTopViewDown()
   {
-    if (!_is2D || _isRotating) return;
-    _currRotateDir = RotateDir.Up;
-    _isRotating = true;
+    if (_isRotating) return;
+    cameraTop.enabled = true;
+    cameraFront.enabled = false;
+    FindObjectOfType<ObjectsManager>().SetCamera(cameraTop);
+    SoundManager.Instance.PlaySFXByIndex(SFXList.Click);
   }
 
-  public void OnRotateDownDown()
+  public void On3DViewDown()
   {
-    if (!_is2D || _isRotating) return;
-    _currRotateDir = RotateDir.Down;
-    _isRotating = true;
+    if (_isRotating) return;
+    cameraTop.enabled = false;
+    cameraFront.enabled = true;
+    FindObjectOfType<ObjectsManager>().SetCamera(cameraFront);
+    SoundManager.Instance.PlaySFXByIndex(SFXList.Click);
   }
 }
