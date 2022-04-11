@@ -46,7 +46,7 @@ public class screenshot_v2 : MonoBehaviour
 
         // photo parameters
         center1 = new Vector2(0, 0);
-        length1 = new Vector2(32f, 24f);
+        length1 = new Vector2(15f, 9.45f);
         center2 = new Vector2(600f, 100f);
         length2 = new Vector2(4f, 3f);
         center3 = new Vector2(1100f, 100f);
@@ -83,7 +83,6 @@ public class screenshot_v2 : MonoBehaviour
         //while (!File.Exists(screenshotName)) { };
         //Canvas.SetActive(true);
 
-        
         StartCoroutine(show_photo(screenshotName_full, center1, length1, center2, length2, tao1));
         photo_file_list.Add(screenshotName);
         //string path_full = Application.persistentDataPath;
@@ -180,19 +179,21 @@ public class screenshot_v2 : MonoBehaviour
         import_image_from_file(photo, fname, center1, length1);
         yield return null;
 
-        // shrink
-        t_photo = tao;
-        while (t_photo > 0)
-        {
-            float r = t_photo / tao;
-            Vector2 center = r * center1 + (1 - r) * center2;
-            Vector2 length = r * length1 + (1 - r) * length2;
-            RectTransform rt = photo.GetComponent<RectTransform>();
-            rt.transform.localPosition = center;
-            rt.transform.localScale = length;
-            t_photo -= Time.deltaTime;
-            yield return null;
-        }
+        //// shrink
+        //t_photo = tao;
+        //while (t_photo > 0)
+        //{
+        //    float r = t_photo / tao;
+        //    Vector2 center = r * center1 + (1 - r) * center2;
+        //    Vector2 length = r * length1 + (1 - r) * length2;
+        //    RectTransform rt = photo.GetComponent<RectTransform>();
+        //    rt.transform.localPosition = center;
+        //    rt.transform.localScale = length;
+        //    t_photo -= Time.deltaTime;
+        //    yield return null;
+        //}
+
+        // activate yes/no buttons
         button_yes.SetActive(true);
         button_no.SetActive(true);
     }
