@@ -151,8 +151,9 @@ MonoBehaviour:
     showNextScene: 1
     hideAtStart: 0
   scriptElementsFinishSelect:
-  - script: "You did it! Now that you found all the correct parts, take their cards
-      and keep them with you, you\u2019ll need them!"
+  - script: "Now that you found all the correct parts, take their cards and keep
+      them with you. Take the fuselage, tail, and landing gear cards as well. You\u2019ll
+      need them!"
     MoodIndex: 21
     slideImage: {fileID: 0}
     showPrev: 0

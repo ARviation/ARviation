@@ -65,32 +65,34 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 20bd7a73bbb1749099bdfeb3959169d0, type: 3}
   - {fileID: 8300000, guid: 3eafe217221b3425184ea6e9c0ccaa14, type: 3}
   voiceOverListIntro:
-  - {fileID: 8300000, guid: 599f702fb0ac748038ee2cf8ce3c4d14, type: 3}
-  - {fileID: 8300000, guid: c2d6befcab3eb46d0a767cd4169fd6e9, type: 3}
-  - {fileID: 8300000, guid: 0099b03c70bc643219b4dd03f09bc705, type: 3}
-  - {fileID: 8300000, guid: 5d9939f78605a4f2cbd5109b0d4b9ab1, type: 3}
-  - {fileID: 8300000, guid: b44f3723503df4878ab1c8494f0fa8c4, type: 3}
-  - {fileID: 8300000, guid: 907b2d68df8a5492c8c3b7c9fff34b3f, type: 3}
-  - {fileID: 8300000, guid: 3fff37c30fbf54002bd3272402e5cf74, type: 3}
-  - {fileID: 8300000, guid: 52f63e4d803214a5694739bcface27a4, type: 3}
-  - {fileID: 8300000, guid: 59dbf02e168ee46ed82b0398d89463e1, type: 3}
+  - {fileID: 8300000, guid: ca79669fd5e2e4183b67bb7100a43984, type: 3}
+  - {fileID: 8300000, guid: 1d86d7291fb23480faaa650847def8af, type: 3}
+  - {fileID: 8300000, guid: 410ec59b837914f6692039c92f98c4a7, type: 3}
+  - {fileID: 8300000, guid: eb23966caf136435599073326ea50a05, type: 3}
+  - {fileID: 8300000, guid: a4b9deef9c65b40d4a7a94b97d9468f1, type: 3}
+  voiceOverListSortOne:
+  - {fileID: 8300000, guid: 20daaa11ebd7544b9bb9c08d0ab7feb9, type: 3}
+  - {fileID: 8300000, guid: 5808bbaafe3a84e39b5f35e70c94a3d8, type: 3}
+  voiceOverListSortTwo:
+  - {fileID: 8300000, guid: e8150739623b4402299459a3b3d1f2d2, type: 3}
+  - {fileID: 8300000, guid: a4bd32078c44342f1a616a0e8847dab4, type: 3}
+  voiceOverListFinishSelect:
+  - {fileID: 8300000, guid: 34c86b5aa8f4a4396a2a2ce2435c0a03, type: 3}
   voiceOverListHunt:
-  - {fileID: 8300000, guid: 917bf1d5e81f242bfb51aab43ca218de, type: 3}
-  - {fileID: 8300000, guid: 91d58f66bbf334abc99ebc3dd674ac97, type: 3}
-  - {fileID: 8300000, guid: c2d44d8053cc24bb49a592b9fe7ceeeb, type: 3}
-  - {fileID: 8300000, guid: 4bb5d77996e884f2683d850f4d3be26a, type: 3}
-  - {fileID: 8300000, guid: eaf6c20fe58c34020936f688aaddc076, type: 3}
-  - {fileID: 8300000, guid: 92c6d6f822ffb4ec89bdcf2ec206400b, type: 3}
-  - {fileID: 8300000, guid: ba40563b093de4869bccb2cdbf130784, type: 3}
-  - {fileID: 8300000, guid: 36376ef1026e248fa8758271fb472f1b, type: 3}
-  - {fileID: 8300000, guid: d5ae16a70c2e94c5489f8998fc7e38d6, type: 3}
-  - {fileID: 8300000, guid: 26e4f50f36e7f4a11b678d6c3d0d522d, type: 3}
-  - {fileID: 8300000, guid: d9e41be0653e747e7b41f495bac1fb97, type: 3}
-  - {fileID: 8300000, guid: 9a8fa649e3ca543b4aaee90f7b818669, type: 3}
+  - {fileID: 8300000, guid: 484a30969a5a6483bb9d0f70d0f385d7, type: 3}
+  - {fileID: 8300000, guid: 53186a76eda5341a589c0cd14b6a10c5, type: 3}
+  - {fileID: 8300000, guid: 467799884b8f945c68ad833a3729c52b, type: 3}
+  - {fileID: 8300000, guid: 50dbcbead5953484f928b010bafd6a50, type: 3}
+  - {fileID: 8300000, guid: a76b5e6ebe1da4cb1aea7d705bcbed78, type: 3}
+  - {fileID: 8300000, guid: aeaf195f5e8f54623bca940796b41630, type: 3}
+  - {fileID: 8300000, guid: dcc5b383e7bb14882ac302043eb050ca, type: 3}
+  - {fileID: 8300000, guid: 3cf83a79b29d94019841b1840db4786a, type: 3}
   voiceOverListAssembly:
-  - {fileID: 8300000, guid: c460982be2f75415aade965e59ed6a49, type: 3}
-  - {fileID: 8300000, guid: 3e567e7f1cea94a06a0bd15a5f994f8a, type: 3}
-  - {fileID: 8300000, guid: 774e6cb16bfeb4c6ab54b8981882ab09, type: 3}
+  - {fileID: 8300000, guid: 97224dcd96f4b4fb2bedce3ad6e03d99, type: 3}
+  - {fileID: 8300000, guid: c1c1047f8734447a38c48d323a61f7e1, type: 3}
+  - {fileID: 8300000, guid: bd476fd6a121342d9ab569efb7caffa6, type: 3}
+  - {fileID: 8300000, guid: e218ba907a1644d7eb637ab0375e7857, type: 3}
+  - {fileID: 8300000, guid: 4489b4acc1af74ba4b5cd1152737437a, type: 3}
   voiceOverListCollectReaction:
   - {fileID: 8300000, guid: 6331d6cd63648443f9d59471bddb9e53, type: 3}
   - {fileID: 8300000, guid: fa1b3fc8a5b37414b8ba1ecfddd2aa49, type: 3}
@@ -102,11 +104,28 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 9cc5391bf6447448e8d12fd222b5e3ac, type: 3}
   - {fileID: 8300000, guid: 0c4eace3b0c35471eab1ed84c9892781, type: 3}
   voiceOverListFly:
-  - {fileID: 8300000, guid: 60f3dbf8d482e45028a84fb237e973ce, type: 3}
-  - {fileID: 8300000, guid: 61d59f9bbd2714e43be3777d693d1560, type: 3}
-  - {fileID: 8300000, guid: 1d3d4a09b249c4492899c5c2c7671b3a, type: 3}
-  - {fileID: 8300000, guid: 9d2af58b4c6704d86950ab81a1b188af, type: 3}
-  - {fileID: 8300000, guid: 69afda2e4a6bd45968195d6765daa6c4, type: 3}
+  - {fileID: 8300000, guid: c8d1af646e21b4da29747d1d0600b756, type: 3}
+  - {fileID: 8300000, guid: 866afa9db5d68484486c97f787258c3b, type: 3}
+  - {fileID: 8300000, guid: 52f63f4c502834ec2b21e8c162caca19, type: 3}
+  - {fileID: 8300000, guid: 1c179518a6acf4b0aa778456f441bc93, type: 3}
+  - {fileID: 8300000, guid: 940023aedbcd944a0ac965f11d9ae5cf, type: 3}
+  - {fileID: 8300000, guid: 712ac5527192a4d6e945d4561ede5c7b, type: 3}
+  - {fileID: 8300000, guid: 9dba7d1efd571410c9ab06e1f6eb4c25, type: 3}
+  voiceOverListWingsOne:
+  - {fileID: 8300000, guid: 370eab1ae00c4416e926997d31389d29, type: 3}
+  - {fileID: 0}
+  voiceOverListWingsTwo:
+  - {fileID: 8300000, guid: c606221158189464c91b96e2b321546d, type: 3}
+  - {fileID: 0}
+  voiceOverListFuelTank:
+  - {fileID: 8300000, guid: 667ee02b67ff04c5480d0e33ee2211c2, type: 3}
+  - {fileID: 0}
+  voiceOverListPropeller:
+  - {fileID: 8300000, guid: b37b3587c6990485f9cbe0cb3a676cd5, type: 3}
+  - {fileID: 0}
+  voiceOverListEngine:
+  - {fileID: 8300000, guid: 01868aaf05a16452882a9159d93d2565, type: 3}
+  - {fileID: 0}
   _audioSource: {fileID: 6440714509679935793}
 --- !u!82 &6440714509679935793
 AudioSource:
