@@ -150,7 +150,7 @@ public class NarrationController : MonoBehaviour
 
     _isFinal = _currentScriptInd == (_scriptLength - 1);
     characterHolder.sprite = CharacterManager.Instance.GetCharacterMood(scriptElement.MoodIndex);
-    // SoundManager.Instance.PlayVoiceOver(_currentScriptInd);
+    SoundManager.Instance.PlayVoiceOver(_currentScriptInd);
     StartCoroutine(ShowText(scriptElement.script, scriptElement.showPrev, scriptElement.showNext,
       scriptElement.showNextScene));
   }
@@ -196,7 +196,7 @@ public class NarrationController : MonoBehaviour
 
     if (isHunting && _currentScriptInd == huntingMorseIndex && !isMorsePlay)
     {
-      SoundManager.Instance.PlaySFXByMorseCode(MorseCode.A);
+      // SoundManager.Instance.PlaySFXByMorseCode(MorseCode.A);
       isMorsePlay = true;
     }
 
