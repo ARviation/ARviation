@@ -15,10 +15,14 @@ public class screenshot_v2 : MonoBehaviour
     public GameObject button_yes;
     public GameObject button_no;
     public GameObject image_photo;
+    public Button button_photo;
+
     float t_pause = 1f;
     List<string> photo_file_list = new List<string>();
 
     public Image photo;
+    public Image photo_frame;
+
     float tao1 = 2f;
     float tao2 = 1f;
     Vector2 center1, length1;
@@ -27,6 +31,7 @@ public class screenshot_v2 : MonoBehaviour
     float t_photo;
     string screenshotName;
 
+    float frame_size_relative = 1.05f;
 
     // Start
     void Start()
@@ -60,6 +65,7 @@ public class screenshot_v2 : MonoBehaviour
     // button_take_photo
     public void button_take_photo()
     {
+        // screen capture
         screenshotName = "screenshot" + System.DateTime.Now.ToString("_yyyy_MM_dd_hh_mm_ss") + ".png";
         string screenshotName_full = Application.persistentDataPath + "/" + screenshotName;
         //string folderPath = "C:/Scratch/UserData/user2022a/CMU/course_53607_LAB/ARviation_project/experiment_screenshot/photos/";
@@ -83,6 +89,10 @@ public class screenshot_v2 : MonoBehaviour
         //while (!File.Exists(screenshotName)) { };
         //Canvas.SetActive(true);
 
+        // disable photo button
+        button_photo.interactable = false;
+
+        // show photo
         StartCoroutine(show_photo(screenshotName_full, center1, length1, center2, length2, tao1));
         photo_file_list.Add(screenshotName);
         //string path_full = Application.persistentDataPath;
@@ -124,7 +134,7 @@ public class screenshot_v2 : MonoBehaviour
 
 
     // move image
-    IEnumerator move_image(Image photo, Vector2 center1, Vector2 length1, Vector2 center2, Vector2 length2, float tao)
+    IEnumerator move_image(Image photo, Image photo_frame, Vector2 center1, Vector2 length1, Vector2 center2, Vector2 length2, float tao)
     {
         button_yes.SetActive(false);
         button_no.SetActive(false);
@@ -133,9 +143,13 @@ public class screenshot_v2 : MonoBehaviour
             float r = t_photo / tao;
             Vector2 center = r * center1 + (1 - r) * center2;
             Vector2 length = r * length1 + (1 - r) * length2;
+            Vector2 length_frame = length * frame_size_relative;
             RectTransform rt = photo.GetComponent<RectTransform>();
             rt.transform.localPosition = center;
             rt.transform.localScale = length;
+            RectTransform rt2 = photo_frame.GetComponent<RectTransform>();
+            rt2.transform.localPosition = center;
+            rt2.transform.localScale = length_frame;
             t_photo -= Time.deltaTime;
             yield return null;
         }
@@ -193,6 +207,13 @@ public class screenshot_v2 : MonoBehaviour
         //    yield return null;
         //}
 
+        // add frame
+        RectTransform rt2 = photo_frame.GetComponent<RectTransform>();
+        rt2.transform.localPosition = center1;
+        Vector2 length_frame = length1 * frame_size_relative;
+        rt2.transform.localScale = length_frame;
+        yield return null;
+
         // activate yes/no buttons
         button_yes.SetActive(true);
         button_no.SetActive(true);
@@ -206,6 +227,7 @@ public class screenshot_v2 : MonoBehaviour
         button_yes.SetActive(false);
         button_no.SetActive(false);
         image_photo.SetActive(false);
+        button_photo.interactable = true;
     }
 
 
@@ -213,7 +235,8 @@ public class screenshot_v2 : MonoBehaviour
     public void button_yes_task()
     {
         t_photo = tao2;
-        StartCoroutine(move_image(photo, center2, length2, center3, length3, tao2));
+        StartCoroutine(move_image(photo, photo_frame, center2, length2, center3, length3, tao2));
+        button_photo.interactable = true;
     }
 }
 

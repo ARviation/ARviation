@@ -16,8 +16,12 @@ public class UI_control_v2 : MonoBehaviour
     public GameObject quit_inquiry_screen;
     public GameObject scan_prompt_screen;
     public ImageTracking_v3 imageTracking;
+    public GameObject msg_sending_email;
+    public GameObject scanning_line;
 
     float dumping_rate = 0.01f;
+    float v_scan = 600f;
+    float L_scan_max = 300f;
 
 
     // Start
@@ -26,6 +30,7 @@ public class UI_control_v2 : MonoBehaviour
         state = "scanning";
         StartCoroutine(slider_dumping());
         quit_inquiry_screen.SetActive(false);
+        msg_sending_email.SetActive(false);
     }
 
 
@@ -34,7 +39,17 @@ public class UI_control_v2 : MonoBehaviour
     {
         //Debug.Log("state = " + state);
         if (state == "scanning")
-        {
+        {   
+            // scanning line
+            RectTransform rt = scanning_line.GetComponent<RectTransform>();
+            Vector2 scanning_line_center = rt.transform.localPosition;
+            float L_scan = scanning_line_center.y;
+            L_scan -= v_scan * Time.deltaTime;
+            if (L_scan < -L_scan_max) L_scan = L_scan_max;
+            //Debug.Log("L_scan = " + L_scan);
+            scanning_line_center.y = L_scan;
+            rt.transform.localPosition = scanning_line_center;
+
             button_quit.SetActive(false);
             button_take_photo.SetActive(false);
             button_launch.SetActive(false);
@@ -110,14 +125,17 @@ public class UI_control_v2 : MonoBehaviour
     // button quit_yes task
     public void button_quit_yes_task()
     {
-        // hide quit inqiry screen
-        quit_inquiry_screen.SetActive(false);
-        // send email
-        screenshot.GetComponent<screenshot_v2>().button_send_email();
-        // disable UI
-        gameObject.SetActive(false);
-        // quit
-        Application.Quit();
+        //// hide quit inqiry screen
+        //quit_inquiry_screen.SetActive(false);
+        //// show msg
+        //text_msg_sending_email.SetActive(true);
+        //// send email
+        //screenshot.GetComponent<screenshot_v2>().button_send_email();
+        //// disable UI
+        //gameObject.SetActive(false);
+        //// quit
+        //Application.Quit();
+        StartCoroutine(quit_task());
     }
 
 
@@ -134,4 +152,20 @@ public class UI_control_v2 : MonoBehaviour
         button_take_photo.GetComponent<Button>().interactable = true;
     }
 
+
+    // quit task
+    IEnumerator quit_task()
+    {
+        // hide quit inqiry screen
+        quit_inquiry_screen.SetActive(false);
+        // show msg
+        msg_sending_email.SetActive(true);
+        yield return null;
+        // send email
+        screenshot.GetComponent<screenshot_v2>().button_send_email();
+        // disable UI
+        gameObject.SetActive(false);
+        // quit
+        Application.Quit();
+    }
 }
