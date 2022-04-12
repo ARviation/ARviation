@@ -23,7 +23,8 @@ public class SoundManager : MonoBehaviour
   [SerializeField] public AudioClip[] voiceOverListHunt;
   [SerializeField] public AudioClip[] voiceOverListAssembly;
   [SerializeField] public AudioClip[] voiceOverListCollectReaction;
-  [SerializeField] public AudioClip[] voiceOverListFly;
+  [SerializeField] public AudioClip[] voiceOverListFlyIntro;
+  [SerializeField] public AudioClip[] voiceOverListEnd;
   [SerializeField] public AudioClip[] voiceOverListWingsOne;
   [SerializeField] public AudioClip[] voiceOverListWingsTwo;
   [SerializeField] public AudioClip[] voiceOverListFuelTank;
@@ -87,8 +88,11 @@ public class SoundManager : MonoBehaviour
       case (int) SceneIndex.Assembly:
         _audioSource.PlayOneShot(voiceOverListAssembly[index]);
         break;
-      case (int) SceneIndex.Fly:
-        _audioSource.PlayOneShot(voiceOverListFly[index]);
+      case (int) SceneIndex.FlyIntro:
+        _audioSource.PlayOneShot(voiceOverListFlyIntro[index]);
+        break;
+      case (int) SceneIndex.End:
+        _audioSource.PlayOneShot(voiceOverListEnd[index]);
         break;
       case (int) SceneIndex.WingsOne:
         if (index < voiceOverListWingsOne.Length)

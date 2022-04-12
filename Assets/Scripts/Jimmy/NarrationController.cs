@@ -10,7 +10,7 @@ using UnityEngine.XR.ARFoundation;
 public class NarrationController : MonoBehaviour
 {
   [SerializeField] private float defaultDelay = 0.05f;
-  [SerializeField] private GameObject textDisplay;
+  [SerializeField] private TMP_Text textDisplay;
   [SerializeField] private Button btnForNextScene;
   [SerializeField] private Button btnForNextSentence;
   [SerializeField] private Button btnForPrevSentence;
@@ -19,7 +19,6 @@ public class NarrationController : MonoBehaviour
   [SerializeField] private GameObject dialogueObj;
   [SerializeField] private bool hasHideCondition = false;
   [SerializeField] private int hideConditionIndex;
-
   [SerializeField] private Image hideBackground;
   [SerializeField] private Image scanImage;
 
@@ -32,6 +31,9 @@ public class NarrationController : MonoBehaviour
   [SerializeField] private bool isHunting = false;
   [SerializeField] private int huntingMorseIndex;
   [SerializeField] private int huntingHideIndex;
+  [SerializeField] private bool isAssembly = false;
+  [SerializeField] private GameObject inventory;
+  [SerializeField] private int resumeInventoryIndex;
 
   private float delay;
 
@@ -50,6 +52,8 @@ public class NarrationController : MonoBehaviour
     delay = defaultDelay;
     if (hasHideCondition && scanImage != null)
       scanImage.gameObject.SetActive(false);
+    if (isAssembly)
+      inventory.SetActive(false);
     HideBtn();
     _scriptLength = CharacterManager.Instance.GetScriptLength();
     scriptElement = CharacterManager.Instance.GetScriptElement(_currentScriptInd);
@@ -72,6 +76,8 @@ public class NarrationController : MonoBehaviour
       hideBackground.gameObject.SetActive(false);
       scanImage.gameObject.SetActive(true);
     }
+    if (isAssembly && _currentScriptInd == resumeInventoryIndex)
+      inventory.SetActive(true);
   }
 
   public void RemoveHadHideCondition()
@@ -188,7 +194,8 @@ public class NarrationController : MonoBehaviour
     for (int i = 0; i <= script.Length; i++)
     {
       _displayScript = script.Substring(0, i);
-      textDisplay.GetComponent<TMP_Text>().text = _displayScript;
+      textDisplay.text = _displayScript;
+      // textDisplay.GetComponent<TMP_Text>().text = _displayScript;
       yield return new WaitForSeconds(delay);
     }
 
@@ -204,6 +211,11 @@ public class NarrationController : MonoBehaviour
     btnForNextSentence.gameObject.SetActive(showNext);
     if (btnForNextScene != null)
       btnForNextScene.gameObject.SetActive(showNextScene);
+  }
+
+  public bool GetIsPlaying()
+  {
+    return _isPlaying;
   }
 
   public void HideDialog()

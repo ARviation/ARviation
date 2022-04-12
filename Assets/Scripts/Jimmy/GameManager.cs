@@ -12,12 +12,14 @@ public enum SceneIndex : int
   FinishSelect = 3,
   Hunt = 4,
   Assembly = 5,
-  Fly = 6,
-  WingsOne = 7,
-  WingsTwo = 8,
-  FuelTank = 9,
-  Engine = 10,
-  Propeller = 11,
+  FlyIntro = 6,
+  Fly = 7,
+  End = 8,
+  WingsOne = 9,
+  WingsTwo = 10,
+  FuelTank = 11,
+  Engine = 12,
+  Propeller = 13,
 }
 
 public class GameManager : MonoBehaviour

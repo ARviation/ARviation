@@ -264,7 +264,7 @@ MonoBehaviour:
     showNext: 0
     showNextScene: 1
     hideAtStart: 0
-  scriptElementsFly:
+  scriptElementsFlyIntro:
   - script: "We\u2019re going to fly the P-51 Mustang now! The first step is to find
       the runway and scan it. The runway looks just like this."
     MoodIndex: 23
@@ -272,28 +272,29 @@ MonoBehaviour:
     showPrev: 0
     showNext: 1
     showNextScene: 0
-    hideAtStart: 1
+    hideAtStart: 0
   - script: "You did it! Now, you\u2019ll be able to use the controls on the screen
       to take off, fly around, and land."
     MoodIndex: 7
-    slideImage: {fileID: 0}
-    showPrev: 0
-    showNext: 1
-    showNextScene: 0
-    hideAtStart: 1
-  - script: You can also take photos with the airplane! To receive all your photos
-      at the end, you must tap the check mark to finish this activity.
-    MoodIndex: 18
     slideImage: {fileID: 0}
     showPrev: 1
     showNext: 1
     showNextScene: 0
     hideAtStart: 0
+  - script: You can also take photos with the airplane! To receive all your photos
+      at the end, you must tap the check mark to finish this activity.
+    MoodIndex: 18
+    slideImage: {fileID: 0}
+    showPrev: 0
+    showNext: 0
+    showNextScene: 1
+    hideAtStart: 0
+  scriptElementsEnd:
   - script: "I can\u2019t thank you enough for your help and expertise. Your team
       is incredible!"
     MoodIndex: 24
     slideImage: {fileID: 0}
-    showPrev: 1
+    showPrev: 0
     showNext: 1
     showNextScene: 0
     hideAtStart: 0

@@ -57,11 +57,12 @@ public class ImageRecognition : MonoBehaviour
         GameObject prefab = Instantiate<GameObject>(prefabToInstantiate[i].prefab, transform.parent);
         prefab.transform.position = added.transform.position;
         prefab.transform.rotation = added.transform.rotation;
-        prefab.transform.localScale = Vector3.zero;
+        // prefab.transform.localScale = Vector3.zero;
 
         _arObjs.Add(added.referenceImage.name, prefab);
         _arObjsUsed.Add(added.referenceImage.name, false);
         _arObjsMarker.Add(prefabToInstantiate[i].code, added.referenceImage.name);
+        prefab.SetActive(false);
       }
     }
   }
@@ -121,10 +122,11 @@ public class ImageRecognition : MonoBehaviour
       else
       {
         alreadyUsedImageHolder.gameObject.SetActive(false);
+        prefab.SetActive(true);
         prefab.transform.position = updated.transform.position;
         prefab.transform.rotation = updated.transform.rotation;
-        prefab.transform.localScale = Vector3.one;
-        prefab.SetActive(true);
+        if (prefab.transform.localScale != Vector3.one)
+          prefab.transform.localScale = Vector3.one;
 
         InventoryItem inventoryItem = prefab.GetComponent<Collectable>().GetInventoryItem();
         Collectable collectable = prefab.GetComponent<Collectable>();

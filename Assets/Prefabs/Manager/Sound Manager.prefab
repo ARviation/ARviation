@@ -103,10 +103,11 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 4637c65e48408459ab760032f06c9998, type: 3}
   - {fileID: 8300000, guid: 9cc5391bf6447448e8d12fd222b5e3ac, type: 3}
   - {fileID: 8300000, guid: 0c4eace3b0c35471eab1ed84c9892781, type: 3}
-  voiceOverListFly:
+  voiceOverListFlyIntro:
   - {fileID: 8300000, guid: c8d1af646e21b4da29747d1d0600b756, type: 3}
   - {fileID: 8300000, guid: 866afa9db5d68484486c97f787258c3b, type: 3}
   - {fileID: 8300000, guid: 52f63f4c502834ec2b21e8c162caca19, type: 3}
+  voiceOverListEnd:
   - {fileID: 8300000, guid: 1c179518a6acf4b0aa778456f441bc93, type: 3}
   - {fileID: 8300000, guid: 940023aedbcd944a0ac965f11d9ae5cf, type: 3}
   - {fileID: 8300000, guid: 712ac5527192a4d6e945d4561ede5c7b, type: 3}

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
+using TMPro;
 
 [Serializable]
 public struct Selection
@@ -19,13 +20,17 @@ public class MultipleSelection : MonoBehaviour
   [SerializeField] private SceneIndex sceneWhenSuccess;
   [SerializeField] private float feedbackDuration = 1.5f;
   [SerializeField] private bool showSelectionAtBegin = false;
+  [SerializeField] private TMP_Text script;
+  [SerializeField] private string stringToShow;
 
+  private NarrationController _narrationController;
   private bool _canTriggerFeedback = true;
   private int _randomSeed;
 
   private void Start()
   {
     _randomSeed = Random.Range(0, answer.Length);
+    _narrationController = FindObjectOfType<NarrationController>();
     InitializeSelectionBox(_randomSeed);
     if (!showSelectionAtBegin)
       HideSelection();
@@ -43,6 +48,7 @@ public class MultipleSelection : MonoBehaviour
 
   public void OnClickChoice(GameObject o)
   {
+    if (_narrationController.GetIsPlaying()) return;
     if (!_canTriggerFeedback) return;
     if (o.name == "True")
     {
@@ -92,6 +98,7 @@ public class MultipleSelection : MonoBehaviour
     float timer = 0;
     float offset = 10f;
     o.GetComponent<Image>().color = new Color(255f / 255f, 165f / 255f, 165f / 255f);
+    script.text = "";
     _canTriggerFeedback = false;
     while (timer <= feedbackDuration)
     {
@@ -100,12 +107,47 @@ public class MultipleSelection : MonoBehaviour
       o.transform.position = newPosition;
       offset *= -1;
       timer += 0.1f;
+
+      script.text = stringToShow.Substring(0, (int) (stringToShow.Length * (timer / feedbackDuration)));
+
       yield return new WaitForSeconds(0.1f);
     }
 
     _canTriggerFeedback = true;
     o.GetComponent<Image>().color = Color.white;
   }
+
+  // private IEnumerator ShowText(string script, bool showPrev, bool showNext, bool showNextScene)
+  // {
+  //   _isPlaying = true;
+  //
+  //   if (_isFinal)
+  //   {
+  //     if (hasSelection)
+  //       FindObjectOfType<MultipleSelection>().ShowSelection();
+  //   }
+  //
+  //   for (int i = 0; i <= script.Length; i++)
+  //   {
+  //     _displayScript = script.Substring(0, i);
+  //     textDisplay.text = _displayScript;
+  //     // textDisplay.GetComponent<TMP_Text>().text = _displayScript;
+  //     yield return new WaitForSeconds(delay);
+  //   }
+  //
+  //   _isPlaying = false;
+  //
+  //   if (isHunting && _currentScriptInd == huntingMorseIndex && !isMorsePlay)
+  //   {
+  //     // SoundManager.Instance.PlaySFXByMorseCode(MorseCode.A);
+  //     isMorsePlay = true;
+  //   }
+  //
+  //   btnForPrevSentence.gameObject.SetActive(showPrev);
+  //   btnForNextSentence.gameObject.SetActive(showNext);
+  //   if (btnForNextScene != null)
+  //     btnForNextScene.gameObject.SetActive(showNextScene);
+  // }
 
   public void ShowSelection()
   {

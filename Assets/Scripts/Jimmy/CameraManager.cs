@@ -45,10 +45,10 @@ public class CameraManager : MonoBehaviour
     switch (_currRotateDir)
     {
       case RotateDir.Left:
-        planeCenter.transform.RotateAround(planeCenter.transform.position, Vector3.up, smoothness2D);
+        planeCenter.transform.RotateAround(planeCenter.transform.position, Vector3.down, smoothness2D);
         break;
       case RotateDir.Right:
-        planeCenter.transform.RotateAround(planeCenter.transform.position, Vector3.down, smoothness2D);
+        planeCenter.transform.RotateAround(planeCenter.transform.position, Vector3.up, smoothness2D);
         break;
       case RotateDir.Up:
         planeCenter.transform.RotateAround(planeCenter.transform.position, Vector3.right, smoothness2D);

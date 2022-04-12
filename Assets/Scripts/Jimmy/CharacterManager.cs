@@ -61,7 +61,8 @@ public class CharacterManager : MonoBehaviour
   [SerializeField] private ScriptElement[] scriptElementsFinishSelect;
   [SerializeField] private ScriptElement[] scriptElementsHunt;
   [SerializeField] private ScriptElement[] scriptElementsAssembly;
-  [SerializeField] private ScriptElement[] scriptElementsFly;
+  [SerializeField] private ScriptElement[] scriptElementsFlyIntro;
+  [SerializeField] private ScriptElement[] scriptElementsEnd;
   [SerializeField] private ScriptElement[] scriptElementsReaction;
   [SerializeField] private ScriptElement[] scriptElementsWingsOne;
   [SerializeField] private ScriptElement[] scriptElementsWingsTwo;
@@ -92,7 +93,8 @@ public class CharacterManager : MonoBehaviour
       (int) SceneIndex.FinishSelect => scriptElementsFinishSelect[index],
       (int) SceneIndex.Hunt => scriptElementsHunt[index],
       (int) SceneIndex.Assembly => scriptElementsAssembly[index],
-      (int) SceneIndex.Fly => scriptElementsFly[index],
+      (int) SceneIndex.FlyIntro => scriptElementsFlyIntro[index],
+      (int) SceneIndex.End => scriptElementsEnd[index],
       (int) SceneIndex.Engine => scriptElementsEngine[index],
       (int) SceneIndex.WingsOne => scriptElementsWingsOne[index],
       (int) SceneIndex.WingsTwo => scriptElementsWingsTwo[index],
@@ -113,7 +115,8 @@ public class CharacterManager : MonoBehaviour
       (int) SceneIndex.FinishSelect=> scriptElementsFinishSelect.Length,
       (int) SceneIndex.Hunt => scriptElementsHunt.Length,
       (int) SceneIndex.Assembly => scriptElementsAssembly.Length,
-      (int) SceneIndex.Fly => scriptElementsFly.Length,
+      (int) SceneIndex.FlyIntro => scriptElementsFlyIntro.Length,
+      (int) SceneIndex.End => scriptElementsEnd.Length,
       (int) SceneIndex.Engine => scriptElementsEngine.Length,
       (int) SceneIndex.WingsOne => scriptElementsWingsOne.Length,
       (int) SceneIndex.WingsTwo => scriptElementsWingsTwo.Length,

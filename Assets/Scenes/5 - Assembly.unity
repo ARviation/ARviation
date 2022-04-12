@@ -446,7 +446,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 2048, y: 1365}
+  m_SizeDelta: {x: 2360, y: 1640}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &267291037
 MonoBehaviour:
@@ -2112,7 +2112,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 2048, y: 1365}
+  m_SizeDelta: {x: 2360, y: 1640}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &1764982360
 PrefabInstance:
@@ -2499,6 +2499,10 @@ PrefabInstance:
       propertyPath: cameraTop
       value: 
       objectReference: {fileID: 1445976857}
+    - target: {fileID: 3733105452476597304, guid: e101a5c4c01f449a7bde81bdd139a2ec, type: 3}
+      propertyPath: rotateDeg
+      value: 45
+      objectReference: {fileID: 0}
     - target: {fileID: 3733105452476597304, guid: e101a5c4c01f449a7bde81bdd139a2ec, type: 3}
       propertyPath: cameraFront
       value: 
