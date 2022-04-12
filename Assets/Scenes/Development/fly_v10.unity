@@ -1724,6 +1724,54 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 942672068}
   m_CullTransparentMesh: 1
+--- !u!1 &947505040
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 947505041}
+  - component: {fileID: 947505042}
+  m_Layer: 0
+  m_Name: SFXmanager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &947505041
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 947505040}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &947505042
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 947505040}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3e241cef000bf14b8100e010a3bf56d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sound_item_list:
+  - sound_name: camera
+    clip: {fileID: 8300000, guid: 78e959ac71ae8bb46a69368e50ffc817, type: 3}
+  - sound_name: scanner
+    clip: {fileID: 8300000, guid: 74e0910f826a36e489e840e96af4b2dd, type: 3}
 --- !u!1 &967013414
 GameObject:
   m_ObjectHideFlags: 0
@@ -2266,7 +2314,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   is_AR_Camera: 1
-  airplane_prefab: {fileID: 7419229118397895217, guid: a76a2ca2010c1fa4ab24267438b58d6e, type: 3}
+  airplane_prefab: {fileID: 2261753852884802055, guid: 20b8cd26e8267b442a708223509b223e, type: 3}
   m_UI_control: {fileID: 1932333511}
 --- !u!4 &1098889044
 Transform:
@@ -2954,7 +3002,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Canvas: {fileID: 1932333506}
-  source: {fileID: 1481157288}
   receiver_email: ARviationAlbum@gmail.com
   button_yes: {fileID: 967013414}
   button_no: {fileID: 1534406444}
@@ -3307,7 +3354,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4dea56a9eaadd1c439095de4f9a371cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_SerializedLibrary: {fileID: 11400000, guid: 2953ecec355e8544f8ed4647d9a6d607, type: 2}
+  m_SerializedLibrary: {fileID: 11400000, guid: 18c1fe2809c904456a054bbff5c76d6a, type: 2}
   m_MaxNumberOfMovingImages: 4
   m_TrackedImagePrefab: {fileID: 0}
 --- !u!1 &1662643997
@@ -3996,8 +4043,6 @@ GameObject:
   - component: {fileID: 1875341501}
   - component: {fileID: 1875341500}
   - component: {fileID: 1875341499}
-  - component: {fileID: 1875341505}
-  - component: {fileID: 1875341504}
   m_Layer: 0
   m_Name: AR Camera
   m_TagString: MainCamera
@@ -4029,7 +4074,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.1
-  far clip plane: 20
+  far clip plane: 1000
   field of view: 60
   orthographic: 0
   orthographic size: 5
@@ -4105,32 +4150,6 @@ Transform:
   m_Father: {fileID: 1603844217}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1875341504
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1875341497}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa17d122634046b4a8e23048891fafc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_RaycastPrefab: {fileID: 0}
---- !u!114 &1875341505
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1875341497}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 520bb47c46cf8624fafb307b7d1b862a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Camera: {fileID: 0}
 --- !u!1 &1932333506
 GameObject:
   m_ObjectHideFlags: 0

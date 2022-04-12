@@ -10,7 +10,7 @@ public class screenshot_v2 : MonoBehaviour
 {
     // Variables
     public GameObject Canvas;
-    public AudioSource source;
+    //public AudioSource source;
     public string receiver_email = "ARviationAlbum@gmail.com";
     public GameObject button_yes;
     public GameObject button_no;
@@ -72,8 +72,10 @@ public class screenshot_v2 : MonoBehaviour
         //string folderPath = Application.persistentDataPath + "/";
         //folderPath = "";
         //Canvas.SetActive(false);
-        source.volume = 0.3f;
-        source.Play();
+        //source.volume = 0.3f;
+        //source.Play();
+        SFXmanager.playsound_volume("camera", 0.3f);
+
         StartCoroutine(UI_pause(t_pause));
         string screenshotName_;
         if (SystemInfo.deviceType == DeviceType.Handheld)

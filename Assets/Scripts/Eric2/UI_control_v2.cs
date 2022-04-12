@@ -28,7 +28,7 @@ public class UI_control_v2 : MonoBehaviour
     void Start()
     {
         state = "scanning";
-        StartCoroutine(slider_dumping());
+        //StartCoroutine(slider_dumping());
         quit_inquiry_screen.SetActive(false);
         msg_sending_email.SetActive(false);
     }
