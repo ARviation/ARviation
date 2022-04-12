@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class CollectedComponent : MonoBehaviour
 {
-  public int Fuselage { get; set; } = (int) MorseCode.A;
-  public int Engine { get; set; } = (int) MorseCode.H;
-  public int Wings { get; set; } = (int) MorseCode.W;
-  public int Propellers { get; set; } = (int) MorseCode.F;
-  public int FuelTank { get; set; } = (int) MorseCode.E;
-  public int Wheels { get; set; } = (int) MorseCode.O;
-  public int Tail { get; set; } = (int) MorseCode.U;
+  public int Fuselage { get; set; } = (int) CorrectMorseCode.Fuselage;
+  public int Engine { get; set; } = (int) CorrectMorseCode.Engine;
+  public int Wings { get; set; } = (int) CorrectMorseCode.Wings;
+  public int Propellers { get; set; } = (int) CorrectMorseCode.Propeller;
+  public int FuelTank { get; set; } = (int) CorrectMorseCode.FuelTank;
+  public int Wheels { get; set; } = (int) CorrectMorseCode.Wheels;
+  public int Tail { get; set; } = (int) CorrectMorseCode.Tail;
 
   // public int Fuselage { get; set; } = -1;
   // public int Engine { get; set; } = -1;

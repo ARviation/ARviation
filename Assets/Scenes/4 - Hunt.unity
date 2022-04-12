@@ -776,45 +776,33 @@ MonoBehaviour:
   - name: Allison
     prefab: {fileID: 3564977921201455951, guid: 1e988d596fc4b48f8a8a409f0db0ba56, type: 3}
     code: 1
-  - name: Junkers
-    prefab: {fileID: 336786713562514172, guid: fc6f38945c3e04e3bafca062b0469d3b, type: 3}
-    code: 2
   - name: Packard
     prefab: {fileID: 4003609133617329930, guid: 05c328a715e8e4d8c927d30c252bf275, type: 3}
-    code: 3
+    code: 2
   - name: Rectangular
     prefab: {fileID: 8277872037215943773, guid: 73cdc369876004a4a9b0e4c496f3d8a1, type: 3}
-    code: 4
+    code: 3
   - name: Tapered
     prefab: {fileID: 706682281903784119, guid: df676f8b31dce4cedb027927b0b2d24f, type: 3}
+    code: 4
+  - name: Junkers
+    prefab: {fileID: 336786713562514172, guid: fc6f38945c3e04e3bafca062b0469d3b, type: 3}
     code: 5
-  - name: Two
-    prefab: {fileID: 4267896840999062385, guid: eb2cfdbbafb404bf1ae41e12ba44d939, type: 3}
-    code: 6
   - name: Four
     prefab: {fileID: 8039645369248759262, guid: 8758b5d0feb3241b49fd9eb8be758da4, type: 3}
-    code: 7
+    code: 6
   - name: Landing
     prefab: {fileID: 7017650364674233262, guid: 858e83b0697fa4110b9d61d5f56f8d83, type: 3}
-    code: 8
+    code: 7
   - name: Tail
     prefab: {fileID: 4353619874711839416, guid: d58bedf4e67a446cda0ebd60b60a2429, type: 3}
-    code: 10
-  - name: Six
-    prefab: {fileID: 7867264085243926959, guid: 37dc380f927d74699a4c27a2441d1114, type: 3}
-    code: 11
+    code: 8
   - name: Fuel
     prefab: {fileID: 2767983330513251450, guid: a9cb223f1db8941e08b168f206489d3b, type: 3}
     code: 9
-  - name: WrongFuel
-    prefab: {fileID: 706682281903784119, guid: 0faf6c9b91a1f4a95a8a5503c2c0308a, type: 3}
-    code: 12
-  - name: WrongLanding
-    prefab: {fileID: 706682281903784119, guid: a6044a7a393c44511914a78b09602605, type: 3}
-    code: 13
-  - name: RunwayL
-    prefab: {fileID: 7419229118397895217, guid: a76a2ca2010c1fa4ab24267438b58d6e, type: 3}
-    code: 13
+  - name: Six
+    prefab: {fileID: 7867264085243926959, guid: 37dc380f927d74699a4c27a2441d1114, type: 3}
+    code: 10
   collectPanel: {fileID: 1076849978}
   alreadyUsedImageHolder: {fileID: 5922758114085222060}
 --- !u!114 &1752953442

@@ -27,7 +27,7 @@ public class Collectable : MonoBehaviour
 
   public InventoryItem GetInventoryItem()
   {
-    return _matchedInventoryItem;
+    return _matchedInventoryItem != null ? _matchedInventoryItem : null;
   }
 
   private void LocateInventoryCategory()

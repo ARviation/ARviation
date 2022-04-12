@@ -1,19 +1,16 @@
 public enum MorseCode : int
 {
-  A = 0,
-  V = 1,
-  L = 2,
-  H = 3,
-  M = 4,
-  W = 5,
-  T = 6,
-  F = 7,
-  O = 8,
-  E = 9,
-  U = 10,
-  S = 11,
-  P = 12,
-  R = 13,
+  A = 0, // Fuselage
+  K = 1, // Allison
+  H = 2, // Packard
+  G = 3, // Rectangular
+  Z = 4, // Tapered
+  N = 5, // Junkers
+  F = 6, // Four
+  O = 7, // Landing
+  U = 8, // Tail
+  E = 9, // Fuel
+  S = 10, // Six
 }
 
 public enum CorrectMorseCode : int
@@ -21,7 +18,7 @@ public enum CorrectMorseCode : int
   Fuselage = MorseCode.A,
   Engine = MorseCode.H,
   Propeller = MorseCode.F,
-  Wings = MorseCode.W,
+  Wings = MorseCode.Z,
   Wheels = MorseCode.O,
   FuelTank = MorseCode.E,
   Tail = MorseCode.U,

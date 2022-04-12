@@ -52,7 +52,7 @@ public class ImageRecognition : MonoBehaviour
   {
     for (int i = 0; i < _refImageCount; i++)
     {
-      if (added.referenceImage.name == prefabToInstantiate[i].name)
+      if (added.referenceImage.name == prefabToInstantiate[i].name && added.referenceImage.name != "marker80")
       {
         GameObject prefab = Instantiate<GameObject>(prefabToInstantiate[i].prefab, transform.parent);
         prefab.transform.position = added.transform.position;
@@ -95,6 +95,7 @@ public class ImageRecognition : MonoBehaviour
 
   private void UpdateImage(ARTrackedImage image)
   {
+    if (image.referenceImage.name == "marker80") return;
     if (image.trackingState == TrackingState.Tracking)
     {
       UpdateTrackingObj(image);
