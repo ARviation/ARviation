@@ -15,7 +15,7 @@ public class ImageTracking_v3 : MonoBehaviour
     private ARTrackedImageManager trackedImageManager;
 
     GameObject airplane;
-    AudioSource source;
+    //AudioSource source;
     Quaternion sampledRotation = new Quaternion(0, 0, 0, 0);
     Vector3 airplane_angle_init;
     int counter = 0;
@@ -29,10 +29,10 @@ public class ImageTracking_v3 : MonoBehaviour
         airplane = Instantiate(airplane_prefab, Vector3.zero, Quaternion.identity);
         airplane.SetActive(false);
 
-        // sound
-        source = gameObject.AddComponent<AudioSource>();
-        AudioClip clip = Resources.Load<AudioClip>("AudioClip/sound_camera_snap");
-        source.clip = clip;
+        //// sound
+        //source = gameObject.AddComponent<AudioSource>();
+        //AudioClip clip = Resources.Load<AudioClip>("AudioClip/sound_camera_snap");
+        //source.clip = clip;
 
         airplane_angle_init = airplane.transform.localEulerAngles;
     }
@@ -65,7 +65,8 @@ public class ImageTracking_v3 : MonoBehaviour
                 #if UNITY_ANDROID || UNITY_IPHONE
                 Handheld.Vibrate();
                 #endif
-                source.Play();
+                //source.Play();
+                SFXmanager.playsound("scanner");
                 isMarkerDetected = true;
             }                
         }
