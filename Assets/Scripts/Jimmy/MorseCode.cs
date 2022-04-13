@@ -13,6 +13,12 @@ public enum MorseCode : int
   S = 10, // Six
 }
 
+
+
+
+
+
+
 public enum CorrectMorseCode : int
 {
   Fuselage = MorseCode.A,

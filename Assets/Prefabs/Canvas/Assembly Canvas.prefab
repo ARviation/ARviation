@@ -283,8 +283,8 @@ MonoBehaviour:
   collectPanel: {fileID: 8293815818620585398}
   isAssembly: 1
   isFuselage: 0
-  currCode: 8
-  collectedCode: 8
+  currCode: 7
+  collectedCode: 7
 --- !u!114 &185840591
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -849,8 +849,8 @@ MonoBehaviour:
   collectPanel: {fileID: 8293815818620585398}
   isAssembly: 1
   isFuselage: 0
-  currCode: 10
-  collectedCode: 10
+  currCode: 8
+  collectedCode: 8
 --- !u!114 &993799112
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1388,8 +1388,8 @@ MonoBehaviour:
   collectPanel: {fileID: 8293815818620585398}
   isAssembly: 1
   isFuselage: 0
-  currCode: 5
-  collectedCode: 5
+  currCode: 4
+  collectedCode: 4
 --- !u!114 &1163499013
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1504,8 +1504,8 @@ MonoBehaviour:
   collectPanel: {fileID: 8293815818620585398}
   isAssembly: 1
   isFuselage: 0
-  currCode: 7
-  collectedCode: 7
+  currCode: 6
+  collectedCode: 6
 --- !u!114 &1176334216
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2336,8 +2336,8 @@ MonoBehaviour:
   collectPanel: {fileID: 8293815818620585398}
   isAssembly: 1
   isFuselage: 0
-  currCode: 3
-  collectedCode: 3
+  currCode: 2
+  collectedCode: 2
 --- !u!114 &2097725069
 MonoBehaviour:
   m_ObjectHideFlags: 0
