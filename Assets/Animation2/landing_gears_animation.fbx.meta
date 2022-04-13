@@ -1,11 +1,11 @@
 fileFormatVersion: 2
-guid: 65d59210051802d4f9f08ea7737b25e7
+guid: ef5ddc57dedf4f041adf666e2fafaf78
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable:
   - first:
       74: 1827226128182048838
-    second: 2
+    second: landing_gears
   externalObjects: {}
   materials:
     materialImportMode: 2
@@ -26,7 +26,7 @@ ModelImporter:
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
     importConstraints: 0
-    animationCompression: 0
+    animationCompression: 1
     animationRotationError: 0.5
     animationPositionError: 0.5
     animationScaleError: 0.5
@@ -35,11 +35,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: 2
+      name: landing_gears
       takeName: Take 001
       internalID: 0
       firstFrame: 0
-      lastFrame: 27
+      lastFrame: 30
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
