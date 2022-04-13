@@ -27,7 +27,7 @@ public class FlyControl_v4 : MonoBehaviour
     List<float> parameters;
     public List<job> job_list;
     public float alpha;
-    public float alpha0 = 1f;
+    float alpha0 = 1f;
     Vector3 velocity;
     bool is_fixed_traj = false;
 
@@ -140,7 +140,6 @@ public class FlyControl_v4 : MonoBehaviour
                 action = null;
                 return;
             }
-
             float h = parameters[0];
             float L = parameters[1];
             float z = delta.z;
@@ -214,15 +213,22 @@ public class FlyControl_v4 : MonoBehaviour
         }
 
         // action: set traj flag
+        if (action == "lock traj")
         {
-            if (action == "lock traj")
-            {
-                float tf = parameters[0];
-                is_fixed_traj = (tf > 0);
-                action = null;
-                return;
-            }
-        }        
+            float tf = parameters[0];
+            is_fixed_traj = (tf > 0);
+            action = null;
+            return;
+        }
+
+        // action: sync slicer
+        if (action == "sync slider")
+        {
+            Debug.Log("sync slider: alpha = " + alpha);
+            slider_alpha.value = (1 - alpha) / 2;
+            action = null;
+            return;
+        }
     }
 
 
@@ -230,6 +236,7 @@ public class FlyControl_v4 : MonoBehaviour
     public void take_off()
     {
         alpha = 0;
+        Debug.Log("takeoff: alpha0 = " + alpha0);
         velocity = Vector3.zero;
         transform.localEulerAngles = Vector3.zero;
         transform.localPosition = Vector3.zero;
@@ -241,6 +248,7 @@ public class FlyControl_v4 : MonoBehaviour
         job_list.Add(new job() { action = "take off", parameters = new List<float> { h, L2 } });
         job_list.Add(new job() { action = "straight", parameters = new List<float> { R } });
         job_list.Add(new job() { action = "change alpha", parameters = new List<float> { alpha0 } });
+        job_list.Add(new job() { action = "sync slider", parameters = new List<float> { } });
         job_list.Add(new job() { action = "lock traj", parameters = new List<float> { -1f } });
         job_list.Add(new job() { action = "free flight", parameters = new List<float> { } });
     }
@@ -291,6 +299,7 @@ public class FlyControl_v4 : MonoBehaviour
         job_list.Add(new job() { action = "landing", parameters = new List<float> { h, L2 } });
         job_list.Add(new job() { action = "accelerate", parameters = new List<float> { L1, - speed * speed / (2 * L1) } });
         job_list.Add(new job() { action = "lock traj", parameters = new List<float> { -1f } });
+        //job_list.Add(new job() { action = "sync slider", parameters = new List<float> { } });
     }
 
 
@@ -466,7 +475,7 @@ public class FlyControl_v4 : MonoBehaviour
     // button_land_task
     public void button_return_task()
     {
-        Debug.Log("button_launch_return");
+        Debug.Log("button_return_task");
         if (action == "free flight")
         {
             landing();

@@ -50,11 +50,11 @@ public class screenshot_v2 : MonoBehaviour
         //source.clip = clip;
 
         // photo parameters
-        center1 = new Vector2(0, 0);
+        center1 = new Vector2(0, 130f);
         length1 = new Vector2(15f, 9.45f);
-        center2 = new Vector2(600f, 100f);
+        center2 = new Vector2(600f, 230f);
         length2 = new Vector2(4f, 3f);
-        center3 = new Vector2(1100f, 100f);
+        center3 = new Vector2(1030f, 100f);
         length3 = new Vector2(0f, 0f);
 
         // disable UI
