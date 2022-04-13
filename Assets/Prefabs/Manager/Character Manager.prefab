@@ -77,7 +77,7 @@ MonoBehaviour:
   scriptElementsIntro:
   - script: "Hi there! My name is Charlie - I\u2019m 17 years old and love airplanes."
     MoodIndex: 11
-    slideImage: {fileID: 21300000, guid: 0aa3bc4d477cc4be88cb5b3d9e64c2c6, type: 3}
+    slideImage: {fileID: 21300000, guid: a4beb62238e5a49febb7a48300764188, type: 3}
     showPrev: 0
     showNext: 1
     showNextScene: 0
@@ -90,9 +90,8 @@ MonoBehaviour:
     showNext: 1
     showNextScene: 0
     hideAtStart: 0
-  - script: He was a Tuskegee Airman during World War II, when he piloted his P-51
-      Mustang as one of the first African American pilots in the United States Air
-      Force.
+  - script: He was a Tuskegee Airman during World War II, when he flew his P-51 Mustang
+      as one of the first African American pilots in the United States Army Air Forces.
     MoodIndex: 22
     slideImage: {fileID: 21300000, guid: af5182513843c4568b03ce9ff6b86eb5, type: 3}
     showPrev: 1
@@ -103,7 +102,7 @@ MonoBehaviour:
       few parts that got lost or damaged throughout the years. It looks like this
       place has all the parts my airplane needs..."
     MoodIndex: 27
-    slideImage: {fileID: 0}
+    slideImage: {fileID: 21300000, guid: b617363895d024221a6553e98e77c9f5, type: 3}
     showPrev: 1
     showNext: 1
     showNextScene: 0
@@ -111,7 +110,7 @@ MonoBehaviour:
   - script: "I think that your talented team of experts can fix my P-51 Mustang!
       Let\u2019s go!"
     MoodIndex: 4
-    slideImage: {fileID: 0}
+    slideImage: {fileID: 21300000, guid: 48978713bf84941a8baed313ac214658, type: 3}
     showPrev: 1
     showNext: 0
     showNextScene: 1
@@ -120,7 +119,7 @@ MonoBehaviour:
   - script: "The cards you were given have valuable information to find the parts
       for my airplane, but they\u2019re a mess!"
     MoodIndex: 16
-    slideImage: {fileID: 21300000, guid: 92abac4612969473fbd871b17d625f87, type: 3}
+    slideImage: {fileID: 21300000, guid: 3af5db52ed02147ed8246949b6649708, type: 3}
     showPrev: 0
     showNext: 1
     showNextScene: 0
@@ -128,7 +127,7 @@ MonoBehaviour:
   - script: "Let\u2019s start by sorting them. Place each card in the matching color
       section on the airplane diagram. Tap the button when you finish!"
     MoodIndex: 3
-    slideImage: {fileID: 21300000, guid: 61e4d73d69be74f0f9e9b59b18b7a1e2, type: 3}
+    slideImage: {fileID: 21300000, guid: 63c9a2e33bca444648e185973ca7c563, type: 3}
     showPrev: 1
     showNext: 0
     showNextScene: 1
@@ -137,7 +136,7 @@ MonoBehaviour:
   - script: "Hmmm, very interesting\u2026 For some parts, you have more than one
       card, which means you have more than one option."
     MoodIndex: 28
-    slideImage: {fileID: 0}
+    slideImage: {fileID: 21300000, guid: b428222a4be9d4b4baad9a1f14135ba4, type: 3}
     showPrev: 0
     showNext: 1
     showNextScene: 0
@@ -145,7 +144,7 @@ MonoBehaviour:
   - script: You have to find which option is the correct one for the P-51 Mustang!
       I can help you out.
     MoodIndex: 17
-    slideImage: {fileID: 0}
+    slideImage: {fileID: 21300000, guid: 2b67aa72865ec492ea6c3ea399bc2076, type: 3}
     showPrev: 1
     showNext: 0
     showNextScene: 1

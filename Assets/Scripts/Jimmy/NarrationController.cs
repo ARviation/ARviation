@@ -33,7 +33,13 @@ public class NarrationController : MonoBehaviour
   [SerializeField] private int huntingHideIndex;
   [SerializeField] private bool isAssembly = false;
   [SerializeField] private GameObject inventory;
+  [SerializeField] private Button[] inventoryBtn;
+  [SerializeField] private GameObject[] perspectiveBtn;
   [SerializeField] private int resumeInventoryIndex;
+  [SerializeField] private Color highlightColor;
+  [SerializeField] private Color originalColor;
+  [SerializeField] private int highlightInventory;
+  [SerializeField] private int highlightPerspective;
 
   private float delay;
 
@@ -53,12 +59,39 @@ public class NarrationController : MonoBehaviour
     if (hasHideCondition && scanImage != null)
       scanImage.gameObject.SetActive(false);
     if (isAssembly)
-      inventory.SetActive(false);
+      DisableAssemblyBtn();
+
     HideBtn();
     _scriptLength = CharacterManager.Instance.GetScriptLength();
     scriptElement = CharacterManager.Instance.GetScriptElement(_currentScriptInd);
     if (scriptElement.hideAtStart) return;
     ShowLine(scriptElement);
+  }
+
+  private void DisableAssemblyBtn()
+  {
+    foreach (Button button in inventoryBtn)
+    {
+      button.enabled = false;
+    }
+
+    foreach (GameObject o in perspectiveBtn)
+    {
+      o.GetComponent<Button>().enabled = false;
+    }
+  }
+
+  private void EnableAssemblyBtn()
+  {
+    foreach (Button button in inventoryBtn)
+    {
+      button.enabled = true;
+    }
+
+    foreach (GameObject button in perspectiveBtn)
+    {
+      button.GetComponent<Button>().enabled = true;
+    }
   }
 
   private void HideBtn()
@@ -76,8 +109,32 @@ public class NarrationController : MonoBehaviour
       hideBackground.gameObject.SetActive(false);
       scanImage.gameObject.SetActive(true);
     }
-    if (isAssembly && _currentScriptInd == resumeInventoryIndex)
-      inventory.SetActive(true);
+
+    if (isAssembly)
+    {
+      if (_currentScriptInd == resumeInventoryIndex)
+        if (_currentScriptInd == highlightInventory)
+          inventory.GetComponent<Image>().color = highlightColor;
+      if (_currentScriptInd == highlightPerspective)
+      {
+        inventory.GetComponent<Image>().color = originalColor;
+        foreach (GameObject o in perspectiveBtn)
+        {
+          o.GetComponent<Image>().color = highlightColor;
+        }
+      }
+
+      if (_currentScriptInd == highlightPerspective + 1)
+      {
+        foreach (GameObject o in perspectiveBtn)
+        {
+          o.GetComponent<Image>().color = originalColor;
+        }
+      }
+
+      if (_currentScriptInd == highlightPerspective + 2)
+        EnableAssemblyBtn();
+    }
   }
 
   public void RemoveHadHideCondition()
