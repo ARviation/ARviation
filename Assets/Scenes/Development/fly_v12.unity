@@ -1772,6 +1772,8 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 78e959ac71ae8bb46a69368e50ffc817, type: 3}
   - sound_name: scanner
     clip: {fileID: 8300000, guid: 74e0910f826a36e489e840e96af4b2dd, type: 3}
+  - sound_name: engine
+    clip: {fileID: 8300000, guid: 301781f816148ac4cafc14b07dace741, type: 3}
 --- !u!1 &967013414
 GameObject:
   m_ObjectHideFlags: 0
@@ -2313,8 +2315,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3f603f38d01809468351fc40349c233, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  is_AR_Camera: 0
-  airplane_prefab: {fileID: 8814431029978244658, guid: 98e2ada575f89b248a407db017a6a364, type: 3}
+  is_AR_Camera: 1
+  airplane_prefab: {fileID: 8814431029978244658, guid: 7388e3191349b2449916381b250379ca, type: 3}
   m_UI_control: {fileID: 1932333511}
 --- !u!4 &1098889044
 Transform:
@@ -3340,7 +3342,7 @@ MonoBehaviour:
   - marker43_L28
   - marker50_image
   - marker51_photo
-  airplane_prefab: {fileID: 8814431029978244658, guid: 98e2ada575f89b248a407db017a6a364, type: 3}
+  airplane_prefab: {fileID: 8814431029978244658, guid: 7388e3191349b2449916381b250379ca, type: 3}
   isMarkerDetected: 0
 --- !u!114 &1603844221
 MonoBehaviour:
