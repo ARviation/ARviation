@@ -32,18 +32,18 @@ public class ControlPanel : MonoBehaviour
     }
 
 
-    // Update
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            SFXmanager.playsound_loop("scanner");
-        }
+    //// Update
+    //void Update()
+    //{
+    //    if (Input.GetKeyDown(KeyCode.Space))
+    //    {
+    //        SFXmanager.playsound("scanner");
+    //    }
 
-        if (Input.GetKeyDown(KeyCode.Return))
-        {
-            SFXmanager.stopsound("scanner");
-        }
+    //    if (Input.GetKeyDown(KeyCode.Return))
+    //    {
+    //        SFXmanager.stopsound("scanner");
+    //    }
         
-    }
+    //}
 }

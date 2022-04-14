@@ -23,6 +23,8 @@ public class FlyControl_v5 : MonoBehaviour
     float roll_eta = 0.01f;  //dumping rate
     float propeller_rotation_speed = 1000f;
 
+    public AudioSource source;
+
     GameObject CanvasObj;
     public GameObject landing_gears;
     public GameObject propeller;
@@ -61,6 +63,12 @@ public class FlyControl_v5 : MonoBehaviour
         button_return = GameObject.Find("Canvas").transform.Find("button_return").GetComponent<Button>();
         button_launch.onClick.AddListener(button_launch_task);
         button_return.onClick.AddListener(button_return_task);
+
+        // sound
+        source = gameObject.AddComponent<AudioSource>();
+        AudioClip clip = Resources.Load<AudioClip>("AudioClip/sound_engine");
+        source.clip = clip;
+        source.loop = true;
     }
 
 
@@ -253,11 +261,13 @@ public class FlyControl_v5 : MonoBehaviour
             float tf_ = parameters[0];
             if (tf_ > 0)
             {
-                SFXmanager.playsound_loop("engine");
+                source.Play();
+                //SFXmanager.playsound_loop("engine");
             }
             else
             {
-                SFXmanager.stopsound("engine");
+                source.Stop();
+                //SFXmanager.stopsound("engine");
             }
             action = null;
             return;

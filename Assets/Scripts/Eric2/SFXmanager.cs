@@ -55,6 +55,8 @@ public class SFXmanager : MonoBehaviour
     {
         // play sound
         source.clip = clip_dict[sound_name];
+        source.volume = 1f;
+        //source.loop = false;
         source.Play();
     }
 
@@ -74,19 +76,20 @@ public class SFXmanager : MonoBehaviour
         // play sound
         source.clip = clip_dict[sound_name];
         source.volume = volume;
-        source.loop = false;
+        //source.loop = false;
         source.Play();
     }
 
 
-    // play sound loop
-    public static void playsound_loop(string sound_name)
-    {
-        // play sound
-        source.clip = clip_dict[sound_name];
-        source.loop = true;
-        source.Play();
-    }
+    //// play sound loop
+    //public static void playsound_loop(string sound_name)
+    //{
+    //    // play sound
+    //    source.clip = clip_dict[sound_name];
+    //    source.volume = 1f;
+    //    source.loop = true;
+    //    source.Play();
+    //}
 
 }
 
