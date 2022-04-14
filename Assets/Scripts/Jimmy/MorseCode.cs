@@ -1,16 +1,15 @@
 public enum MorseCode : int
 {
   A = 0, // Fuselage
-  K = 1, // Allison
+  K = 1, // Wrong - Women 
   H = 2, // Packard
-  G = 3, // Rectangular
+  G = 3, // Wrong - Designer
   Z = 4, // Tapered
-  N = 5, // Junkers
+  N = 5, // Wrong - Doctor
   F = 6, // Four
   O = 7, // Landing
   U = 8, // Tail
   E = 9, // Fuel
-  S = 10, // Six
 }
 
 

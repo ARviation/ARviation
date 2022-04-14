@@ -33,7 +33,7 @@ MonoBehaviour:
       m_GuidHigh: 15278247201081549593
     m_Size: {x: 0.25, y: 0.24980016}
     m_SpecifySize: 1
-    m_Name: Allison
+    m_Name: Women
     m_Texture: {fileID: 0}
   - m_SerializedGuid:
       m_GuidLow: 4904110193731613508
@@ -53,7 +53,7 @@ MonoBehaviour:
       m_GuidHigh: 9346282929574146554
     m_Size: {x: 0.25, y: 0.25}
     m_SpecifySize: 1
-    m_Name: Rectangular
+    m_Name: Designer
     m_Texture: {fileID: 0}
   - m_SerializedGuid:
       m_GuidLow: 4620847573221552359
@@ -73,7 +73,7 @@ MonoBehaviour:
       m_GuidHigh: 5677851041968550680
     m_Size: {x: 0.25, y: 0.25}
     m_SpecifySize: 1
-    m_Name: Junker
+    m_Name: Doctor
     m_Texture: {fileID: 0}
   - m_SerializedGuid:
       m_GuidLow: 5687112644357351188
@@ -114,16 +114,6 @@ MonoBehaviour:
     m_Size: {x: 0.25, y: 0.25}
     m_SpecifySize: 1
     m_Name: Fuel
-    m_Texture: {fileID: 0}
-  - m_SerializedGuid:
-      m_GuidLow: 5397119396487105527
-      m_GuidHigh: 3428279700415083449
-    m_SerializedTextureGuid:
-      m_GuidLow: 13007754323851706971
-      m_GuidHigh: 11530774072197274746
-    m_Size: {x: 0.25, y: 0.25}
-    m_SpecifySize: 1
-    m_Name: Six
     m_Texture: {fileID: 0}
   - m_SerializedGuid:
       m_GuidLow: 5615005428446109335
