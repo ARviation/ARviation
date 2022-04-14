@@ -164,9 +164,8 @@ public class UI_control_v2 : MonoBehaviour
         // send email
         screenshot.GetComponent<screenshot_v2>().button_send_email();
         // disable UI
-        gameObject.SetActive(false);
         // quit
         GameManager.Instance.ChangeSceneToEnd();
-        // Application.Quit();
+        // gameObject.SetActive(false);
     }
 }
