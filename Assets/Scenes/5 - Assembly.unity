@@ -2858,6 +2858,10 @@ PrefabInstance:
       propertyPath: perspectiveBtn.Array.data[7]
       value: 
       objectReference: {fileID: 439305913}
+    - target: {fileID: 8118409718469811006, guid: 671f24c2f59714a908bb877cb1148a44, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 671f24c2f59714a908bb877cb1148a44, type: 3}
 --- !u!1001 &4439859454322143431
