@@ -156,6 +156,10 @@ public class FlyControl_v5 : MonoBehaviour
                 action = null;
                 return;
             }
+            if (Mathf.Abs(delta.z) >= parameters[1]/2)
+            {
+                landing_gears.SetActive(false);   // hide landing gears
+            }
             float h = parameters[0];
             float L = parameters[1];
             float z = delta.z;
@@ -184,6 +188,10 @@ public class FlyControl_v5 : MonoBehaviour
             {
                 action = null;
                 return;
+            }
+            if (Mathf.Abs(delta.z) >= parameters[1] / 2)
+            {
+                landing_gears.SetActive(true);   // show landing gears
             }
             float h = parameters[0];
             float L = parameters[1];
@@ -290,7 +298,7 @@ public class FlyControl_v5 : MonoBehaviour
         job_list.Add(new job() { action = "engine sound", parameters = new List<float> { 1f } });
         job_list.Add(new job() { action = "accelerate", parameters = new List<float> { L1, speed*speed/(2*L1) } });        
         job_list.Add(new job() { action = "take off", parameters = new List<float> { h, L2 } });
-        job_list.Add(new job() { action = "landing gears animation", parameters = new List<float> { -1f } });
+        //job_list.Add(new job() { action = "landing gears animation", parameters = new List<float> { -1f } });
         job_list.Add(new job() { action = "straight", parameters = new List<float> { R } });
         job_list.Add(new job() { action = "change alpha", parameters = new List<float> { alpha0 } });
         job_list.Add(new job() { action = "sync slider", parameters = new List<float> { } });
@@ -341,7 +349,7 @@ public class FlyControl_v5 : MonoBehaviour
         job_list.Add(new job() { action = "straight", parameters = new List<float> { d2 } });
         job_list.Add(new job() { action = "circle", parameters = new List<float> { alpha0, 0.25f * q1 } });
         job_list.Add(new job() { action = "circle", parameters = new List<float> { -alpha0, 0.25f } });
-        job_list.Add(new job() { action = "landing gears animation", parameters = new List<float> { 1f } });
+        //job_list.Add(new job() { action = "landing gears animation", parameters = new List<float> { 1f } });
         job_list.Add(new job() { action = "landing", parameters = new List<float> { h, L2 } });
         job_list.Add(new job() { action = "accelerate", parameters = new List<float> { L1, - speed * speed / (2 * L1) } });
         job_list.Add(new job() { action = "engine sound", parameters = new List<float> { -1f } });
@@ -514,6 +522,7 @@ public class FlyControl_v5 : MonoBehaviour
         Debug.Log("button_launch_task");
         if (action == null)
         {
+            SFXmanager.playsound("click");
             take_off();
         }
     }
@@ -525,6 +534,7 @@ public class FlyControl_v5 : MonoBehaviour
         Debug.Log("button_return_task");
         if (action == "free flight")
         {
+            SFXmanager.playsound("click");
             landing();
         }
     }

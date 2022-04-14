@@ -111,6 +111,8 @@ public class UI_control_v2 : MonoBehaviour
     // button quit task
     public void button_quit_task()
     {
+        // sound
+        SFXmanager.playsound("click");
         // show quit inquiry screen
         quit_inquiry_screen.SetActive(true);
         // disable all clickables
@@ -135,6 +137,8 @@ public class UI_control_v2 : MonoBehaviour
         //gameObject.SetActive(false);
         //// quit
         //Application.Quit();
+        // sound
+        SFXmanager.playsound("click");
         StartCoroutine(quit_task());
     }
 
@@ -142,6 +146,8 @@ public class UI_control_v2 : MonoBehaviour
     // button quit_no task
     public void button_quit_no_task()
     {
+        // sound
+        SFXmanager.playsound("click");
         // hide quit inqiry screen
         quit_inquiry_screen.SetActive(false);
         // enable all clickables
@@ -158,13 +164,18 @@ public class UI_control_v2 : MonoBehaviour
     {
         // hide quit inqiry screen
         quit_inquiry_screen.SetActive(false);
-        // show msg
-        msg_sending_email.SetActive(true);
-        yield return null;
         // send email
-        screenshot.GetComponent<screenshot_v2>().button_send_email();
-        // disable UI
+        int N_photo = screenshot.GetComponent<screenshot_v2>().N_photo;
+        if (N_photo > 0)
+        {
+            // show msg
+            msg_sending_email.SetActive(true);
+            yield return null;
+            // send email
+            screenshot.GetComponent<screenshot_v2>().button_send_email();
+        }
         // quit
+        Debug.Log("quit flying scene");
         GameManager.Instance.ChangeSceneToEnd();
         // gameObject.SetActive(false);
     }

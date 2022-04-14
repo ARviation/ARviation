@@ -5,6 +5,7 @@ using System.IO;
 using System.Net;
 using System.Net.Mail;
 using UnityEngine.UI;
+using TMPro;
 
 public class screenshot_v2 : MonoBehaviour
 {
@@ -15,7 +16,9 @@ public class screenshot_v2 : MonoBehaviour
     public GameObject button_yes;
     public GameObject button_no;
     public GameObject image_photo;
+    public GameObject photo_counter;
     public Button button_photo;
+    public int N_photo = 0;
 
     float t_pause = 1f;
     List<string> photo_file_list = new List<string>();
@@ -54,11 +57,13 @@ public class screenshot_v2 : MonoBehaviour
         length1 = new Vector2(15f, 9.45f);
         center2 = new Vector2(600f, 230f);
         length2 = new Vector2(4f, 3f);
-        center3 = new Vector2(1030f, 100f);
+        center3 = button_photo.GetComponent<RectTransform>().localPosition;
+        //center3 = new Vector2(1030f, 100f);
         length3 = new Vector2(0f, 0f);
 
         // disable UI
         image_photo.SetActive(false);
+        photo_counter.SetActive(false);
     }
 
 
@@ -156,6 +161,10 @@ public class screenshot_v2 : MonoBehaviour
             yield return null;
         }
         image_photo.SetActive(false);
+        // show photo number
+        N_photo = N_photo + 1;
+        photo_counter.SetActive(true);
+        photo_counter.transform.Find("text_photo_number").GetComponent<TextMeshProUGUI>().text = N_photo.ToString();
     }
 
 
@@ -225,6 +234,7 @@ public class screenshot_v2 : MonoBehaviour
     // button_no_task
     public void button_no_task()
     {
+        SFXmanager.playsound("click");
         photo_file_list.Remove(screenshotName);
         button_yes.SetActive(false);
         button_no.SetActive(false);
@@ -236,6 +246,7 @@ public class screenshot_v2 : MonoBehaviour
     // button_yes_task
     public void button_yes_task()
     {
+        SFXmanager.playsound("collect");        
         t_photo = tao2;
         StartCoroutine(move_image(photo, photo_frame, center2, length2, center3, length3, tao2));
         button_photo.interactable = true;

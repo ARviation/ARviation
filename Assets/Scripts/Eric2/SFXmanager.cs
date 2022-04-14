@@ -5,7 +5,7 @@ using UnityEngine;
 public class SFXmanager : MonoBehaviour
 {
     /// <summary>
-    /// sound effect manager
+    /// sound effect manager, one time sound play
     /// syntax: SFXmanager.playsound("pingpong");
     /// syntax: SFXmanager_volume.playsound("camera", 0.3f);
     /// </summary>
@@ -61,13 +61,13 @@ public class SFXmanager : MonoBehaviour
     }
 
 
-    // stop sound
-    public static void stopsound(string sound_name)
-    {
-        // stop sound
-        source.clip = clip_dict[sound_name];
-        source.Stop();
-    }
+    //// stop sound
+    //public static void stopsound(string sound_name)
+    //{
+    //    // stop sound
+    //    source.clip = clip_dict[sound_name];
+    //    source.Stop();
+    //}
 
 
     // play sound volume
