@@ -166,6 +166,7 @@ public class UI_control_v2 : MonoBehaviour
         // disable UI
         gameObject.SetActive(false);
         // quit
-        Application.Quit();
+        GameManager.Instance.ChangeSceneToEnd();
+        // Application.Quit();
     }
 }

@@ -95,6 +95,11 @@ public class GameManager : MonoBehaviour
     ChangeSceneTo((int) SceneIndex.Fly);
   }
 
+  public void ChangeSceneToEnd()
+  {
+    ChangeSceneTo((int) SceneIndex.End);
+  }
+
   public void ChangeSceneToEngine()
   {
     ChangeSceneTo((int) SceneIndex.Engine);

@@ -29,14 +29,14 @@ RectTransform:
   m_Children:
   - {fileID: 8813159082459634208}
   - {fileID: 4378030163269116928}
-  - {fileID: 4378030163805172275}
   - {fileID: 4378030162694423154}
+  - {fileID: 4378030163805172275}
   - {fileID: 8813159081799982092}
   - {fileID: 9183170740515576675}
   - {fileID: 133504049250980419}
   - {fileID: 5285577232399301854}
   m_Father: {fileID: 8813159082980212280}
-  m_RootOrder: 1
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -207,7 +207,7 @@ RectTransform:
   m_Children:
   - {fileID: 78056897439947401}
   m_Father: {fileID: 8813159082980212280}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -413,7 +413,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4386852316145179725}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -755,7 +755,7 @@ RectTransform:
   m_LocalScale: {x: 9, y: 9, z: 9}
   m_Children: []
   m_Father: {fileID: 4386852316145179725}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1380,7 +1380,7 @@ RectTransform:
   m_Children:
   - {fileID: 8813159081742996237}
   m_Father: {fileID: 8813159082980212280}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1828,7 +1828,7 @@ RectTransform:
   m_Children:
   - {fileID: 8813159081843651836}
   m_Father: {fileID: 8813159082980212280}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1962,10 +1962,10 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 2119617624650726103}
-  - {fileID: 4386852316145179725}
   - {fileID: 8813159082971002538}
   - {fileID: 8813159081831830533}
   - {fileID: 6970051070426966881}
+  - {fileID: 4386852316145179725}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2069,7 +2069,13 @@ MonoBehaviour:
   huntingHideIndex: 0
   isAssembly: 0
   inventory: {fileID: 0}
+  inventoryBtn: []
+  perspectiveBtn: []
   resumeInventoryIndex: 0
+  highlightColor: {r: 0, g: 0, b: 0, a: 0}
+  originalColor: {r: 0, g: 0, b: 0, a: 0}
+  highlightInventory: 0
+  highlightPerspective: 0
   _currentScriptInd: 0
 --- !u!114 &6208832991603449764
 MonoBehaviour:
@@ -2086,8 +2092,13 @@ MonoBehaviour:
   answer:
   - selectionImage: {fileID: 21300000, guid: 41b778b40c6cc4435bb661ad7a08443a, type: 3}
     correctness: 0
+    stringtoShow: "Mmm, these wings don\u2019t generate enough lift to reach high
+      altitudes."
+    _moodIndex: 29
   - selectionImage: {fileID: 21300000, guid: 1eafc33f763e1497b8a61f13e28d1345, type: 3}
     correctness: 1
+    stringtoShow: 
+    _moodIndex: 0
   selectionBox:
   - {fileID: 8813159081843651837}
   - {fileID: 8813159081742996238}
@@ -2095,4 +2106,4 @@ MonoBehaviour:
   feedbackDuration: 1.5
   showSelectionAtBegin: 1
   script: {fileID: 8813159082460392243}
-  stringToShow: You've got the Wrong Wings!
+  characterHolder: {fileID: 4378030163805172272}

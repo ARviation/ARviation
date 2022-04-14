@@ -1238,7 +1238,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.4745098, b: 0.4745098, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -3339,8 +3339,8 @@ MonoBehaviour:
   hideBackground: {fileID: 0}
   scanImage: {fileID: 0}
   hasImgHolder: 0
-  imgHolderMinHeight: 480
-  imgHolderMaxHeight: 800
+  imgHolderMinHeight: 1000
+  imgHolderMaxHeight: 1200
   imgHolder: {fileID: 8823055189849219550}
   hasSelection: 0
   isHunting: 0
@@ -3348,7 +3348,28 @@ MonoBehaviour:
   huntingHideIndex: 0
   isAssembly: 1
   inventory: {fileID: 1032345121}
+  inventoryBtn:
+  - {fileID: 1533232265}
+  - {fileID: 2097725069}
+  - {fileID: 1163499013}
+  - {fileID: 1176334216}
+  - {fileID: 185840591}
+  - {fileID: 1031966814}
+  - {fileID: 993799112}
+  perspectiveBtn:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   resumeInventoryIndex: 3
+  highlightColor: {r: 1, g: 0.4764151, b: 0.4764151, a: 1}
+  originalColor: {r: 1, g: 1, b: 1, a: 1}
+  highlightInventory: 0
+  highlightPerspective: 1
   _currentScriptInd: 0
 --- !u!1 &4245666891974215610
 GameObject:
@@ -3512,7 +3533,7 @@ RectTransform:
   m_LocalScale: {x: 9, y: 9, z: 9}
   m_Children: []
   m_Father: {fileID: 2068955472746273538}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -3586,8 +3607,8 @@ RectTransform:
   m_Children:
   - {fileID: 8605848153259720287}
   - {fileID: 7405071039897700577}
-  - {fileID: 7594395320486015062}
   - {fileID: 564028376414107480}
+  - {fileID: 7594395320486015062}
   - {fileID: 8580692911872362578}
   - {fileID: 2689889600401690431}
   - {fileID: 395715700993504900}
@@ -4468,7 +4489,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2068955472746273538}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}

@@ -11,6 +11,8 @@ public struct Selection
 {
   public Sprite selectionImage;
   public bool correctness;
+  public string stringtoShow;
+  public CharacterMoodIndex _moodIndex;
 }
 
 public class MultipleSelection : MonoBehaviour
@@ -21,7 +23,10 @@ public class MultipleSelection : MonoBehaviour
   [SerializeField] private float feedbackDuration = 1.5f;
   [SerializeField] private bool showSelectionAtBegin = false;
   [SerializeField] private TMP_Text script;
-  [SerializeField] private string stringToShow;
+
+  [SerializeField] private Image characterHolder;
+  // [SerializeField] private string stringToShow;
+  // [SerializeField] private CharacterMoodIndex _moodIndex;
 
   private NarrationController _narrationController;
   private bool _canTriggerFeedback = true;
@@ -42,7 +47,8 @@ public class MultipleSelection : MonoBehaviour
     for (int i = 0; i < length; i++)
     {
       selectionBox[i].sprite = answer[(i + randomSeed) % length].selectionImage;
-      selectionBox[i].transform.parent.name = answer[(i + randomSeed) % length].correctness.ToString();
+      selectionBox[i].transform.parent.name =
+        answer[(i + randomSeed) % length].correctness.ToString() + ((i + randomSeed) % length);
     }
   }
 
@@ -50,13 +56,13 @@ public class MultipleSelection : MonoBehaviour
   {
     if (_narrationController.GetIsPlaying()) return;
     if (!_canTriggerFeedback) return;
-    if (o.name == "True")
+    if (o.name.Substring(0, o.name.Length - 1) == "True")
     {
       OnSelectionTrue(o);
     }
     else
     {
-      OnSelectionFalse(o);
+      OnSelectionFalse(o, o.name.Substring(o.name.Length - 1, 1));
     }
   }
 
@@ -87,13 +93,15 @@ public class MultipleSelection : MonoBehaviour
     GameManager.Instance.ChangeSceneTo(sceneWhenSuccess);
   }
 
-  private void OnSelectionFalse(GameObject o)
+  private void OnSelectionFalse(GameObject o, string idxInSelect)
   {
+    Selection selection = answer[int.Parse(idxInSelect)];
     SoundManager.Instance.PlaySFXByIndex(SFXList.FailTwo);
-    StartCoroutine(WrongChoice(o));
+    characterHolder.sprite = CharacterManager.Instance.GetCharacterMood(selection._moodIndex);
+    StartCoroutine(WrongChoice(o, selection.stringtoShow));
   }
 
-  private IEnumerator WrongChoice(GameObject o)
+  private IEnumerator WrongChoice(GameObject o, string stringToShow)
   {
     float timer = 0;
     float offset = 10f;

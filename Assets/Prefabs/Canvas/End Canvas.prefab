@@ -484,13 +484,22 @@ MonoBehaviour:
   hideBackground: {fileID: 5471106979824508042}
   scanImage: {fileID: 0}
   hasImgHolder: 0
-  imgHolderMinHeight: 480
-  imgHolderMaxHeight: 800
+  imgHolderMinHeight: 1000
+  imgHolderMaxHeight: 1200
   imgHolder: {fileID: 7483594400623741682}
   hasSelection: 0
   isHunting: 0
   huntingMorseIndex: 3
   huntingHideIndex: 6
+  isAssembly: 0
+  inventory: {fileID: 0}
+  inventoryBtn: []
+  perspectiveBtn: []
+  resumeInventoryIndex: 0
+  highlightColor: {r: 0, g: 0, b: 0, a: 0}
+  originalColor: {r: 0, g: 0, b: 0, a: 0}
+  highlightInventory: 0
+  highlightPerspective: 0
   _currentScriptInd: 0
 --- !u!1 &3858237299851432989
 GameObject:
@@ -797,8 +806,8 @@ RectTransform:
   m_Children:
   - {fileID: 8886293102347175727}
   - {fileID: 7424767025970736856}
-  - {fileID: 6607630793820270524}
   - {fileID: 7483594400623741645}
+  - {fileID: 6607630793820270524}
   - {fileID: 7483594400914846902}
   - {fileID: 7483594401545428249}
   - {fileID: 7483594401776826821}
@@ -974,7 +983,7 @@ RectTransform:
   m_LocalScale: {x: 9, y: 9, z: 9}
   m_Children: []
   m_Father: {fileID: 5398186722108319340}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1182,7 +1191,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5398186722108319340}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}

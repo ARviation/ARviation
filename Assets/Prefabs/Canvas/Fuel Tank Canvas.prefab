@@ -164,7 +164,7 @@ RectTransform:
   m_Children:
   - {fileID: 3368922708650946232}
   m_Father: {fileID: 3368922709619934093}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -821,7 +821,7 @@ RectTransform:
   m_Children:
   - {fileID: 3368922708617333065}
   m_Father: {fileID: 3368922709619934093}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -955,10 +955,10 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 5324403580966848354}
-  - {fileID: 7525315791470764536}
   - {fileID: 3368922709606009631}
   - {fileID: 3368922708589308336}
   - {fileID: 3761887371437479636}
+  - {fileID: 7525315791470764536}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1062,7 +1062,13 @@ MonoBehaviour:
   huntingHideIndex: 0
   isAssembly: 0
   inventory: {fileID: 0}
+  inventoryBtn: []
+  perspectiveBtn: []
   resumeInventoryIndex: 0
+  highlightColor: {r: 0, g: 0, b: 0, a: 0}
+  originalColor: {r: 0, g: 0, b: 0, a: 0}
+  highlightInventory: 0
+  highlightPerspective: 0
   _currentScriptInd: 0
 --- !u!114 &190352481510859281
 MonoBehaviour:
@@ -1079,8 +1085,13 @@ MonoBehaviour:
   answer:
   - selectionImage: {fileID: 21300000, guid: 0eb39e19ddc904ce584a64209e020b23, type: 3}
     correctness: 1
-  - selectionImage: {fileID: 21300000, guid: 96b535d371d2b498fb4ee29ee8f90cd2, type: 3}
+    stringtoShow: 
+    _moodIndex: 0
+  - selectionImage: {fileID: 21300000, guid: 2110534a980504ddaa6a031cd3c71eab, type: 3}
     correctness: 0
+    stringtoShow: "Oops, these fuel tanks\u2019 material is not resistant enough
+      for a military airplane."
+    _moodIndex: 14
   selectionBox:
   - {fileID: 3368922708617333064}
   - {fileID: 3368922708650946235}
@@ -1088,7 +1099,7 @@ MonoBehaviour:
   feedbackDuration: 1.5
   showSelectionAtBegin: 0
   script: {fileID: 3368922709099632262}
-  stringToShow: You've got the Wrong Fuel Tank!
+  characterHolder: {fileID: 7516388051390762885}
 --- !u!1 &4011567257494237101
 GameObject:
   m_ObjectHideFlags: 0
@@ -1193,13 +1204,13 @@ RectTransform:
   m_Children:
   - {fileID: 3368922709100455829}
   - {fileID: 7516388050855238069}
-  - {fileID: 7516388051390762886}
   - {fileID: 7516388050431557575}
+  - {fileID: 7516388051390762886}
   - {fileID: 3368922708688265657}
   - {fileID: 3170354939832526550}
   - {fileID: 6148606593463234550}
   m_Father: {fileID: 3368922709619934093}
-  m_RootOrder: 1
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1236,7 +1247,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7525315791470764536}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1578,7 +1589,7 @@ RectTransform:
   m_LocalScale: {x: 9, y: 9, z: 9}
   m_Children: []
   m_Father: {fileID: 7525315791470764536}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1856,13 +1867,13 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8735833205084044877}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 6168559791305336636}
   m_Father: {fileID: 3368922709619934093}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}

@@ -77,6 +77,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: e8150739623b4402299459a3b3d1f2d2, type: 3}
   - {fileID: 8300000, guid: a4bd32078c44342f1a616a0e8847dab4, type: 3}
   voiceOverListFinishSelect:
+  - {fileID: 0}
   - {fileID: 8300000, guid: 34c86b5aa8f4a4396a2a2ce2435c0a03, type: 3}
   voiceOverListHunt:
   - {fileID: 8300000, guid: 484a30969a5a6483bb9d0f70d0f385d7, type: 3}
@@ -119,12 +120,15 @@ MonoBehaviour:
   - {fileID: 8300000, guid: c606221158189464c91b96e2b321546d, type: 3}
   - {fileID: 0}
   voiceOverListFuelTank:
+  - {fileID: 0}
   - {fileID: 8300000, guid: 667ee02b67ff04c5480d0e33ee2211c2, type: 3}
   - {fileID: 0}
   voiceOverListPropeller:
+  - {fileID: 0}
   - {fileID: 8300000, guid: b37b3587c6990485f9cbe0cb3a676cd5, type: 3}
   - {fileID: 0}
   voiceOverListEngine:
+  - {fileID: 0}
   - {fileID: 8300000, guid: 01868aaf05a16452882a9159d93d2565, type: 3}
   - {fileID: 0}
   _audioSource: {fileID: 6440714509679935793}

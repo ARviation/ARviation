@@ -935,38 +935,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6128518191521412267, guid: e57458d2e63f64176a34efac8cefbe1c, type: 3}
-      propertyPath: scriptElementsHunt.Array.data[5].showPrev
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6128518191521412267, guid: e57458d2e63f64176a34efac8cefbe1c, type: 3}
-      propertyPath: scriptElementsHunt.Array.data[6].showNext
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6128518191521412267, guid: e57458d2e63f64176a34efac8cefbe1c, type: 3}
-      propertyPath: scriptElementsHunt.Array.data[6].showPrev
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6128518191521412267, guid: e57458d2e63f64176a34efac8cefbe1c, type: 3}
-      propertyPath: scriptElementsHunt.Array.data[7].showPrev
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6128518191521412267, guid: e57458d2e63f64176a34efac8cefbe1c, type: 3}
-      propertyPath: scriptElementsHunt.Array.data[4].hideAtStart
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6128518191521412267, guid: e57458d2e63f64176a34efac8cefbe1c, type: 3}
-      propertyPath: scriptElementsHunt.Array.data[5].hideAtStart
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6128518191521412267, guid: e57458d2e63f64176a34efac8cefbe1c, type: 3}
-      propertyPath: scriptElementsHunt.Array.data[6].hideAtStart
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6128518191521412267, guid: e57458d2e63f64176a34efac8cefbe1c, type: 3}
-      propertyPath: scriptElementsHunt.Array.data[6].showNextScene
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e57458d2e63f64176a34efac8cefbe1c, type: 3}
 --- !u!1001 &2142735484

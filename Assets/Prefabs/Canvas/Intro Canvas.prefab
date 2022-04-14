@@ -163,8 +163,8 @@ RectTransform:
   m_Children:
   - {fileID: 7987847037241913975}
   - {fileID: 2906452120724016215}
-  - {fileID: 2906452121261644388}
   - {fileID: 2906452122439428645}
+  - {fileID: 2906452121261644388}
   - {fileID: 2906452122081251325}
   - {fileID: 2906452120864404718}
   - {fileID: 5879303713011291225}
@@ -606,7 +606,7 @@ RectTransform:
   m_LocalScale: {x: 9, y: 9, z: 9}
   m_Children: []
   m_Father: {fileID: 2915257236258862106}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -813,7 +813,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2915257236258862106}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1490,8 +1490,8 @@ MonoBehaviour:
   hideBackground: {fileID: 0}
   scanImage: {fileID: 0}
   hasImgHolder: 1
-  imgHolderMinHeight: 600
-  imgHolderMaxHeight: 960
+  imgHolderMinHeight: 1000
+  imgHolderMaxHeight: 1200
   imgHolder: {fileID: 2906452122439428643}
   hasSelection: 0
   isHunting: 0
@@ -1499,7 +1499,13 @@ MonoBehaviour:
   huntingHideIndex: 0
   isAssembly: 0
   inventory: {fileID: 0}
+  inventoryBtn: []
+  perspectiveBtn: []
   resumeInventoryIndex: 0
+  highlightColor: {r: 0, g: 0, b: 0, a: 0}
+  originalColor: {r: 0, g: 0, b: 0, a: 0}
+  highlightInventory: 0
+  highlightPerspective: 0
   _currentScriptInd: 0
 --- !u!1 &8624862774906862159
 GameObject:

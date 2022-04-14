@@ -136,7 +136,13 @@ MonoBehaviour:
   huntingHideIndex: 0
   isAssembly: 0
   inventory: {fileID: 0}
+  inventoryBtn: []
+  perspectiveBtn: []
   resumeInventoryIndex: 0
+  highlightColor: {r: 0, g: 0, b: 0, a: 0}
+  originalColor: {r: 0, g: 0, b: 0, a: 0}
+  highlightInventory: 0
+  highlightPerspective: 0
   _currentScriptInd: 0
 --- !u!1 &3215048911324727756
 GameObject:
@@ -878,8 +884,8 @@ RectTransform:
   m_Children:
   - {fileID: 3215048911324727731}
   - {fileID: 7643004058799585171}
-  - {fileID: 7643004058261430688}
   - {fileID: 7643004057285497313}
+  - {fileID: 7643004058261430688}
   - {fileID: 4208438903681291186}
   - {fileID: 4208438902914494435}
   - {fileID: 4208438904679255372}
@@ -916,16 +922,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7643004057285497316}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7652106693708943326}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 150}
+  m_AnchoredPosition: {x: 0.00007247925, y: 149.99991}
   m_SizeDelta: {x: 1000, y: 500}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7643004057285497318
@@ -996,7 +1002,7 @@ RectTransform:
   m_LocalScale: {x: 9, y: 9, z: 9}
   m_Children: []
   m_Father: {fileID: 7652106693708943326}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}

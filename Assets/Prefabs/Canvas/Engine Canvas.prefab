@@ -29,13 +29,13 @@ RectTransform:
   m_Children:
   - {fileID: 8113944391555979259}
   - {fileID: 3897240054341167579}
-  - {fileID: 3897240054878797800}
   - {fileID: 3897240053976190889}
+  - {fileID: 3897240054878797800}
   - {fileID: 8113944391141691863}
   - {fileID: 8477191978692712120}
   - {fileID: 796689818524999576}
   m_Father: {fileID: 8113944392076555235}
-  m_RootOrder: 1
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -74,7 +74,7 @@ RectTransform:
   m_Children:
   - {fileID: 847086053865641810}
   m_Father: {fileID: 8113944392076555235}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -412,7 +412,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3906062211769618838}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -754,7 +754,7 @@ RectTransform:
   m_LocalScale: {x: 9, y: 9, z: 9}
   m_Children: []
   m_Father: {fileID: 3906062211769618838}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1190,7 +1190,7 @@ RectTransform:
   m_Children:
   - {fileID: 8113944391165976278}
   m_Father: {fileID: 8113944392076555235}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1564,10 +1564,10 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 1710876296474703628}
-  - {fileID: 3906062211769618838}
   - {fileID: 8113944392119253873}
   - {fileID: 8113944391244847582}
   - {fileID: 7669274574564189882}
+  - {fileID: 3906062211769618838}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1671,7 +1671,13 @@ MonoBehaviour:
   huntingHideIndex: 0
   isAssembly: 0
   inventory: {fileID: 0}
+  inventoryBtn: []
+  perspectiveBtn: []
   resumeInventoryIndex: 0
+  highlightColor: {r: 0, g: 0, b: 0, a: 0}
+  originalColor: {r: 0, g: 0, b: 0, a: 0}
+  highlightInventory: 0
+  highlightPerspective: 0
   _currentScriptInd: 0
 --- !u!114 &6700811606307885695
 MonoBehaviour:
@@ -1688,10 +1694,18 @@ MonoBehaviour:
   answer:
   - selectionImage: {fileID: 21300000, guid: aedfb50763500439bb8081114a87a8cf, type: 3}
     correctness: 1
+    stringtoShow: 
+    _moodIndex: 0
   - selectionImage: {fileID: 21300000, guid: 675bded08c23343df946cabe51c1b2b7, type: 3}
     correctness: 0
+    stringtoShow: "Uh oh, this engine\u2019s horsepower is too low for the P-51 Mustang\u2019s
+      power."
+    _moodIndex: 15
   - selectionImage: {fileID: 21300000, guid: e79cb86d130bf40988808c37c67e93cc, type: 3}
     correctness: 0
+    stringtoShow: "Hmm, this engine was built in Germany, a country that was not
+      on good terms with the United States during World War II\u2026"
+    _moodIndex: 29
   selectionBox:
   - {fileID: 8113944391199521062}
   - {fileID: 8113944391165976277}
@@ -1700,7 +1714,7 @@ MonoBehaviour:
   feedbackDuration: 1.5
   showSelectionAtBegin: 0
   script: {fileID: 8113944391556212456}
-  stringToShow: You've got the Wrong Engine!
+  characterHolder: {fileID: 3897240054878797803}
 --- !u!1 &8113944392119253874
 GameObject:
   m_ObjectHideFlags: 0
@@ -1733,7 +1747,7 @@ RectTransform:
   m_Children:
   - {fileID: 8113944391199521063}
   m_Father: {fileID: 8113944392076555235}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
