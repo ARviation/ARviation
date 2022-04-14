@@ -74,6 +74,7 @@ public class SFXmanager : MonoBehaviour
         // play sound
         source.clip = clip_dict[sound_name];
         source.volume = volume;
+        source.loop = false;
         source.Play();
     }
 
