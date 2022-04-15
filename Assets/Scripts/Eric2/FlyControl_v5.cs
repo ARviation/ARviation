@@ -21,13 +21,14 @@ public class FlyControl_v5 : MonoBehaviour
     float pi;
     float roll_max = 15;     //degree
     float roll_eta = 0.01f;  //dumping rate
-    float propeller_rotation_speed = 1000f;
+    float propeller_rotation_speed = 2000f;
 
     public AudioSource source;
 
     GameObject CanvasObj;
     public GameObject landing_gears;
     public GameObject propeller;
+    public GameObject trail;
     public string action;
     List<float> parameters;
     public List<job> job_list;
@@ -35,10 +36,12 @@ public class FlyControl_v5 : MonoBehaviour
     float alpha0 = 1f;
     Vector3 velocity;
     bool is_fixed_traj = false;
+    bool is_trail = false;
 
     Slider slider_alpha;
     Button button_launch;
     Button button_return;
+    Button button_trail;
 
     float t;
     Vector3 action_origin;
@@ -61,14 +64,19 @@ public class FlyControl_v5 : MonoBehaviour
         slider_alpha = GameObject.Find("Canvas").transform.Find("slider_control").GetComponent<Slider>();
         button_launch = GameObject.Find("Canvas").transform.Find("button_launch").GetComponent<Button>();
         button_return = GameObject.Find("Canvas").transform.Find("button_return").GetComponent<Button>();
+        button_trail = GameObject.Find("Canvas").transform.Find("button_trail").GetComponent<Button>();
         button_launch.onClick.AddListener(button_launch_task);
         button_return.onClick.AddListener(button_return_task);
+        button_trail.onClick.AddListener(button_trail_task);
 
         // sound
         source = gameObject.AddComponent<AudioSource>();
         AudioClip clip = Resources.Load<AudioClip>("AudioClip/sound_engine");
         source.clip = clip;
         source.loop = true;
+
+        // trail
+        trail.SetActive(false);
     }
 
 
@@ -241,6 +249,7 @@ public class FlyControl_v5 : MonoBehaviour
         {
             float tf = parameters[0];
             is_fixed_traj = (tf > 0);
+            if (is_fixed_traj) trail.SetActive(false);
             action = null;
             return;
         }
@@ -287,6 +296,7 @@ public class FlyControl_v5 : MonoBehaviour
     public void take_off()
     {
         alpha = 0;
+        is_trail = false;
         Debug.Log("takeoff: alpha0 = " + alpha0);
         velocity = Vector3.zero;
         transform.localEulerAngles = Vector3.zero;
@@ -537,6 +547,15 @@ public class FlyControl_v5 : MonoBehaviour
             SFXmanager.playsound("click");
             landing();
         }
+    }
+
+
+    // button_trail_task
+    public void button_trail_task()
+    {
+        Debug.Log("button_trail_task");
+        is_trail = !is_trail;
+        trail.SetActive(is_trail);
     }
 
 }

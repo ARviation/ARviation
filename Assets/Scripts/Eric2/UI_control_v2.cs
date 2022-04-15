@@ -9,6 +9,7 @@ public class UI_control_v2 : MonoBehaviour
     public string state;
     public GameObject button_launch;
     public GameObject button_return;
+    public GameObject button_trail;
     public GameObject slider_control;
     public GameObject button_quit;
     public GameObject button_take_photo;
@@ -38,6 +39,8 @@ public class UI_control_v2 : MonoBehaviour
     void Update()
     {
         //Debug.Log("state = " + state);
+
+        // scanning
         if (state == "scanning")
         {   
             // scanning line
@@ -54,6 +57,7 @@ public class UI_control_v2 : MonoBehaviour
             button_take_photo.SetActive(false);
             button_launch.SetActive(false);
             button_return.SetActive(false);
+            button_trail.SetActive(false);
             slider_control.SetActive(false);
             if (imageTracking.isMarkerDetected)
             {
@@ -65,28 +69,37 @@ public class UI_control_v2 : MonoBehaviour
             }
             return;
         }
+
+        // idling
         if (state == "idling")
         {            
             button_launch.SetActive(true);
             button_launch.GetComponent<Button>().interactable = true;
             button_return.SetActive(false);
+            button_trail.SetActive(false);
             slider_control.SetActive(false);
             return;
         }
+
+        // free flight
         if (state == "free flight")
         {
             button_launch.SetActive(false);
             button_return.SetActive(true);
+            button_trail.SetActive(true);
             button_return.GetComponent<Button>().interactable = true;
             slider_control.SetActive(true);
             slider_control.GetComponent<Slider>().interactable = true;
             return;
         }
+
+        // fixed traj
         if (state == "fixed traj")
         {
             button_launch.SetActive(true);
             button_launch.GetComponent<Button>().interactable = false;
             button_return.SetActive(false);
+            button_trail.SetActive(false);
             slider_control.SetActive(false);
             return;
         }

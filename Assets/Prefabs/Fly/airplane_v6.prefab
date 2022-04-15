@@ -383,8 +383,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4560f724082b266469a317fb3c150daa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  source: {fileID: 0}
   landing_gears: {fileID: 414929563010713600}
   propeller: {fileID: 3401308325166250818}
+  trail: {fileID: 8814431030506544536}
   action: 
   alpha: 0
 --- !u!1 &8814431030506544536
