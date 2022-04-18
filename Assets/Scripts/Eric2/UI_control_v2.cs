@@ -32,6 +32,12 @@ public class UI_control_v2 : MonoBehaviour
         //StartCoroutine(slider_dumping());
         quit_inquiry_screen.SetActive(false);
         msg_sending_email.SetActive(false);
+
+        button_launch.SetActive(false);
+        button_return.SetActive(false);
+        button_trail.SetActive(false);
+        slider_control.SetActive(false);
+
     }
 
 

@@ -28,7 +28,8 @@ public class FlyControl_v5 : MonoBehaviour
     GameObject CanvasObj;
     public GameObject landing_gears;
     public GameObject propeller;
-    public GameObject trail;
+    public GameObject trail_white;
+    public GameObject trail_rainbow;
     public string action;
     List<float> parameters;
     public List<job> job_list;
@@ -36,7 +37,9 @@ public class FlyControl_v5 : MonoBehaviour
     float alpha0 = 1f;
     Vector3 velocity;
     bool is_fixed_traj = false;
-    bool is_trail = false;
+    //bool is_trail = false;
+    int trail_index = 0;
+
 
     Slider slider_alpha;
     Button button_launch;
@@ -74,9 +77,11 @@ public class FlyControl_v5 : MonoBehaviour
         AudioClip clip = Resources.Load<AudioClip>("AudioClip/sound_engine");
         source.clip = clip;
         source.loop = true;
+        source.playOnAwake = false;
 
         // trail
-        trail.SetActive(false);
+        trail_white.SetActive(false);
+        trail_rainbow.SetActive(false);
     }
 
 
@@ -249,7 +254,11 @@ public class FlyControl_v5 : MonoBehaviour
         {
             float tf = parameters[0];
             is_fixed_traj = (tf > 0);
-            if (is_fixed_traj) trail.SetActive(false);
+            if (is_fixed_traj)
+            {
+                trail_white.SetActive(false);
+                trail_rainbow.SetActive(false);
+            }
             action = null;
             return;
         }
@@ -296,7 +305,7 @@ public class FlyControl_v5 : MonoBehaviour
     public void take_off()
     {
         alpha = 0;
-        is_trail = false;
+        //is_trail = false;
         Debug.Log("takeoff: alpha0 = " + alpha0);
         velocity = Vector3.zero;
         transform.localEulerAngles = Vector3.zero;
@@ -554,8 +563,24 @@ public class FlyControl_v5 : MonoBehaviour
     public void button_trail_task()
     {
         Debug.Log("button_trail_task");
-        is_trail = !is_trail;
-        trail.SetActive(is_trail);
+        //is_trail = !is_trail;
+        //trail.SetActive(is_trail);
+        trail_index = (trail_index + 1) % 3;
+        if (trail_index == 0)
+        {
+            trail_white.SetActive(false);
+            trail_rainbow.SetActive(false);
+        }
+        if (trail_index == 1)
+        {
+            trail_white.SetActive(true);
+            trail_rainbow.SetActive(false);
+        }
+        if (trail_index == 2)
+        {
+            trail_white.SetActive(false);
+            trail_rainbow.SetActive(true);
+        }
     }
 
 }
