@@ -2047,7 +2047,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 206e643ab115a4f67b269b1b78971164, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defaultDelay: 0.045
+  defaultDelay: 0.04
   textDisplay: {fileID: 8813159082460392243}
   btnForNextScene: {fileID: 5285577232399301849}
   btnForNextSentence: {fileID: 3670792325215371620}

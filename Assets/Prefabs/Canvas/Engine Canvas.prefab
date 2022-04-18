@@ -1649,7 +1649,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 206e643ab115a4f67b269b1b78971164, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defaultDelay: 0.045
+  defaultDelay: 0.04
   textDisplay: {fileID: 8113944391556212456}
   btnForNextScene: {fileID: 0}
   btnForNextSentence: {fileID: 4045747838393863359}
@@ -1710,7 +1710,7 @@ MonoBehaviour:
   - {fileID: 8113944391199521062}
   - {fileID: 8113944391165976277}
   - {fileID: 6875550904620176505}
-  sceneWhenSuccess: 13
+  sceneWhenSuccess: 14
   feedbackDuration: 1.5
   showSelectionAtBegin: 0
   script: {fileID: 8113944391556212456}
