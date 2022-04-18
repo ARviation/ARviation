@@ -281,10 +281,13 @@ MonoBehaviour:
   background: {fileID: 2027410337}
   componentIcon: {fileID: 1767778806}
   collectPanel: {fileID: 8293815818620585398}
+  isHunting: 0
   isAssembly: 1
   isFuselage: 0
+  displayItem: {fileID: 0}
   currCode: 7
   collectedCode: 7
+  _isCollected: 0
 --- !u!114 &185840591
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -847,10 +850,13 @@ MonoBehaviour:
   background: {fileID: 1182070079}
   componentIcon: {fileID: 1741476562}
   collectPanel: {fileID: 8293815818620585398}
+  isHunting: 0
   isAssembly: 1
   isFuselage: 0
+  displayItem: {fileID: 0}
   currCode: 8
   collectedCode: 8
+  _isCollected: 0
 --- !u!114 &993799112
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1113,10 +1119,13 @@ MonoBehaviour:
   background: {fileID: 1015066822}
   componentIcon: {fileID: 617271750}
   collectPanel: {fileID: 8293815818620585398}
+  isHunting: 0
   isAssembly: 1
   isFuselage: 0
+  displayItem: {fileID: 0}
   currCode: 9
   collectedCode: 9
+  _isCollected: 0
 --- !u!114 &1031966814
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1386,10 +1395,13 @@ MonoBehaviour:
   background: {fileID: 2014687754}
   componentIcon: {fileID: 163563887}
   collectPanel: {fileID: 8293815818620585398}
+  isHunting: 0
   isAssembly: 1
   isFuselage: 0
+  displayItem: {fileID: 0}
   currCode: 4
   collectedCode: 4
+  _isCollected: 0
 --- !u!114 &1163499013
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1502,10 +1514,13 @@ MonoBehaviour:
   background: {fileID: 639178680}
   componentIcon: {fileID: 179497801}
   collectPanel: {fileID: 8293815818620585398}
+  isHunting: 0
   isAssembly: 1
   isFuselage: 0
+  displayItem: {fileID: 0}
   currCode: 6
   collectedCode: 6
+  _isCollected: 0
 --- !u!114 &1176334216
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1768,10 +1783,13 @@ MonoBehaviour:
   background: {fileID: 689408406}
   componentIcon: {fileID: 1129544820}
   collectPanel: {fileID: 8293815818620585398}
+  isHunting: 0
   isAssembly: 1
   isFuselage: 1
+  displayItem: {fileID: 0}
   currCode: 0
   collectedCode: 0
+  _isCollected: 0
 --- !u!114 &1533232265
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2334,10 +2352,13 @@ MonoBehaviour:
   background: {fileID: 322758046}
   componentIcon: {fileID: 2009989067}
   collectPanel: {fileID: 8293815818620585398}
+  isHunting: 0
   isAssembly: 1
   isFuselage: 0
+  displayItem: {fileID: 0}
   currCode: 2
   collectedCode: 2
+  _isCollected: 0
 --- !u!114 &2097725069
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3107,6 +3128,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: db4bd4522ff534cfe9cf244daa8b338a, type: 3}
   - {fileID: 21300000, guid: 089f1dfad72154479825102476c4f05a, type: 3}
   componentName: {fileID: 4919184702463753333}
+  displayItems: []
 --- !u!1 &3252218940791653048
 GameObject:
   m_ObjectHideFlags: 0
@@ -3326,7 +3348,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 206e643ab115a4f67b269b1b78971164, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defaultDelay: 0.05
+  defaultDelay: 0.045
   textDisplay: {fileID: 479160228654029559}
   btnForNextScene: {fileID: 602487123107552368}
   btnForNextSentence: {fileID: 1157225955531098886}
@@ -4686,7 +4708,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &7405071039897700577
 RectTransform:
   m_ObjectHideFlags: 0

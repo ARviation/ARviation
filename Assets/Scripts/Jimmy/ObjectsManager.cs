@@ -18,6 +18,7 @@ public class ObjectsManager : MonoBehaviour
   [SerializeField] private GameObject nextButton;
   [SerializeField] private GameObject finishAssembleButton;
   [SerializeField] private Camera _camera;
+  [SerializeField] private ParticleSystem fireworkVFX;
 
   public delegate void StartTouchEvent(Vector2 position, float time);
 
@@ -108,7 +109,8 @@ public class ObjectsManager : MonoBehaviour
     if (assembledPart != (targetComponentNumber - 1) || _hasOpenFinishButton) return;
     FindObjectOfType<NarrationController>().RevealDialog();
     _hasOpenFinishButton = true;
-    finishAssembleButton.SetActive(true);
+    // finishAssembleButton.SetActive(true);
+    fireworkVFX.Play();
   }
 
   // public bool GetCanPass()

@@ -455,7 +455,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 206e643ab115a4f67b269b1b78971164, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defaultDelay: 0.05
+  defaultDelay: 0.045
   textDisplay: {fileID: 3680713034642756086}
   btnForNextScene: {fileID: 654984732}
   btnForNextSentence: {fileID: 8911324413244636065}
@@ -1334,7 +1334,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &8474586209650138821
 RectTransform:
   m_ObjectHideFlags: 0

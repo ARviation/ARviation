@@ -6,20 +6,21 @@ using UnityEngine.SceneManagement;
 
 public enum SceneIndex : int
 {
-  Intro = 0,
-  SortOne = 1,
-  SortTwo = 2,
-  FinishSelect = 3,
-  Hunt = 4,
-  Assembly = 5,
-  FlyIntro = 6,
-  Fly = 7,
-  End = 8,
-  WingsOne = 9,
-  WingsTwo = 10,
-  FuelTank = 11,
-  Engine = 12,
-  Propeller = 13,
+  Landing = 0,
+  Intro = 1,
+  SortOne = 2,
+  SortTwo = 3,
+  FinishSelect = 4,
+  Hunt = 5,
+  Assembly = 6,
+  FlyIntro = 7,
+  Fly = 8,
+  End = 9,
+  WingsOne = 10,
+  WingsTwo = 11,
+  FuelTank = 12,
+  Engine = 13,
+  Propeller = 14,
 }
 
 public class GameManager : MonoBehaviour
@@ -54,6 +55,11 @@ public class GameManager : MonoBehaviour
   public void ChangeSceneTo(SceneIndex index)
   {
     ChangeSceneTo((int) index);
+  }
+
+  public void ChangeSceneToLanding()
+  {
+    ChangeSceneTo((int) SceneIndex.Landing);
   }
 
   public void ChangeSceneToIntro()

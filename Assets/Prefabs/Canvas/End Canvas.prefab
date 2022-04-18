@@ -357,6 +357,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ee75d512f0f44a59ab96699657a904d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rotSpeed: 0.1
+  rotDir: 0
+  canRotate: 0
 --- !u!1 &3763174055777483176
 GameObject:
   m_ObjectHideFlags: 0
@@ -471,7 +474,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 206e643ab115a4f67b269b1b78971164, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defaultDelay: 0.05
+  defaultDelay: 0.045
   textDisplay: {fileID: 2547905864868090080}
   btnForNextScene: {fileID: 7483594401776826826}
   btnForNextSentence: {fileID: 7483594400914846903}
@@ -1046,7 +1049,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &7424767025970736856
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1667,7 +1670,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 2732, y: 2048}
+  m_SizeDelta: {x: 2360, y: 1640}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2179018324759709593
 CanvasRenderer:

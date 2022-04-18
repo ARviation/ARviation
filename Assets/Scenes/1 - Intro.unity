@@ -653,26 +653,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1662397396849102901, guid: 00c8dcc096a1643da90b530b8ad3d616, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -1035
-      objectReference: {fileID: 0}
-    - target: {fileID: 1662397396849102901, guid: 00c8dcc096a1643da90b530b8ad3d616, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 801
-      objectReference: {fileID: 0}
-    - target: {fileID: 2906452120724016212, guid: 00c8dcc096a1643da90b530b8ad3d616, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4920566971736883493, guid: 00c8dcc096a1643da90b530b8ad3d616, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1344237990}
-    - target: {fileID: 6894380696699815659, guid: 00c8dcc096a1643da90b530b8ad3d616, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7987847037795997283, guid: 00c8dcc096a1643da90b530b8ad3d616, type: 3}
       propertyPath: m_Name
       value: Intro Canvas

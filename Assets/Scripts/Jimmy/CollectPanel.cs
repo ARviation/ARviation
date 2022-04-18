@@ -8,6 +8,7 @@ public class CollectPanel : MonoBehaviour
 {
   [SerializeField] private Sprite[] candidates;
   [SerializeField] private TMP_Text componentName;
+  [SerializeField] private DisplayItem[] displayItems;
 
   private InventoryItem[] _inventoryItems;
   private InventoryItem _inventoryItem;
@@ -39,6 +40,14 @@ public class CollectPanel : MonoBehaviour
     {
       if (inventoryItem.name != obj.name)
         inventoryItem.CloseFrame();
+    }
+
+    if (displayItems != null)
+    {
+      foreach (DisplayItem displayItem in displayItems)
+      {
+        displayItem.ChangeState(false);
+      }
     }
   }
 

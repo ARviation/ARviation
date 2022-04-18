@@ -10,13 +10,15 @@ public class InventoryItem : MonoBehaviour
   [SerializeField] private Image background;
   [SerializeField] private Image componentIcon;
   [SerializeField] private CollectPanel collectPanel;
+  [SerializeField] private bool isHunting = false;
   [SerializeField] private bool isAssembly = false;
   [SerializeField] private bool isFuselage = false;
+  [SerializeField] private DisplayItem displayItem;
 
   public MorseCode currCode;
   public MorseCode collectedCode;
   private bool _isEnable = false;
-  private bool _isCollected = false;
+  public bool _isCollected = false;
 
   private void Start()
   {
@@ -48,6 +50,10 @@ public class InventoryItem : MonoBehaviour
       SoundManager.Instance.PlaySFXByIndex(SFXList.Click);
       enableFrame.gameObject.SetActive(false);
       _isEnable = false;
+      if (isHunting)
+      {
+        displayItem.ChangeState(_isEnable);
+      }
 
       if (isAssembly)
       {
@@ -67,6 +73,11 @@ public class InventoryItem : MonoBehaviour
       enableFrame.gameObject.SetActive(true);
       _isEnable = true;
       PlayerStats.Instance.UpdateSelectedComponentCode(currCode, this);
+      if (isHunting)
+      {
+        displayItem.ChangeState(_isEnable);
+      }
+
       if (isAssembly)
       {
         foreach (AttachableComponent attachableComponent in attachableComponents)

@@ -642,10 +642,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4378030163269116931, guid: 2ec2391b1f891404b93b991565aa9a46, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8813159082980212276, guid: 2ec2391b1f891404b93b991565aa9a46, type: 3}
       propertyPath: m_Name
       value: Wings Two Canvas

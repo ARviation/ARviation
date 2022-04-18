@@ -53,3 +53,4 @@ MonoBehaviour:
   nextButton: {fileID: 0}
   finishAssembleButton: {fileID: 0}
   _camera: {fileID: 0}
+  fireworkVFX: {fileID: 0}

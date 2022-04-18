@@ -668,7 +668,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 206e643ab115a4f67b269b1b78971164, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defaultDelay: 0.05
+  defaultDelay: 0.045
   textDisplay: {fileID: 347623361395841409}
   btnForNextScene: {fileID: 0}
   btnForNextSentence: {fileID: 5507030212444828630}
@@ -729,7 +729,7 @@ MonoBehaviour:
   - {fileID: 347623359705712207}
   - {fileID: 347623359605105084}
   - {fileID: 3108427034261138192}
-  sceneWhenSuccess: 3
+  sceneWhenSuccess: 4
   feedbackDuration: 1.5
   showSelectionAtBegin: 0
   script: {fileID: 347623361395841409}
@@ -1349,7 +1349,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &4781771516150191794
 RectTransform:
   m_ObjectHideFlags: 0

@@ -51,19 +51,15 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 713ac9c3535e74ac199ad158d7b69660, type: 3}
   sfxMorseList:
   - {fileID: 8300000, guid: 254ffa08b8ec44823bd268d98fda1985, type: 3}
-  - {fileID: 8300000, guid: aea50735fe5e34da69b9cfad710c57a3, type: 3}
-  - {fileID: 8300000, guid: 4f5d0a02cdc36471b8ff01c3478eb2e5, type: 3}
+  - {fileID: 8300000, guid: 24610d1a4951c41f7a8177407d8d97ec, type: 3}
   - {fileID: 8300000, guid: 195efebeef3f3402ebf53b936e146be2, type: 3}
-  - {fileID: 8300000, guid: 2b5af2f8bf2aa4a35a4493172cba0603, type: 3}
-  - {fileID: 8300000, guid: 916ad1a2ff14e4464b95c525168eb93f, type: 3}
-  - {fileID: 8300000, guid: b9e9b1394400c48feb6a659d90b56452, type: 3}
+  - {fileID: 8300000, guid: 26b25b314dabc4a4b943c38586a71859, type: 3}
+  - {fileID: 8300000, guid: cb1d72fb5b1d84680ab24de8b0c31c91, type: 3}
+  - {fileID: 8300000, guid: 757c61444f0b7414b9f54fb705e4afe3, type: 3}
   - {fileID: 8300000, guid: 9535f6d54eaf14c12af9f9d88ba374a3, type: 3}
   - {fileID: 8300000, guid: 7dcb42c32f6d64c108af7ed8b2a90caf, type: 3}
-  - {fileID: 8300000, guid: 60b016ee7ec7a4547b0da66e9064b4a7, type: 3}
   - {fileID: 8300000, guid: d036786f8ec1349c890d638214c38b31, type: 3}
-  - {fileID: 8300000, guid: 885a838e50d454bf597d8aee4ccb0c4a, type: 3}
-  - {fileID: 8300000, guid: 20bd7a73bbb1749099bdfeb3959169d0, type: 3}
-  - {fileID: 8300000, guid: 3eafe217221b3425184ea6e9c0ccaa14, type: 3}
+  - {fileID: 8300000, guid: 60b016ee7ec7a4547b0da66e9064b4a7, type: 3}
   voiceOverListIntro:
   - {fileID: 8300000, guid: ca79669fd5e2e4183b67bb7100a43984, type: 3}
   - {fileID: 8300000, guid: 1d86d7291fb23480faaa650847def8af, type: 3}
