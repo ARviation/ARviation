@@ -10,19 +10,27 @@ public class InventoryItem : MonoBehaviour
   [SerializeField] private Image background;
   [SerializeField] private Image componentIcon;
   [SerializeField] private CollectPanel collectPanel;
+  [SerializeField] private DisplayPanel displayPanel;
   [SerializeField] private bool isHunting = false;
   [SerializeField] private bool isAssembly = false;
   [SerializeField] private bool isFuselage = false;
   [SerializeField] private DisplayItem displayItem;
 
+  private string componentName;
   public MorseCode currCode;
   public MorseCode collectedCode;
   private bool _isEnable = false;
   public bool _isCollected = false;
+  private NarrationController _narrationController;
+  private AttachableComponent[] _attachableComponents;
 
   private void Start()
   {
+    _narrationController = FindObjectOfType<NarrationController>();
     enableFrame.gameObject.SetActive(false);
+
+    if (isAssembly)
+      _attachableComponents = FindObjectsOfType<AttachableComponent>();
     if (isAssembly && !isFuselage)
     {
       background.gameObject.SetActive(false);
@@ -38,26 +46,22 @@ public class InventoryItem : MonoBehaviour
 
   public void OnClick()
   {
-    collectPanel.OnInventoryItemClick(gameObject);
-    AttachableComponent[] attachableComponents = null;
-    if (isAssembly)
-    {
-      attachableComponents = FindObjectsOfType<AttachableComponent>();
-    }
-
     if (_isEnable)
     {
-      SoundManager.Instance.PlaySFXByIndex(SFXList.Click);
+      collectPanel.OnInventoryItemClick(gameObject);
       enableFrame.gameObject.SetActive(false);
       _isEnable = false;
+      SoundManager.Instance.PlaySFXByIndex(SFXList.Click);
       if (isHunting)
       {
         displayItem.ChangeState(_isEnable);
+        _narrationController.OpenScanImage();
+        displayPanel.ClosePanel();
       }
 
       if (isAssembly)
       {
-        foreach (AttachableComponent attachableComponent in attachableComponents)
+        foreach (AttachableComponent attachableComponent in _attachableComponents)
         {
           if (!attachableComponent.GetIsAttached())
           {
@@ -69,18 +73,22 @@ public class InventoryItem : MonoBehaviour
     else
     {
       if (!_isCollected) return;
-      SoundManager.Instance.PlaySFXByIndex(SFXList.Click);
+      collectPanel.OnInventoryItemClick(gameObject);
       enableFrame.gameObject.SetActive(true);
       _isEnable = true;
+      SoundManager.Instance.PlaySFXByIndex(SFXList.Click);
       PlayerStats.Instance.UpdateSelectedComponentCode(currCode, this);
       if (isHunting)
       {
         displayItem.ChangeState(_isEnable);
+        _narrationController.CloseScanImage();
+        displayPanel.OpenPanel(componentName);
+        collectPanel.ClosePanel();
       }
 
       if (isAssembly)
       {
-        foreach (AttachableComponent attachableComponent in attachableComponents)
+        foreach (AttachableComponent attachableComponent in _attachableComponents)
         {
           if (!attachableComponent.GetIsAttached())
           {
@@ -110,6 +118,11 @@ public class InventoryItem : MonoBehaviour
     enableFrame.gameObject.SetActive(false);
     componentIcon.gameObject.SetActive(false);
     background.gameObject.SetActive(true);
+  }
+
+  public void SetComponentName(string name)
+  {
+    componentName = name;
   }
 
   public void OnCollectComponent()

@@ -110,7 +110,7 @@ MonoBehaviour:
   - script: "I think that your talented team of experts can fix my P-51 Mustang!
       Let\u2019s go!"
     MoodIndex: 4
-    slideImage: {fileID: 21300000, guid: 48978713bf84941a8baed313ac214658, type: 3}
+    slideImage: {fileID: 21300000, guid: 81309eb9ac7bf4ad9b3de236e850d6a2, type: 3}
     showPrev: 1
     showNext: 0
     showNextScene: 1
@@ -152,7 +152,7 @@ MonoBehaviour:
   scriptElementsFinishSelect:
   - script: Spectacular! Place the incorrect propeller cards back in the box.
     MoodIndex: 19
-    slideImage: {fileID: 21300000, guid: a3a8a0715ffdd410c929210ffe30c5cd, type: 3}
+    slideImage: {fileID: 21300000, guid: be79376f0355f464ba6d069d7081a702, type: 3}
     showPrev: 0
     showNext: 1
     showNextScene: 0
@@ -215,8 +215,8 @@ MonoBehaviour:
     showNext: 1
     showNextScene: 0
     hideAtStart: 1
-  - script: "Decipher their correct letters, find them around the exhibit, and scan
-      them. Let\u2019s go!"
+  - script: "If you want to take a closer look at a collected component, tap its
+      image in the storage. Let\u2019s go!"
     MoodIndex: 5
     slideImage: {fileID: 0}
     showPrev: 1
@@ -226,7 +226,7 @@ MonoBehaviour:
   - script: "Incredible, you found all the missing parts! I\u2019m really impressed!
       You\u2019re now ready to assemble my airplane."
     MoodIndex: 17
-    slideImage: {fileID: 21300000, guid: 610bb5f500c554c76af17cc91530a5f9, type: 3}
+    slideImage: {fileID: 21300000, guid: 81309eb9ac7bf4ad9b3de236e850d6a2, type: 3}
     showPrev: 0
     showNext: 0
     showNextScene: 1
@@ -296,35 +296,28 @@ MonoBehaviour:
     showNextScene: 1
     hideAtStart: 0
   scriptElementsEnd:
-  - script: "I can\u2019t thank you enough for your help and expertise. Your team
-      is incredible!"
+  - script: "I can\u2019t thank you enough for rebuilding my great-grandpa\u2019s
+      airplane. Your team is incredible!"
     MoodIndex: 24
-    slideImage: {fileID: 0}
+    slideImage: {fileID: 21300000, guid: efbcc290b6e07436299159d62a16603f, type: 3}
     showPrev: 0
-    showNext: 1
-    showNextScene: 0
-    hideAtStart: 0
-  - script: I hope you had fun helping me rebuild my great-grandpa's P-51 Mustang.
-    MoodIndex: 6
-    slideImage: {fileID: 0}
-    showPrev: 1
     showNext: 1
     showNextScene: 0
     hideAtStart: 0
   - script: "Aviation is not just for pilots, but also for people who love designing
       airplanes, maintaining them, and helping them fly\u2026 Just like you!"
     MoodIndex: 21
-    slideImage: {fileID: 0}
+    slideImage: {fileID: 21300000, guid: 06f8ba27524ff42f7ae99c1166637d39, type: 3}
     showPrev: 1
     showNext: 1
     showNextScene: 0
     hideAtStart: 0
   - script: Have a wonderful day, and I hope to see you again soon!
     MoodIndex: 11
-    slideImage: {fileID: 0}
+    slideImage: {fileID: 21300000, guid: c6774f75cee904531a37d29fa2e4ab9e, type: 3}
     showPrev: 1
     showNext: 0
-    showNextScene: 0
+    showNextScene: 1
     hideAtStart: 0
   scriptElementsReaction: []
   scriptElementsWingsOne:
@@ -356,7 +349,7 @@ MonoBehaviour:
   scriptElementsFuelTank:
   - script: Great job! Place the incorrect wings card back in the box.
     MoodIndex: 18
-    slideImage: {fileID: 21300000, guid: c49fb73f4d62848ef932ffef4c73deee, type: 3}
+    slideImage: {fileID: 21300000, guid: c28cdb1fb555447858d615f37eb0207b, type: 3}
     showPrev: 0
     showNext: 1
     showNextScene: 0
@@ -378,7 +371,7 @@ MonoBehaviour:
   scriptElementsPropeller:
   - script: Fantastic! Place the incorrect engine cards back in the box.
     MoodIndex: 17
-    slideImage: {fileID: 21300000, guid: 3e9d5349a81d945b1bac551725eaf308, type: 3}
+    slideImage: {fileID: 21300000, guid: 3678d167ab2cc4afba4f4070c8c800e8, type: 3}
     showPrev: 0
     showNext: 1
     showNextScene: 0
@@ -400,7 +393,7 @@ MonoBehaviour:
   scriptElementsEngine:
   - script: Awesome! Place the incorrect fuel tanks card back in the box.
     MoodIndex: 20
-    slideImage: {fileID: 21300000, guid: 5df1ff1e73a764cfbaf5d6d72b80bb01, type: 3}
+    slideImage: {fileID: 21300000, guid: 67d3424f85a88402eaeedebfc678591b, type: 3}
     showPrev: 0
     showNext: 1
     showNextScene: 0

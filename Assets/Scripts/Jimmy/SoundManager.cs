@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,12 +9,14 @@ public enum SFXList : int
   Success = 1,
   Fail = 2,
   FailTwo = 3,
+  Firework = 4,
 }
 
 public class SoundManager : MonoBehaviour
 {
   public static SoundManager Instance = null;
 
+  [SerializeField] public AudioClip[] bgmList;
   [SerializeField] public AudioClip[] sfxList;
   [SerializeField] public AudioClip[] sfxMorseList;
   [SerializeField] public AudioClip[] voiceOverListIntro;
@@ -31,6 +34,8 @@ public class SoundManager : MonoBehaviour
   [SerializeField] public AudioClip[] voiceOverListPropeller;
   [SerializeField] public AudioClip[] voiceOverListEngine;
   [SerializeField] private AudioSource _audioSource;
+  [SerializeField] private AudioSource _bgmSource;
+  [SerializeField] private AudioSource _fireworkSFX;
 
   private void Awake()
   {
@@ -44,15 +49,38 @@ public class SoundManager : MonoBehaviour
     }
   }
 
+  private void Start()
+  {
+    if (GameManager.Instance.GetCurrentSceneIndex() == (int) SceneIndex.Landing)
+    {
+      PlayBGM();
+    }
+  }
+
   public void StopPlay()
   {
     _audioSource.Stop();
   }
 
+  public void PlayBGM()
+  {
+    if (_bgmSource != null)
+      _audioSource.PlayOneShot(bgmList[0]);
+  }
+
   public void PlaySFXByIndex(SFXList sfxIndex, float volume = 1.0f)
   {
-    _audioSource.PlayOneShot(sfxList[(int) sfxIndex], volume);
+    if (sfxIndex == SFXList.Firework)
+    {
+      _fireworkSFX.clip = sfxList[(int) SFXList.Firework];
+      _fireworkSFX.Play();
+    }
+    else
+    {
+      _audioSource.PlayOneShot(sfxList[(int) sfxIndex], volume);
+    }
   }
+
 
   public void PlaySFXByMorseCode(MorseCode code, float volume = 1.0f)
   {

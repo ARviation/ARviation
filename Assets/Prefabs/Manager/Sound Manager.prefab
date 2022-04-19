@@ -44,11 +44,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc010920d71694a1e9a8f75e480837dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bgmList: []
   sfxList:
   - {fileID: 8300000, guid: 6f6a52c21825d4987b703ac03053911b, type: 3}
   - {fileID: 8300000, guid: db143068022314acbafee15a31fb6bfd, type: 3}
   - {fileID: 8300000, guid: 3143d5a5445d44a608764d93d9e3ab8b, type: 3}
   - {fileID: 8300000, guid: 713ac9c3535e74ac199ad158d7b69660, type: 3}
+  - {fileID: 8300000, guid: f51aa40b16fbc4d4e9c01ac2bff4ffad, type: 3}
   sfxMorseList:
   - {fileID: 8300000, guid: 254ffa08b8ec44823bd268d98fda1985, type: 3}
   - {fileID: 8300000, guid: 24610d1a4951c41f7a8177407d8d97ec, type: 3}
@@ -128,6 +130,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 01868aaf05a16452882a9159d93d2565, type: 3}
   - {fileID: 0}
   _audioSource: {fileID: 6440714509679935793}
+  _bgmSource: {fileID: 0}
+  _fireworkSFX: {fileID: 0}
 --- !u!82 &6440714509679935793
 AudioSource:
   m_ObjectHideFlags: 0

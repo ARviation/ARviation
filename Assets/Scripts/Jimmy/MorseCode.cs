@@ -12,12 +12,6 @@ public enum MorseCode : int
   E = 9, // Fuel
 }
 
-
-
-
-
-
-
 public enum CorrectMorseCode : int
 {
   Fuselage = MorseCode.A,

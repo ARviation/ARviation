@@ -474,7 +474,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 206e643ab115a4f67b269b1b78971164, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defaultDelay: 0.04
   textDisplay: {fileID: 2547905864868090080}
   btnForNextScene: {fileID: 7483594401776826826}
   btnForNextSentence: {fileID: 7483594400914846903}
@@ -482,7 +481,7 @@ MonoBehaviour:
   btnToReveal: {fileID: 0}
   characterHolder: {fileID: 2143729728384531007}
   dialogueObj: {fileID: 5696224785596182822}
-  hasHideCondition: 1
+  hasHideCondition: 0
   hideConditionIndex: 2
   hideBackground: {fileID: 5471106979824508042}
   scanImage: {fileID: 0}
@@ -1569,7 +1568,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 8454713287fcf441594c62a4f2213fe4, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1bbf9a7c25d64433897215f90d0d9713, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1623,9 +1622,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3885142386982144191}
-        m_TargetAssemblyTypeName: NarrationController, Assembly-CSharp
-        m_MethodName: HideDialog
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: ChangeSceneToLanding
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

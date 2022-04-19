@@ -25,6 +25,8 @@ public enum SceneIndex : int
 
 public class GameManager : MonoBehaviour
 {
+  [SerializeField] public float narratorSpeed = 0.04f;
+
   public static GameManager Instance = null;
   public const string Fuselage = "Fuselage";
   public const string Engine = "Engine";
@@ -48,7 +50,8 @@ public class GameManager : MonoBehaviour
 
   private static void ChangeSceneTo(int index)
   {
-    SoundManager.Instance.PlaySFXByIndex(SFXList.Click);
+    if (SoundManager.Instance != null)
+      SoundManager.Instance.PlaySFXByIndex(SFXList.Click);
     SceneManager.LoadScene(index);
   }
 

@@ -11,6 +11,7 @@ public class ObjectsManager : MonoBehaviour
   [SerializeField] private float mouseDragPhysicsSpeed = 10.0f;
   [SerializeField] private float mouseDragSpeed = 1.0f;
   [SerializeField] private CollectPanel collectPanel;
+  [SerializeField] private DisplayPanel displayPanel;
   [SerializeField] private int collectedComponent = 0;
   [SerializeField] private int assembledPart = 0;
   [SerializeField] private int targetComponentNumber = 4;
@@ -78,6 +79,8 @@ public class ObjectsManager : MonoBehaviour
 
     if (collectPanel != null)
       collectPanel.gameObject.SetActive(false);
+    if (displayPanel != null)
+      displayPanel.gameObject.SetActive(false);
     // LoadCollectedComponent();
     _touchControls.Touch.TouchPress.started += ctx => StartTouch(ctx);
     _touchControls.Touch.TouchPress.canceled += ctx => EndTouch(ctx);
@@ -111,6 +114,7 @@ public class ObjectsManager : MonoBehaviour
     _hasOpenFinishButton = true;
     // finishAssembleButton.SetActive(true);
     fireworkVFX.Play();
+    SoundManager.Instance.PlaySFXByIndex(SFXList.Firework);
   }
 
   // public bool GetCanPass()

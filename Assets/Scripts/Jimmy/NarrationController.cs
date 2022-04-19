@@ -9,7 +9,6 @@ using UnityEngine.XR.ARFoundation;
 // TODO: clean useless code and comments after finish implementing all narration function
 public class NarrationController : MonoBehaviour
 {
-  [SerializeField] private float defaultDelay = 0.05f;
   [SerializeField] private TMP_Text textDisplay;
   [SerializeField] private Button btnForNextScene;
   [SerializeField] private Button btnForNextSentence;
@@ -38,6 +37,7 @@ public class NarrationController : MonoBehaviour
   [SerializeField] private int resumeInventoryIndex;
   [SerializeField] private Color highlightColor;
   [SerializeField] private Color originalColor;
+  [SerializeField] private int highlightTap;
   [SerializeField] private int highlightInventory;
   [SerializeField] private int highlightPerspective;
 
@@ -51,11 +51,13 @@ public class NarrationController : MonoBehaviour
   private bool _isFinal = false;
   private bool isMorsePlay = false;
   private ScriptElement scriptElement;
+  private bool isScanning = false;
+  private bool hasOpenScanImage = false;
 
   private void Start()
   {
     _currentScriptInd = 0;
-    delay = defaultDelay;
+    delay = GameManager.Instance.narratorSpeed;
     if (hasHideCondition && scanImage != null)
       scanImage.gameObject.SetActive(false);
     if (isAssembly)
@@ -104,10 +106,24 @@ public class NarrationController : MonoBehaviour
 
   private void Update()
   {
-    if (hasHideCondition && _currentScriptInd == hideConditionIndex && scanImage != null)
+    if (hasHideCondition && _currentScriptInd == hideConditionIndex)
     {
       hideBackground.gameObject.SetActive(false);
-      scanImage.gameObject.SetActive(true);
+      if (!hasOpenScanImage)
+      {
+        OpenScanImage();
+        hasOpenScanImage = true;
+      }
+      // scanImage.gameObject.SetActive(true);
+    }
+
+    if (isHunting)
+    {
+      scanImage.gameObject.SetActive(isScanning);
+      if (_currentScriptInd == highlightTap)
+        inventory.GetComponent<Image>().color = highlightColor;
+      if (_currentScriptInd == highlightTap + 1)
+        inventory.GetComponent<Image>().color = originalColor;
     }
 
     if (isAssembly)
@@ -137,6 +153,16 @@ public class NarrationController : MonoBehaviour
     }
   }
 
+  public void OpenScanImage()
+  {
+    isScanning = true;
+  }
+
+  public void CloseScanImage()
+  {
+    isScanning = false;
+  }
+
   public void RemoveHadHideCondition()
   {
     hasHideCondition = false;
@@ -152,13 +178,8 @@ public class NarrationController : MonoBehaviour
     if (_isPlaying || _currentScriptInd >= (_scriptLength - 1)) return;
     _currentScriptInd++;
     scriptElement = CharacterManager.Instance.GetScriptElement(_currentScriptInd);
-    // if (hasSpecialForNextSentence && _currentScriptInd == (_scriptLength - 1))
-    // {
-    //   GameManager.Instance.ChangeSceneToWings();
-    // }
 
     HideBtn();
-    delay = defaultDelay;
     SoundManager.Instance.PlaySFXByIndex(SFXList.Click);
 
     if (scriptElement.hideAtStart)
@@ -252,7 +273,6 @@ public class NarrationController : MonoBehaviour
     {
       _displayScript = script.Substring(0, i);
       textDisplay.text = _displayScript;
-      // textDisplay.GetComponent<TMP_Text>().text = _displayScript;
       yield return new WaitForSeconds(delay);
     }
 
@@ -260,7 +280,6 @@ public class NarrationController : MonoBehaviour
 
     if (isHunting && _currentScriptInd == huntingMorseIndex && !isMorsePlay)
     {
-      // SoundManager.Instance.PlaySFXByMorseCode(MorseCode.A);
       isMorsePlay = true;
     }
 

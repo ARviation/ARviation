@@ -18,9 +18,10 @@ public class CollectPanel : MonoBehaviour
     _inventoryItems = FindObjectsOfType<InventoryItem>();
   }
 
-  public void SetInventoryItem(InventoryItem inventoryItem)
+  public void SetInventoryItem(InventoryItem inventoryItem, string name)
   {
     _inventoryItem = inventoryItem;
+    _inventoryItem.SetComponentName(name);
   }
 
   public void OnCollectBtnClick()

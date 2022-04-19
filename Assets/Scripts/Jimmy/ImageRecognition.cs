@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Net;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.XR;
 using UnityEngine.XR.ARFoundation;
 using UnityEngine.XR.ARSubsystems;
@@ -13,6 +14,7 @@ public class ImageRecognition : MonoBehaviour
 {
   [SerializeField] TrackedPrefab[] prefabToInstantiate;
   [SerializeField] private CollectPanel collectPanel;
+  [SerializeField] private DisplayPanel displayPanel;
   [SerializeField] private Image alreadyUsedImageHolder;
 
   private int _refImageCount;
@@ -96,7 +98,8 @@ public class ImageRecognition : MonoBehaviour
   private void UpdateImage(ARTrackedImage image)
   {
     if (image.referenceImage.name == "marker80") return;
-    if (image.trackingState == TrackingState.Tracking)
+    bool isDisplaying = displayPanel.isDisplaying;
+    if (image.trackingState == TrackingState.Tracking && !isDisplaying)
     {
       UpdateTrackingObj(image);
     }
@@ -116,6 +119,7 @@ public class ImageRecognition : MonoBehaviour
     {
       if (!_arObjs.TryGetValue(updated.referenceImage.name, out GameObject prefab)) continue;
       if (!_arObjsUsed.TryGetValue(updated.referenceImage.name, out bool used)) continue;
+      _narrationController.CloseScanImage();
       if (used)
       {
         alreadyUsedImageHolder.gameObject.SetActive(true);
@@ -144,7 +148,7 @@ public class ImageRecognition : MonoBehaviour
         if (collectPanel != null)
         {
           collectPanel.OpenPanel(componentName);
-          collectPanel.SetInventoryItem(inventoryItem);
+          collectPanel.SetInventoryItem(inventoryItem, componentName);
         }
       }
     }
@@ -156,12 +160,13 @@ public class ImageRecognition : MonoBehaviour
     {
       if (!_arObjs.TryGetValue(updated.referenceImage.name, out GameObject prefab)) continue;
       if (!_arObjsUsed.TryGetValue(updated.referenceImage.name, out bool used)) continue;
-
       hasMorseCodePlayed = false;
       alreadyUsedImageHolder.gameObject.SetActive(false);
       prefab.SetActive(false);
       if (collectPanel != null)
         collectPanel.ClosePanel();
+      if (!displayPanel.isDisplaying)
+        _narrationController.OpenScanImage();
     }
   }
 

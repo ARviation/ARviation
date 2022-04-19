@@ -46,6 +46,7 @@ MonoBehaviour:
   mouseDragPhysicsSpeed: 10
   mouseDragSpeed: 1
   collectPanel: {fileID: 0}
+  displayPanel: {fileID: 0}
   collectedComponent: 0
   assembledPart: 0
   targetComponentNumber: 7
