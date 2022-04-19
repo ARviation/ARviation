@@ -25,6 +25,7 @@ public class ImageTracking_v3 : MonoBehaviour
     // Awake
     private void Awake()
     {
+        Debug.Log("flying scene: image tracking starts");
         trackedImageManager = FindObjectOfType<ARTrackedImageManager>();
         airplane = Instantiate(airplane_prefab, Vector3.zero, Quaternion.identity);
         airplane.SetActive(false);
@@ -35,6 +36,7 @@ public class ImageTracking_v3 : MonoBehaviour
         //source.clip = clip;
 
         airplane_angle_init = airplane.transform.localEulerAngles;
+        Debug.Log("flying scene: image tracking ends");
     }
 
 
@@ -55,6 +57,7 @@ public class ImageTracking_v3 : MonoBehaviour
     // ImageChanged
     void ImageChanged(ARTrackedImagesChangedEventArgs eventArgs)
     {
+        Debug.Log("flying scene: image changed");
         foreach (ARTrackedImage trackedImage in eventArgs.added)
         {
             string name = trackedImage.referenceImage.name;
