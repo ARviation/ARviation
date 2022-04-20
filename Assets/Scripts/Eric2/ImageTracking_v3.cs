@@ -26,19 +26,28 @@ public class ImageTracking_v3 : MonoBehaviour
     // Awake
     private void Awake()
     {
-        Debug.Log("flying scene: image tracking awake starts");
+        // deactivate scanner
+        Debug.Log("image tracking awake starts");
         scanner.SetActive(false);
+
+        // reset
+        GameObject.Find("AR Session").GetComponent<ARSession>().Reset();
+
+        // tracked image manager
         trackedImageManager = FindObjectOfType<ARTrackedImageManager>();
+
+        // airplane
         airplane = Instantiate(airplane_prefab, Vector3.zero, Quaternion.identity);
+        airplane_angle_init = airplane.transform.localEulerAngles;
         airplane.SetActive(false);
 
         //// sound
         //source = gameObject.AddComponent<AudioSource>();
         //AudioClip clip = Resources.Load<AudioClip>("AudioClip/sound_camera_snap");
-        //source.clip = clip;
+        //source.clip = clip;        
 
-        airplane_angle_init = airplane.transform.localEulerAngles;
-        Debug.Log("flying scene: image tracking awake ends");
+        // activate scanner
+        Debug.Log("image tracking awake ends");
         scanner.SetActive(true);
     }
 

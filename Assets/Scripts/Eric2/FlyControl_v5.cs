@@ -305,6 +305,7 @@ public class FlyControl_v5 : MonoBehaviour
     public void take_off()
     {
         alpha = 0;
+        trail_index = 0;
         //is_trail = false;
         Debug.Log("takeoff: alpha0 = " + alpha0);
         velocity = Vector3.zero;

@@ -82,8 +82,11 @@ public class UI_control_v2 : MonoBehaviour
             button_launch.SetActive(true);
             button_launch.GetComponent<Button>().interactable = true;
             button_return.SetActive(false);
-            button_trail.SetActive(false);
-            slider_control.SetActive(false);
+            button_return.GetComponent<Button>().interactable = false;
+            button_trail.SetActive(true);
+            button_trail.GetComponent<Button>().interactable = false;
+            slider_control.SetActive(true);
+            slider_control.GetComponent<Slider>().interactable = false;
             return;
         }
 
@@ -91,9 +94,11 @@ public class UI_control_v2 : MonoBehaviour
         if (state == "free flight")
         {
             button_launch.SetActive(false);
+            button_launch.GetComponent<Button>().interactable = false;
             button_return.SetActive(true);
-            button_trail.SetActive(true);
             button_return.GetComponent<Button>().interactable = true;
+            button_trail.SetActive(true);
+            button_trail.GetComponent<Button>().interactable = true;
             slider_control.SetActive(true);
             slider_control.GetComponent<Slider>().interactable = true;
             return;
@@ -105,8 +110,11 @@ public class UI_control_v2 : MonoBehaviour
             button_launch.SetActive(true);
             button_launch.GetComponent<Button>().interactable = false;
             button_return.SetActive(false);
-            button_trail.SetActive(false);
-            slider_control.SetActive(false);
+            button_return.GetComponent<Button>().interactable = false;
+            button_trail.SetActive(true);
+            button_trail.GetComponent<Button>().interactable = false;
+            slider_control.SetActive(true);
+            slider_control.GetComponent<Slider>().interactable = false;
             return;
         }
 
@@ -187,15 +195,18 @@ public class UI_control_v2 : MonoBehaviour
         int N_photo = screenshot.GetComponent<screenshot_v2>().N_photo;
         if (N_photo > 0)
         {
-            // show msg
+            // show msg on
             msg_sending_email.SetActive(true);
             yield return null;
             // send email
             screenshot.GetComponent<screenshot_v2>().button_send_email();
+            yield return null;
+            // show msg off
+            msg_sending_email.SetActive(false);
         }
         // quit
         Debug.Log("quit flying scene");
+        //Application.Quit();
         GameManager.Instance.ChangeSceneToEnd();
-        // gameObject.SetActive(false);
     }
 }
