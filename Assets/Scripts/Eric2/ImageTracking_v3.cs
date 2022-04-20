@@ -12,6 +12,7 @@ public class ImageTracking_v3 : MonoBehaviour
     string marker_name = "";
     public GameObject airplane_prefab;
     public bool isMarkerDetected = false;
+    public GameObject scanner;
     private ARTrackedImageManager trackedImageManager;
 
     GameObject airplane;
@@ -25,7 +26,8 @@ public class ImageTracking_v3 : MonoBehaviour
     // Awake
     private void Awake()
     {
-        Debug.Log("flying scene: image tracking starts");
+        Debug.Log("flying scene: image tracking awake starts");
+        scanner.SetActive(false);
         trackedImageManager = FindObjectOfType<ARTrackedImageManager>();
         airplane = Instantiate(airplane_prefab, Vector3.zero, Quaternion.identity);
         airplane.SetActive(false);
@@ -36,7 +38,8 @@ public class ImageTracking_v3 : MonoBehaviour
         //source.clip = clip;
 
         airplane_angle_init = airplane.transform.localEulerAngles;
-        Debug.Log("flying scene: image tracking ends");
+        Debug.Log("flying scene: image tracking awake ends");
+        scanner.SetActive(true);
     }
 
 

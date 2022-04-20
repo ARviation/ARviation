@@ -3832,6 +3832,7 @@ MonoBehaviour:
   - marker51_photo
   airplane_prefab: {fileID: 8814431029978244658, guid: 3d4e14acb17f67a4093280f825946e52, type: 3}
   isMarkerDetected: 0
+  scanner: {fileID: 1080874588}
 --- !u!114 &1603844221
 MonoBehaviour:
   m_ObjectHideFlags: 0
