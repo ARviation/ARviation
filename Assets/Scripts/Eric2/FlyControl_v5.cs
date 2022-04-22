@@ -30,6 +30,8 @@ public class FlyControl_v5 : MonoBehaviour
     public GameObject propeller;
     public GameObject trail_white;
     public GameObject trail_rainbow;
+    public Sprite sprite_trail_rainbow;
+    public Sprite sprite_trail_none;
     public string action;
     List<float> parameters;
     public List<job> job_list;
@@ -306,6 +308,7 @@ public class FlyControl_v5 : MonoBehaviour
     {
         alpha = 0;
         trail_index = 0;
+        button_trail.GetComponent<Image>().sprite = sprite_trail_rainbow;
         //is_trail = false;
         Debug.Log("takeoff: alpha0 = " + alpha0);
         velocity = Vector3.zero;
@@ -566,20 +569,31 @@ public class FlyControl_v5 : MonoBehaviour
         Debug.Log("button_trail_task");
         //is_trail = !is_trail;
         //trail.SetActive(is_trail);
-        trail_index = (trail_index + 1) % 3;
+        //trail_index = (trail_index + 1) % 3;
+        //if (trail_index == 0)
+        //{
+        //    trail_white.SetActive(false);
+        //    trail_rainbow.SetActive(false);
+        //}
+        //if (trail_index == 1)
+        //{
+        //    trail_white.SetActive(true);
+        //    trail_rainbow.SetActive(false);
+        //}
+        //if (trail_index == 2)
+        //{
+        //    trail_white.SetActive(false);
+        //    trail_rainbow.SetActive(true);
+        //}
+        trail_index = 1 - trail_index;
         if (trail_index == 0)
         {
-            trail_white.SetActive(false);
+            button_trail.GetComponent<Image>().sprite = sprite_trail_rainbow;
             trail_rainbow.SetActive(false);
         }
-        if (trail_index == 1)
+        else
         {
-            trail_white.SetActive(true);
-            trail_rainbow.SetActive(false);
-        }
-        if (trail_index == 2)
-        {
-            trail_white.SetActive(false);
+            button_trail.GetComponent<Image>().sprite = sprite_trail_none;
             trail_rainbow.SetActive(true);
         }
     }
