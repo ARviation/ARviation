@@ -29281,6 +29281,8 @@ MonoBehaviour:
   propeller: {fileID: 3401308325166250818}
   trail_white: {fileID: 2097715422581615560}
   trail_rainbow: {fileID: 3996235447539354192}
+  sprite_trail_rainbow: {fileID: 21300000, guid: 8a05f14fd62f2144f8cfe9d9c7d748e8, type: 3}
+  sprite_trail_none: {fileID: 21300000, guid: 7cc55bd9369acc44eb8ec312de5e0c08, type: 3}
   action: 
   alpha: 0
 --- !u!1 &8814431030506544536
