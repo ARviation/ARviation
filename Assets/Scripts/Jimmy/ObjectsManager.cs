@@ -107,20 +107,13 @@ public class ObjectsManager : MonoBehaviour
       hasTriggerCollectAll = true;
     }
 
-    // _canPass = true;
-    // _canPass = localCollectedComponent.ToString() == componentPasscode;
     if (assembledPart != (targetComponentNumber - 1) || _hasOpenFinishButton) return;
     FindObjectOfType<NarrationController>().RevealDialog();
     _hasOpenFinishButton = true;
-    // finishAssembleButton.SetActive(true);
     fireworkVFX.Play();
+    FindObjectOfType<CameraManager>().On3DViewDown();
     SoundManager.Instance.PlaySFXByIndex(SFXList.Firework);
   }
-
-  // public bool GetCanPass()
-  // {
-  //   return _canPass;
-  // }
 
   public void SetCamera(Camera camera)
   {
@@ -151,7 +144,6 @@ public class ObjectsManager : MonoBehaviour
         switch (hitTag)
         {
           case GameManager.Engine:
-            Debug.Log(PlayerStats.Instance.selectedComponentCode);
             if (PlayerStats.Instance.selectedComponentCode == (MorseCode) CorrectMorseCode.Engine)
             {
               hit.transform.parent.gameObject.GetComponent<AttachableComponent>().ShowObj();

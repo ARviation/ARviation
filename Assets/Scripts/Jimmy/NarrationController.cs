@@ -53,6 +53,7 @@ public class NarrationController : MonoBehaviour
   private ScriptElement scriptElement;
   private bool isScanning = false;
   private bool hasOpenScanImage = false;
+  private bool showAll = false;
 
   private void Start()
   {
@@ -128,14 +129,22 @@ public class NarrationController : MonoBehaviour
 
     if (isAssembly)
     {
-      if (_currentScriptInd == resumeInventoryIndex)
-        if (_currentScriptInd == highlightInventory)
-          inventory.GetComponent<Image>().color = highlightColor;
+      if (_currentScriptInd == highlightInventory)
+      {
+        foreach (GameObject o in perspectiveBtn)
+        {
+          o.gameObject.SetActive(false);
+        }
+
+        inventory.GetComponent<Image>().color = highlightColor;
+      }
+
       if (_currentScriptInd == highlightPerspective)
       {
         inventory.GetComponent<Image>().color = originalColor;
         foreach (GameObject o in perspectiveBtn)
         {
+          o.gameObject.SetActive(true);
           o.GetComponent<Image>().color = highlightColor;
         }
       }
@@ -148,7 +157,7 @@ public class NarrationController : MonoBehaviour
         }
       }
 
-      if (_currentScriptInd == highlightPerspective + 2)
+      if (_currentScriptInd == resumeInventoryIndex)
         EnableAssemblyBtn();
     }
   }
@@ -180,7 +189,6 @@ public class NarrationController : MonoBehaviour
     scriptElement = CharacterManager.Instance.GetScriptElement(_currentScriptInd);
 
     HideBtn();
-    SoundManager.Instance.PlaySFXByIndex(SFXList.Click);
 
     if (scriptElement.hideAtStart)
     {
@@ -197,11 +205,15 @@ public class NarrationController : MonoBehaviour
     HideBtn();
     if (hasSelection)
       FindObjectOfType<MultipleSelection>().HideSelection();
-    SoundManager.Instance.PlaySFXByIndex(SFXList.Click);
 
     _currentScriptInd--;
     scriptElement = CharacterManager.Instance.GetScriptElement(_currentScriptInd);
     ShowLine(scriptElement);
+  }
+
+  public void OnClickScriptBox()
+  {
+    showAll = true;
   }
 
   public void OnSkipClick()
@@ -232,9 +244,12 @@ public class NarrationController : MonoBehaviour
       imgHolder.gameObject.SetActive(false);
     }
 
+    showAll = false;
     _isFinal = _currentScriptInd == (_scriptLength - 1);
     characterHolder.sprite = CharacterManager.Instance.GetCharacterMood(scriptElement.MoodIndex);
     SoundManager.Instance.PlayVoiceOver(_currentScriptInd);
+    if (_currentScriptInd != 0)
+      SoundManager.Instance.PlaySFXByIndex(SFXList.Click);
     StartCoroutine(ShowText(scriptElement.script, scriptElement.showPrev, scriptElement.showNext,
       scriptElement.showNextScene));
   }
@@ -271,9 +286,17 @@ public class NarrationController : MonoBehaviour
 
     for (int i = 0; i <= script.Length; i++)
     {
-      _displayScript = script.Substring(0, i);
-      textDisplay.text = _displayScript;
-      yield return new WaitForSeconds(delay);
+      if (showAll)
+      {
+        _displayScript = script;
+        textDisplay.text = _displayScript;
+      }
+      else
+      {
+        _displayScript = script.Substring(0, i);
+        textDisplay.text = _displayScript;
+        yield return new WaitForSeconds(delay);
+      }
     }
 
     _isPlaying = false;
@@ -285,6 +308,8 @@ public class NarrationController : MonoBehaviour
 
     btnForPrevSentence.gameObject.SetActive(showPrev);
     btnForNextSentence.gameObject.SetActive(showNext);
+    if (showNext)
+      btnForNextSentence.GetComponent<NextSentenceButton>().StartShakingEffect();
     if (btnForNextScene != null)
       btnForNextScene.gameObject.SetActive(showNextScene);
   }

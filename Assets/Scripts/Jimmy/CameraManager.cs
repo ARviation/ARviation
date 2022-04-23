@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 public enum RotateDir : int
 {
@@ -12,8 +13,10 @@ public enum RotateDir : int
 
 public class CameraManager : MonoBehaviour
 {
-  [SerializeField] private Camera cameraFront;
-  [SerializeField] private Camera cameraTop;
+  // [SerializeField] private Camera cameraFront;
+  // [SerializeField] private Camera cameraTop;
+  [SerializeField] private GameObject cameraFront;
+  [SerializeField] private GameObject cameraTop;
   [SerializeField] private GameObject planeCenter;
   [SerializeField] private float smoothness2D = 1f;
   [SerializeField] private float smoothness = 0.1f;
@@ -31,8 +34,8 @@ public class CameraManager : MonoBehaviour
 
   private void Start()
   {
-    cameraFront.enabled = true;
-    cameraTop.enabled = false;
+    cameraFront.SetActive(true);
+    cameraTop.SetActive(false);
     _initRotation.x = RotX;
     _initRotation.y = RotY;
     _initRotation.z = RotZ;
@@ -100,18 +103,18 @@ public class CameraManager : MonoBehaviour
   public void OnTopViewDown()
   {
     if (_isRotating) return;
-    cameraTop.enabled = true;
-    cameraFront.enabled = false;
-    FindObjectOfType<ObjectsManager>().SetCamera(cameraTop);
+    cameraTop.SetActive(true);
+    cameraFront.SetActive(false);
+    FindObjectOfType<ObjectsManager>().SetCamera(cameraTop.GetComponent<Camera>());
     SoundManager.Instance.PlaySFXByIndex(SFXList.Click);
   }
 
   public void On3DViewDown()
   {
     if (_isRotating) return;
-    cameraTop.enabled = false;
-    cameraFront.enabled = true;
-    FindObjectOfType<ObjectsManager>().SetCamera(cameraFront);
+    cameraTop.SetActive(false);
+    cameraFront.SetActive(true);
+    FindObjectOfType<ObjectsManager>().SetCamera(cameraFront.GetComponent<Camera>());
     SoundManager.Instance.PlaySFXByIndex(SFXList.Click);
   }
 }

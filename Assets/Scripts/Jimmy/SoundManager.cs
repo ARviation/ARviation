@@ -68,6 +68,7 @@ public class SoundManager : MonoBehaviour
       _audioSource.PlayOneShot(bgmList[0]);
   }
 
+
   public void PlaySFXByIndex(SFXList sfxIndex, float volume = 1.0f)
   {
     if (sfxIndex == SFXList.Firework)
@@ -79,6 +80,11 @@ public class SoundManager : MonoBehaviour
     {
       _audioSource.PlayOneShot(sfxList[(int) sfxIndex], volume);
     }
+  }
+
+  public AudioClip GetSFXByIndex(SFXList sfxIndex)
+  {
+    return sfxList[(int) sfxIndex];
   }
 
 

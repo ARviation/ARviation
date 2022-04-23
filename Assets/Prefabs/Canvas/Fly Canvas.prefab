@@ -529,6 +529,7 @@ GameObject:
   - component: {fileID: 2819033687898323098}
   - component: {fileID: 2819033687898323099}
   - component: {fileID: 2819033687898323096}
+  - component: {fileID: 6865996439011737813}
   m_Layer: 5
   m_Name: Next Sentence Button
   m_TagString: Untagged
@@ -649,6 +650,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &6865996439011737813
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2819033687898323102}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae78a7201d5124f368d2aacfd078fe49, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2819033688165025507
 GameObject:
   m_ObjectHideFlags: 0
@@ -1537,7 +1550,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 206e643ab115a4f67b269b1b78971164, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defaultDelay: 0.04
   textDisplay: {fileID: 7178689029161917647}
   btnForNextScene: {fileID: 2819033689183892965}
   btnForNextSentence: {fileID: 2819033687898323096}
@@ -1564,6 +1576,7 @@ MonoBehaviour:
   resumeInventoryIndex: 0
   highlightColor: {r: 0, g: 0, b: 0, a: 0}
   originalColor: {r: 0, g: 0, b: 0, a: 0}
+  highlightTap: 0
   highlightInventory: 0
   highlightPerspective: 0
   _currentScriptInd: 0
@@ -1700,7 +1713,7 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: 8443938326784378000}
           m_TargetAssemblyTypeName: NarrationController, Assembly-CSharp
-          m_MethodName: OnNextClick
+          m_MethodName: OnClickScriptBox
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}

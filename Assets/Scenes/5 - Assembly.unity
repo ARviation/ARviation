@@ -846,7 +846,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 2000, y: 2600}
+  m_AnchoredPosition: {x: 2000, y: 2800}
   m_SizeDelta: {x: 1866, y: 728}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &452536018
@@ -989,7 +989,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 3000}
+  m_AnchoredPosition: {x: 0, y: 3200}
   m_SizeDelta: {x: 1866, y: 728}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &520069640
@@ -1121,7 +1121,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 2200}
+  m_AnchoredPosition: {x: 0, y: 2400}
   m_SizeDelta: {x: 1866, y: 728}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &662519519
@@ -1163,7 +1163,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 662519520}
   m_OnClick:
     m_PersistentCalls:
@@ -1443,14 +1443,14 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 983253672}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 512299162}
         m_TargetAssemblyTypeName: CameraManager, Assembly-CSharp
-        m_MethodName: OnTopViewDown
+        m_MethodName: On3DViewDown
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1544,7 +1544,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -2000, y: 2600}
+  m_AnchoredPosition: {x: -2000, y: 2800}
   m_SizeDelta: {x: 1865, y: 728}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1313294114
@@ -1744,7 +1744,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!81 &1445976856
 AudioListener:
   m_ObjectHideFlags: 0
@@ -1996,7 +1996,7 @@ Canvas:
   m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 2
-  m_Camera: {fileID: 252545652}
+  m_Camera: {fileID: 1445976857}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
@@ -2669,19 +2669,43 @@ PrefabInstance:
     - target: {fileID: 3733105452476597304, guid: e101a5c4c01f449a7bde81bdd139a2ec, type: 3}
       propertyPath: cameraTop
       value: 
-      objectReference: {fileID: 1445976857}
+      objectReference: {fileID: 1445976855}
     - target: {fileID: 3733105452476597304, guid: e101a5c4c01f449a7bde81bdd139a2ec, type: 3}
       propertyPath: rotateDeg
       value: 45
       objectReference: {fileID: 0}
     - target: {fileID: 3733105452476597304, guid: e101a5c4c01f449a7bde81bdd139a2ec, type: 3}
+      propertyPath: btnTopToTop
+      value: 
+      objectReference: {fileID: 983253671}
+    - target: {fileID: 3733105452476597304, guid: e101a5c4c01f449a7bde81bdd139a2ec, type: 3}
       propertyPath: cameraFront
       value: 
-      objectReference: {fileID: 252545652}
+      objectReference: {fileID: 252545650}
     - target: {fileID: 3733105452476597304, guid: e101a5c4c01f449a7bde81bdd139a2ec, type: 3}
       propertyPath: planeCenter
       value: 
       objectReference: {fileID: 198564980}
+    - target: {fileID: 3733105452476597304, guid: e101a5c4c01f449a7bde81bdd139a2ec, type: 3}
+      propertyPath: btnFrontToTop
+      value: 
+      objectReference: {fileID: 520069640}
+    - target: {fileID: 3733105452476597304, guid: e101a5c4c01f449a7bde81bdd139a2ec, type: 3}
+      propertyPath: btnTopToFront
+      value: 
+      objectReference: {fileID: 439305915}
+    - target: {fileID: 3733105452476597304, guid: e101a5c4c01f449a7bde81bdd139a2ec, type: 3}
+      propertyPath: btnFrontToFront
+      value: 
+      objectReference: {fileID: 662519519}
+    - target: {fileID: 3733105452476597304, guid: e101a5c4c01f449a7bde81bdd139a2ec, type: 3}
+      propertyPath: cameraFrontToTop
+      value: 
+      objectReference: {fileID: 520069640}
+    - target: {fileID: 3733105452476597304, guid: e101a5c4c01f449a7bde81bdd139a2ec, type: 3}
+      propertyPath: cameraTopToFront
+      value: 
+      objectReference: {fileID: 439305915}
     - target: {fileID: 3733105452476597305, guid: e101a5c4c01f449a7bde81bdd139a2ec, type: 3}
       propertyPath: m_RootOrder
       value: 13
@@ -2831,10 +2855,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Assembly Canvas
       objectReference: {fileID: 0}
-    - target: {fileID: 6323404037130839423, guid: 671f24c2f59714a908bb877cb1148a44, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 512299162}
     - target: {fileID: 6323404037148076101, guid: 671f24c2f59714a908bb877cb1148a44, type: 3}
       propertyPath: perspectiveBtn.Array.data[0]
       value: 

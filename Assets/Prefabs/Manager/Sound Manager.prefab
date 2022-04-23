@@ -108,7 +108,6 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 52f63f4c502834ec2b21e8c162caca19, type: 3}
   voiceOverListEnd:
   - {fileID: 8300000, guid: 1c179518a6acf4b0aa778456f441bc93, type: 3}
-  - {fileID: 8300000, guid: 940023aedbcd944a0ac965f11d9ae5cf, type: 3}
   - {fileID: 8300000, guid: 712ac5527192a4d6e945d4561ede5c7b, type: 3}
   - {fileID: 8300000, guid: 9dba7d1efd571410c9ab06e1f6eb4c25, type: 3}
   voiceOverListWingsOne:
