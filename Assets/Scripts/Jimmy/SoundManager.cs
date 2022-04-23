@@ -74,7 +74,7 @@ public class SoundManager : MonoBehaviour
     if (sfxIndex == SFXList.Firework)
     {
       _fireworkSFX.clip = sfxList[(int) SFXList.Firework];
-      _fireworkSFX.Play();
+      _fireworkSFX.PlayDelayed(3.0f);
     }
     else
     {

@@ -2572,7 +2572,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3f603f38d01809468351fc40349c233, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  is_AR_Camera: 0
+  is_AR_Camera: 1
   airplane_prefab: {fileID: 8814431029978244658, guid: 3d4e14acb17f67a4093280f825946e52, type: 3}
   m_UI_control: {fileID: 1932333511}
 --- !u!4 &1098889044

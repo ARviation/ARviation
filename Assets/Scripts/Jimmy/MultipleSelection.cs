@@ -54,8 +54,8 @@ public class MultipleSelection : MonoBehaviour
 
   public void OnClickChoice(GameObject o)
   {
-    if (_narrationController.GetIsPlaying()) return;
     if (!_canTriggerFeedback) return;
+    _narrationController.OnClickScriptBox();
     if (o.name.Substring(0, o.name.Length - 1) == "True")
     {
       OnSelectionTrue(o);

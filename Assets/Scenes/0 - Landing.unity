@@ -832,14 +832,6 @@ PrefabInstance:
       propertyPath: _bgmSource
       value: 
       objectReference: {fileID: 1806787517}
-    - target: {fileID: 6440714509679935794, guid: 1bf3648c778e54d018a4da9c38306278, type: 3}
-      propertyPath: bgmList.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6440714509679935794, guid: 1bf3648c778e54d018a4da9c38306278, type: 3}
-      propertyPath: bgmList.Array.data[0]
-      value: 
-      objectReference: {fileID: 8300000, guid: eade48a9e8ef4404da3afae34636d483, type: 3}
     - target: {fileID: 6440714509679935795, guid: 1bf3648c778e54d018a4da9c38306278, type: 3}
       propertyPath: m_RootOrder
       value: 8
