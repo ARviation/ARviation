@@ -26,6 +26,7 @@ public class ImageRecognition : MonoBehaviour
   private IReferenceImageLibrary _referenceImageLibrary;
   private NarrationController _narrationController;
   private bool hasMorseCodePlayed = false;
+  private bool canDetect = false;
 
   void Awake()
   {
@@ -48,6 +49,16 @@ public class ImageRecognition : MonoBehaviour
     _referenceImageLibrary = _arTrackedImageManager.referenceLibrary;
     _refImageCount = _referenceImageLibrary.count;
     alreadyUsedImageHolder.gameObject.SetActive(false);
+  }
+
+  public void StopARDetect()
+  {
+    canDetect = false;
+  }
+
+  public void StartARDetect()
+  {
+    canDetect = true;
   }
 
   private void InstantiateObj(ARTrackedImage added)
@@ -76,6 +87,7 @@ public class ImageRecognition : MonoBehaviour
       InstantiateObj(added);
     }
 
+    if (!canDetect) return;
     foreach (var updated in args.updated)
     {
       if (_narrationController.GetHadHideCondition())

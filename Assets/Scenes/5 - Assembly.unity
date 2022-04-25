@@ -2856,6 +2856,18 @@ PrefabInstance:
       value: Assembly Canvas
       objectReference: {fileID: 0}
     - target: {fileID: 6323404037148076101, guid: 671f24c2f59714a908bb877cb1148a44, type: 3}
+      propertyPath: highlightColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6323404037148076101, guid: 671f24c2f59714a908bb877cb1148a44, type: 3}
+      propertyPath: highlightColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6323404037148076101, guid: 671f24c2f59714a908bb877cb1148a44, type: 3}
+      propertyPath: highlightColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6323404037148076101, guid: 671f24c2f59714a908bb877cb1148a44, type: 3}
       propertyPath: perspectiveBtn.Array.data[0]
       value: 
       objectReference: {fileID: 1313294112}

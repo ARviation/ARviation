@@ -23,7 +23,6 @@ public class MultipleSelection : MonoBehaviour
   [SerializeField] private float feedbackDuration = 1.5f;
   [SerializeField] private bool showSelectionAtBegin = false;
   [SerializeField] private TMP_Text script;
-
   [SerializeField] private Image characterHolder;
   // [SerializeField] private string stringToShow;
   // [SerializeField] private CharacterMoodIndex _moodIndex;

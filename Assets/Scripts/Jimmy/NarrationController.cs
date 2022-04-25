@@ -40,6 +40,7 @@ public class NarrationController : MonoBehaviour
   [SerializeField] private int highlightTap;
   [SerializeField] private int highlightInventory;
   [SerializeField] private int highlightPerspective;
+  [SerializeField] private Image[] hintCovers;
 
   private float delay;
 
@@ -54,6 +55,8 @@ public class NarrationController : MonoBehaviour
   private bool isScanning = false;
   private bool hasOpenScanImage = false;
   private bool showAll = false;
+  private ImageRecognition _imageRecognition;
+  private bool hasResumeInstruction = false;
 
   private void Start()
   {
@@ -61,8 +64,20 @@ public class NarrationController : MonoBehaviour
     delay = GameManager.Instance.narratorSpeed;
     if (hasHideCondition && scanImage != null)
       scanImage.gameObject.SetActive(false);
+    if (isHunting)
+    {
+      _imageRecognition = FindObjectOfType<ImageRecognition>();
+    }
+
     if (isAssembly)
-      DisableAssemblyBtn();
+    {
+    }
+
+    DisableBtn();
+    foreach (Image hintCover in hintCovers)
+    {
+      hintCover.gameObject.SetActive(false);
+    }
 
     HideBtn();
     _scriptLength = CharacterManager.Instance.GetScriptLength();
@@ -71,26 +86,28 @@ public class NarrationController : MonoBehaviour
     ShowLine(scriptElement);
   }
 
-  private void DisableAssemblyBtn()
+  private void DisableBtn()
   {
     foreach (Button button in inventoryBtn)
     {
       button.enabled = false;
     }
 
+    if (!isAssembly) return;
     foreach (GameObject o in perspectiveBtn)
     {
       o.GetComponent<Button>().enabled = false;
     }
   }
 
-  private void EnableAssemblyBtn()
+  private void EnableBtn()
   {
     foreach (Button button in inventoryBtn)
     {
       button.enabled = true;
     }
 
+    if (!isAssembly) return;
     foreach (GameObject button in perspectiveBtn)
     {
       button.GetComponent<Button>().enabled = true;
@@ -107,24 +124,61 @@ public class NarrationController : MonoBehaviour
 
   private void Update()
   {
-    if (hasHideCondition && _currentScriptInd == hideConditionIndex)
-    {
-      hideBackground.gameObject.SetActive(false);
-      if (!hasOpenScanImage)
-      {
-        OpenScanImage();
-        hasOpenScanImage = true;
-      }
-      // scanImage.gameObject.SetActive(true);
-    }
+    // if (hasHideCondition && _currentScriptInd == hideConditionIndex)
+    // {
+    //   
+    // }
 
     if (isHunting)
     {
+      Debug.Log("isScanning: " + isScanning);
       scanImage.gameObject.SetActive(isScanning);
+      // if (isScanning)
+      // {
+      //   
+      // }
+      // else
+      // {
+      //   _imageRecognition.StopARDetect();
+      // }
+
+      if (_currentScriptInd == hideConditionIndex && !hasResumeInstruction)
+      {
+        hideBackground.gameObject.SetActive(false);
+        if (!hasOpenScanImage)
+        {
+          OpenScanImage();
+          hasOpenScanImage = true;
+        }
+
+        _imageRecognition.StartARDetect();
+      }
+
+      if (_currentScriptInd == highlightTap - 1)
+      {
+        isScanning = false;
+      }
+
       if (_currentScriptInd == highlightTap)
+      {
         inventory.GetComponent<Image>().color = highlightColor;
+        hintCovers[0].gameObject.SetActive(true);
+      }
+
       if (_currentScriptInd == highlightTap + 1)
+      {
         inventory.GetComponent<Image>().color = originalColor;
+        hideBackground.gameObject.SetActive(false);
+        hintCovers[0].gameObject.SetActive(false);
+        if (!hasOpenScanImage)
+        {
+          OpenScanImage();
+          hasOpenScanImage = true;
+        }
+
+        _imageRecognition.StartARDetect();
+        EnableBtn();
+      }
     }
 
     if (isAssembly)
@@ -137,6 +191,7 @@ public class NarrationController : MonoBehaviour
         }
 
         inventory.GetComponent<Image>().color = highlightColor;
+        hintCovers[0].gameObject.SetActive(true);
       }
 
       if (_currentScriptInd == highlightPerspective)
@@ -147,6 +202,9 @@ public class NarrationController : MonoBehaviour
           o.gameObject.SetActive(true);
           o.GetComponent<Image>().color = highlightColor;
         }
+
+        hintCovers[0].gameObject.SetActive(false);
+        hintCovers[1].gameObject.SetActive(true);
       }
 
       if (_currentScriptInd == highlightPerspective + 1)
@@ -155,11 +213,25 @@ public class NarrationController : MonoBehaviour
         {
           o.GetComponent<Image>().color = originalColor;
         }
+
+        hintCovers[1].gameObject.SetActive(false);
+        hintCovers[2].gameObject.SetActive(true);
       }
 
       if (_currentScriptInd == resumeInventoryIndex)
-        EnableAssemblyBtn();
+      {
+        hintCovers[2].gameObject.SetActive(false);
+        EnableBtn();
+      }
     }
+  }
+
+  public void ShowInstructionForHunting()
+  {
+    hideBackground.gameObject.SetActive(true);
+    _imageRecognition.StopARDetect();
+    hasResumeInstruction = true;
+    Debug.Log("Show Instruction For Hunting");
   }
 
   public void OpenScanImage()

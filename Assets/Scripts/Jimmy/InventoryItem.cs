@@ -137,6 +137,7 @@ public class InventoryItem : MonoBehaviour
           // FindObjectOfType<ObjectsManager>().localCollectedComponent.Fuselage = code;
           FindObjectOfType<NarrationController>().RevealDialog();
           FindObjectOfType<NarrationController>().RemoveHadHideCondition();
+          FindObjectOfType<NarrationController>().ShowInstructionForHunting();
           SoundManager.Instance.PlaySuccessSFX();
         }
         else

@@ -87,7 +87,6 @@ public class SoundManager : MonoBehaviour
     return sfxList[(int) sfxIndex];
   }
 
-
   public void PlaySFXByMorseCode(MorseCode code, float volume = 1.0f)
   {
     _audioSource.PlayOneShot(sfxMorseList[(int) code], volume);
