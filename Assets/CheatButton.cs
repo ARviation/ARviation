@@ -8,9 +8,11 @@ using UnityEngine.UI;
 public class CheatButton : MonoBehaviour
 {
   [SerializeField] private GameObject cheatPanel;
-  [SerializeField] private Button cheatPanelBtn;
+  [SerializeField] private Button cheatPanelBtnHunt;
+  [SerializeField] private Button cheatPanelBtnFly;
   [SerializeField] private string correctPassword;
-  [SerializeField] private TMP_Text passwordBox;
+  [SerializeField] private TMP_Text passwordBoxHunt;
+  [SerializeField] private TMP_Text passwordBoxFly;
   [SerializeField] private Sprite disableImg;
   [SerializeField] private Sprite enableImg;
 
@@ -23,13 +25,22 @@ public class CheatButton : MonoBehaviour
 
   private void Update()
   {
-    if (passwordBox.text.Length >= 2)
+    if (passwordBoxHunt.text.Length >= 2)
     {
-      cheatPanelBtn.GetComponent<Image>().sprite = enableImg;
+      cheatPanelBtnHunt.GetComponent<Image>().sprite = enableImg;
     }
     else
     {
-      cheatPanelBtn.GetComponent<Image>().sprite = disableImg;
+      cheatPanelBtnHunt.GetComponent<Image>().sprite = disableImg;
+    }
+
+    if (passwordBoxFly.text.Length >= 2)
+    {
+      cheatPanelBtnFly.GetComponent<Image>().sprite = enableImg;
+    }
+    else
+    {
+      cheatPanelBtnFly.GetComponent<Image>().sprite = disableImg;
     }
   }
 
@@ -46,10 +57,25 @@ public class CheatButton : MonoBehaviour
     }
   }
 
-  public void OnClickConfirmCheat()
+  public void OnClickConfirmCheatHunt()
   {
-    bool isValid = (passwordBox.text.Length - 1 == correctPassword.Length) &&
-                   (string.CompareOrdinal(passwordBox.text.Substring(0, correctPassword.Length), correctPassword) == 0);
+    bool isValid = (passwordBoxHunt.text.Length - 1 == correctPassword.Length) &&
+                   (string.CompareOrdinal(passwordBoxHunt.text.Substring(0, correctPassword.Length), correctPassword) == 0);
+    if (!isValid)
+    {
+      SoundManager.Instance.PlaySFXByIndex(SFXList.Click);
+      StartCoroutine(WrongChoice(cheatPanel));
+      return;
+    }
+
+    SoundManager.Instance.PlaySFXByIndex(SFXList.Click);
+    GameManager.Instance.ChangeSceneToHunt();
+  }
+
+  public void OnClickConfirmCheatFly()
+  {
+    bool isValid = (passwordBoxFly.text.Length - 1 == correctPassword.Length) &&
+                   (string.CompareOrdinal(passwordBoxFly.text.Substring(0, correctPassword.Length), correctPassword) == 0);
     if (!isValid)
     {
       SoundManager.Instance.PlaySFXByIndex(SFXList.Click);
