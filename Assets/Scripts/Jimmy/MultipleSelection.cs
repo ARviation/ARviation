@@ -13,6 +13,7 @@ public struct Selection
   public bool correctness;
   public string stringtoShow;
   public CharacterMoodIndex _moodIndex;
+  public AudioClip voiceover;
 }
 
 public class MultipleSelection : MonoBehaviour
@@ -23,6 +24,7 @@ public class MultipleSelection : MonoBehaviour
   [SerializeField] private float feedbackDuration = 1.5f;
   [SerializeField] private bool showSelectionAtBegin = false;
   [SerializeField] private TMP_Text script;
+
   [SerializeField] private Image characterHolder;
   // [SerializeField] private string stringToShow;
   // [SerializeField] private CharacterMoodIndex _moodIndex;
@@ -55,6 +57,7 @@ public class MultipleSelection : MonoBehaviour
   {
     if (!_canTriggerFeedback) return;
     _narrationController.OnClickScriptBox();
+    SoundManager.Instance.StopPlay();
     if (o.name.Substring(0, o.name.Length - 1) == "True")
     {
       OnSelectionTrue(o);
@@ -96,6 +99,7 @@ public class MultipleSelection : MonoBehaviour
   {
     Selection selection = answer[int.Parse(idxInSelect)];
     SoundManager.Instance.PlaySFXByIndex(SFXList.FailTwo);
+    SoundManager.Instance.PlaySFX(selection.voiceover);
     characterHolder.sprite = CharacterManager.Instance.GetCharacterMood(selection._moodIndex);
     StartCoroutine(WrongChoice(o, selection.stringtoShow));
   }

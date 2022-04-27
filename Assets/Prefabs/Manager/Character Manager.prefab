@@ -150,7 +150,8 @@ MonoBehaviour:
     showNextScene: 1
     hideAtStart: 0
   scriptElementsFinishSelect:
-  - script: Spectacular! Place the incorrect propeller cards back in the box.
+  - script: Spectacular! Place the incorrect propeller cards back in the box. Place
+      every purple card and the colorful card back in the box too!
     MoodIndex: 19
     slideImage: {fileID: 21300000, guid: be79376f0355f464ba6d069d7081a702, type: 3}
     showPrev: 0
@@ -167,16 +168,16 @@ MonoBehaviour:
     showNextScene: 1
     hideAtStart: 0
   scriptElementsHunt:
-  - script: "Where are these parts hiding? All around the exhibit! They\u2019re protected
-      by letters that you have to scan with the tablet."
+  - script: "Where can you actually find these parts? All around the exhibit! They\u2019re
+      hidden by letters that you have to scan with the tablet."
     MoodIndex: 27
     slideImage: {fileID: 21300000, guid: 8258b8917843245169f6ddd1440c2baf, type: 3}
     showPrev: 0
     showNext: 1
     showNextScene: 0
     hideAtStart: 0
-  - script: "Let me help you with the first part: it\u2019s called the fuselage.
-      The top of the fuselage card has\u2026 a code!"
+  - script: "Let me help you with the first part: the fuselage. The top of the fuselage
+      card has\u2026 a code!"
     MoodIndex: 28
     slideImage: {fileID: 21300000, guid: eae228a16f59a47b0a97c0eb33f04110, type: 3}
     showPrev: 1
@@ -232,7 +233,7 @@ MonoBehaviour:
     showNextScene: 1
     hideAtStart: 1
   scriptElementsAssembly:
-  - script: To attach a part to the fuselage, tap it in the inventory and then tap
+  - script: To attach a part to the fuselage, tap it in the storage and then tap
       where it should go on the airplane.
     MoodIndex: 1
     slideImage: {fileID: 0}
@@ -248,7 +249,7 @@ MonoBehaviour:
     showNext: 1
     showNextScene: 0
     hideAtStart: 0
-  - script: You can use the large airplane diagram to help you in this step!
+  - script: You can also use the large airplane diagram to help you in this step!
     MoodIndex: 3
     slideImage: {fileID: 0}
     showPrev: 1
@@ -263,7 +264,7 @@ MonoBehaviour:
     showNext: 1
     showNextScene: 0
     hideAtStart: 1
-  - script: "I want to pilot it right away\u2026Help me with this last step!"
+  - script: "I want to pilot it right away\u2026 Help me with this last step!"
     MoodIndex: 9
     slideImage: {fileID: 0}
     showPrev: 1
@@ -347,7 +348,8 @@ MonoBehaviour:
     showNextScene: 0
     hideAtStart: 0
   scriptElementsFuelTank:
-  - script: Great job! Place the incorrect wings card back in the box.
+  - script: Great job! Place the incorrect wings card back in the box, and every
+      other card back on the airplane diagram.
     MoodIndex: 18
     slideImage: {fileID: 21300000, guid: c28cdb1fb555447858d615f37eb0207b, type: 3}
     showPrev: 0
@@ -369,7 +371,8 @@ MonoBehaviour:
     showNextScene: 0
     hideAtStart: 0
   scriptElementsPropeller:
-  - script: Fantastic! Place the incorrect engine cards back in the box.
+  - script: Fantastic! Place the incorrect engine cards back in the box, and every
+      other card back on the airplane diagram.
     MoodIndex: 17
     slideImage: {fileID: 21300000, guid: 3678d167ab2cc4afba4f4070c8c800e8, type: 3}
     showPrev: 0
@@ -391,7 +394,8 @@ MonoBehaviour:
     showNextScene: 0
     hideAtStart: 0
   scriptElementsEngine:
-  - script: Awesome! Place the incorrect fuel tanks card back in the box.
+  - script: Awesome! Place the incorrect fuel tanks card back in the box, and every
+      other card back on the airplane diagram.
     MoodIndex: 20
     slideImage: {fileID: 21300000, guid: 67d3424f85a88402eaeedebfc678591b, type: 3}
     showPrev: 0
