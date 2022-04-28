@@ -26,6 +26,7 @@ public class ImageRecognition : MonoBehaviour
   private IReferenceImageLibrary _referenceImageLibrary;
   private NarrationController _narrationController;
   private bool hasMorseCodePlayed = false;
+  private bool hasWrongCodePlayed = false;
   private bool canDetect = false;
 
   void Awake()
@@ -154,6 +155,25 @@ public class ImageRecognition : MonoBehaviour
           hasMorseCodePlayed = true;
         }
 
+        if (!hasWrongCodePlayed)
+        {
+          if (code == MorseCode.K)
+          {
+            SoundManager.Instance.PlayVoiceOverCollectReaction(0);
+            hasWrongCodePlayed = true;
+          }
+          else if (code == MorseCode.G)
+          {
+            SoundManager.Instance.PlayVoiceOverCollectReaction(1);
+            hasWrongCodePlayed = true;
+          }
+          else if (code == MorseCode.N)
+          {
+            SoundManager.Instance.PlayVoiceOverCollectReaction(2);
+            hasWrongCodePlayed = true;
+          }
+        }
+
         inventoryItem.OnHitComponent(code);
         string componentName = prefab.name;
         componentName = componentName.Replace("(Clone)", "").Trim();
@@ -173,6 +193,7 @@ public class ImageRecognition : MonoBehaviour
       if (!_arObjs.TryGetValue(updated.referenceImage.name, out GameObject prefab)) continue;
       if (!_arObjsUsed.TryGetValue(updated.referenceImage.name, out bool used)) continue;
       hasMorseCodePlayed = false;
+      hasWrongCodePlayed = false;
       alreadyUsedImageHolder.gameObject.SetActive(false);
       prefab.SetActive(false);
       if (collectPanel != null)

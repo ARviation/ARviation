@@ -1697,22 +1697,25 @@ MonoBehaviour:
     correctness: 1
     stringtoShow: 
     _moodIndex: 0
+    voiceover: {fileID: 0}
   - selectionImage: {fileID: 21300000, guid: 675bded08c23343df946cabe51c1b2b7, type: 3}
     correctness: 0
     stringtoShow: "Uh oh, this engine\u2019s horsepower is too low for the P-51 Mustang\u2019s
-      power."
+      power. Try again!"
     _moodIndex: 15
+    voiceover: {fileID: 8300000, guid: fcefbf016b2f24a59ae847d70b2046a5, type: 3}
   - selectionImage: {fileID: 21300000, guid: e79cb86d130bf40988808c37c67e93cc, type: 3}
     correctness: 0
     stringtoShow: "Hmm, this engine was built in Germany, a country that was not
-      on good terms with the United States during World War II\u2026"
+      on good terms with the United States during World War II\u2026 Try again!"
     _moodIndex: 29
+    voiceover: {fileID: 8300000, guid: e028e0e158a664e7c96a0cbcc9bd121a, type: 3}
   selectionBox:
   - {fileID: 8113944391199521062}
   - {fileID: 8113944391165976277}
   - {fileID: 6875550904620176505}
   sceneWhenSuccess: 14
-  feedbackDuration: 1.5
+  feedbackDuration: 2
   showSelectionAtBegin: 0
   script: {fileID: 8113944391556212456}
   characterHolder: {fileID: 3897240054878797803}

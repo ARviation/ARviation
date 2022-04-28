@@ -1101,16 +1101,18 @@ MonoBehaviour:
     correctness: 1
     stringtoShow: 
     _moodIndex: 0
+    voiceover: {fileID: 0}
   - selectionImage: {fileID: 21300000, guid: 2110534a980504ddaa6a031cd3c71eab, type: 3}
     correctness: 0
-    stringtoShow: "Oops, these fuel tanks\u2019 material is not resistant enough
-      for a military airplane."
+    stringtoShow: Oops, the material of these fuel tanks is not resistant enough
+      for a military airplane. Try again!
     _moodIndex: 14
+    voiceover: {fileID: 8300000, guid: bbdf64e677388441d924687c8c789350, type: 3}
   selectionBox:
   - {fileID: 3368922708617333064}
   - {fileID: 3368922708650946235}
   sceneWhenSuccess: 13
-  feedbackDuration: 1.5
+  feedbackDuration: 2
   showSelectionAtBegin: 0
   script: {fileID: 3368922709099632262}
   characterHolder: {fileID: 7516388051390762885}

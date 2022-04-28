@@ -10,7 +10,13 @@ public class UI_control_v3 : MonoBehaviour
     public GameObject button_launch;
     public GameObject button_return;
     public GameObject button_trail;
-    public GameObject slider_control;
+
+    //public GameObject slider_control;
+    public GameObject button_U;
+    public GameObject button_D;
+    public GameObject button_L;
+    public GameObject button_R;
+    
     public GameObject button_quit;
     public GameObject button_take_photo;
     public GameObject screenshot;
@@ -20,7 +26,7 @@ public class UI_control_v3 : MonoBehaviour
     public GameObject msg_sending_email;
     public GameObject scanning_line;
 
-    float dumping_rate = 0.01f;
+    //float dumping_rate = 0.01f;
     float v_scan = 600f;
     float L_scan_max = 300f;
 
@@ -39,7 +45,12 @@ public class UI_control_v3 : MonoBehaviour
         button_launch.SetActive(false);
         button_return.SetActive(false);
         button_trail.SetActive(false);
-        slider_control.SetActive(false);
+        
+        //slider_control.SetActive(false);
+        button_U.SetActive(false);
+        button_D.SetActive(false);
+        button_L.SetActive(false);
+        button_R.SetActive(false);
     }
 
 
@@ -72,7 +83,13 @@ public class UI_control_v3 : MonoBehaviour
             button_launch.SetActive(false);
             button_return.SetActive(false);
             button_trail.SetActive(false);
-            slider_control.SetActive(false);
+
+            //slider_control.SetActive(false);
+            button_U.SetActive(false);
+            button_D.SetActive(false);
+            button_L.SetActive(false);
+            button_R.SetActive(false);
+
             if (imageTracking.isMarkerDetected)
             {
                 scan_prompt_screen.SetActive(false);
@@ -99,8 +116,18 @@ public class UI_control_v3 : MonoBehaviour
             button_return.GetComponent<Button>().interactable = false;
             button_trail.SetActive(true);
             button_trail.GetComponent<Button>().interactable = false;
-            slider_control.SetActive(true);
-            slider_control.GetComponent<Slider>().interactable = false;
+
+            //slider_control.SetActive(true);
+            //slider_control.GetComponent<Slider>().interactable = false;
+            button_U.SetActive(true);
+            button_U.GetComponent<ButtonTransitioner_UDLR>().active = false;
+            button_D.SetActive(true);
+            button_D.GetComponent<ButtonTransitioner_UDLR>().active = false;
+            button_L.SetActive(true);
+            button_L.GetComponent<ButtonTransitioner_UDLR>().active = false;
+            button_R.SetActive(true);
+            button_R.GetComponent<ButtonTransitioner_UDLR>().active = false;
+
             return;
         }
 
@@ -113,8 +140,18 @@ public class UI_control_v3 : MonoBehaviour
             button_return.GetComponent<Button>().interactable = true;
             button_trail.SetActive(true);
             button_trail.GetComponent<Button>().interactable = true;
-            slider_control.SetActive(true);
-            slider_control.GetComponent<Slider>().interactable = true;
+
+            //slider_control.SetActive(true);
+            //slider_control.GetComponent<Slider>().interactable = true;
+            button_U.SetActive(true);
+            button_U.GetComponent<ButtonTransitioner_UDLR>().active = true;
+            button_D.SetActive(true);
+            button_D.GetComponent<ButtonTransitioner_UDLR>().active = true;
+            button_L.SetActive(true);
+            button_L.GetComponent<ButtonTransitioner_UDLR>().active = true;
+            button_R.SetActive(true);
+            button_R.GetComponent<ButtonTransitioner_UDLR>().active = true;
+
             return;
         }
 
@@ -127,31 +164,42 @@ public class UI_control_v3 : MonoBehaviour
             button_return.GetComponent<Button>().interactable = false;
             button_trail.SetActive(true);
             button_trail.GetComponent<Button>().interactable = false;
-            slider_control.SetActive(true);
-            slider_control.GetComponent<Slider>().interactable = false;
+
+            //slider_control.SetActive(true);
+            //slider_control.GetComponent<Slider>().interactable = false;
+            button_U.SetActive(true);
+            button_U.GetComponent<ButtonTransitioner_UDLR>().active = false;
+            button_D.SetActive(true);
+            button_D.GetComponent<ButtonTransitioner_UDLR>().active = false;
+            button_L.SetActive(true);
+            button_L.GetComponent<ButtonTransitioner_UDLR>().active = false;
+            button_R.SetActive(true);
+            button_R.GetComponent<ButtonTransitioner_UDLR>().active = false;
+
             return;
         }
 
     }
 
 
-    // slider dumping
-    IEnumerator slider_dumping()
-    {
-        while (true)
-        {
-            if (slider_control.GetComponent<Slider>().value > 0)
-            {
-                slider_control.GetComponent<Slider>().value = Mathf.Max(0, slider_control.GetComponent<Slider>().value - dumping_rate);
-            }
-            yield return null;
-        }
-    }
+    //// slider dumping
+    //IEnumerator slider_dumping()
+    //{
+    //    while (true)
+    //    {
+    //        if (slider_control.GetComponent<Slider>().value > 0)
+    //        {
+    //            slider_control.GetComponent<Slider>().value = Mathf.Max(0, slider_control.GetComponent<Slider>().value - dumping_rate);
+    //        }
+    //        yield return null;
+    //    }
+    //}
 
 
     // button quit task
     public void button_quit_task()
     {
+        Debug.Log("button quit");
         // sound
         SFXmanager.playsound("click");
         // show quit inquiry screen
@@ -159,7 +207,13 @@ public class UI_control_v3 : MonoBehaviour
         // disable all clickables
         button_launch.GetComponent<Button>().interactable = false;
         button_return.GetComponent<Button>().interactable = false;
-        slider_control.GetComponent<Slider>().interactable = false;
+
+        //slider_control.GetComponent<Slider>().interactable = false;
+        button_U.GetComponent<ButtonTransitioner_UDLR>().active = false;
+        button_D.GetComponent<ButtonTransitioner_UDLR>().active = false;
+        button_L.GetComponent<ButtonTransitioner_UDLR>().active = false;
+        button_R.GetComponent<ButtonTransitioner_UDLR>().active = false;
+
         button_quit.GetComponent<Button>().interactable = false;
         button_take_photo.GetComponent<Button>().interactable = false;
     }
@@ -194,7 +248,13 @@ public class UI_control_v3 : MonoBehaviour
         // enable all clickables
         button_launch.GetComponent<Button>().interactable = true;
         button_return.GetComponent<Button>().interactable = true;
-        slider_control.GetComponent<Slider>().interactable = true;
+
+        //slider_control.GetComponent<Slider>().interactable = true;
+        button_U.GetComponent<ButtonTransitioner_UDLR>().active = true;
+        button_D.GetComponent<ButtonTransitioner_UDLR>().active = true;
+        button_L.GetComponent<ButtonTransitioner_UDLR>().active = true;
+        button_R.GetComponent<ButtonTransitioner_UDLR>().active = true;
+
         button_quit.GetComponent<Button>().interactable = true;
         button_take_photo.GetComponent<Button>().interactable = true;
     }

@@ -16,13 +16,14 @@ public class ControlPanel_v2 : MonoBehaviour
         if (is_AR_Camera)
         {
             GameObject.Find("Main Camera").gameObject.SetActive(false);
+            GameObject.Find("ground").gameObject.SetActive(false);
         }
         else
         {
             GameObject.Find("AR Session").gameObject.SetActive(false);
             GameObject.Find("AR Session Origin").gameObject.SetActive(false);
             GameObject.Find("Main Camera").gameObject.SetActive(true);
-            
+            GameObject.Find("ground").gameObject.SetActive(true);
             m_UI_control.scan_prompt_screen.SetActive(false);
             Vector3 hit_position = new Vector3(1, 0, 1);
             Quaternion hit_rotation = Quaternion.Euler(0, 30, 0);

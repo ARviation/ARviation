@@ -16,11 +16,24 @@ public class FlyControl_v6 : MonoBehaviour
     float L1 = 2f;
     float L2 = 4f;
     float h = 2f;
+    float h_min = 1f;
+    float h_max = 3f;
+    float d_max = 50f;
+
+    //debug <<<
     float speed = 1f;
+    //float speed = 5f;
+    //debug >>>
+
+    float distance;
+    Vector3 born_origin;
+    bool isBoundaryCheck = true;
+
     float omega;
     float pi;
     float roll_max = 15;     //degree
     float roll_eta = 0.01f;  //dumping rate
+    float theta_max = 15;    //degree
     float propeller_rotation_speed = 2000f;
 
     public AudioSource source;
@@ -41,9 +54,12 @@ public class FlyControl_v6 : MonoBehaviour
     bool is_fixed_traj = false;
     //bool is_trail = false;
     int trail_index = 0;
+    float height0, height1;
 
 
-    Slider slider_alpha;
+    //Slider slider_alpha;
+    ControlPad control_pad;
+
     Button button_launch;
     Button button_return;
     Button button_trail;
@@ -66,7 +82,10 @@ public class FlyControl_v6 : MonoBehaviour
         CanvasObj = GameObject.Find("Canvas").gameObject;
         
         // button
-        slider_alpha = GameObject.Find("Canvas").transform.Find("slider_control").GetComponent<Slider>();
+
+        //slider_alpha = GameObject.Find("Canvas").transform.Find("slider_control").GetComponent<Slider>();
+        control_pad = GameObject.Find("Canvas").transform.Find("ControlPad").GetComponent<ControlPad>();
+
         button_launch = GameObject.Find("Canvas").transform.Find("button_launch").GetComponent<Button>();
         button_return = GameObject.Find("Canvas").transform.Find("button_return").GetComponent<Button>();
         button_trail = GameObject.Find("Canvas").transform.Find("button_trail").GetComponent<Button>();
@@ -84,6 +103,12 @@ public class FlyControl_v6 : MonoBehaviour
         // trail
         trail_white.SetActive(false);
         trail_rainbow.SetActive(false);
+        
+        // height
+        height0 = transform.position.y;
+
+        // born origin
+        born_origin = transform.position;
     }
 
 
@@ -92,14 +117,54 @@ public class FlyControl_v6 : MonoBehaviour
     {
         //Debug.Log("action = " + action + "  len(job_list) = " + job_list.Count);
 
+        // distance control
+        //Debug.Log("distance = " + distance);
+        distance = (transform.position - born_origin).magnitude;
+        if (distance > d_max & isBoundaryCheck)
+        {
+            button_return_task();
+            button_return.Select();
+            isBoundaryCheck = false;
+            Debug.Log("select button return");
+        }
+
+
         // call coroutines
         // comment: coroutines do not work on prefab, replace them by void functions
         update_UI_state();
         roll_angle_dumping();
 
-        // read alpha
-        float value = slider_alpha.value;
-        if (action == "free flight") alpha = 1 - 2 * value;
+        //// read alpha
+        //float value = slider_alpha.value;
+        //if (action == "free flight") alpha = 1 - 2 * value;
+
+        
+
+        // yaw control
+        if (action == "free flight") alpha = - control_pad.x;
+
+        // pitch/roll control
+        if (action == "free flight")
+        {
+            float height = transform.position.y - height0;
+            float theta;
+            if ((height < h_min & control_pad.y < 0) | (height > h_max & control_pad.y > 0))
+            {
+                theta = 0;                
+            }
+            else
+            {
+                theta = theta_max * control_pad.y / 180 * pi;
+            }
+            velocity.x = 0;
+            velocity.y = speed * Mathf.Sin(theta);
+            velocity.z = speed * Mathf.Cos(theta);
+            velocity = transform.rotation * velocity;
+            transform.position += velocity * Time.deltaTime;
+            Vector3 orientation = transform.Find("orientation").transform.localEulerAngles;
+            orientation.x = -theta / pi * 180;
+            transform.Find("orientation").transform.localEulerAngles = orientation;
+        }
 
         // new action
         if (action == null)
@@ -151,19 +216,23 @@ public class FlyControl_v6 : MonoBehaviour
             return;
         }
 
-        // action: change alpha
-        if (action == "change alpha")
-        {
-            alpha = parameters[0];
-            action = null;
-            return;
-        }
+        //// action: change alpha
+        //if (action == "change alpha")
+        //{
+        //    alpha = parameters[0];
+        //    action = null;
+        //    return;
+        //}
 
         // action: take off
         if (action == "take off")
         {
             alpha = 0;
-            if (t == 0) action_origin = transform.position;
+            if (t == 0) 
+            { 
+                action_origin = transform.position;
+                height0 = transform.position.y;
+            }
             var delta = transform.position - action_origin;
             delta = transform.InverseTransformDirection(delta);
             if (Mathf.Abs(delta.z) >= parameters[1])
@@ -196,7 +265,11 @@ public class FlyControl_v6 : MonoBehaviour
         if (action == "landing")
         {
             alpha = 0;
-            if (t == 0) action_origin = transform.position;
+            if (t == 0)
+            {
+                action_origin = transform.position;
+                height1 = transform.position.y;
+            }
             var delta = transform.position - action_origin;
             delta = transform.InverseTransformDirection(delta);
             if (Mathf.Abs(delta.z) >= parameters[1])
@@ -208,7 +281,8 @@ public class FlyControl_v6 : MonoBehaviour
             {
                 landing_gears.SetActive(true);   // show landing gears
             }
-            float h = parameters[0];
+            //float h = parameters[0];
+            float h = height1 - height0;
             float L = parameters[1];
             float z = delta.z;
             float gamma = - h / 2 * Mathf.Sin(z / L * pi) * pi / L;
@@ -265,14 +339,14 @@ public class FlyControl_v6 : MonoBehaviour
             return;
         }
 
-        // action: sync slicer
-        if (action == "sync slider")
-        {
-            // Debug.Log("sync slider: alpha = " + alpha);
-            slider_alpha.value = (1 - alpha) / 2;
-            action = null;
-            return;
-        }
+        //// action: sync slicer
+        //if (action == "sync slider")
+        //{
+        //    // Debug.Log("sync slider: alpha = " + alpha);
+        //    slider_alpha.value = (1 - alpha) / 2;
+        //    action = null;
+        //    return;
+        //}
 
         // action: landing gears animation
         if (action == "landing gears animation")
@@ -311,8 +385,9 @@ public class FlyControl_v6 : MonoBehaviour
         alpha = 0;
         trail_index = 0;
         button_trail.GetComponent<Image>().sprite = sprite_trail_rainbow;
+        isBoundaryCheck = true;
         //is_trail = false;
-        Debug.Log("takeoff: alpha0 = " + alpha0);
+        //Debug.Log("takeoff: alpha0 = " + alpha0);
         velocity = Vector3.zero;
         transform.localEulerAngles = Vector3.zero;
         transform.localPosition = Vector3.zero;
@@ -325,8 +400,8 @@ public class FlyControl_v6 : MonoBehaviour
         job_list.Add(new job() { action = "take off", parameters = new List<float> { h, L2 } });
         //job_list.Add(new job() { action = "landing gears animation", parameters = new List<float> { -1f } });
         job_list.Add(new job() { action = "straight", parameters = new List<float> { R } });
-        job_list.Add(new job() { action = "change alpha", parameters = new List<float> { alpha0 } });
-        job_list.Add(new job() { action = "sync slider", parameters = new List<float> { } });
+        //job_list.Add(new job() { action = "change alpha", parameters = new List<float> { alpha0 } });
+        //job_list.Add(new job() { action = "sync slider", parameters = new List<float> { } });
         job_list.Add(new job() { action = "lock traj", parameters = new List<float> { -1f } });
         job_list.Add(new job() { action = "free flight", parameters = new List<float> { } });
     }
