@@ -32,6 +32,7 @@ public class ButtonTransitioner_UDLR : MonoBehaviour, IPointerDownHandler, IPoin
         active = true;
         active_ = true;
         tf = false;
+        color3.a = 0.3f;
         //StartCoroutine(act());
     }
 
