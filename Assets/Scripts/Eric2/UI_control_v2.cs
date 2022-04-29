@@ -192,14 +192,14 @@ public class UI_control_v2 : MonoBehaviour
         // hide quit inqiry screen
         quit_inquiry_screen.SetActive(false);
         // send email
-        int N_photo = screenshot.GetComponent<screenshot_v2>().N_photo;
+        int N_photo = screenshot.GetComponent<screenshot_v3>().N_photo;
         if (N_photo > 0)
         {
             // show msg on
             msg_sending_email.SetActive(true);
             yield return null;
             // send email
-            screenshot.GetComponent<screenshot_v2>().button_send_email();
+            screenshot.GetComponent<screenshot_v3>().button_send_email();
             yield return null;
             // show msg off
             msg_sending_email.SetActive(false);
