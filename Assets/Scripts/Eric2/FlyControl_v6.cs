@@ -21,8 +21,8 @@ public class FlyControl_v6 : MonoBehaviour
     float d_max = 50f;
 
     //debug <<<
-    float speed = 1f;
-    //float speed = 5f;
+    //float speed = 1f;
+    float speed = 5f;
     //debug >>>
 
     float distance;
@@ -382,10 +382,12 @@ public class FlyControl_v6 : MonoBehaviour
     {
         // voiceover-3
         SFXmanager.playsound("voiceover-3");
+        // initialization
         alpha = 0;
         trail_index = 0;
         button_trail.GetComponent<Image>().sprite = sprite_trail_rainbow;
         isBoundaryCheck = true;
+        control_pad.Reset();
         //is_trail = false;
         //Debug.Log("takeoff: alpha0 = " + alpha0);
         velocity = Vector3.zero;

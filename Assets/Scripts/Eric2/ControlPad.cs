@@ -24,7 +24,6 @@ public class ControlPad : MonoBehaviour
     // Update
     void Update()
     {
-
         // relaxation
         if (!is_button_pressed)
         {
@@ -44,7 +43,6 @@ public class ControlPad : MonoBehaviour
             {
                 y = Mathf.Min(0, y + v0 * Time.deltaTime);
             }
-
         }
 
         // button activation
@@ -54,5 +52,19 @@ public class ControlPad : MonoBehaviour
         bool tf2 = (Mathf.Abs(y) < tol);
         transform.Find("Button_L").GetComponent<ButtonTransitioner_UDLR>().interactable = tf2;
         transform.Find("Button_R").GetComponent<ButtonTransitioner_UDLR>().interactable = tf2;
+    }
+
+
+    // reset
+    public void Reset()
+    {
+        Debug.Log("reset");
+        is_button_pressed = false;
+        x = 0;
+        y = 0;
+        transform.Find("Button_U").GetComponent<ButtonTransitioner_UDLR>().tf = false;
+        transform.Find("Button_D").GetComponent<ButtonTransitioner_UDLR>().tf = false;
+        transform.Find("Button_L").GetComponent<ButtonTransitioner_UDLR>().tf = false;
+        transform.Find("Button_R").GetComponent<ButtonTransitioner_UDLR>().tf = false;
     }
 }

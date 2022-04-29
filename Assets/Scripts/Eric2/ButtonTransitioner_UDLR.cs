@@ -17,7 +17,7 @@ public class ButtonTransitioner_UDLR : MonoBehaviour, IPointerDownHandler, IPoin
     Color color3 = Color.gray;
     ControlPad controlPad;
 
-    bool tf = false;
+    public bool tf;
 
     Image m_Image = null;
 
@@ -31,6 +31,7 @@ public class ButtonTransitioner_UDLR : MonoBehaviour, IPointerDownHandler, IPoin
         interactable_ = true;
         active = true;
         active_ = true;
+        tf = false;
         //StartCoroutine(act());
     }
 
