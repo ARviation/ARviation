@@ -21,8 +21,8 @@ public class FlyControl_v6 : MonoBehaviour
     float d_max = 50f;
 
     //debug <<<
-    //float speed = 1f;
-    float speed = 5f;
+    float speed = 1f;
+    //float speed = 5f;
     //debug >>>
 
     float distance;
