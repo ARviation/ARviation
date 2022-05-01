@@ -72,7 +72,6 @@ public class screenshot_v3 : MonoBehaviour
     {
       button_send_email();
       button_photo.interactable = false;
-      N_photo = -1;
     }
   }
 

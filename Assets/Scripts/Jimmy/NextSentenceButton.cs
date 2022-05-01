@@ -6,6 +6,12 @@ using UnityEngine;
 public class NextSentenceButton : MonoBehaviour
 {
   private bool _canTriggerFeedback = true;
+  private Vector3 originPosition;
+
+  private void Start()
+  {
+    originPosition = gameObject.transform.position;
+  }
 
   public void StartShakingEffect()
   {
@@ -14,7 +20,7 @@ public class NextSentenceButton : MonoBehaviour
 
   private IEnumerator ShakingEffect()
   {
-    float offset = 10f;
+    float offset = 5.0f;
     while (true)
     {
       var position = gameObject.transform.position;

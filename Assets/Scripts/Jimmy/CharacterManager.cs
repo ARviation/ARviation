@@ -36,6 +36,7 @@ public enum CharacterMoodIndex : int
   Thinking_2 = 27,
   Thinking_3 = 28,
   Thinking_4 = 29,
+  Diagram_1 = 30,
 }
 
 [Serializable]
@@ -112,7 +113,7 @@ public class CharacterManager : MonoBehaviour
       (int) SceneIndex.Intro => scriptElementsIntro.Length,
       (int) SceneIndex.SortOne => scriptElementsSortOne.Length,
       (int) SceneIndex.SortTwo => scriptElementsSortTwo.Length,
-      (int) SceneIndex.FinishSelect=> scriptElementsFinishSelect.Length,
+      (int) SceneIndex.FinishSelect => scriptElementsFinishSelect.Length,
       (int) SceneIndex.Hunt => scriptElementsHunt.Length,
       (int) SceneIndex.Assembly => scriptElementsAssembly.Length,
       (int) SceneIndex.FlyIntro => scriptElementsFlyIntro.Length,
