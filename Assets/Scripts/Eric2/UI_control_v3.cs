@@ -33,6 +33,7 @@ public class UI_control_v3 : MonoBehaviour
     bool is_voiceover1_played = false;
     bool is_voiceover2_played = false;
 
+    public bool is_quit = false;
 
     // Start
     void Start()
@@ -278,9 +279,15 @@ public class UI_control_v3 : MonoBehaviour
             // show msg off
             msg_sending_email.SetActive(false);
         }
-        // quit
+        // quit or change scene
         Debug.Log("quit flying scene");
-        //Application.Quit();
-        GameManager.Instance.ChangeSceneToEnd();
+        if (is_quit)
+        {
+            Application.Quit();
+        }
+        else 
+        {
+            GameManager.Instance.ChangeSceneToEnd();
+        }
     }
 }

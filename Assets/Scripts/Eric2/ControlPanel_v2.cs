@@ -17,6 +17,7 @@ public class ControlPanel_v2 : MonoBehaviour
         {
             GameObject.Find("Main Camera").gameObject.SetActive(false);
             GameObject.Find("ground").gameObject.SetActive(false);
+            m_UI_control.is_quit = false;
         }
         else
         {
@@ -25,6 +26,7 @@ public class ControlPanel_v2 : MonoBehaviour
             GameObject.Find("Main Camera").gameObject.SetActive(true);
             GameObject.Find("ground").gameObject.SetActive(true);
             m_UI_control.scan_prompt_screen.SetActive(false);
+            m_UI_control.is_quit = true;
             Vector3 hit_position = new Vector3(1, 0, 1);
             Quaternion hit_rotation = Quaternion.Euler(0, 30, 0);
             GameObject spawnedObject = Instantiate(airplane_prefab, hit_position, hit_rotation);
