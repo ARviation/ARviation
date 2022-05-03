@@ -71,7 +71,7 @@ public class screenshot_v3 : MonoBehaviour
         //if (photo_file_list.Count == autoSendPhotoAmount)
         if ((photo_file_list.Count > 0) & (N_photo % autoSendPhotoAmount == 0) & (photo_file_list.Count % autoSendPhotoAmount == 0))
         {
-            Debug.Log("count = " + photo_file_list.Count + "  N_photo = " + N_photo + "  autoSendPhotoAmount = " + autoSendPhotoAmount);
+            //Debug.Log("count = " + photo_file_list.Count + "  N_photo = " + N_photo + "  autoSendPhotoAmount = " + autoSendPhotoAmount);
             // check if photo files are ready
             bool is_ready = true;
             foreach (string photo_file in photo_file_list)
