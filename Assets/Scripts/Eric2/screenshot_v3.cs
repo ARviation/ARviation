@@ -68,7 +68,7 @@ public class screenshot_v3 : MonoBehaviour
 
     private void Update()
     {
-        //if (photo_file_list.Count == autoSendPhotoAmount)
+        //if (photo_file_list.Count == autoSendPhotozAmount)
         if ((photo_file_list.Count > 0) & (N_photo % autoSendPhotoAmount == 0) & (photo_file_list.Count % autoSendPhotoAmount == 0))
         {
             //Debug.Log("count = " + photo_file_list.Count + "  N_photo = " + N_photo + "  autoSendPhotoAmount = " + autoSendPhotoAmount);
@@ -153,7 +153,7 @@ public class screenshot_v3 : MonoBehaviour
         }
 
         SmtpServer.Port = 587;
-        SmtpServer.Credentials = new NetworkCredential("ARviationAlbum@gmail.com", "esngpvhpxmgnbsdh");
+        SmtpServer.Credentials = new NetworkCredential("ARviationAlbum@gmail.com", "yaxayubhpdcecjam");
         SmtpServer.EnableSsl = true;
         SmtpServer.SendCompleted += new SendCompletedEventHandler(SendCompletedCallback);
 

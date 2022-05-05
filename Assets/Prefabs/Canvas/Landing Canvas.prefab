@@ -148,7 +148,7 @@ MonoBehaviour:
   cheatPanel: {fileID: 6979899134582959496}
   cheatPanelBtnHunt: {fileID: 985149426}
   cheatPanelBtnFly: {fileID: 1817124802}
-  correctPassword: abc
+  correctPassword: mab
   passwordBoxHunt: {fileID: 400634806}
   passwordBoxFly: {fileID: 14758987}
   disableImg: {fileID: 21300000, guid: 1eb2d71d12f864e679a58950e5eaa4a0, type: 3}
