@@ -5,14 +5,25 @@ using UnityEngine.UI;
 
 public class ControlPad : MonoBehaviour
 {
+    /// <summary>
+    /// author:: Yu (Eric) Zhu, 2022/05/06, yuzhu2@andrew.cmu.edu
+    /// usage:: direction control buttons, L/R/U/D
+    /// usage:: if no button pressed, the airplane will relax to the neutral pose
+    /// usage:: L/R is enabled when |y| < tol
+    /// usage:: U/D is enabled when |x| < tol
+    /// </summary>
+
+
+    // parameters
+    float v0 = 1f;                                         // relaxation speed
+    float tol = 0.01f;                                     // zero tolerance
+
+
     // Variables
     public float x;
     public float y;
-
     public bool is_button_pressed;
 
-    float v0 = 1f;
-    float tol = 0.01f;
 
     // Start
     void Start()

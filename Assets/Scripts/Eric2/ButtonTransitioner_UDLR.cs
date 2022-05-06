@@ -5,6 +5,13 @@ using System.Collections;
 
 public class ButtonTransitioner_UDLR : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
+    /// <summary>
+    /// author:: Yu (Eric) Zhu, 2022/05/06, yuzhu2@andrew.cmu.edu
+    /// usage:: direction control button transitioner
+    /// usage:: override IPointerDownHandler and IPointerUpHandler
+    /// </summary>
+
+
     // Variables
     public bool interactable;
     public bool active;
@@ -16,9 +23,7 @@ public class ButtonTransitioner_UDLR : MonoBehaviour, IPointerDownHandler, IPoin
     Color color2 = Color.white;
     Color color3 = Color.gray;
     ControlPad controlPad;
-
     public bool tf;
-
     Image m_Image = null;
 
 
@@ -33,7 +38,6 @@ public class ButtonTransitioner_UDLR : MonoBehaviour, IPointerDownHandler, IPoin
         active_ = true;
         tf = false;
         color3.a = 0.3f;
-        //StartCoroutine(act());
     }
 
 
@@ -58,16 +62,6 @@ public class ButtonTransitioner_UDLR : MonoBehaviour, IPointerDownHandler, IPoin
     }
 
 
-    //// Down
-    //public void OnPointerDown(PointerEventData eventData)
-    //{
-    //    if (!interactable | !active) return;
-    //    controlPad.is_button_pressed = true;
-    //    m_Image.color = color1;
-    //    InvokeRepeating("act", 0, 0.1f);
-    //}
-
-
     // Down
     public void OnPointerDown(PointerEventData eventData)
     {
@@ -76,16 +70,6 @@ public class ButtonTransitioner_UDLR : MonoBehaviour, IPointerDownHandler, IPoin
         m_Image.color = color1;
         tf = true;
     }
-
-
-    //// Up
-    //public void OnPointerUp(PointerEventData eventData)
-    //{
-    //    if (!interactable | !active) return;
-    //    controlPad.is_button_pressed = false;
-    //    m_Image.color = color2;
-    //    CancelInvoke("act");
-    //}
 
 
     // Up
@@ -101,7 +85,6 @@ public class ButtonTransitioner_UDLR : MonoBehaviour, IPointerDownHandler, IPoin
     // update control pad
     void update_control_pad(bool tf, string mode)
     {
-        //Debug.Log("tf = " + tf);
         if (!tf) return;
         if (mode == "y+")
         {
@@ -124,31 +107,55 @@ public class ButtonTransitioner_UDLR : MonoBehaviour, IPointerDownHandler, IPoin
             controlPad.x = Mathf.Max(-1f, controlPad.x);
         }
     }
-
-    //// act
-    //void act()
-    //{
-    //    if (mode == "y+")
-    //    {
-    //        controlPad.y += v * Time.deltaTime;
-    //        controlPad.y = Mathf.Min(1f, controlPad.y);
-    //    }
-    //    else if (mode == "y-")
-    //    {
-    //        controlPad.y -= v * Time.deltaTime;
-    //        controlPad.y = Mathf.Max(-1f, controlPad.y);
-    //    }
-    //    else if (mode == "x+")
-    //    {
-    //        controlPad.x += v * Time.deltaTime;
-    //        controlPad.x = Mathf.Min(1f, controlPad.x);
-    //    }
-    //    else if (mode == "x-")
-    //    {
-    //        controlPad.x -= v * Time.deltaTime;
-    //        controlPad.x = Mathf.Max(-1f, controlPad.x);
-    //    }
-    //}
 }
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////// trash ///////////////////////////////////////
+///
+
+//// act
+//void act()
+//{
+//    if (mode == "y+")
+//    {
+//        controlPad.y += v * Time.deltaTime;
+//        controlPad.y = Mathf.Min(1f, controlPad.y);
+//    }
+//    else if (mode == "y-")
+//    {
+//        controlPad.y -= v * Time.deltaTime;
+//        controlPad.y = Mathf.Max(-1f, controlPad.y);
+//    }
+//    else if (mode == "x+")
+//    {
+//        controlPad.x += v * Time.deltaTime;
+//        controlPad.x = Mathf.Min(1f, controlPad.x);
+//    }
+//    else if (mode == "x-")
+//    {
+//        controlPad.x -= v * Time.deltaTime;
+//        controlPad.x = Mathf.Max(-1f, controlPad.x);
+//    }
+//}
+
+
+
+//// Down
+//public void OnPointerDown(PointerEventData eventData)
+//{
+//    if (!interactable | !active) return;
+//    controlPad.is_button_pressed = true;
+//    m_Image.color = color1;
+//    InvokeRepeating("act", 0, 0.1f);
+//}
+
+
+
+
+//// Up
+//public void OnPointerUp(PointerEventData eventData)
+//{
+//    if (!interactable | !active) return;
+//    controlPad.is_button_pressed = false;
+//    m_Image.color = color2;
+//    CancelInvoke("act");
+//}

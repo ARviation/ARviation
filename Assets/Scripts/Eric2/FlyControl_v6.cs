@@ -5,39 +5,41 @@ using UnityEngine.UI;
 
 public class FlyControl_v6 : MonoBehaviour
 {
+    /// <summary>
+    /// author:: Yu (Eric) Zhu, 2022/05/06, yuzhu2@andrew.cmu.edu
+    /// usage:: control how an airplane flies, key code
+    /// usage:: job_list is a list of jobs, each job is an animation
+    /// usage:: run through the job list with Update
+    /// </summary>
+
+
+    // Parameters
+    float R = 2f;                                          // minimum yaw radius
+    float L1 = 2f;                                         // take off acceleration length
+    float L2 = 4f;                                         // take off climbing length
+    float h = 2f;                                          // take off height
+    float h_min = 1f;                                      // minimum height
+    float h_max = 3f;                                      // maximum height
+    float d_max = 50f;                                     // maximum distance
+    float speed = 1f;                                      // flying speed
+    float roll_max = 15;                                   // maximum rolling angle in degree
+    float roll_eta = 0.01f;                                // rolling dumping rate
+    float theta_max = 15;                                  // maximum pitch angle in degree
+    float propeller_rotation_speed = 2000f;                // propeller rotation speed
+
+
     // Variables
     public struct job
     {
         public string action;
         public List<float> parameters;
     }
-
-    float R = 2f;
-    float L1 = 2f;
-    float L2 = 4f;
-    float h = 2f;
-    float h_min = 1f;
-    float h_max = 3f;
-    float d_max = 50f;
-
-    //debug <<<
-    float speed = 1f;
-    //float speed = 5f;
-    //debug >>>
-
     float distance;
     Vector3 born_origin;
     bool isBoundaryCheck = true;
-
     float omega;
     float pi;
-    float roll_max = 15;     //degree
-    float roll_eta = 0.01f;  //dumping rate
-    float theta_max = 15;    //degree
-    float propeller_rotation_speed = 2000f;
-
     public AudioSource source;
-
     GameObject CanvasObj;
     public GameObject landing_gears;
     public GameObject propeller;
@@ -52,18 +54,12 @@ public class FlyControl_v6 : MonoBehaviour
     float alpha0 = 1f;
     Vector3 velocity;
     bool is_fixed_traj = false;
-    //bool is_trail = false;
     int trail_index = 0;
     float height0, height1;
-
-
-    //Slider slider_alpha;
     ControlPad control_pad;
-
     Button button_launch;
     Button button_return;
     Button button_trail;
-
     float t;
     Vector3 action_origin;
 
@@ -71,21 +67,16 @@ public class FlyControl_v6 : MonoBehaviour
     // Awake
     void Awake()
     {
+        // init
         action = null;
         job_list = new List<job>();
-
         alpha = 0;
         omega = speed / R;
         pi = Mathf.PI;
 
-        //print("check CanvasObj");
+        // find
         CanvasObj = GameObject.Find("Canvas").gameObject;
-        
-        // button
-
-        //slider_alpha = GameObject.Find("Canvas").transform.Find("slider_control").GetComponent<Slider>();
         control_pad = GameObject.Find("Canvas").transform.Find("ControlPad").GetComponent<ControlPad>();
-
         button_launch = GameObject.Find("Canvas").transform.Find("button_launch").GetComponent<Button>();
         button_return = GameObject.Find("Canvas").transform.Find("button_return").GetComponent<Button>();
         button_trail = GameObject.Find("Canvas").transform.Find("button_trail").GetComponent<Button>();
@@ -118,27 +109,20 @@ public class FlyControl_v6 : MonoBehaviour
         //Debug.Log("action = " + action + "  len(job_list) = " + job_list.Count);
 
         // distance control
-        //Debug.Log("distance = " + distance);
         distance = (transform.position - born_origin).magnitude;
         if (distance > d_max & isBoundaryCheck)
         {
             button_return_task();
             button_return.Select();
             isBoundaryCheck = false;
-            Debug.Log("select button return");
+            //Debug.Log("select button return");
         }
 
-
-        // call coroutines
-        // comment: coroutines do not work on prefab, replace them by void functions
+        // update UI state
         update_UI_state();
-        roll_angle_dumping();
 
-        //// read alpha
-        //float value = slider_alpha.value;
-        //if (action == "free flight") alpha = 1 - 2 * value;
-
-        
+        // roll dumping
+        roll_angle_dumping();             
 
         // yaw control
         if (action == "free flight") alpha = - control_pad.x;
@@ -215,14 +199,6 @@ public class FlyControl_v6 : MonoBehaviour
             t += Time.deltaTime;
             return;
         }
-
-        //// action: change alpha
-        //if (action == "change alpha")
-        //{
-        //    alpha = parameters[0];
-        //    action = null;
-        //    return;
-        //}
 
         // action: take off
         if (action == "take off")
@@ -339,15 +315,6 @@ public class FlyControl_v6 : MonoBehaviour
             return;
         }
 
-        //// action: sync slicer
-        //if (action == "sync slider")
-        //{
-        //    // Debug.Log("sync slider: alpha = " + alpha);
-        //    slider_alpha.value = (1 - alpha) / 2;
-        //    action = null;
-        //    return;
-        //}
-
         // action: landing gears animation
         if (action == "landing gears animation")
         {
@@ -364,12 +331,10 @@ public class FlyControl_v6 : MonoBehaviour
             if (tf_ > 0)
             {
                 source.Play();
-                //SFXmanager.playsound_loop("engine");
             }
             else
             {
                 source.Stop();
-                //SFXmanager.stopsound("engine");
             }
             action = null;
             return;
@@ -377,19 +342,16 @@ public class FlyControl_v6 : MonoBehaviour
     }
 
 
+
     // take off
     public void take_off()
     {
-        // voiceover-3
         SFXmanager.playsound("voiceover-3");
-        // initialization
         alpha = 0;
         trail_index = 0;
         button_trail.GetComponent<Image>().sprite = sprite_trail_rainbow;
         isBoundaryCheck = true;
         control_pad.Reset();
-        //is_trail = false;
-        //Debug.Log("takeoff: alpha0 = " + alpha0);
         velocity = Vector3.zero;
         transform.localEulerAngles = Vector3.zero;
         transform.localPosition = Vector3.zero;
@@ -400,10 +362,7 @@ public class FlyControl_v6 : MonoBehaviour
         job_list.Add(new job() { action = "engine sound", parameters = new List<float> { 1f } });
         job_list.Add(new job() { action = "accelerate", parameters = new List<float> { L1, speed*speed/(2*L1) } });        
         job_list.Add(new job() { action = "take off", parameters = new List<float> { h, L2 } });
-        //job_list.Add(new job() { action = "landing gears animation", parameters = new List<float> { -1f } });
         job_list.Add(new job() { action = "straight", parameters = new List<float> { R } });
-        //job_list.Add(new job() { action = "change alpha", parameters = new List<float> { alpha0 } });
-        //job_list.Add(new job() { action = "sync slider", parameters = new List<float> { } });
         job_list.Add(new job() { action = "lock traj", parameters = new List<float> { -1f } });
         job_list.Add(new job() { action = "free flight", parameters = new List<float> { } });
     }
@@ -414,6 +373,7 @@ public class FlyControl_v6 : MonoBehaviour
     {
         // voiceover-4
         SFXmanager.playsound("voiceover-4");
+
         // q0, theta0
         alpha = alpha0;
         Vector3 r0 = transform.position + Quaternion.AngleAxis(-90f * Mathf.Sign(alpha0), Vector3.up) * velocity.normalized * R;
@@ -453,91 +413,11 @@ public class FlyControl_v6 : MonoBehaviour
         job_list.Add(new job() { action = "straight", parameters = new List<float> { d2 } });
         job_list.Add(new job() { action = "circle", parameters = new List<float> { alpha0, 0.25f * q1 } });
         job_list.Add(new job() { action = "circle", parameters = new List<float> { -alpha0, 0.25f } });
-        //job_list.Add(new job() { action = "landing gears animation", parameters = new List<float> { 1f } });
         job_list.Add(new job() { action = "landing", parameters = new List<float> { h, L2 } });
         job_list.Add(new job() { action = "accelerate", parameters = new List<float> { L1, - speed * speed / (2 * L1) } });
         job_list.Add(new job() { action = "engine sound", parameters = new List<float> { -1f } });
         job_list.Add(new job() { action = "lock traj", parameters = new List<float> { -1f } });
-        //job_list.Add(new job() { action = "sync slider", parameters = new List<float> { } });
     }
-
-
-    //// keyboard fly control	
-    //IEnumerator fly_control_keyboard()
-    //{
-    //    while (true)
-    //    {
-    //        // take off
-    //        if (Input.GetKeyDown(KeyCode.Space))
-    //        {
-    //            if (action == null)
-    //            {
-    //                take_off();
-    //                yield return null;
-    //            }
-    //        }
-
-    //        // landing
-    //        if (Input.GetKeyDown(KeyCode.Return))
-    //        {
-    //            if (action == "free flight" & alpha == alpha0)
-    //            {
-    //                landing();
-    //                yield return null;
-    //            }
-    //        }
-
-    //        // turn right
-    //        if (Input.GetKeyDown(KeyCode.RightArrow))
-    //        {
-    //            if (action == "free flight")
-    //            {
-    //                alpha = Mathf.Max(-1f, alpha - 0.1f);
-    //                yield return null;
-    //            }                    
-    //        }
-
-    //        // turn left
-    //        if (Input.GetKeyDown(KeyCode.LeftArrow))
-    //        {
-    //            if (action == "free flight")
-    //            {
-    //                alpha = Mathf.Min(1f, alpha + 0.1f);
-    //                yield return null;
-    //            }
-    //        }
-
-    //        // other
-    //        yield return null;
-    //    }
-    //}
-
-
-    //// roll angle dumping
-    //IEnumerator roll_angle_dumping()
-    //{
-    //    while (true)
-    //    {
-
-    //        if (action == null) yield return null;
-
-    //        Vector3 orientation = transform.Find("orientation").transform.localEulerAngles;
-    //        float roll_angle_ = orientation.z;
-
-    //        float angle_offset = 0;
-    //        if (roll_angle_ > 90) angle_offset = -360;
-    //        roll_angle_ += angle_offset;
-
-    //        float roll_angle = alpha * roll_max;
-    //        roll_angle_ = roll_eta * roll_angle + (1 - roll_eta) * roll_angle_;
-
-    //        roll_angle_ -= angle_offset;
-
-    //        orientation.z = roll_angle_;
-    //        transform.Find("orientation").transform.localEulerAngles = orientation;
-    //        yield return null;
-    //    }
-    //}
 
 
     // roll angle dumping
@@ -578,33 +458,7 @@ public class FlyControl_v6 : MonoBehaviour
             CanvasObj.GetComponent<UI_control_v3>().state = "fixed traj";
         }
     }
-
-
-    //// update_UI_state
-    //IEnumerator update_UI_state()
-    //{
-    //    while (true)
-    //    {
-    //        if (GameObject.Find("Canvas"))
-    //        {
-    //            if (action == null & !is_fixed_traj)
-    //            {
-    //                GameObject.Find("Canvas").GetComponent<UI_control_v2>().state = "idling";
-    //            }
-    //            if (action != null & !is_fixed_traj)
-    //            {
-    //                GameObject.Find("Canvas").GetComponent<UI_control_v2>().state = "free flight";
-    //            }
-    //            if (action != null & is_fixed_traj)
-    //            {
-    //                GameObject.Find("Canvas").GetComponent<UI_control_v2>().state = "fixed traj";
-    //            }
-    //        }
-    //        yield return null;
-    //    }
-    //}
-
-   
+       
 
     // tan3
     (float theta3, int q3) Atan3(Vector3 vv)
@@ -647,25 +501,6 @@ public class FlyControl_v6 : MonoBehaviour
     // button_trail_task
     public void button_trail_task()
     {
-        Debug.Log("button_trail_task");
-        //is_trail = !is_trail;
-        //trail.SetActive(is_trail);
-        //trail_index = (trail_index + 1) % 3;
-        //if (trail_index == 0)
-        //{
-        //    trail_white.SetActive(false);
-        //    trail_rainbow.SetActive(false);
-        //}
-        //if (trail_index == 1)
-        //{
-        //    trail_white.SetActive(true);
-        //    trail_rainbow.SetActive(false);
-        //}
-        //if (trail_index == 2)
-        //{
-        //    trail_white.SetActive(false);
-        //    trail_rainbow.SetActive(true);
-        //}
         trail_index = 1 - trail_index;
         if (trail_index == 0)
         {
@@ -682,7 +517,7 @@ public class FlyControl_v6 : MonoBehaviour
 }
 
 
-///////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////// trash ///////////////////////////////////////
 //// update_UI_state
 //IEnumerator update_UI_state()
 //{
@@ -969,3 +804,148 @@ public class FlyControl_v6 : MonoBehaviour
 //StartCoroutine(fly_control_keyboard());
 //StartCoroutine(roll_angle_dumping());
 //StartCoroutine(update_UI_state());
+
+
+
+//// action: change alpha
+//if (action == "change alpha")
+//{
+//    alpha = parameters[0];
+//    action = null;
+//    return;
+//}
+
+
+
+//// action: sync slicer
+//if (action == "sync slider")
+//{
+//    // Debug.Log("sync slider: alpha = " + alpha);
+//    slider_alpha.value = (1 - alpha) / 2;
+//    action = null;
+//    return;
+//}
+
+
+
+//// keyboard fly control	
+//IEnumerator fly_control_keyboard()
+//{
+//    while (true)
+//    {
+//        // take off
+//        if (Input.GetKeyDown(KeyCode.Space))
+//        {
+//            if (action == null)
+//            {
+//                take_off();
+//                yield return null;
+//            }
+//        }
+
+//        // landing
+//        if (Input.GetKeyDown(KeyCode.Return))
+//        {
+//            if (action == "free flight" & alpha == alpha0)
+//            {
+//                landing();
+//                yield return null;
+//            }
+//        }
+
+//        // turn right
+//        if (Input.GetKeyDown(KeyCode.RightArrow))
+//        {
+//            if (action == "free flight")
+//            {
+//                alpha = Mathf.Max(-1f, alpha - 0.1f);
+//                yield return null;
+//            }                    
+//        }
+
+//        // turn left
+//        if (Input.GetKeyDown(KeyCode.LeftArrow))
+//        {
+//            if (action == "free flight")
+//            {
+//                alpha = Mathf.Min(1f, alpha + 0.1f);
+//                yield return null;
+//            }
+//        }
+
+//        // other
+//        yield return null;
+//    }
+//}
+
+
+//// roll angle dumping
+//IEnumerator roll_angle_dumping()
+//{
+//    while (true)
+//    {
+
+//        if (action == null) yield return null;
+
+//        Vector3 orientation = transform.Find("orientation").transform.localEulerAngles;
+//        float roll_angle_ = orientation.z;
+
+//        float angle_offset = 0;
+//        if (roll_angle_ > 90) angle_offset = -360;
+//        roll_angle_ += angle_offset;
+
+//        float roll_angle = alpha * roll_max;
+//        roll_angle_ = roll_eta * roll_angle + (1 - roll_eta) * roll_angle_;
+
+//        roll_angle_ -= angle_offset;
+
+//        orientation.z = roll_angle_;
+//        transform.Find("orientation").transform.localEulerAngles = orientation;
+//        yield return null;
+//    }
+//}
+
+
+
+//// update_UI_state
+//IEnumerator update_UI_state()
+//{
+//    while (true)
+//    {
+//        if (GameObject.Find("Canvas"))
+//        {
+//            if (action == null & !is_fixed_traj)
+//            {
+//                GameObject.Find("Canvas").GetComponent<UI_control_v2>().state = "idling";
+//            }
+//            if (action != null & !is_fixed_traj)
+//            {
+//                GameObject.Find("Canvas").GetComponent<UI_control_v2>().state = "free flight";
+//            }
+//            if (action != null & is_fixed_traj)
+//            {
+//                GameObject.Find("Canvas").GetComponent<UI_control_v2>().state = "fixed traj";
+//            }
+//        }
+//        yield return null;
+//    }
+//}
+
+//is_trail = !is_trail;
+//trail.SetActive(is_trail);
+//trail_index = (trail_index + 1) % 3;
+//if (trail_index == 0)
+//{
+//    trail_white.SetActive(false);
+//    trail_rainbow.SetActive(false);
+//}
+//if (trail_index == 1)
+//{
+//    trail_white.SetActive(true);
+//    trail_rainbow.SetActive(false);
+//}
+//if (trail_index == 2)
+//{
+//    trail_white.SetActive(false);
+//    trail_rainbow.SetActive(true);
+//}

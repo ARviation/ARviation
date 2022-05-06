@@ -5,10 +5,12 @@ using UnityEngine;
 public class SFXmanager : MonoBehaviour
 {
     /// <summary>
-    /// sound effect manager, one time sound play
-    /// syntax: SFXmanager.playsound("pingpong");
-    /// syntax: SFXmanager_volume.playsound("camera", 0.3f);
-    /// </summary>
+    /// author:: Yu (Eric) Zhu, 2022/05/06, yuzhu2@andrew.cmu.edu
+    /// usage:: sound effect manager (singleton), one time sound player
+    /// usage:: sound_item_list: sound inventory 
+    /// usage:: SFXmanager.playsound("pingpong");
+    /// usage:: SFXmanager_volume.playsound("camera", 0.3f);
+    /// </summary>    
 
 
     // Variables
@@ -61,15 +63,6 @@ public class SFXmanager : MonoBehaviour
     }
 
 
-    //// stop sound
-    //public static void stopsound(string sound_name)
-    //{
-    //    // stop sound
-    //    source.clip = clip_dict[sound_name];
-    //    source.Stop();
-    //}
-
-
     // play sound volume
     public static void playsound_volume(string sound_name, float volume)
     {
@@ -80,21 +73,32 @@ public class SFXmanager : MonoBehaviour
         source.Play();
     }
 
-
-    //// play sound loop
-    //public static void playsound_loop(string sound_name)
-    //{
-    //    // play sound
-    //    source.clip = clip_dict[sound_name];
-    //    source.volume = 1f;
-    //    source.loop = true;
-    //    source.Play();
-    //}
-
 }
 
 
+
+
 ///////////////////////////////////// trash ///////////////////////////////////////
+
+
+
+//// play sound loop
+//public static void playsound_loop(string sound_name)
+//{
+//    // play sound
+//    source.clip = clip_dict[sound_name];
+//    source.volume = 1f;
+//    source.loop = true;
+//    source.Play();
+//}
+
+//// stop sound
+//public static void stopsound(string sound_name)
+//{
+//    // stop sound
+//    source.clip = clip_dict[sound_name];
+//    source.Stop();
+//}
 
 //public List<AudioClip> clip_list = new List<AudioClip>();
 

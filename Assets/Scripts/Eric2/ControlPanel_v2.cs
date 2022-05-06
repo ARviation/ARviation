@@ -4,7 +4,15 @@ using UnityEngine;
 
 public class ControlPanel_v2 : MonoBehaviour
 {
-    // variables
+    /// <summary>
+    /// author:: Yu (Eric) Zhu, 2022/05/06, yuzhu2@andrew.cmu.edu
+    /// usage:: switch between pc version and mobile version, useful for quick debug
+    /// usage:: is_AR_Camera = true -> mobile version
+    /// usage:: is_AR_Camera = false -> pc version
+    /// </summary>
+
+
+    // Variables
     public bool is_AR_Camera = true;
     public GameObject airplane_prefab;
     public UI_control_v3 m_UI_control;
@@ -12,7 +20,6 @@ public class ControlPanel_v2 : MonoBehaviour
     // Awake
     void Awake()
     {
-        // set camera
         if (is_AR_Camera)
         {
             GameObject.Find("Main Camera").gameObject.SetActive(false);
@@ -33,20 +40,4 @@ public class ControlPanel_v2 : MonoBehaviour
             spawnedObject.name = "airplane_prefab";
         }
     }
-
-
-    //// Update
-    //void Update()
-    //{
-    //    if (Input.GetKeyDown(KeyCode.Space))
-    //    {
-    //        SFXmanager.playsound("scanner");
-    //    }
-
-    //    if (Input.GetKeyDown(KeyCode.Return))
-    //    {
-    //        SFXmanager.stopsound("scanner");
-    //    }
-        
-    //}
 }

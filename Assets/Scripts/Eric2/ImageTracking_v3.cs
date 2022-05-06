@@ -7,6 +7,16 @@ using UnityEngine.XR.ARFoundation;
 [RequireComponent(typeof(ARTrackedImageManager))]
 public class ImageTracking_v3 : MonoBehaviour
 {
+    /// <summary>
+    /// author:: Yu (Eric) Zhu, 2022/05/06, yuzhu2@andrew.cmu.edu
+    /// usage:: AR marker tracking, adapted from the tutorial https://www.youtube.com/watch?v=I9j3MD7gS5Y
+    /// usage:: add the initial orientation calibration (credit: David Morales)
+    /// </summary>     
+
+    // Parameters
+    int counter_max = 100;                                 // initial orientation calibration counter limit
+
+
     // Variables
     public List<string> marker_name_list;
     string marker_name = "";
@@ -14,20 +24,16 @@ public class ImageTracking_v3 : MonoBehaviour
     public bool isMarkerDetected = false;
     public GameObject scanner;
     private ARTrackedImageManager trackedImageManager;
-
     GameObject airplane;
-    //AudioSource source;
     Quaternion sampledRotation = new Quaternion(0, 0, 0, 0);
     Vector3 airplane_angle_init;
     int counter = 0;
-    int counter_max = 100;
 
 
     // Awake
     private void Awake()
     {
         // deactivate scanner
-        Debug.Log("image tracking awake starts");
         scanner.SetActive(false);
 
         // reset
@@ -41,13 +47,7 @@ public class ImageTracking_v3 : MonoBehaviour
         airplane_angle_init = airplane.transform.localEulerAngles;
         airplane.SetActive(false);
 
-        //// sound
-        //source = gameObject.AddComponent<AudioSource>();
-        //AudioClip clip = Resources.Load<AudioClip>("AudioClip/sound_camera_snap");
-        //source.clip = clip;        
-
         // activate scanner
-        Debug.Log("image tracking awake ends");
         scanner.SetActive(true);
     }
 
@@ -69,7 +69,6 @@ public class ImageTracking_v3 : MonoBehaviour
     // ImageChanged
     void ImageChanged(ARTrackedImagesChangedEventArgs eventArgs)
     {
-        Debug.Log("flying scene: image changed");
         foreach (ARTrackedImage trackedImage in eventArgs.added)
         {
             string name = trackedImage.referenceImage.name;
@@ -80,7 +79,6 @@ public class ImageTracking_v3 : MonoBehaviour
                 #if UNITY_ANDROID || UNITY_IPHONE
                 Handheld.Vibrate();
                 #endif
-                //source.Play();
                 SFXmanager.playsound("scanner");
                 isMarkerDetected = true;
             }                
@@ -116,7 +114,7 @@ public class ImageTracking_v3 : MonoBehaviour
 }
 
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////// trash ///////////////////////////////////////
 
 
 //string marker_L_name = "marker31_L";

@@ -11,36 +11,47 @@ using System.ComponentModel;
 
 public class screenshot_v3 : MonoBehaviour
 {
+    /// <summary>
+    /// author:: Yu (Eric) Zhu, 2022/05/06, yuzhu2@andrew.cmu.edu
+    /// author:: Wei Cheng (Jimmy) Chen, 2022/05/06, weichen3@andrew.cmu.edu
+    /// usage:: AR camera and email sender
+    /// usage:: take screenshot (without UI) as a photo, ScreenCapture.CaptureScreenshot 
+    /// usage:: send photos to the email specified by receiver_email 
+    /// usage:: async send and buffer send
+    /// usage::     photos are sent for every autoSendPhotoAmount photos
+    /// usage::     remaining photos are sent upon quit
+    /// usage:: known problem: photo display might be a problematic (red ?) if NOT built in the development mode 
+    /// </summary>
+
+
+    // Parameters
+    public int autoSendPhotoAmount = 5;                                        // photo buffer size
+    public string receiver_email = "ARviationAlbum@gmail.com";                 // receiver email
+    float t_pause = 1f;                                                        // UI hide time
+    float tao1 = 2f;                                                           // photo animation time
+    float tao2 = 1f;                                                           // photo animation time
+    float frame_size_relative = 1.05f;                                         // photo frame border ratio
+
+
     // Variables
     public GameObject Canvas;
-
-    //public AudioSource source;
-    public string receiver_email = "ARviationAlbum@gmail.com";
     public GameObject button_yes;
     public GameObject button_no;
     public GameObject image_photo;
     public GameObject photo_counter;
     public Button button_photo;
     public int N_photo = 0;
-    public int autoSendPhotoAmount = 5;
-
-    float t_pause = 1f;
     List<string> photo_file_list = new List<string>();
-
     public Image photo;
     public Image photo_frame;
-
-    float tao1 = 2f;
-    float tao2 = 1f;
     Vector2 center1, length1;
     Vector2 center2, length2;
     Vector2 center3, length3;
     float t_photo;
-    string screenshotName;
-
-    float frame_size_relative = 1.05f;
+    string screenshotName;    
     private float timer = 0;
     private bool startCounting = false;
+
 
     // Start
     void Start()
@@ -50,10 +61,9 @@ public class screenshot_v3 : MonoBehaviour
         foreach (string fileName in fileEntries)
         {
             File.Delete(fileName);
-            //Debug.Log("delete file " + fileName);
         }
 
-        // photo parameters
+        // photo animation parameters
         center1 = new Vector2(0, 130f);
         length1 = new Vector2(15f, 9.45f);
         center2 = new Vector2(600f, 230f);
@@ -66,12 +76,12 @@ public class screenshot_v3 : MonoBehaviour
         photo_counter.SetActive(false);
     }
 
-    private void Update()
+
+    // Update
+    void Update()
     {
-        //if (photo_file_list.Count == autoSendPhotozAmount)
         if ((photo_file_list.Count > 0) & (N_photo % autoSendPhotoAmount == 0) & (photo_file_list.Count % autoSendPhotoAmount == 0))
         {
-            //Debug.Log("count = " + photo_file_list.Count + "  N_photo = " + N_photo + "  autoSendPhotoAmount = " + autoSendPhotoAmount);
             // check if photo files are ready
             bool is_ready = true;
             foreach (string photo_file in photo_file_list)
@@ -79,11 +89,11 @@ public class screenshot_v3 : MonoBehaviour
                 string fname = Application.persistentDataPath + "/" + photo_file;
                 is_ready = is_ready & File.Exists(fname);
             }
+
             // send email
             if (is_ready)
             {
                 button_send_email();
-                //button_photo.interactable = false;
             }
         }
     }
@@ -95,11 +105,7 @@ public class screenshot_v3 : MonoBehaviour
         // screen capture
         screenshotName = "screenshot" + System.DateTime.Now.ToString("_yyyy_MM_dd_hh_mm_ss") + ".png";
         string screenshotName_full = Application.persistentDataPath + "/" + screenshotName;
-        //string folderPath = "C:/Scratch/UserData/user2022a/CMU/course_53607_LAB/ARviation_project/experiment_screenshot/photos/";
-        //string folderPath = Application.persistentDataPath + "/";
-        //folderPath = "";
         SFXmanager.playsound_volume("camera", 0.3f);
-
         StartCoroutine(UI_pause(t_pause));
         string screenshotName_;
         if (SystemInfo.deviceType == DeviceType.Handheld)
@@ -110,10 +116,7 @@ public class screenshot_v3 : MonoBehaviour
         {
             screenshotName_ = screenshotName_full;
         }
-
         ScreenCapture.CaptureScreenshot(screenshotName_);
-        //while (!File.Exists(screenshotName)) { };
-        //Canvas.SetActive(true);
 
         // disable photo button
         button_photo.interactable = false;
@@ -121,9 +124,8 @@ public class screenshot_v3 : MonoBehaviour
         // show photo
         StartCoroutine(show_photo(screenshotName_full, center1, length1, center2, length2, tao1));
         photo_file_list.Add(screenshotName);
-        //string path_full = Application.persistentDataPath;
-        //print("picture saved to " + path_full);
     }
+
 
     // UI pause
     IEnumerator UI_pause(float t_pause)
@@ -137,6 +139,8 @@ public class screenshot_v3 : MonoBehaviour
     // send email
     public void button_send_email()
     {
+        // Modified by Jimmy Chen to replace Send by SendAsync
+
         Debug.Log("sending email");
         MailMessage mail = new MailMessage();
         SmtpClient SmtpServer = new SmtpClient("smtp.gmail.com");
@@ -144,7 +148,6 @@ public class screenshot_v3 : MonoBehaviour
         mail.To.Add(receiver_email);
         mail.Subject = "ARviation Photos";
         mail.Body = "Dear guests, please see the attached photos. We hope you enjoy the ARviation experience!";
-        //int cnt = 0;
         foreach (string photo_file in photo_file_list)
         {
             System.Net.Mail.Attachment attachment;
@@ -166,8 +169,10 @@ public class screenshot_v3 : MonoBehaviour
         button_photo.interactable = true;
     }
 
+
     private static void SendCompletedCallback(object sender, AsyncCompletedEventArgs e)
     {
+        // Author: Jimmy Chen
         // Get the unique identifier for this asynchronous operation.
         string token = (string)e.UserState;
 
@@ -186,9 +191,9 @@ public class screenshot_v3 : MonoBehaviour
         }
     }
 
+
     // move image
-    IEnumerator move_image(Image photo, Image photo_frame, Vector2 center1, Vector2 length1, Vector2 center2,
-      Vector2 length2, float tao)
+    IEnumerator move_image(Image photo, Image photo_frame, Vector2 center1, Vector2 length1, Vector2 center2, Vector2 length2, float tao)
     {
         button_yes.SetActive(false);
         button_no.SetActive(false);
@@ -253,20 +258,6 @@ public class screenshot_v3 : MonoBehaviour
         import_image_from_file(photo, fname, center1, length1);
         yield return null;
 
-        //// shrink
-        //t_photo = tao;
-        //while (t_photo > 0)
-        //{
-        //    float r = t_photo / tao;
-        //    Vector2 center = r * center1 + (1 - r) * center2;
-        //    Vector2 length = r * length1 + (1 - r) * length2;
-        //    RectTransform rt = photo.GetComponent<RectTransform>();
-        //    rt.transform.localPosition = center;
-        //    rt.transform.localScale = length;
-        //    t_photo -= Time.deltaTime;
-        //    yield return null;
-        //}
-
         // add frame
         RectTransform rt2 = photo_frame.GetComponent<RectTransform>();
         rt2.transform.localPosition = center1;
@@ -301,3 +292,21 @@ public class screenshot_v3 : MonoBehaviour
         button_photo.interactable = true;
     }
 }
+
+
+
+
+///////////////////////////////////// trash ///////////////////////////////////////
+//// shrink
+//t_photo = tao;
+//while (t_photo > 0)
+//{
+//    float r = t_photo / tao;
+//    Vector2 center = r * center1 + (1 - r) * center2;
+//    Vector2 length = r * length1 + (1 - r) * length2;
+//    RectTransform rt = photo.GetComponent<RectTransform>();
+//    rt.transform.localPosition = center;
+//    rt.transform.localScale = length;
+//    t_photo -= Time.deltaTime;
+//    yield return null;
+//}

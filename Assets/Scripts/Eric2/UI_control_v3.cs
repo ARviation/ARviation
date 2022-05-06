@@ -5,18 +5,27 @@ using UnityEngine.UI;
 
 public class UI_control_v3 : MonoBehaviour
 {
+    /// <summary>
+    /// author:: Yu (Eric) Zhu, 2022/05/06, yuzhu2@andrew.cmu.edu
+    /// usage:: UI control 
+    /// usage:: UI state: scanning, free flight, fixed trajectory (takeoff, landing)
+    /// </summary>
+
+
+    // Parameters
+    float v_scan = 600f;                                   // scanning line speed
+    float L_scan_max = 300f;                               // scanning line range
+
+
     // Variables
     public string state;
     public GameObject button_launch;
     public GameObject button_return;
     public GameObject button_trail;
-
-    //public GameObject slider_control;
     public GameObject button_U;
     public GameObject button_D;
     public GameObject button_L;
-    public GameObject button_R;
-    
+    public GameObject button_R;    
     public GameObject button_quit;
     public GameObject button_take_photo;
     public GameObject screenshot;
@@ -26,28 +35,20 @@ public class UI_control_v3 : MonoBehaviour
     public GameObject msg_sending_email;
     public GameObject scanning_line;
 
-    //float dumping_rate = 0.01f;
-    float v_scan = 600f;
-    float L_scan_max = 300f;
-
     bool is_voiceover1_played = false;
     bool is_voiceover2_played = false;
-
     public bool is_quit = false;
+
 
     // Start
     void Start()
     {
         state = "scanning";
-        //StartCoroutine(slider_dumping());
         quit_inquiry_screen.SetActive(false);
         msg_sending_email.SetActive(false);
-
         button_launch.SetActive(false);
         button_return.SetActive(false);
         button_trail.SetActive(false);
-        
-        //slider_control.SetActive(false);
         button_U.SetActive(false);
         button_D.SetActive(false);
         button_L.SetActive(false);
@@ -75,22 +76,17 @@ public class UI_control_v3 : MonoBehaviour
             float L_scan = scanning_line_center.y;
             L_scan -= v_scan * Time.deltaTime;
             if (L_scan < -L_scan_max) L_scan = L_scan_max;
-            //Debug.Log("L_scan = " + L_scan);
             scanning_line_center.y = L_scan;
             rt.transform.localPosition = scanning_line_center;
-
             button_quit.SetActive(false);
             button_take_photo.SetActive(false);
             button_launch.SetActive(false);
             button_return.SetActive(false);
             button_trail.SetActive(false);
-
-            //slider_control.SetActive(false);
             button_U.SetActive(false);
             button_D.SetActive(false);
             button_L.SetActive(false);
             button_R.SetActive(false);
-
             if (imageTracking.isMarkerDetected)
             {
                 scan_prompt_screen.SetActive(false);
@@ -117,9 +113,6 @@ public class UI_control_v3 : MonoBehaviour
             button_return.GetComponent<Button>().interactable = false;
             button_trail.SetActive(true);
             button_trail.GetComponent<Button>().interactable = false;
-
-            //slider_control.SetActive(true);
-            //slider_control.GetComponent<Slider>().interactable = false;
             button_U.SetActive(true);
             button_U.GetComponent<ButtonTransitioner_UDLR>().active = false;
             button_D.SetActive(true);
@@ -128,7 +121,6 @@ public class UI_control_v3 : MonoBehaviour
             button_L.GetComponent<ButtonTransitioner_UDLR>().active = false;
             button_R.SetActive(true);
             button_R.GetComponent<ButtonTransitioner_UDLR>().active = false;
-
             return;
         }
 
@@ -141,9 +133,6 @@ public class UI_control_v3 : MonoBehaviour
             button_return.GetComponent<Button>().interactable = true;
             button_trail.SetActive(true);
             button_trail.GetComponent<Button>().interactable = true;
-
-            //slider_control.SetActive(true);
-            //slider_control.GetComponent<Slider>().interactable = true;
             button_U.SetActive(true);
             button_U.GetComponent<ButtonTransitioner_UDLR>().active = true;
             button_D.SetActive(true);
@@ -152,7 +141,6 @@ public class UI_control_v3 : MonoBehaviour
             button_L.GetComponent<ButtonTransitioner_UDLR>().active = true;
             button_R.SetActive(true);
             button_R.GetComponent<ButtonTransitioner_UDLR>().active = true;
-
             return;
         }
 
@@ -165,9 +153,6 @@ public class UI_control_v3 : MonoBehaviour
             button_return.GetComponent<Button>().interactable = false;
             button_trail.SetActive(true);
             button_trail.GetComponent<Button>().interactable = false;
-
-            //slider_control.SetActive(true);
-            //slider_control.GetComponent<Slider>().interactable = false;
             button_U.SetActive(true);
             button_U.GetComponent<ButtonTransitioner_UDLR>().active = false;
             button_D.SetActive(true);
@@ -176,25 +161,9 @@ public class UI_control_v3 : MonoBehaviour
             button_L.GetComponent<ButtonTransitioner_UDLR>().active = false;
             button_R.SetActive(true);
             button_R.GetComponent<ButtonTransitioner_UDLR>().active = false;
-
             return;
         }
-
     }
-
-
-    //// slider dumping
-    //IEnumerator slider_dumping()
-    //{
-    //    while (true)
-    //    {
-    //        if (slider_control.GetComponent<Slider>().value > 0)
-    //        {
-    //            slider_control.GetComponent<Slider>().value = Mathf.Max(0, slider_control.GetComponent<Slider>().value - dumping_rate);
-    //        }
-    //        yield return null;
-    //    }
-    //}
 
 
     // button quit task
@@ -208,13 +177,10 @@ public class UI_control_v3 : MonoBehaviour
         // disable all clickables
         button_launch.GetComponent<Button>().interactable = false;
         button_return.GetComponent<Button>().interactable = false;
-
-        //slider_control.GetComponent<Slider>().interactable = false;
         button_U.GetComponent<ButtonTransitioner_UDLR>().active = false;
         button_D.GetComponent<ButtonTransitioner_UDLR>().active = false;
         button_L.GetComponent<ButtonTransitioner_UDLR>().active = false;
         button_R.GetComponent<ButtonTransitioner_UDLR>().active = false;
-
         button_quit.GetComponent<Button>().interactable = false;
         button_take_photo.GetComponent<Button>().interactable = false;
     }
@@ -223,17 +189,6 @@ public class UI_control_v3 : MonoBehaviour
     // button quit_yes task
     public void button_quit_yes_task()
     {
-        //// hide quit inqiry screen
-        //quit_inquiry_screen.SetActive(false);
-        //// show msg
-        //text_msg_sending_email.SetActive(true);
-        //// send email
-        //screenshot.GetComponent<screenshot_v2>().button_send_email();
-        //// disable UI
-        //gameObject.SetActive(false);
-        //// quit
-        //Application.Quit();
-        // sound
         SFXmanager.playsound("click");
         StartCoroutine(quit_task());
     }
@@ -249,13 +204,10 @@ public class UI_control_v3 : MonoBehaviour
         // enable all clickables
         button_launch.GetComponent<Button>().interactable = true;
         button_return.GetComponent<Button>().interactable = true;
-
-        //slider_control.GetComponent<Slider>().interactable = true;
         button_U.GetComponent<ButtonTransitioner_UDLR>().active = true;
         button_D.GetComponent<ButtonTransitioner_UDLR>().active = true;
         button_L.GetComponent<ButtonTransitioner_UDLR>().active = true;
         button_R.GetComponent<ButtonTransitioner_UDLR>().active = true;
-
         button_quit.GetComponent<Button>().interactable = true;
         button_take_photo.GetComponent<Button>().interactable = true;
     }
@@ -280,7 +232,6 @@ public class UI_control_v3 : MonoBehaviour
             msg_sending_email.SetActive(false);
         }
         // quit or change scene
-        Debug.Log("quit flying scene");
         if (is_quit)
         {
             Application.Quit();
@@ -291,3 +242,19 @@ public class UI_control_v3 : MonoBehaviour
         }
     }
 }
+
+
+
+///////////////////////////////////// trash ///////////////////////////////////////
+//// slider dumping
+//IEnumerator slider_dumping()
+//{
+//    while (true)
+//    {
+//        if (slider_control.GetComponent<Slider>().value > 0)
+//        {
+//            slider_control.GetComponent<Slider>().value = Mathf.Max(0, slider_control.GetComponent<Slider>().value - dumping_rate);
+//        }
+//        yield return null;
+//    }
+//}
